@@ -1,23 +1,14 @@
 import logo from './logo.svg';
-import './App.css';
+import './styles/app.scss'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+     <h1>The Truth</h1>    
+     <p>The enemy sends a lot of lies into our heads, into our hearts, Here you can find God's truth (Scriptures)</p>
+     <img src="https://unsplash.it/200/200"/>
+
     </div>
   );
 }
