@@ -1,4 +1,66 @@
+/* .background-img {
+
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+} */
+html,
+body,
+#root,
 .App {
+  height: 100%;
+  width: 100%;
+}
+.App {
+  background: url("./bible-unsplash.jpg");
+  background-size: cover;
+  display: flex;
+  direction: row;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 0;
+  position: relative;
+}
+h1 {
+  font-size: 14vw;
+  margin: 0;
+}
+h2 {
+  font-size: 6vw;
+  margin: 0;
+}
+.box {
+  height: 70vh;
+  width: 40%;
+}
+.frame {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.frame-img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  z-index: 4;
+  position: relative;
+}
+
+.back {
+  height: 89.5%;
+  width: 89.5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #a09f9e;
+  margin: 2.2vw;
+  border-radius: 5%;
+  z-index: 1;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +97,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
