@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+@font-face {
+  font-family: "magnolia";
+  src: local("magnolia"), url("./fonts/magnolia_sky.ttf") format("truetype");
+}
+@font-face {
+  font-family: "sulphur";
+  src: local("sulphur"),
+    url("./fonts/SulphurPoint-Regular.ttf") format("truetype");
+}

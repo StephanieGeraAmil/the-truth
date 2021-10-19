@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
 
-        <div className='first-column'>
+        <div className='left'>
           <div className='icon-section'></div>
           <div className='title'>
               <h2>The</h2>    
@@ -18,8 +18,9 @@ function App() {
               <button className='button-why'></button>
           </div>
         </div>
-        
+         <div className='right'>
         <Box/>
+        </div>
         
        
 

@@ -1,16 +1,10 @@
-/* .background-img {
-
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-} */
 html,
 body,
 #root,
 .App {
   height: 100%;
   width: 100%;
+  color: #433e3e;
 }
 .App {
   background: url("./bible-unsplash.jpg");
@@ -19,82 +13,58 @@ body,
   direction: row;
   justify-content: space-around;
   align-items: center;
-  z-index: 0;
-  position: relative;
 }
 h1 {
-  font-size: 14vw;
-  margin: 0;
+  font-size: 10vw;
+  margin-top: 0.5vw;
+  margin-left: 2vw;
+  margin-bottom: 0;
+  font-family: "magnolia";
 }
 h2 {
-  font-size: 6vw;
   margin: 0;
+  font-size: 5.4vw;
+
+  font-family: "sulphur";
 }
-.box {
-  height: 70vh;
-  width: 40%;
+.left {
+  /* margin-left: 6vw; */
 }
-.frame {
-  height: 100%;
-  width: 100%;
+.right {
   position: relative;
+  height: 80%;
+  width: 36%;
+  top: 0%;
 }
 
-.frame-img {
+.box {
+  background: url("./ContentBox.svg");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  z-index: 2;
+  position: relative;
+  top: 50%;
+  left: -4%;
+  transform: translateY(-50%);
+
   height: 100%;
   width: 100%;
-  object-fit: contain;
-  z-index: 4;
-  position: relative;
 }
 
 .back {
-  height: 89.5%;
-  width: 89.5%;
+  background: url("./back.svg");
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 90%;
+  width: 92%;
+
+  z-index: 0;
   position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #a09f9e;
-  margin: 2.2vw;
-  border-radius: 5%;
-  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
 }
-
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
