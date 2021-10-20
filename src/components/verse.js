@@ -1,8 +1,9 @@
 import React from 'react'
 
-export const Verse = () => {
+export const Verse = ({verse}) => {
     return (
-        <div>
+        <div className='card-verse'>
+            <label>{verse.verse}</label>
             
         </div>
     )

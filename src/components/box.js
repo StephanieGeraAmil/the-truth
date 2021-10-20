@@ -6,7 +6,10 @@ export const Box = () => {
     return (
         <>
             <div className='box'></div>
-            <div className="back"></div>
+            
+            <div className="back">
+                <ListOfVerses/>
+            </div>
         </>
     )
 }

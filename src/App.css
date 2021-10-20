@@ -68,3 +68,24 @@ h2 {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.card-verse {
+  background-color: #e6e8e7;
+  border-radius: 3vw;
+  color: #433e3e;
+  padding: 2vw;
+  height: 5.5vw;
+  width: 85%;
+  margin-bottom: 1.5vw;
+  font-size: 1vw;
+  font-family: "sulphur";
+}
+.list {
+  width: 84%;
+  position: absolute;
+  top: -2vh;
+  left: 0%;
+
+  transform: translateX(10%);
+  z-index: 1;
+}
