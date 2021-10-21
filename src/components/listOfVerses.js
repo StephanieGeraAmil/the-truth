@@ -1,21 +1,44 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Verse } from './verse'
+import axios from 'axios'
 
 export const ListOfVerses = () => {
-    const verse1={location:"",id:"1", verse:"Now to Him who is able to do far more abundantly beyond all that we ask or think, according to the power that works within us"}
 
-   const verse2= {location:"",id:"2", verse:"Now to Him who is able to do far more abundantly beyond all that we ask or think, according to the power that works within us"}
-    const verse3={location:"",id:"3", verse:"Now to Him who is able to do far more abundantly beyond all that we ask or think, according to the power that works within us"}
-     const verse4={location:"",id:"4", verse:"Now to Him who is able to do far more abundantly beyond all that we ask or think, according to the power that works within us"}
-    const arrayOfVerses=[verse1,verse2,verse3,verse4]
+
+    const [arrayOfVerses,setArrayOfVerses]=useState([])
+    useEffect(() => {
+    const getVerses= async()=>{ 
+            try{
+                const options = {
+                method: 'GET',
+                url: 'https://uncovered-treasure-v1.p.rapidapi.com/topic/Faith',
+                headers: {
+                    'x-rapidapi-host': 'uncovered-treasure-v1.p.rapidapi.com',
+                    'x-rapidapi-key': 'd47e72236dmsh90eafb4f2ff9515p170ca9jsn628460a52b39'
+                    }
+                };
+                console.log("getting verses");
+                const result=await axios.request(options)
+               
+                const verses=result.data.results;
+                 console.log(verses);
+                setArrayOfVerses([...arrayOfVerses,verses]);
+            
+            }catch(error){ console.error(error);}    
+        }
+        getVerses();
+        
+       // console.log(arrayOfVerses);
+      
+        arrayOfVerses.map((element)=> (console.log(element)));
+       
+     },[]);
+
     return (
         <div className="list">
-            {arrayOfVerses.map((element,index)=>
-                <Verse verse={element} key={index}/>
-               
-           
-               )}
-           
+          
+            {arrayOfVerses[0].slice(0, 3).map((element,index)=> (<Verse verse={element} key={index}/>))}
+         
            
             
         </div>
