@@ -6,9 +6,11 @@ body,
   width: 100%;
   color: #433e3e;
 }
-.App {
+body {
   background: url("./bible-unsplash.jpg");
   background-size: cover;
+}
+.App {
   display: flex;
   direction: row;
   justify-content: space-around;
@@ -135,7 +137,7 @@ h2 {
   border-color: transparent;
 }
 .notes_button {
-  background: url("./assets/list-icon.svg");
+  background: url("./assets/book.svg");
   height: 3vw;
   width: 3vw;
   background-position: center;
@@ -160,9 +162,38 @@ h2 {
 }
 .icon-section {
   height: 4vw;
-  width: 30%;
+  width: 25%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 1000px) {
+  body {
+    margin-top: 10vw;
+  }
+  .App {
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 30vw;
+    margin-left: 6vw;
+    margin-top: 4vw;
+  }
+  h2 {
+    font-size: 16vw;
+  }
+
+  .icon-section {
+    height: 10vw;
+  }
+  .login_button {
+    height: 9vw;
+    width: 9vw;
+  }
+  .notes_button {
+    height: 9vw;
+    width: 9vw;
+  }
 }
