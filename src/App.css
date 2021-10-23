@@ -171,29 +171,106 @@ h2 {
 
 @media (max-width: 1000px) {
   body {
-    margin-top: 10vw;
+    margin-top: 10vh;
+    height: 180vh;
+  }
+  .App {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h1 {
+    font-size: 18vh;
+    margin-left: 2vh;
+    margin-top: 4vh;
+  }
+  h2 {
+    font-size: 9vh;
+  }
+  .right {
+    height: 80vh;
+  }
+  .left {
+    height: 80vh;
+  }
+  .icon-section {
+    height: 5vh;
+  }
+  .login_button {
+    height: 4vh;
+    width: 4vh;
+  }
+  .notes_button {
+    height: 4vh;
+    width: 4vh;
+  }
+  .title {
+    margin-top: 0;
+  }
+  .list {
+    display: none;
+  }
+  .search_bar {
+    height: 5vh;
+  }
+  .search_button {
+    height: 3.8vh;
+    width: 3.8vh;
+  }
+  .button-why {
+    height: 5vh;
+  }
+  .left {
+    height: 80vh;
+  }
+  .right {
+    height: 90vh;
+    width: 50vh;
+  }
+}
+@media (max-width: 450px) {
+  body {
+    margin-top: 2vh;
+    height: 160vh;
   }
   .App {
     flex-direction: column;
   }
   h1 {
-    font-size: 30vw;
-    margin-left: 6vw;
-    margin-top: 4vw;
+    font-size: 15vh;
+    margin-left: 2vh;
+    margin-top: 4vh;
   }
   h2 {
-    font-size: 16vw;
+    font-size: 6vh;
   }
 
   .icon-section {
-    height: 10vw;
+    height: 10vh;
   }
   .login_button {
-    height: 9vw;
-    width: 9vw;
+    height: 4vh;
+    width: 4vh;
   }
   .notes_button {
-    height: 9vw;
-    width: 9vw;
+    height: 4vh;
+    width: 4vh;
+  }
+  .search_bar {
+    height: 6vh;
+  }
+  .search_button {
+    height: 4vh;
+    width: 4vh;
+  }
+  .button-why {
+    height: 6vh;
+  }
+  .left {
+    height: 50%;
+  }
+  .right {
+    height: 55vh;
+    width: 45vh;
   }
 }
