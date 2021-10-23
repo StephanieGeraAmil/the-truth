@@ -8,15 +8,23 @@ function App() {
     <div className="App">
 
         <div className='left'>
-          <div className='icon-section'></div>
-          <div className='title'>
-              <h2>The</h2>    
-              <h1>Truth</h1>
-          </div>
-          <div className='bottom'>
-              <Search/>
-              <button className='button-why'></button>
-          </div>
+         
+              <div className='icon-section'>
+                     <button className="login_button"></button>
+                    <button className="notes_button"></button>
+            
+              </div>
+
+              <div className='title'>
+                  <h2>The</h2>    
+                  <h1>Truth</h1>
+              </div>
+               <div className='bottom'>
+                    <Search/>
+                    <button className='button-why'>Why</button>
+              </div>
+         
+         
         </div>
          <div className='right'>
         <Box/>
