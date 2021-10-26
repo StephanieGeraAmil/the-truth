@@ -17,12 +17,27 @@ function App() {
          
               <div className='icon-section'>
                    {!isAuthenticated && (<Login/>)}
-                     {isAuthenticated && (<Logout/>)}
-                   
-                    <button className="notes_button"></button>
-                     <UserInfo/>
+                     {isAuthenticated && (
+                       <>
+                         
+                          <button className="notes_button"></button>
+                         
+                       </>
+                     )}
+
+                     <div className='user-section'>
+                 
+                     {isAuthenticated && (
+                       <>
+                          <UserInfo/>
+                           <Logout/>
+                       </>
+                     )}
             
               </div>
+            
+              </div>
+                 
 
               <div className='title'>
                   <h2>The</h2>    

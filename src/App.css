@@ -5,6 +5,8 @@ body,
   height: 100%;
   width: 100%;
   color: #433e3e;
+  font-size: 1.3vw;
+  font-family: "sulphur";
 }
 body {
   background: url("./bible-unsplash.jpg");
@@ -26,20 +28,20 @@ h1 {
 h2 {
   margin: 0;
   font-size: 7vw;
-
-  font-family: "sulphur";
 }
 .left {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  height: 70%;
+  height: min(80%, 85vh);
+  width: 45%;
 }
 .right {
   position: relative;
-  height: 80%;
-  width: 36%;
+  height: min(80%, 90vh);
+  /* width: 45%; */
+  width: 56vh;
   top: 0%;
 }
 .title {
@@ -55,11 +57,13 @@ h2 {
   z-index: 2;
   position: relative;
   top: 50%;
-  left: -4%;
+  /* left: -4%; */
   transform: translateY(-50%);
 
-  height: 100%;
-  width: 100%;
+  /* height: 100%;
+  width: 100%; */
+  height: 80vh;
+  width: 59vh;
 }
 
 .back {
@@ -68,12 +72,15 @@ h2 {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  height: 90%;
-  width: 92%;
+  /* height: 90%;
+  width: 91.8%; */
+  height: 76vh;
+  width: 56vh;
 
   z-index: 0;
   position: absolute;
   top: 50%;
+  left: 1vw;
   transform: translateY(-50%);
 }
 
@@ -81,19 +88,22 @@ h2 {
   background-color: #e6e8e7;
   border-radius: 3vw;
   color: #433e3e;
-  padding: 2vw;
-  height: 5.9vw;
-  width: 85%;
+  padding: 1.3vw;
+  height: 9vh;
+  width: 89%;
   margin-bottom: 1.5vw;
-  font-size: 1vw;
+  align-content: center;
   font-family: "sulphur";
 }
 .list {
-  width: 84%;
-  position: absolute;
+  width: 80%;
+  /* position: absolute;
   top: 15%;
-  left: 0%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; */
   transform: translateX(10%);
   z-index: 1;
 }
@@ -136,6 +146,15 @@ h2 {
   background-repeat: no-repeat;
   border-color: transparent;
 }
+.logout_button {
+  background: url("./assets/Logout.svg");
+  height: 3vw;
+  width: 3vw;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-color: transparent;
+}
 .notes_button {
   background: url("./assets/book.svg");
   height: 3vw;
@@ -162,14 +181,24 @@ h2 {
 }
 .icon-section {
   height: 4vw;
-  width: 25%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-section {
+  height: 4vw;
+  width: 35%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) { */
+
+@media (max-aspect-ratio: 1217 / 931) {
   body {
     margin-top: 10vh;
     height: 180vh;
