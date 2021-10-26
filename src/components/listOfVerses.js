@@ -36,7 +36,7 @@ export const ListOfVerses = () => {
     return (
         <div className="list">
           
-            {arrayOfVerses.slice(0, 3).map((element,index)=> (<Verse verse={element} key={index}/>))}
+            {arrayOfVerses.map((element,index)=> (<Verse verse={element} key={index}/>))}
          
            
             
