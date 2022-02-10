@@ -27,6 +27,7 @@ h1 {
 }
 h2 {
   margin: 0;
+  margin-bottom: 1vw;
   font-size: min(7vw, 12vh);
 }
 .left {
@@ -127,17 +128,17 @@ h2 {
   z-index: 1;
 }
 .bottom {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 .search_bar {
   background-color: #433e3e;
   padding: 0 2vw;
-  height: 4.5vw;
-  width: 65%;
+  height: 6vh;
+  width: 70%;
   align-self: left;
   border-radius: 5vw;
   border-color: transparent;
@@ -149,8 +150,8 @@ h2 {
 }
 .search_button {
   background: url("./assets/magnifier.svg");
-  height: min(3vw, 5vh);
-  width: min(3vw, 5vh);
+  height: min(3vw, 4vh);
+  width: min(3vw, 4vh);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -189,13 +190,13 @@ h2 {
 }
 .button-why {
   background-color: #433e3e;
-  height: 4.5vw;
-  width: 20%;
+  height: 6vh;
+  width: 15%;
   align-self: right;
   border-radius: 5vw;
   border-color: transparent;
   color: #e6e8e7;
-  font-size: 2vw;
+  font-size: 1.7vw;
   font-family: "sulphur";
 }
 .icon-section {
@@ -268,10 +269,11 @@ h2 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 120%;
   }
   .search_bar {
     height: 5vh;
+    width: 70%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -285,7 +287,7 @@ h2 {
   }
   .button-why {
     height: 5vh;
-    width: 23%;
+    width: 22%;
     font-size: 3.5vh;
   }
   .left {
