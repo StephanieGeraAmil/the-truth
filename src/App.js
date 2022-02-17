@@ -9,6 +9,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {getVerses} from './actions/verseActions.js'
+import {getNotes} from './actions/noteActions.js'
+import {getDecks} from './actions/deckActions.js'
 
 
 
@@ -18,6 +20,8 @@ function App() {
 
   useEffect(()=>{
     dispatch(getVerses());
+      dispatch(getDecks());
+        dispatch(getNotes());
   
     },[]);
    const {isAuthenticated } = useAuth0();
