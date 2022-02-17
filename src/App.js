@@ -6,9 +6,20 @@ import { Login } from './components/login';
 import { Logout } from './components/logout';
 import { UserInfo } from './components/userInfo';
 import { useAuth0 } from "@auth0/auth0-react";
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import {getVerses} from './actions/verseActions.js'
+
+
 
 
 function App() {
+   const dispatch= useDispatch();
+
+  useEffect(()=>{
+    dispatch(getVerses());
+  
+    },[]);
    const {isAuthenticated } = useAuth0();
   return (
     <div className="App">
