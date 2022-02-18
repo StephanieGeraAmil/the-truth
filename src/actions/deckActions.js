@@ -14,11 +14,11 @@ export const getDecks = ()=>async(dispatch,getState)=>{
     }
    
 }
-export const createDeck=(jar)=>async(dispatch,getState)=>{
+export const createDeck=(deck)=>async(dispatch,getState)=>{
     //async(dispatch) comes from redux-thunk
     try {
 
-        const {data} =await api.createDeck(jar);
+        const {data} =await api.createDeck(deck);
         const action={type:actions.CREATE_DECK, payload:data};
         dispatch(action);
 

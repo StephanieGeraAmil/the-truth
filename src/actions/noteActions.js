@@ -14,11 +14,11 @@ export const getNotes = ()=>async(dispatch,getState)=>{
     }
    
 }
-export const createNote=(jar)=>async(dispatch,getState)=>{
+export const createNote=(note)=>async(dispatch,getState)=>{
     //async(dispatch) comes from redux-thunk
     try {
 
-        const {data} =await api.createNote(jar);
+        const {data} =await api.createNote(note);
         const action={type:actions.CREATE_NOTE, payload:data};
         dispatch(action);
 
