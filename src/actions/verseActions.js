@@ -54,26 +54,23 @@ export const deleteVerse=(verse_id)=>async(dispatch)=>{
 }
 
 
-export const getVersesFromTopicService=(topic) => async()=>{ 
-    try{
+// export const getVersesFromTopicService=(topic) => async()=>{ 
+//     try{
 
-        var options = {
-            method: 'GET',
-            url: 'https://uncovered-treasure-v1.p.rapidapi.com/topic/'+topic,
-            headers: {
-                'x-rapidapi-host': 'uncovered-treasure-v1.p.rapidapi.com',
-                'x-rapidapi-key': 'd47e72236dmsh90eafb4f2ff9515p170ca9jsn628460a52b39'
-            }
-            };
+//         var options = {
+//             method: 'GET',
+//             url: 'https://uncovered-treasure-v1.p.rapidapi.com/topic/'+topic,
+//             headers: {
+//                 'x-rapidapi-host': 'uncovered-treasure-v1.p.rapidapi.com',
+//                 'x-rapidapi-key': 'd47e72236dmsh90eafb4f2ff9515p170ca9jsn628460a52b39'
+//             }
+//             };
         
-        const result=await axios.request(options)
-        
-        const verses=await result.data.results;
-        
-
-       verses.map(verse=>createVerse(verse));
+//         const result=await axios.request(options)   
+//         const verses=await result.data.results;
+//         verses.map(verse=>createVerse(verse));
         
 
     
-    }catch(error){ console.error(error);}    
-}
+//     }catch(error){ console.error(error);}    
+// }

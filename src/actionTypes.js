@@ -2,7 +2,10 @@ export const CREATE_VERSE="verse/create_verse";
 export const UPDATE_VERSE="verse/update_verse";
 export const DELETE_VERSE="verse/delete_verse";
 export const FETCH_ALL_VERSES= "verse/fetch_all_verses";
-
+export const CREATE_VERSE_QUOTE="verse_quote/create_verse_quote";
+export const UPDATE_VERSE_QUOTE="verse_quote/update_verse_quote";
+export const DELETE_VERSE_QUOTE="verse_quote/delete_verse_quote";
+export const FETCH_ALL_VERSES_QUOTES= "verse_quotes/fetch_all_verses_quotes";
 export const CREATE_NOTE="note/create_note";
 export const UPDATE_NOTE="note/update_note";
 export const DELETE_NOTE="note/delete_note";
