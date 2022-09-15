@@ -4,6 +4,8 @@ import { Truth } from "./components/truth";
 import { Nav } from "./components/nav";
 import "./App.css";
 import { DeckDashboard } from "./components/deckDashboard";
+import { NewNote } from "./components/newNote";
+import { NewDeck } from "./components/newDeck";
 
 function App() {
   useEffect(() => {
@@ -59,8 +61,8 @@ function App() {
   return (
     <div className="App">
       <Nav></Nav>
-
-     <DeckDashboard></DeckDashboard>
+  <NewNote></NewNote>
+     {/* <DeckDashboard></DeckDashboard> */}
         {/* <Lie></Lie>
         <Truth></Truth>
          <div className="videos_list"></div>

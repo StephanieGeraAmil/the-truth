@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Deck } from "./deck";
 
 export const DeckDashboard = () => {
        const [decks, setDecks] = useState([]);

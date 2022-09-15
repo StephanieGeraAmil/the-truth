@@ -140,7 +140,6 @@ button {
 .deck_preview {
   height: 150px;
   width: 230px;
-
   border-radius: 10px;
   box-shadow: 2px 2px 7px #595959;
   position: relative;
@@ -155,6 +154,18 @@ button {
   left: -5px;
   top: 5px;
   z-index: -1;
+  content: "";
+  background-color: #fff;
+}
+.deck_preview::before {
+  height: inherit;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 7px #595959;
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  z-index: -2;
   content: "";
   background-color: #fff;
 }
@@ -197,11 +208,11 @@ button {
   content: "";
   background-color: #fff;
 }
-.note {
-  height: 250px;
+.form {
+  height: 150px;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 2px 2px 7px #595959;
-  position: relative;
+display: flex;
   background-color: #fff;
 }
