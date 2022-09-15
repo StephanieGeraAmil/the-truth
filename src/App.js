@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Lie } from "./components/lie";
 import { Truth } from "./components/truth";
 import { Nav } from "./components/nav";
-import { Deck } from "./components/deck";
 import "./App.css";
+import { DeckDashboard } from "./components/deckDashboard";
 
 function App() {
   useEffect(() => {
@@ -60,7 +60,7 @@ function App() {
     <div className="App">
       <Nav></Nav>
 
-     <Deck></Deck>
+     <DeckDashboard></DeckDashboard>
         {/* <Lie></Lie>
         <Truth></Truth>
          <div className="videos_list"></div>

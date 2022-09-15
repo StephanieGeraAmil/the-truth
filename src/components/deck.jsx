@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 
-export const Deck = () => {
+export const Deck = ({name}) => {
+   useEffect(() => {
+   console.log(name);
+  }, []);
+
   return (
     <div className='deck'>
+      <p>{name}</p>
     <div className="card">
         <p>
             Aqui va el versiculo que la persona tanto quiere recordar, para que lo recuerde y memorize.
