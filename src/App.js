@@ -1,70 +1,72 @@
-import { Box } from "./components/box";
-import { Search } from "./components/search";
-import "./App.css";
-import { Login } from "./components/login";
-import { Logout } from "./components/logout";
-import { UserInfo } from "./components/userInfo";
-import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getVerses } from "./actions/verseActions.js";
-import { getNotes } from "./actions/noteActions.js";
-import { getDecks } from "./actions/deckActions.js";
+import { Lie } from "./components/lie";
+import { Truth } from "./components/truth";
+import { Nav } from "./components/nav";
+import { Deck } from "./components/deck";
+import "./App.css";
 
 function App() {
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    // dispatch(getVerses());
-    // dispatch(getDecks());
-    // dispatch(getNotes());
+    localStorage.setItem(
+      "ugly",
+      JSON.stringify({
+        ref: "psalms 139:14",
+        verse:
+          "I praise you, for I am fearfully and wonderfully made. Wonderful are your works; my soul knows it very well.",
+      })
+    );
+    localStorage.setItem(
+      "fear",
+      JSON.stringify({
+        ref: "philippians 4:6-7",
+        verse:
+          "Do not be anxious about anything, but in everything, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus..",
+      })
+    );
+    localStorage.setItem(
+      "uncapable",
+      JSON.stringify({
+        ref: "philippians 4:13",
+        verse: "I can do all things through Christ which strengtheneth me.",
+      })
+    );
+    localStorage.setItem(
+      "not enough",
+      JSON.stringify({
+        ref: "2 peter 1:3",
+        verse:
+          "His divine power has given us everything we need for a godly life through our knowledge of him who called us by his own glory and goodness.",
+      })
+    );
+    localStorage.setItem(
+      "lazy",
+      JSON.stringify({
+        ref: "galatians 6:7-8",
+        verse:
+          "Do not be fooled. You cannot fool God. A man will get back whatever he plants! 8 If a man does things to please his sinful old self, his soul will be lost. If a man does things to please the Holy Spirit, he will have life that lasts forever.",
+      })
+    );
+    localStorage.setItem(
+      "unsure",
+      JSON.stringify({
+        ref: "proverbs 3:5-6",
+        verse:
+          "Trust in the Lord with all your heart; do not depend on your own understanding. Seek his will in all you do, and he will show you which path to take.",
+      })
+    );
   }, []);
-  // const { isAuthenticated } = useAuth0();
+
   return (
     <div className="App">
-      {/* <div className="left">
-        <div className="icon-section">
-          {!isAuthenticated && <Login />}
-          {isAuthenticated && (
-            <>
-              <button className="notes_button"></button>
-            </>
-          )}
+      <Nav></Nav>
 
-          <div className="user-section">
-            {isAuthenticated && (
-              <>
-                <UserInfo />
-                <Logout />
-              </>
-            )}
-          </div>
-        </div>
-
-        <div className="title">
-          <h2>The</h2>
-          <h1>Truth</h1>
-        </div>
-        <div className="bottom">
-          <Search />
-          <button className="button-why">Why</button>
-        </div>
-      </div> */}
-      {/* <div className="right">
-        <Box />
-      </div> */}
-      <div className="lie">
-       <p>I'm thinking...</p>
-       <input></input>
-      <p>but...</p>
-        </div>
-      <div className="truth">
-        <div className="list_verses"></div>
-      </div>
-       {/* <div className="videos_list"></div>
-         <div className="books_list"></div> */}
-      </div>
-  
+     <Deck></Deck>
+        {/* <Lie></Lie>
+        <Truth></Truth>
+         <div className="videos_list"></div>
+         <div className="books_list"></div> 
+      */}
+    </div>
   );
 }
 

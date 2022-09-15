@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListOfVerses } from './listOfVerses'
+// import { ListOfVerses } from './truth'
 
 
 export const Box = () => {
@@ -8,7 +8,7 @@ export const Box = () => {
             <div className='box'></div>
             
             <div className="back">
-                <ListOfVerses/>
+                {/* <ListOfVerses/> */}
             </div>
         </>
     )
