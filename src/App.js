@@ -62,6 +62,7 @@ function App() {
     <div className="App">
       <Nav></Nav>
   <NewNote></NewNote>
+    {/* <NewDeck></NewDeck> */}
      {/* <DeckDashboard></DeckDashboard> */}
         {/* <Lie></Lie>
         <Truth></Truth>

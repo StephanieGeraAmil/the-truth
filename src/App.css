@@ -5,6 +5,7 @@
   font-size: inherit;
   font-weight: inherit;
   font-family: inherit;
+  color: inherit;
 }
 html,
 body,
@@ -208,11 +209,27 @@ button {
   content: "";
   background-color: #fff;
 }
+.popup {
+  background-color: #595959;
+}
 .form {
   height: 150px;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 2px 2px 7px #595959;
-display: flex;
+  display: flex;
   background-color: #fff;
+}
+.from-input {
+  border: none;
+  resize: none;
+  outline: none;
+  background-color: transparent;
+}
+
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
 }
