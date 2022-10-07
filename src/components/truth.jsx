@@ -13,10 +13,10 @@ export const Truth = () => {
       <p>God says...</p>
       <div className="list_verses">
         {saved.map((element) => (
-          <div className="verse_list_item">
-            <Verse verse={element} key={element.ref + "verse"} />
+          <div className="verse_list_item" key={`${element.ref}_div`}>
+            <Verse verse={element} />
             <button>
-              <img src={Plus} alt="add_to_deck" key={element.ref + "button"} />
+              <img src={Plus} alt="add_to_deck" />
             </button>
           </div>
         ))}
