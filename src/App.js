@@ -61,14 +61,14 @@ function App() {
   return (
     <div className="App">
       <Nav></Nav>
-  <NewNote></NewNote>
+  {/* <NewNote></NewNote> */}
     {/* <NewDeck></NewDeck> */}
      {/* <DeckDashboard></DeckDashboard> */}
-        {/* <Lie></Lie>
+        <Lie></Lie>
         <Truth></Truth>
-         <div className="videos_list"></div>
-         <div className="books_list"></div> 
-      */}
+         {/* <div className="videos_list"></div>
+         <div className="books_list"></div>  */}
+     
     </div>
   );
 }
