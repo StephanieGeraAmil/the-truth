@@ -1,11 +1,11 @@
 import * as actions from '../actionTypes'
 import * as api from '../api/api.js';
 //action creators
-export const getUsers = ()=>async(dispatch,getState)=>{
+export const getUserById = (user)=>async(dispatch,getState)=>{
     try {
         
-        const {data}= await api.fetchUsers();
-        const action={type:actions.FETCH_ALL_USERS, payload:data};
+        const {data}= await api.fetchUserById(user);
+        const action={type:actions.FETCH_USER_BY_ID, payload:data};
         dispatch(action);
 
 
@@ -15,7 +15,7 @@ export const getUsers = ()=>async(dispatch,getState)=>{
    
 }
 export const createUser=(User)=>async(dispatch,getState)=>{
-    //async(dispatch) comes from redux-thunk
+
     try {
 
         const {data} =await api.createUser(User);
@@ -50,3 +50,4 @@ export const deleteUser=(User_id)=>async(dispatch)=>{
 
     
 }
+

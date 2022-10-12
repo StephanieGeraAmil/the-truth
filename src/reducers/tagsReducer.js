@@ -24,7 +24,3 @@ export default (tag = [], action) => {
   }
 };
 
-// router.get('/verse_tag/:id', tagsController.get_verses_of_tag);
-
-// router.patch('/verse_tag/:id', tagsController.add_tag_verse);
-// router.delete('/verse_tag/:id', tagsController.delete_tag_verse);

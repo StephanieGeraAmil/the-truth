@@ -27,7 +27,3 @@ export default (decks = [], action) => {
       return decks;
   }
 };
-
-// router.get('/card_deck/:id', decksController.get_cards_of_deck);
-// router.patch('/card_deck/:id', decksController.add_card_deck);
-// router.delete('/card_deck/:id', decksController.delete_card_deck);

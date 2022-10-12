@@ -1,19 +1,7 @@
 import * as actions from '../actionTypes'
 import * as api from '../api/api.js';
 //action creators
-export const getNotes = ()=>async(dispatch,getState)=>{
-    try {
-        
-        const {data}= await api.fetchNotes();
-        const action={type:actions.FETCH_ALL_NOTES, payload:data};
-        dispatch(action);
 
-
-    } catch (error) {
-        console.log(error);
-    }
-   
-}
 export const createNote=(note)=>async(dispatch,getState)=>{
     //async(dispatch) comes from redux-thunk
     try {

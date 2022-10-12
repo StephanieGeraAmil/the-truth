@@ -10,7 +10,7 @@ export default (users=[], action)=>{
         case actions.DELETE_USER:
         return users.filter((users)=>users._id!==action.payload);
 
-        case actions.FETCH_ALL_USERS:
+        case actions.FETCH_USER_BY_ID:
         return action.payload;
         
         default:

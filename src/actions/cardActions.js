@@ -1,19 +1,7 @@
 import * as actions from '../actionTypes'
 import * as api from '../api/api.js';
 //action creators
-export const getCards = ()=>async(dispatch,getState)=>{
-    try {
-        
-        const {data}= await api.fetchCards();
-        const action={type:actions.FETCH_ALL_CARDS, payload:data};
-        dispatch(action);
 
-
-    } catch (error) {
-        console.log(error);
-    }
-   
-}
 export const createCard=(Card)=>async(dispatch,getState)=>{
     //async(dispatch) comes from redux-thunk
     try {
@@ -50,9 +38,42 @@ export const deleteCard=(Card_id)=>async(dispatch)=>{
 
     
 }
+export const getVersesOfCard = (card)=>async(dispatch,getState)=>{
+    try {
+        
+        const {data}= await api.fetchVersesOfCard(card);
+        const action={type:actions.GET_VERSES_OF_CARD, payload:data};
+        dispatch(action);
 
-//  case actions.GET_VERSES_OF_CARD:
 
-//     case actions.ADD_CARD_VERSE:
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+export const addVerseToCard = (verse,card)=>async(dispatch,getState)=>{
+    try {
+        
+        const {data}= await addVerseToCard(verse,card);
+        const action={type:actions.ADD_CARD_VERSE, payload:data};
+        dispatch(action);
 
-//     case actions.DELETE_CARD_VERSE:
+
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+export const deleteVerseFromCard = (verse,card)=>async(dispatch,getState)=>{
+    try {
+        
+        const {data}= await api.removeVerseFromCard(verse,card);
+        const action={type:actions.DELETE_CARD_VERSE, payload:data};
+        dispatch(action);
+
+
+    } catch (error) {
+        console.log(error);
+    }
+   
+}

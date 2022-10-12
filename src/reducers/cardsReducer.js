@@ -24,6 +24,4 @@ export default (cards = [], action) => {
   }
 };
 
-// router.get('/verse_card/:id', cardsController.get_verses_of_card);
-// router.patch('/verse_card/:id', cardsController.add_card_verse);
-// router.delete('/verse_card/:id', cardsController.delete_card_verse);
+

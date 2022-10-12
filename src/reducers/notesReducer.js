@@ -10,8 +10,6 @@ export default (notes=[], action)=>{
         case actions.DELETE_NOTE:
         return notes.filter((note)=>note._id!==action.payload);
 
-        case actions.FETCH_ALL_NOTES:
-        return action.payload;
         
         default:
         return notes;

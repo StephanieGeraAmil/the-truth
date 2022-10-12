@@ -50,3 +50,5 @@ export const getTagsOfVerse=(verse_id) => async(dispatch)=>{
 
     }catch(error){ console.error(error);}    
 }
+
+  
