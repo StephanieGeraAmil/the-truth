@@ -6,8 +6,8 @@ export const Verse = ({verse}) => {
      },[]);
     return (
         <div className='verse'>
-            <p>{verse.verse}</p>
-            <p className="ref">{verse.ref.charAt(0).toUpperCase() + verse.ref.slice(1)}</p>
+             <p>{verse.scripture}</p>
+              <p className="ref">{verse.book.charAt(0).toUpperCase() + verse.book.slice(1)+" "+verse.chapter+":"+verse.verse_number }</p>
         </div>
     )
 }

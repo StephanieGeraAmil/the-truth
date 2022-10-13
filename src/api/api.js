@@ -43,7 +43,7 @@ export const addCardToDeck=(cardToAdd,deck)=> axios.patch(`${card_deck_url}/${de
 export const removeCardFromDeck=(card,deck)=> axios.patch(`${card_deck_url}/${deck.id}`, card);
 
 const verse_tag_url=backend_url+"/verse_tag";
-export const fetchVersesOfTag=(tag)=> axios.get(`${verse_tag_url}/${tag.id}`);
+export const fetchVersesOfTag=(tag_id)=> axios.get(`${verse_tag_url}/${tag_id}`);
 export const addTagToVerse=(verseToAdd,tag)=> axios.patch(`${verse_tag_url}/${tag.id}`, verseToAdd);
 export const removeTagFromVerse=(verse,tag)=> axios.patch(`${verse_tag_url}/${tag.id}`, verse);
 const tag_verse_url=backend_url+"/tag_verse";

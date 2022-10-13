@@ -39,14 +39,25 @@ export const deleteTag=(tag_id)=>async(dispatch)=>{
 
     
 }
-export const getVersesWithTag=(tag_id) => async(dispatch)=>{ 
+// export const getVersesWithTag=(tag_id) => async(dispatch)=>{ 
+//     try{
+//         const {data}=await api.fetchVersesOfTag(tag_id);
+//         const action={type: actions.GET_VERSES_OF_TAG, payload:data};
+//         dispatch(action);
+
+//     }catch(error){ console.error(error);}    
+// }
+
+export const getTagsOfVerse=(verse_id) => async(dispatch)=>{ 
     try{
-        const {data}=await api.fetchVersesOfTag(tag_id);
-        const action={type: actions.GET_VERSES_OF_TAG, payload:data};
+        const {data}=await api.fetchTagsOfVerse(verse_id);
+         console.log(data);
+        const action={type: actions.GET_TAGS_OF_VERSE, payload:data};
         dispatch(action);
 
     }catch(error){ console.error(error);}    
 }
+
 export const addTagToVerse=(tag_id, verse_id) => async(dispatch)=>{ 
     try{
         const {data}=await api.addTagToVerse( verse_id,tag_id);

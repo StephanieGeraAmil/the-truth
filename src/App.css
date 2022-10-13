@@ -97,6 +97,7 @@ body,
   height: 300px;
 
   border-radius: inherit;
+  overflow-y: scroll;
 }
 .verse_list_item {
   display: flex;
@@ -106,9 +107,11 @@ body,
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  color: grey;
 }
 .verse > .ref {
   align-self: flex-end;
+  color:darkgrey;
 }
 
 button {
