@@ -111,7 +111,7 @@ body,
 }
 .verse > .ref {
   align-self: flex-end;
-  color:darkgrey;
+  color: darkgrey;
 }
 
 button {
@@ -238,3 +238,44 @@ textarea {
 }
 
 /* add media to make the nav on top when mobile */
+@media (max-width: 700px) {
+  .lie {
+    width: 80%;
+  }
+  .truth {
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .App {
+      
+      justify-content: space-between;
+
+    }
+  .nav {
+    height: 50px;
+    width: 100%;
+    flex-direction: row;
+    left: 0;
+    top: 0;
+    transform: translateY(0px);
+  }
+  .nav::after {
+    width: 180px;
+    height: 50px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(0px);
+    border-radius: 0 0 10px 10px;
+  }
+  .lie {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .truth {
+    width: 100%;
+    border-radius: 0;
+  }
+}
