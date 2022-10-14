@@ -5,6 +5,7 @@ import versesReducer from "./versesReducer.js";
 import tagsReducer from "./tagsReducer.js";
 import usersReducer from "./usersReducer.js";
 import cardsReducer from "./cardsReducer.js";
+import currentSelectionReducer from "./currentSelectionReducer.js";
 
 export default combineReducers({
   users: usersReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   decks: decksReducer,
   notes: notesReducer,
   tags: tagsReducer,
+  selected: currentSelectionReducer
 });

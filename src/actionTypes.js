@@ -42,3 +42,11 @@ export const GET_VERSES_OF_CARD ="card/get_verses_of_cards";
 export const ADD_CARD_VERSE= "card/add_verses_of_cards";
 export const DELETE_CARD_VERSE= "card/delete_verses_of_cards";
 
+
+export const SELECTED_HINT ="selected/select_hint";
+export const UNSELECTED_HINT ="selected/unselect_hint";
+export const SETTING_FORM_FOR_NEW_DECK ="selected/seting_form_to_new_deck";
+export const SETTING_FORM_FOR_NEW_CARD ="selected/seting_form_to_new_card";
+export const SETTING_FORM_FOR_EDIT_DECK="selected/seting_form_to_edit_deck";
+export const SETTING_FORM_FOR_EDIT_CARD ="selected/seting_form_to_edit_card";
+export const CLEAR_FORM_PURPOSE="selected/unseting_form";
