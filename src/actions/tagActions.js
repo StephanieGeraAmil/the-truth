@@ -48,28 +48,37 @@ export const deleteTag=(tag_id)=>async(dispatch)=>{
 //     }catch(error){ console.error(error);}    
 // }
 
-export const getTagsOfVerse=(verse_id) => async(dispatch)=>{ 
+// export const getTagsOfVerse=(verse_id) => async(dispatch)=>{ 
+//     try{
+//         const {data}=await api.fetchTagsOfVerse(verse_id);
+//          console.log(data);
+//         const action={type: actions.GET_TAGS_OF_VERSE, payload:data};
+//         dispatch(action);
+
+//     }catch(error){ console.error(error);}    
+// }
+
+// export const addTagToVerse=(tag_id, verse_id) => async(dispatch)=>{ 
+//     try{
+//         const {data}=await api.addTagToVerse( verse_id,tag_id);
+//         const action={type: actions.ADD_TAG_VERSE, payload:data};
+//         dispatch(action);
+
+//     }catch(error){ console.error(error);}    
+// }
+// export const removeTagFromVerse=(tag_id, verse_id) => async(dispatch)=>{ 
+//     try{
+//         const {data}=await api.removeTagFromVerse(verse_id,tag_id);
+//         const action={type: actions.DELETE_TAG_VERSE, payload:data};
+//         dispatch(action);
+
+//     }catch(error){ console.error(error);}    
+// }
+export const getAllTags=() => async(dispatch)=>{ 
     try{
-        const {data}=await api.fetchTagsOfVerse(verse_id);
+        const {data}=await api.fetchAllTags();
          console.log(data);
-        const action={type: actions.GET_TAGS_OF_VERSE, payload:data};
-        dispatch(action);
-
-    }catch(error){ console.error(error);}    
-}
-
-export const addTagToVerse=(tag_id, verse_id) => async(dispatch)=>{ 
-    try{
-        const {data}=await api.addTagToVerse( verse_id,tag_id);
-        const action={type: actions.ADD_TAG_VERSE, payload:data};
-        dispatch(action);
-
-    }catch(error){ console.error(error);}    
-}
-export const removeTagFromVerse=(tag_id, verse_id) => async(dispatch)=>{ 
-    try{
-        const {data}=await api.removeTagFromVerse(verse_id,tag_id);
-        const action={type: actions.DELETE_TAG_VERSE, payload:data};
+        const action={type: actions.GET_ALL_TAGS, payload:data};
         dispatch(action);
 
     }catch(error){ console.error(error);}    

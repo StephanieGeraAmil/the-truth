@@ -14,7 +14,7 @@ export const updateVerse=(updatedVerse)=> axios.patch(`${verses_url}/${updatedVe
 export const deleteVerse=(deleteVerseId)=> axios.delete(`${verses_url}/${deleteVerseId}`);
 
 const tags_url= backend_url+"/tags";
-// export const fetchTags=()=>axios.get(tags_url);
+export const fetchAllTags=()=>axios.get(tags_url);
 export const createTag=(newTag)=> axios.post(tags_url, newTag);
 export const updateTag=(updatedTag)=> axios.patch(`${tags_url}/${updatedTag.id}`, updatedTag);
 export const deleteTag=(deleteTagId)=> axios.delete(`${tags_url}/${deleteTagId}`);
