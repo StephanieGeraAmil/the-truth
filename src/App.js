@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import {  } from "../actions/tagActions";
 import { Lie } from "./components/lie";
 import { Truth } from "./components/truth";
 import { Nav } from "./components/nav";
@@ -8,8 +10,32 @@ import { NewNote } from "./components/newNote";
 import { NewDeck } from "./components/newDeck";
 import { HintList } from "./components/hintList";
 
+
 function App() {
-  useEffect(() => {
+  const selectedSelector = (state) => (state.selected ? state.selected : null);
+  const selected = useSelector(selectedSelector);
+
+  return (
+    <div className="App">
+      <Nav></Nav>
+  {/* <NewNote></NewNote> */}
+    {/* <NewDeck></NewDeck> */}
+     {/* <DeckDashboard></DeckDashboard> */}
+        <Lie></Lie>
+        {selected.hint?<Truth></Truth>: <HintList></HintList>}
+       
+         {/* <div className="videos_list"></div>
+         <div className="books_list"></div>  */}
+     
+    </div>
+  );
+}
+
+export default App;
+
+
+
+  // useEffect(() => {
     // localStorage.setItem(
     //   "ugly",
     //   JSON.stringify({
@@ -57,22 +83,4 @@ function App() {
     //       "Trust in the Lord with all your heart; do not depend on your own understanding. Seek his will in all you do, and he will show you which path to take.",
     //   })
     // );
-  }, []);
-
-  return (
-    <div className="App">
-      <Nav></Nav>
-  {/* <NewNote></NewNote> */}
-    {/* <NewDeck></NewDeck> */}
-     {/* <DeckDashboard></DeckDashboard> */}
-        <Lie></Lie>
-        {/* <Truth></Truth> */}
-        <HintList></HintList>
-         {/* <div className="videos_list"></div>
-         <div className="books_list"></div>  */}
-     
-    </div>
-  );
-}
-
-export default App;
+  // }, []);
