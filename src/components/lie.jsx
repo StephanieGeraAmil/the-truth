@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllTags } from "../actions/tagActions";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getAllTags } from "../actions/tagActions";
 
 export const Lie = () => {
   
   const [textInput, setTextInput] = useState("");
-  const tagsSelector = (state) => (state.tags ? state.tags : null);
-  const tags = useSelector(tagsSelector);
-  const dispatch = useDispatch();
+//   const tagsSelector = (state) => (state.tags ? state.tags : null);
+//   const tags = useSelector(tagsSelector);
+//   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllTags());
-  }, []);
+//   useEffect(() => {
+//     dispatch(getAllTags());
+//   }, []);
 //   useEffect(() => {
 //     console.log(tags);
 
