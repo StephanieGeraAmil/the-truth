@@ -72,7 +72,7 @@ body,
   margin: 0;
 }
 
-.lie > label {
+.lie > input {
   background-color: #fff;
   border-radius: inherit;
   border: 0;
