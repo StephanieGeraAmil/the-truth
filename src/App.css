@@ -74,10 +74,11 @@ body,
 .truth p {
   margin-top: 0;
 }
-.lie > input {
+.lie > label {
   background-color: #fff;
   border-radius: inherit;
   border: 0;
+  height: 30px;
 
   color: inherit;
   padding: 10px;
@@ -102,6 +103,7 @@ body,
 .verse_list_item {
   display: flex;
 }
+/* add hiding of the + button and higlighting the item on hover */
 .verse {
   padding: 15px;
   display: flex;
