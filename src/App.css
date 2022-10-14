@@ -61,7 +61,7 @@ body,
 }
 
 .lie {
-  background-color: rgb(221, 219, 219);
+  background-color: rgb(245, 242, 242);
   border-radius: 10px;
   padding: 15px;
   width: 50%;
@@ -71,9 +71,7 @@ body,
 .lie > p {
   margin: 0;
 }
-.truth p {
-  margin-top: 0;
-}
+
 .lie > label {
   background-color: #fff;
   border-radius: inherit;
@@ -83,6 +81,28 @@ body,
   color: inherit;
   padding: 10px;
   margin: 15px 0;
+}
+.hint_section {
+  box-sizing: border-box;
+  background-color: rgb(245, 242, 242);
+  border-radius: 10px;
+  padding: 15px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.hint_section > .hint_list {
+  /* background-color: #fff; */
+  height: 300px;
+
+  border-radius: inherit;
+  overflow-y: scroll;
+}
+.hint {
+  display: flex;
+}
+.hint_list p {
+  margin-top: 0;
 }
 .truth {
   box-sizing: border-box;
@@ -110,6 +130,9 @@ body,
   flex-direction: column;
   justify-content: flex-start;
   color: grey;
+}
+.truth p {
+  margin-top: 0;
 }
 .verse > .ref {
   align-self: flex-end;
@@ -247,14 +270,15 @@ textarea {
   .truth {
     width: 80%;
   }
+  .hint_section {
+    width: 80%;
+  }
 }
 
 @media (max-width: 500px) {
   .App {
-      
-      justify-content: space-between;
-
-    }
+    justify-content: space-between;
+  }
   .nav {
     height: 50px;
     width: 100%;
@@ -277,6 +301,10 @@ textarea {
   }
 
   .truth {
+    width: 100%;
+    border-radius: 0;
+  }
+  .hint_section {
     width: 100%;
     border-radius: 0;
   }
