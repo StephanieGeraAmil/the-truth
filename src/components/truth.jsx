@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Verse } from "./verse";
-import Plus from "../assets/plus.svg";
+// import Plus from "../assets/plus.svg";
 import { getVersesWithTag } from "../actions/verseActions";
 
 export const Truth = () => {
@@ -19,12 +19,7 @@ export const Truth = () => {
       <p>God says...</p>
       <div className="list_verses">
         {versesOfTag.map((element) => (
-          <div className="verse_list_item" key={`${element.id}_div`}>
-            <Verse verse={element} />
-            <button>
-              <img src={Plus} alt="add_to_deck" />
-            </button>
-          </div>
+            <Verse verse={element} key={`${element.id}_div`} />
         ))}
       </div>
     </div>
