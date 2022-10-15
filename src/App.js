@@ -8,7 +8,7 @@ import "./App.css";
 import { DeckDashboard } from "./components/deckDashboard";
 import { NewNote } from "./components/newNote";
 import { NewDeck } from "./components/newDeck";
-import { HintList } from "./components/hintList";
+
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
     {/* <NewDeck></NewDeck> */}
      {/* <DeckDashboard></DeckDashboard> */}
         <Lie></Lie>
-        {/* {selected.hint?<Truth></Truth>: <HintList></HintList>} */}
+
        <Truth></Truth>
          {/* <div className="videos_list"></div>
          <div className="books_list"></div>  */}

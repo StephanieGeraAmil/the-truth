@@ -82,27 +82,28 @@ body,
   padding: 10px;
   margin: 15px 0;
 }
-.hint_section {
+.lie > input:active ,.lie>input:focus{
+  background-color: #fff;
+  /* border-radius: 10px 10px 0 0; */
+  border: 0;
+  height: 30px;
+  color: inherit;
+  padding: 10px;
+  /* margin: 15px 0 0 0; */
+  z-index: 2;
+}
+
+.suggestions {
   box-sizing: border-box;
-  background-color: rgb(245, 242, 242);
-  border-radius: 10px;
-  padding: 15px;
-  width: 50%;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  padding: 0 10px;
+  margin-top:-15px ;
+  z-index: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
-}
-.hint_section > .hint_list {
-  /* background-color: #fff; */
-  height: 300px;
-
-  border-radius: inherit;
-  overflow-y: scroll;
-}
-.hint {
-  display: flex;
-}
-.hint_list p {
-  margin-top: 0;
+  line-height: 2em;
 }
 .truth {
   box-sizing: border-box;
@@ -122,6 +123,8 @@ body,
 }
 .verse_list_item {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 /* add hiding of the + button and higlighting the item on hover */
 .verse {
