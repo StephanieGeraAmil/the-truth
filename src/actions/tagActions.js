@@ -77,7 +77,7 @@ export const deleteTag=(tag_id)=>async(dispatch)=>{
 export const getAllTags=() => async(dispatch)=>{ 
     try{
         const {data}=await api.fetchAllTags();
-         console.log(data);
+     
         const action={type: actions.GET_ALL_TAGS, payload:data};
         dispatch(action);
 
