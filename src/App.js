@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import {  } from "../actions/tagActions";
+ import { useDispatch, useSelector } from "react-redux";
+ import { getAllTags } from "./actions/tagActions";
 import { Lie } from "./components/lie";
 import { Truth } from "./components/truth";
 import { Nav } from "./components/nav";
@@ -12,8 +12,13 @@ import { HintList } from "./components/hintList";
 
 
 function App() {
-  const selectedSelector = (state) => (state.selected ? state.selected : null);
-  const selected = useSelector(selectedSelector);
+   const dispatch = useDispatch();
+  // const selectedSelector = (state) => (state.selected ? state.selected : null);
+  // const selected = useSelector(selectedSelector);
+    useEffect(() => {
+    dispatch(getAllTags());
+
+  }, []);
 
   return (
     <div className="App">
@@ -22,8 +27,8 @@ function App() {
     {/* <NewDeck></NewDeck> */}
      {/* <DeckDashboard></DeckDashboard> */}
         <Lie></Lie>
-        {selected.hint?<Truth></Truth>: <HintList></HintList>}
-       
+        {/* {selected.hint?<Truth></Truth>: <HintList></HintList>} */}
+       <Truth></Truth>
          {/* <div className="videos_list"></div>
          <div className="books_list"></div>  */}
      
