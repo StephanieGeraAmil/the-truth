@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { clearHintSelected } from "../actions/currentSelectionActions";
 // import { getAllTags } from "../actions/tagActions";
+import { getVersesWithTag } from "../actions/verseActions";
 
 export const Lie = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const tagsSelector = (state) => (state.tags ? state.tags : null);
   const tags = useSelector(tagsSelector);
 
@@ -20,20 +21,30 @@ export const Lie = () => {
   const handleClickOnSuggestion = (suggestion) => {
     setDisplay(!display);
     setTextInput(suggestion.name);
+    searchResults(suggestion);
   };
 
   const handleKeyPress = (e) => {
-        setDisplay(true);
+    setDisplay(true);
     if (e.key === "Enter") {
-      setDisplay(!display);
+          setDisplay(!display);
+      const search=tags.filter((element) => element.name===textInput);
+      
+      if(search.length===1)searchResults(search[0]);
+  
     }
   };
   const handleClickOutside = (event) => {
-    const {current:wrap} =wrapperRef;
-    if(wrap && !wrap.contains(event.target)){
-    setDisplay(false);
+    const { current: wrap } = wrapperRef;
+    if (wrap && !wrap.contains(event.target)) {
+      setDisplay(false);
+        const search=tags.filter((element) => element.name===textInput)
+      
+      if(search.length===1)searchResults(search[0]);
     }
-
+  };
+  const searchResults = (tag) => {
+    dispatch(getVersesWithTag(tag.id));
   };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
