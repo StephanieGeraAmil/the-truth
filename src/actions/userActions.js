@@ -13,9 +13,6 @@ export const getUserById = (user) => async (dispatch, getState) => {
 export const getUserByEmail = (user) => async (dispatch, getState) => {
   try {
     const { data } = await api.fetchUserByEmail(user);
-    //console.log(data!==[])
-
-
     if (data!="") {
                   console.log("found")
     
