@@ -56,3 +56,11 @@ export const deleteUser = (User_id) => async (dispatch) => {
     console.log(error);
   }
 };
+export const unSetUser = () => async (dispatch) => {
+  try {
+    const action = { type: actions.UNSET_USER };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
+};

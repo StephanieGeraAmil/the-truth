@@ -15,6 +15,9 @@ export default (user = null, action) => {
 
     case actions.FETCH_USER_BY_EMAIL:
       return action.payload;
+
+      case action.UNSET_USER:
+        return null;
     default:
       return user;
   }
