@@ -8,6 +8,6 @@ export const Login = () => {
     <button onClick={() => loginWithRedirect()}>
       <img src={User} alt="login" />
     </button>
-    //<button className="login_button" onClick={() => loginWithRedirect()}></button>;
+
   );
 };
