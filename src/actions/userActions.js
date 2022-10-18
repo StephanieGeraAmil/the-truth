@@ -13,10 +13,17 @@ export const getUserById = (user) => async (dispatch, getState) => {
 export const getUserByEmail = (user) => async (dispatch, getState) => {
   try {
     const { data } = await api.fetchUserByEmail(user);
-    if (data.length > 0) {
+    //console.log(data!==[])
+
+
+    if (data!="") {
+                  console.log("found")
+    
       const action = { type: actions.FETCH_USER_BY_EMAIL, payload: data };
       dispatch(action);
     } else {
+  
+            console.log("not found")
       const { data } = await api.createUser(user);
       const action = { type: actions.CREATE_USER, payload: data };
       dispatch(action);
