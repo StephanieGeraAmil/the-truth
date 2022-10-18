@@ -33,6 +33,8 @@ export const CREATE_USER="user/create_user";
 export const UPDATE_USER="user/update_user";
 export const DELETE_USER="user/delete_user";
 export const FETCH_USER_BY_ID= "user/fetch_user_by_id";
+export const FETCH_USER_BY_EMAIL= "user/fetch_user_by_email";
+
 
 export const CREATE_CARD="card/create_card";
 export const UPDATE_CARD="card/update_card";

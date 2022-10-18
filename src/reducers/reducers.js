@@ -8,7 +8,7 @@ import cardsReducer from "./cardsReducer.js";
 import currentSelectionReducer from "./currentSelectionReducer.js";
 
 export default combineReducers({
-  users: usersReducer,
+  user: usersReducer,
   cards: cardsReducer,
   verses: versesReducer,
   decks: decksReducer,

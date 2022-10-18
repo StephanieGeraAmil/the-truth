@@ -2,7 +2,10 @@ import axios from 'axios';
 const backend_url="http://localhost:5500"
 
 const users_url= backend_url+"/users";
-export const fetchUserById=(user)=>axios.get(`${users_url}/${user}`);
+export const fetchUserById=(user)=>axios.get(`${users_url}/${user.id}`);
+export const fetchUserByEmail=(user)=>axios.get(`${users_url}/${user.email}`);
+
+
 export const createUser=(newUser)=> axios.post(users_url, newUser);
 export const updateUser=(updatedUser)=> axios.patch(`${users_url}/${updatedUser.id}`, updatedUser);
 export const deleteUser=(deleteUserId)=> axios.delete(`${users_url}/${deleteUserId}`);

@@ -13,8 +13,6 @@ import { NewDeck } from "./components/newDeck";
 
 function App() {
    const dispatch = useDispatch();
-  // const selectedSelector = (state) => (state.selected ? state.selected : null);
-  // const selected = useSelector(selectedSelector);
     useEffect(() => {
     dispatch(getAllTags());
 

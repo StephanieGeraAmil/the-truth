@@ -1,21 +1,21 @@
-import * as actions from '../actionTypes'
-export default (users=[], action)=>{
-    switch(action.type){
-        case actions.CREATE_USER:
-        return  [...users, action.payload];
-        
-        case actions.UPDATE_USER:
-        return users.map((users)=>users._id===action.payload._id? action.payload: users);
+import * as actions from "../actionTypes";
+export default (user = null, action) => {
+  switch (action.type) {
+    case actions.CREATE_USER:
+      return action.payload;
 
-        case actions.DELETE_USER:
-        return users.filter((users)=>users._id!==action.payload);
+    case actions.UPDATE_USER:
+      return action.payload;
 
-        case actions.FETCH_USER_BY_ID:
-        return action.payload;
-        
-        default:
-        return users;
-    }
+    case actions.DELETE_USER:
+      return null;
 
+    case actions.FETCH_USER_BY_ID:
+      return action.payload;
 
-}
+    case actions.FETCH_USER_BY_EMAIL:
+      return action.payload;
+    default:
+      return user;
+  }
+};
