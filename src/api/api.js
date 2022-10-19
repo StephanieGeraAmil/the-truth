@@ -58,4 +58,4 @@ export const addVerseToCard=(verseToAdd,card)=> axios.patch(`${verse_card_url}/$
 export const removeVerseFromCard=(verse,card)=> axios.patch(`${verse_card_url}/${card.id}`, verse);
 
 const deck_user_url=backend_url+"/deck_user";
-export const fetchDecksOfUser=(user)=>axios.get(`${deck_user_url}/${user}`);
+export const fetchDecksOfUser=(user)=>axios.get(`${deck_user_url}/${user.id}`);
