@@ -1,5 +1,6 @@
 import React ,{useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import User from "../assets/user-white.svg";
 import Deck from "../assets/deck-white.svg";
@@ -28,9 +29,13 @@ export const Nav = () => {
       ) : (
         <>
         <Logout/>
+          <Link to="/decks">
           <button>
             <img src={Deck} alt="deck_page" />
+          
           </button>
+           </Link> 
+         
           {/* <button>
             <img src={Note} alt="add_note" />
           </button> */}

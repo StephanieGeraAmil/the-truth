@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter,Routes,Route} from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import "./fonts/magnolia_sky.ttf";
@@ -10,6 +11,7 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers/reducers.js";
+import { DeckDashboard } from "./components/deckDashboard";
 
 const store = createStore(
   reducers,
@@ -18,15 +20,21 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
+      <BrowserRouter>
     <Provider store={store}>
       <Auth0Provider
         domain="dev-7pl37pty.us.auth0.com"
         clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
         redirectUri={window.location.origin}
       >
-        <App />
+         <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="/decks" element={<DeckDashboard />} />
+          </Routes>
+   
       </Auth0Provider>
     </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
