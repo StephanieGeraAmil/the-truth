@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {useParams} from "react-router-dom";
+export const Deck = () => {
+    const deckSelector = (state) => (state.decks ? state.decks : null);
+  const decks = useSelector(deckSelector);
+  const [deck,SetDeck]=useState(decks[0]);
+     const { id } = useParams();
+  //  useEffect(() => {
+  //  //console.log(deck.name);
 
-export const Deck = ({name}) => {
-   useEffect(() => {
-   console.log(name);
-  }, []);
+  //   // deck=decks.find(element=> element.id==id)
+
+
+  // }, []);
 
   return (
     <div className='deck'>
-      <p>{name}</p>
+
+       <h1 className="section_title">{deck.name}</h1>
     <div className="card">
         <p>
             Aqui va el versiculo que la persona tanto quiere recordar, para que lo recuerde y memorize.

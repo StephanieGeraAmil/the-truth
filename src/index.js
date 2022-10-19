@@ -12,6 +12,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers/reducers.js";
 import { DeckDashboard } from "./components/deckDashboard";
+import { Deck } from "./components/deck";
 
 const store = createStore(
   reducers,
@@ -28,8 +29,12 @@ ReactDOM.render(
         redirectUri={window.location.origin}
       >
          <Routes>
-              <Route path="/" element={<App />} />
-              <Route path="/decks" element={<DeckDashboard />} />
+                <Route path="/" element={<App />}>  </Route>
+                      <Route path="/decks" element={<DeckDashboard />}> </Route>
+                          <Route path="/decks/:id" element={<Deck/>} />
+    
+                     
+             
           </Routes>
    
       </Auth0Provider>
