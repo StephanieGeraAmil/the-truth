@@ -5,33 +5,19 @@ import * as api from '../api/api.js';
 export const createCard=(Card)=>async(dispatch,getState)=>{
     //async(dispatch) comes from redux-thunk
     try {
-
         const {data} =await api.createCard(Card);
         const action={type:actions.CREATE_CARD, payload:data};
-        dispatch(action);
+        dispatch(action); 
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-        
-    } catch (error) {
-        console.log(error);
-    }
-}
-export const updateCard=(updatedCard)=>async(dispatch)=>{
-    try {
-        await api.updateCard(updatedCard);
-        const action={type:actions.UPDATE_CARD, payload:updatedCard};
-        dispatch(action);
-        
-    } catch (error) {
-        console.log(error);
-    }
-}
 export const deleteCard=(Card_id)=>async(dispatch)=>{
     try {
-    
         await api.deleteCard(Card_id);
         const action={type: actions.DELETE_CARD,payload:Card_id};
-        dispatch(action);
-        
+        dispatch(action);  
     } catch (error) {
         console.log(error);
     }
@@ -39,13 +25,10 @@ export const deleteCard=(Card_id)=>async(dispatch)=>{
     
 }
 export const getVersesOfCard = (card)=>async(dispatch,getState)=>{
-    try {
-        
+    try { 
         const {data}= await api.fetchVersesOfCard(card);
         const action={type:actions.GET_VERSES_OF_CARD, payload:data};
         dispatch(action);
-
-
     } catch (error) {
         console.log(error);
     }
@@ -53,25 +36,50 @@ export const getVersesOfCard = (card)=>async(dispatch,getState)=>{
 }
 export const addVerseToCard = (verse,card)=>async(dispatch,getState)=>{
     try {
-        
         const {data}= await addVerseToCard(verse,card);
         const action={type:actions.ADD_CARD_VERSE, payload:data};
         dispatch(action);
-
-
     } catch (error) {
         console.log(error);
     }
    
 }
 export const deleteVerseFromCard = (verse,card)=>async(dispatch,getState)=>{
-    try {
-        
+    try { 
         const {data}= await api.removeVerseFromCard(verse,card);
         const action={type:actions.DELETE_CARD_VERSE, payload:data};
         dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
 
-
+export const getCardsOfDeck = (deck)=>async(dispatch,getState)=>{
+    try {
+        const {data}= await api.fetchCardsOfDeck(deck);
+        const action={type:actions.GET_CARDS_OF_DECK, payload:data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+export const addCardToDeck = (deck,card)=>async(dispatch,getState)=>{
+    try {
+        const {data}= await api.addCardToDeck(card,deck);
+        const action={type:actions.ADD_CARD_DECK, payload:data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+export const deleteCardFromDeck = (deck,card)=>async(dispatch,getState)=>{
+    try {
+        const {data}= await api.removeCardFromDeck(card,deck);
+        const action={type:actions.DELETE_CARD_DECK, payload:data};
+        dispatch(action);
     } catch (error) {
         console.log(error);
     }

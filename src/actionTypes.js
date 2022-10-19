@@ -23,9 +23,7 @@ export const CREATE_DECK="deck/create_deck";
 export const UPDATE_DECK="deck/update_deck";
 export const DELETE_DECK="deck/delete_deck";
 // export const FETCH_ALL_DECKS= "deck/fetch_all_decks";
-export const GET_CARDS_OF_DECK= "deck/get_cards_of_decks";
-export const ADD_CARD_DECK= "deck/add_card_decks";
-export const DELETE_CARD_DECK= "deck/delete_card_decks";
+
 export const GET_DECKS_OF_USER= "deck/get_decks_of_user";
 
 
@@ -40,6 +38,9 @@ export const UNSET_USER= "user/unset_user";
 export const CREATE_CARD="card/create_card";
 export const UPDATE_CARD="card/update_card";
 export const DELETE_CARD="card/delete_card";
+export const GET_CARDS_OF_DECK= "card/get_cards_of_decks";
+export const ADD_CARD_DECK= "card/add_card_decks";
+export const DELETE_CARD_DECK= "card/delete_card_decks";
 // export const FETCH_ALL_CARDS= "card/fetch_all_cards";
 export const GET_VERSES_OF_CARD ="card/get_verses_of_cards";
 export const ADD_CARD_VERSE= "card/add_verses_of_cards";
