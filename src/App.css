@@ -161,6 +161,11 @@ button {
   display: flex;
   flex-direction: row;
 }
+.section_title{
+  padding: 30px 0 0 30px ;
+  font-size: 20px;
+
+}
 .deck_dashboard {
   padding: 30px;
   width: 100%;
@@ -176,6 +181,10 @@ button {
   box-shadow: 2px 2px 7px #595959;
   position: relative;
   background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+font-size: 20px;
 }
 .deck_preview::after {
   height: inherit;
@@ -203,10 +212,12 @@ button {
 }
 .deck {
   width: 60%;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 }
 .card {
   height: 250px;
