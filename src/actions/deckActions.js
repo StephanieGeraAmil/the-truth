@@ -43,8 +43,10 @@ export const getDecksOfUser = (user)=>async(dispatch,getState)=>{
     try {
         
         const {data}= await api.fetchDecksOfUser(user);
+        if (data!=""){
         const action={type:actions.GET_DECKS_OF_USER, payload:data};
         dispatch(action);
+        }
 
 
     } catch (error) {
