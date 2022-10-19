@@ -9,6 +9,7 @@ import Search from "../assets/search-white.svg";
 import {Login} from "./login"
 import {Logout} from "./logout"
 import {getUserByEmail} from './../actions/userActions.js';
+import {getDecksOfUser} from './../actions/deckActions.js';
 export const Nav = () => {
   const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
@@ -30,7 +31,7 @@ export const Nav = () => {
         <>
         <Logout/>
           <Link to="/decks">
-          <button>
+          <button onClick={()=>dispatch(getDecksOfUser(userLogged))}>
             <img src={Deck} alt="deck_page" />
           
           </button>
