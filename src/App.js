@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav></Nav>
+      {/* <Nav></Nav> */}
       {/* <NewNote></NewNote> */}
       {/* <NewDeck></NewDeck> */}
       <Lie></Lie>

@@ -36,10 +36,12 @@ body,
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap:10px;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
+        z-index: 10;
 }
 .nav:hover {
   opacity: 1;
@@ -55,7 +57,7 @@ body,
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  z-index: -1;
+ 
   content: "";
   border-radius: 0 10px 10px 0;
 }
@@ -143,10 +145,30 @@ body,
   color: darkgrey;
 }
 
-button {
+.nav_button {
+
   border: 0;
-  background-color: inherit;
+background-color: #433e3e;
+display: flex;
+justify-content: center;
+color: fff;
   margin: 5px;
+  z-index: 10;
+
+}
+
+.page_button {
+
+  border: 0;
+background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: green;
+
+  margin: 5px;
+
+
 }
 .videos_list {
   background-color: rgb(136, 244, 149);
@@ -173,6 +195,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+      z-index: -1;
 }
 .deck_preview {
   height: 150px;
@@ -228,6 +251,8 @@ button {
   box-shadow: 2px 2px 7px #595959;
   position: relative;
   background-color: #fff;
+
+  
 }
 .card::after {
   height: inherit;

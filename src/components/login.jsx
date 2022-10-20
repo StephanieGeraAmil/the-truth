@@ -5,7 +5,7 @@ import User from "../assets/user-white.svg";
 export const Login = () => {
   const { loginWithRedirect } = useAuth0();
   return (
-    <button onClick={() => loginWithRedirect()}>
+    <button  className="nav_button" onClick={() => loginWithRedirect()}>
       <img src={User} alt="login" />
     </button>
 

@@ -13,7 +13,7 @@ export const Logout = () => {
     }
     const { logout } = useAuth0();
     return (
-      <button onClick={() => handleLogout()}>
+      <button  className="nav_button" onClick={() => handleLogout()}>
       <img src={Log_out} alt="logout" />
     </button>
     )

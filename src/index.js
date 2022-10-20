@@ -13,6 +13,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers/reducers.js";
 import { DeckDashboard } from "./components/deckDashboard";
 import { Deck } from "./components/deck";
+import { Nav } from "./components/nav";
 
 const store = createStore(
   reducers,
@@ -28,6 +29,7 @@ ReactDOM.render(
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
           redirectUri={window.location.origin}
         >
+            <Nav></Nav>
           <Routes>
             <Route path="/" element={<App />}>
               {" "}

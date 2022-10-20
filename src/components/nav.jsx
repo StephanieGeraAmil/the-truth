@@ -1,15 +1,15 @@
-import React ,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import User from "../assets/user-white.svg";
 import Deck from "../assets/deck-white.svg";
 import Note from "../assets/notes-white.svg";
 import Search from "../assets/search-white.svg";
-import {Login} from "./login"
-import {Logout} from "./logout"
-import {getUserByEmail} from './../actions/userActions.js';
-import {getDecksOfUser} from './../actions/deckActions.js';
+import { Login } from "./login";
+import { Logout } from "./logout";
+import { getUserByEmail } from "./../actions/userActions.js";
+import { getDecksOfUser } from "./../actions/deckActions.js";
 export const Nav = () => {
   const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
@@ -17,35 +17,36 @@ export const Nav = () => {
   const userLoggedSelector = (state) => (state.user ? state.user : null);
   const userLogged = useSelector(userLoggedSelector);
 
-  useEffect(()=>{
-             if(user)dispatch(getUserByEmail(user));   
-  },[isAuthenticated]);
+  useEffect(() => {
+    if (user) dispatch(getUserByEmail(user));
+  }, [isAuthenticated]);
   return (
     <div className="nav">
       {!isAuthenticated ? (
         // <button>
         //   <img src={User} alt="user_page" />
         // </button>
-        <Login/>
+        <Login />
       ) : (
         <>
-        <Logout/>
-          <Link to="/decks">
-          <button onClick={()=>dispatch(getDecksOfUser(userLogged))}>
+          <Logout/>
+          <Link
+            role="button"
+            className="nav_button"
+            onClick={() => dispatch(getDecksOfUser(userLogged))}
+            to="/decks"
+          >
             <img src={Deck} alt="deck_page" />
-          
-          </button>
-           </Link> 
-         
+          </Link>
+
           {/* <button>
             <img src={Note} alt="add_note" />
           </button> */}
         </>
       )}
-
-      <button>
+      <Link role="button" className="nav_button" to="/">
         <img src={Search} alt="look_for_a_new_turth" />
-      </button>
+      </Link>
     </div>
   );
 };
