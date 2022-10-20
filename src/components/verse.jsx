@@ -16,7 +16,7 @@ export const Verse = ({ verse }) => {
             verse.verse_number}
         </p>
       </div>
-      <button>
+      <button className="page_button"> 
         <img src={Plus} alt="add_to_deck" />
       </button>
     </div>
