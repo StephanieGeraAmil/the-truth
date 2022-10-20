@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Deck } from "./deck";
 import { Link} from "react-router-dom";
 import {getCardsOfDeck} from './../actions/cardActions.js';
+import Plus from "../assets/plus.svg";
+import { createDeck } from "../actions/deckActions";
 
 
 export const DeckDashboard = () => {
@@ -23,6 +25,9 @@ export const DeckDashboard = () => {
            
          
         )):<p>User without decks yet</p>}
+             <button className="page_button" >
+        <img src={Plus} alt="add_to_deck" />
+      </button>
         </div>
     </div>
   );
