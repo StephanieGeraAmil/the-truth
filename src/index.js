@@ -14,6 +14,7 @@ import reducers from "./reducers/reducers.js";
 import { DeckDashboard } from "./components/deckDashboard";
 import { Deck } from "./components/deck";
 import { Nav } from "./components/nav";
+import { NewDeck } from "./components/newDeck";
 
 const store = createStore(
   reducers,
@@ -29,12 +30,15 @@ ReactDOM.render(
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
           redirectUri={window.location.origin}
         >
-            <Nav></Nav>
+          <Nav></Nav>
           <Routes>
             <Route path="/" element={<App />}>
               {" "}
             </Route>
             <Route path="/decks" element={<DeckDashboard />}>
+              {" "}
+            </Route>
+            <Route path="/newdeck" element={<NewDeck />}>
               {" "}
             </Route>
             <Route path="/decks/:id" element={<Deck />} />
