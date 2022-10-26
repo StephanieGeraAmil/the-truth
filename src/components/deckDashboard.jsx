@@ -8,6 +8,9 @@ import Plus from "../assets/plus.svg";
 export const DeckDashboard = () => {
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
+  //   const cardSelector = (state) => (state.cards ? state.cards : null);
+  // const cards = useSelector(cardSelector);
+  //     const [card, SetCard] = useState(cards[0]);
   const dispatch = useDispatch();
 
   return (
