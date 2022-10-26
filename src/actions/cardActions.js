@@ -74,8 +74,8 @@ export const addCardToDeck = (deck)=>async(dispatch,getState)=>{
         const cardToAdd={card:card.data.id}
                 console.log(cardToAdd);
         //add card to deck
-        const {data}= await api.addCardToDeck(cardToAdd,deck);
-        const action={type:actions.ADD_CARD_DECK, payload:card};
+         await api.addCardToDeck(cardToAdd,deck);
+        const action={type:actions.ADD_CARD_DECK, payload:card.data};
         dispatch(action);
     } catch (error) {
         console.log(error);
