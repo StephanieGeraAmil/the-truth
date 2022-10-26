@@ -5,7 +5,6 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { addCardToDeck } from "../actions/cardActions";
 import Plus from "../assets/plus.svg";
 export const Deck = () => {
-  const [parameters, setParameters] = useSearchParams();
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
@@ -17,24 +16,31 @@ export const Deck = () => {
 
   useEffect(() => {
     if (cards.length > 0) {
-      let par = parameters.get("card");
-      if (par !== undefined) {
-        setCardShown(cards.find((element) => element.id == par));
+      if (cardShown === "") {
+        setCardShown(cards[0]);
+      } else {
+        setCardShown(cards[cards.length - 1]);
       }
     }
-  }, [parameters]);
-  useEffect(() => {
-    if (cardShown === "") {
-      setParameters({ card: `${cards[0].id}` });
-    }else{
-       setParameters({ card: `${cards[cards.length-1].id}` });
-    }
   }, [cards]);
+  const nextCard = () => {
+    const currentIndex = cards.indexOf(cardShown);
+
+    setCardShown(cards[currentIndex + 1]);
+  };
+  const prevCard = () => {
+    const currentIndex = cards.indexOf(cardShown);
+
+    setCardShown(cards[currentIndex - 1]);
+  };
 
   return (
     <div className="deck">
       {deck && <h1 className="section_title">{deck.name}</h1>}
+      <button onClick={() => prevCard()}></button>
+
       <div className="card">{cardShown && <p>{cardShown.id}</p>}</div>
+      <button onClick={() => nextCard()}></button>
       <Link
         to={`/decks/${id}/`}
         className="page_button"
