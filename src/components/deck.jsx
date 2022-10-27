@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useParams, useSearchParams } from "react-router-dom";
-import { addCardToDeck } from "../actions/cardActions";
+import { addCardToDeck, deleteCardFromDeck } from "../actions/cardActions";
 import Plus from "../assets/plus.svg";
 export const Deck = () => {
   const dispatch = useDispatch();
@@ -13,25 +12,34 @@ export const Deck = () => {
   const { id } = useParams();
   const [deck, setDeck] = useState(decks.find((element) => element.id == id));
   const [cardShown, setCardShown] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (cards.length > 0) {
       if (cardShown === "") {
         setCardShown(cards[0]);
-      } else {
-        setCardShown(cards[cards.length - 1]);
+      }else{
+           setCardShown(cards[currentIndex]);
       }
     }
   }, [cards]);
   const nextCard = () => {
-    const currentIndex = cards.indexOf(cardShown);
-
     setCardShown(cards[currentIndex + 1]);
+    setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
-    const currentIndex = cards.indexOf(cardShown);
-
     setCardShown(cards[currentIndex - 1]);
+    setCurrentIndex(currentIndex - 1);
+  };
+
+  const deleteCard = () => {
+      setCurrentIndex(currentIndex - 1);
+    const cardToDelete = { card: cardShown.id };
+    dispatch(deleteCardFromDeck(deck, cardToDelete));
+  };
+  const addCard = () => {
+    setCurrentIndex(cards.length);
+    dispatch(addCardToDeck(deck));
   };
 
   return (
@@ -39,15 +47,17 @@ export const Deck = () => {
       {deck && <h1 className="section_title">{deck.name}</h1>}
       <button onClick={() => prevCard()}></button>
 
-      <div className="card">{cardShown && <p>{cardShown.id}</p>}</div>
+      <div className="card">
+        {cardShown && <p>{cardShown.id}</p>}
+        <button onClick={() => deleteCard()}>X</button>
+      </div>
       <button onClick={() => nextCard()}></button>
-      <Link
-        to={`/decks/${id}/`}
+      <button
         className="page_button"
-        onClick={() => dispatch(addCardToDeck(deck))}
+        onClick={() => addCard()}
       >
         <img src={Plus} alt="add_to_deck" />
-      </Link>
+      </button>
     </div>
   );
 };
