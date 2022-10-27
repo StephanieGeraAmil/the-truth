@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
-import { addCardToDeck, deleteCardFromDeck } from "../actions/cardActions";
+import {
+  getCardsOfDeck,
+  addCardToDeck,
+  deleteCardFromDeck,
+} from "../actions/cardActions";
+
 import Plus from "../assets/plus.svg";
 export const Deck = () => {
   const dispatch = useDispatch();
@@ -15,12 +20,17 @@ export const Deck = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    dispatch(getCardsOfDeck(deck));
+  }, []);
+  useEffect(() => {
     if (cards.length > 0) {
       if (cardShown === "") {
         setCardShown(cards[0]);
-      }else{
-           setCardShown(cards[currentIndex]);
+      } else {
+        setCardShown(cards[currentIndex]);
       }
+    } else {
+      setCardShown(null);
     }
   }, [cards]);
   const nextCard = () => {
@@ -33,7 +43,7 @@ export const Deck = () => {
   };
 
   const deleteCard = () => {
-      setCurrentIndex(currentIndex - 1);
+    setCurrentIndex(currentIndex - 1);
     const cardToDelete = { card: cardShown.id };
     dispatch(deleteCardFromDeck(deck, cardToDelete));
   };
@@ -45,17 +55,19 @@ export const Deck = () => {
   return (
     <div className="deck">
       {deck && <h1 className="section_title">{deck.name}</h1>}
-      <button onClick={() => prevCard()}></button>
+      {cardShown && (
+        <>
+          <button onClick={() => prevCard()}></button>
 
-      <div className="card">
-        {cardShown && <p>{cardShown.id}</p>}
-        <button onClick={() => deleteCard()}>X</button>
-      </div>
-      <button onClick={() => nextCard()}></button>
-      <button
-        className="page_button"
-        onClick={() => addCard()}
-      >
+          <div className="card">
+            <p>{cardShown.id}</p>
+            <button onClick={() => deleteCard()}>X</button>
+          </div>
+          <button onClick={() => nextCard()}></button>
+        </>
+      )}
+
+      <button className="page_button" onClick={() => addCard()}>
         <img src={Plus} alt="add_to_deck" />
       </button>
     </div>

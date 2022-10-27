@@ -23,7 +23,7 @@ export const DeckDashboard = () => {
             <Link
               to={`/decks/${element.id}`}
               key={element.name + "deck"}
-              onClick={() => dispatch(getCardsOfDeck(element))}
+             // onClick={() => dispatch(getCardsOfDeck(element))}
             >
               <div className="deck_preview ">{element.name} </div>
             </Link>
