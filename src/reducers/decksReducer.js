@@ -6,11 +6,11 @@ export default (decks = [], action) => {
 
     case actions.UPDATE_DECK:
       return decks.map((deck) =>
-        deck._id === action.payload._id ? action.payload : deck
+        deck._id === action.payload.id ? action.payload : deck
       );
 
     case actions.DELETE_DECK:
-      return decks.filter((deck) => deck._id !== action.payload);
+      return decks.filter((deck) => deck.id !== action.payload);
 
     // case actions.FETCH_ALL_DECKS:
     // return action.payload;

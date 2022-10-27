@@ -27,7 +27,6 @@ export const updateDeck=(updatedDeck)=>async(dispatch)=>{
 }
 export const deleteDeck=(deck_id)=>async(dispatch)=>{
     try {
-    
         await api.deleteDeck(deck_id);
         const action={type: actions.DELETE_DECK,payload:deck_id};
         dispatch(action);
