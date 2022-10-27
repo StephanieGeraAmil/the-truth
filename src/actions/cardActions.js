@@ -69,10 +69,7 @@ export const addCardToDeck = (deck)=>async(dispatch,getState)=>{
     try {
         //create card
         const card=await api.createCard({});
-         console.log(deck.id);
-
         const cardToAdd={card:card.data.id}
-                console.log(cardToAdd);
         //add card to deck
          await api.addCardToDeck(cardToAdd,deck);
         const action={type:actions.ADD_CARD_DECK, payload:card.data};
@@ -84,8 +81,9 @@ export const addCardToDeck = (deck)=>async(dispatch,getState)=>{
 }
 export const deleteCardFromDeck = (deck,card)=>async(dispatch,getState)=>{
     try {
-        const {data}= await api.removeCardFromDeck(card,deck);
-        const action={type:actions.DELETE_CARD_DECK, payload:data};
+   
+        await api.removeCardFromDeck(card,deck);
+        const action={type:actions.DELETE_CARD_DECK, payload:card.card};
         dispatch(action);
     } catch (error) {
         console.log(error);

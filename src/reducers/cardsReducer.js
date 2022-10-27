@@ -6,11 +6,11 @@ export default (cards = [], action) => {
 
     case actions.UPDATE_CARD:
       return cards.map((card) =>
-        card._id === action.payload._id ? action.payload : card
+        card._id === action.payload.id ? action.payload : card
       );
 
     case actions.DELETE_CARD:
-      return cards.filter((card) => card._id !== action.payload);
+      return cards.filter((card) => card.id !== action.payload);
 
     case actions.GET_VERSES_OF_CARD:
       return action.payload;
@@ -24,7 +24,7 @@ export default (cards = [], action) => {
     case actions.ADD_CARD_DECK:
       return [...cards, action.payload];
     case actions.DELETE_CARD_DECK:
-      return  cards.filter((card) => card._id !== action.payload);
+      return  cards.filter((card) => card.id !== action.payload);
 
     default:
       return cards;
