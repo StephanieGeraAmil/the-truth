@@ -10,6 +10,12 @@ export default (notes=[], action)=>{
         case actions.DELETE_NOTE:
         return notes.filter((note)=>note._id!==action.payload);
 
+         case actions.GET_NOTES_OF_CARD:
+      return action.payload;
+    case actions.ADD_CARD_NOTE:
+      return  [...notes, action.payload];
+    case actions.DELETE_CARD_NOTE:
+     return notes.filter((note)=>note._id!==action.payload);
         
         default:
         return notes;

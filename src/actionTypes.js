@@ -46,6 +46,10 @@ export const GET_VERSES_OF_CARD ="card/get_verses_of_cards";
 export const ADD_CARD_VERSE= "card/add_verses_of_cards";
 export const DELETE_CARD_VERSE= "card/delete_verses_of_cards";
 
+export const GET_NOTES_OF_CARD ="note/get_notes_of_cards";
+export const ADD_CARD_NOTE= "note/add_notes_of_cards";
+export const DELETE_CARD_NOTE= "note/delete_notes_of_cards";
+
 
 export const SELECTED_HINT ="selected/select_hint";
 export const UNSELECTED_HINT ="selected/unselect_hint";

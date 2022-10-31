@@ -57,5 +57,10 @@ export const fetchVersesOfCard=(card)=> axios.get(`${verse_card_url}/${card.id}`
 export const addVerseToCard=(verseToAdd,card)=> axios.post(`${verse_card_url}/${card.id}`, verseToAdd);
 export const removeVerseFromCard=(verse,card)=> axios.delete(`${verse_card_url}/${card.id}`, verse);
 
+const note_card_url=backend_url+"/card_note";
+export const fetchNotesOfCard=(card)=> axios.get(`${note_card_url}/${card.id}`);
+export const addNoteToCard=(noteToAdd,card_id)=> axios.post(`${note_card_url}/${card_id}`, noteToAdd);
+export const removeNoteFromCard=(note,card)=> axios.delete(`${note_card_url}/${card.id}`, note);
+
 const deck_user_url=backend_url+"/deck_user";
 export const fetchDecksOfUser=(user)=>axios.get(`${deck_user_url}/${user.id}`);

@@ -38,3 +38,37 @@ export const deleteNote=(note_id)=>async(dispatch)=>{
 
     
 }
+
+//////////////
+
+export const getNotesOfCard = (card)=>async(dispatch,getState)=>{
+    try { 
+        const {data}= await api.fetchNotesOfCard(card);
+        const action={type:actions.GET_NOTES_OF_CARD, payload:data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+export const addNoteToCard = (note,card)=>async(dispatch,getState)=>{
+    try {
+      
+        const noteAdded=await api.addNoteToCard(note,card);
+        const action={type:actions.ADD_CARD_NOTE, payload:noteAdded.data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+export const deleteNoteFromCard = (note,card)=>async(dispatch,getState)=>{
+    try { 
+        const {data}= await api.removeNoteFromCard(note,card);
+        const action={type:actions.DELETE_CARD_NOTE, payload:data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}

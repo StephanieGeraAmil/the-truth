@@ -8,6 +8,8 @@ import {
 } from "../actions/cardActions";
 
 import Plus from "../assets/plus.svg";
+import { NewNote } from "./newNote";
+import { NewVerse } from "./newVerse";
 export const Deck = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
@@ -18,6 +20,7 @@ export const Deck = () => {
   const [deck, setDeck] = useState(decks.find((element) => element.id == id));
   const [cardShown, setCardShown] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [formShown, setFormShown] = useState(null);
 
   useEffect(() => {
     dispatch(getCardsOfDeck(deck));
@@ -57,13 +60,28 @@ export const Deck = () => {
       {deck && <h1 className="section_title">{deck.name}</h1>}
       {cardShown && (
         <>
-          <button onClick={() => prevCard()}></button>
+          <button onClick={() => prevCard()}>Prev</button>
 
           <div className="card">
-            <p>{cardShown.id}</p>
+            {!formShown ? (
+              <>
+                <button onClick={() => setFormShown("Note")}>New Note</button>
+                <button onClick={() => setFormShown("Verse")}>New Verse</button>
+              </>
+            ) : (
+              <>
+                {formShown == "Note" ? (
+                  <NewNote card_id={id} updateFormShown={setFormShown}></NewNote>
+                ) : (
+                  <NewVerse></NewVerse>
+                )}
+              </>
+            )}
+
+            {/* <p>{cardShown.id}</p> */}
             <button onClick={() => deleteCard()}>X</button>
           </div>
-          <button onClick={() => nextCard()}></button>
+          <button onClick={() => nextCard()}>Next</button>
         </>
       )}
 
