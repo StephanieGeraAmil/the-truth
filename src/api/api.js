@@ -54,7 +54,7 @@ export const fetchTagsOfVerses=(verse)=> axios.get(`${tag_verse_url}/${verse.id}
 
 const verse_card_url=backend_url+"/verse_card";
 export const fetchVersesOfCard=(card)=> axios.get(`${verse_card_url}/${card.id}`);
-export const addVerseToCard=(verseToAdd,card)=> axios.post(`${verse_card_url}/${card.id}`, verseToAdd);
+export const addVerseToCard=(verseToAdd,card_id)=> axios.post(`${verse_card_url}/${card_id}`, verseToAdd);
 export const removeVerseFromCard=(verse,card)=> axios.delete(`${verse_card_url}/${card.id}`, verse);
 
 const note_card_url=backend_url+"/card_note";

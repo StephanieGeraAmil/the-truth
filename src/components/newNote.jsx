@@ -11,20 +11,12 @@ export const NewNote = ({card_id, updateFormShown}) => {
   const [display, setDisplay] = useState(true);
 
 
-
- 
-   useEffect(() => {
-      console.log(textAreaInput);
-  }, [textAreaInput]);
-
-
-
   const addNote=()=>{
-   
     dispatch(addNoteToCard({content:textAreaInput},card_id));
     updateFormShown(null);
     setDisplay(false);
   }
+  
   return (
     <>
       {display && (

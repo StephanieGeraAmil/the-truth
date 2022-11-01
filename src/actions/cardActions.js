@@ -24,36 +24,6 @@ export const deleteCard=(Card_id)=>async(dispatch)=>{
 
     
 }
-export const getVersesOfCard = (card)=>async(dispatch,getState)=>{
-    try { 
-        const {data}= await api.fetchVersesOfCard(card);
-        const action={type:actions.GET_VERSES_OF_CARD, payload:data};
-        dispatch(action);
-    } catch (error) {
-        console.log(error);
-    }
-   
-}
-export const addVerseToCard = (verse,card)=>async(dispatch,getState)=>{
-    try {
-        const {data}= await addVerseToCard(verse,card);
-        const action={type:actions.ADD_CARD_VERSE, payload:data};
-        dispatch(action);
-    } catch (error) {
-        console.log(error);
-    }
-   
-}
-export const deleteVerseFromCard = (verse,card)=>async(dispatch,getState)=>{
-    try { 
-        const {data}= await api.removeVerseFromCard(verse,card);
-        const action={type:actions.DELETE_CARD_VERSE, payload:data};
-        dispatch(action);
-    } catch (error) {
-        console.log(error);
-    }
-   
-}
 
 export const getCardsOfDeck = (deck)=>async(dispatch,getState)=>{
     try {

@@ -12,12 +12,9 @@ export default (cards = [], action) => {
     case actions.DELETE_CARD:
       return cards.filter((card) => card.id !== action.payload);
 
-    case actions.GET_VERSES_OF_CARD:
-      return action.payload;
-    case actions.ADD_CARD_VERSE:
-      return action.payload;
-    case actions.DELETE_CARD_VERSE:
-      return action.payload;
+
+
+
 
      case actions.GET_CARDS_OF_DECK:
       return action.payload;

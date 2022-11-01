@@ -71,9 +71,9 @@ export const Deck = () => {
             ) : (
               <>
                 {formShown == "Note" ? (
-                  <NewNote card_id={id} updateFormShown={setFormShown}></NewNote>
+                  <NewNote card_id={cardShown.id} updateFormShown={setFormShown}></NewNote>
                 ) : (
-                  <NewVerse></NewVerse>
+                  <NewVerse card_id={cardShown.id} updateFormShown={setFormShown}></NewVerse>
                 )}
               </>
             )}

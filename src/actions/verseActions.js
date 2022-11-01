@@ -59,4 +59,36 @@ export const getVersesWithTag=(tag_id) => async(dispatch)=>{
 //     }catch(error){ console.error(error);}    
 // }
 
+export const getVersesOfCard = (card)=>async(dispatch,getState)=>{
+    try { 
+        const {data}= await api.fetchVersesOfCard(card);
+        const action={type:actions.GET_VERSES_OF_CARD, payload:data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+
+/////// fix this!!!!!!!!!!
+export const addVerseToCard = (verse,card_id)=>async(dispatch,getState)=>{
+    try {
+        const  response= await api.addVerseToCard(verse,card_id);
+        const action={type:actions.ADD_CARD_VERSE, payload:response.data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
+export const deleteVerseFromCard = (verse,card)=>async(dispatch,getState)=>{
+    try { 
+        const {data}= await api.removeVerseFromCard(verse,card);
+        const action={type:actions.DELETE_CARD_VERSE, payload:data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
   
