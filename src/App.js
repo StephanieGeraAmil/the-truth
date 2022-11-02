@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllTags } from "./actions/tagActions";
 import { Lie } from "./components/lie";
 import { Truth } from "./components/truth";
-import { Nav } from "./components/nav";
 import "./App.css";
-import { DeckDashboard } from "./components/deckDashboard";
-import { NewNote } from "./components/newNote";
-import { NewDeck } from "./components/newDeck";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -17,9 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Nav></Nav> */}
-      {/* <NewNote></NewNote> */}
-      {/* <NewDeck></NewDeck> */}
+      
       <Lie></Lie>
       <Truth></Truth>
       {/* <div className="videos_list"></div>

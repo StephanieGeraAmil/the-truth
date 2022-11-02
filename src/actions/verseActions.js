@@ -70,7 +70,7 @@ export const getVersesOfCard = (card)=>async(dispatch,getState)=>{
    
 }
 
-/////// fix this!!!!!!!!!!
+
 export const addVerseToCard = (verse,card_id)=>async(dispatch,getState)=>{
     try {
         const  response= await api.addVerseToCard(verse,card_id);
