@@ -33,7 +33,6 @@ export const Deck = () => {
   }, []);
   useEffect(() => {
     if (cardShown) {
-      console.log("about to fecth verses and notes");
       dispatch(getVersesOfCard(cardShown));
       dispatch(getNotesOfCard(cardShown));
     }
@@ -80,7 +79,9 @@ export const Deck = () => {
           <div className="card">
             {!formShown ? (
               <>
-              {!note &&  <button onClick={() => setFormShown("Note")}>New Note</button>}
+                {!note && (
+                  <button onClick={() => setFormShown("Note")}>New Note</button>
+                )}
                 <button onClick={() => setFormShown("Verse")}>New Verse</button>
               </>
             ) : (
@@ -99,9 +100,15 @@ export const Deck = () => {
               </>
             )}
 
-            <p>{cardShown.id}</p>
-           {verses && verses.map((verse)=>(<p key={verse.id}>{verse.id}</p>))}
-            {note &&<p>{note.id}</p>}
+
+            {verses &&
+              verses.map((verse) => (
+                <div key={verse.id}>
+                  <p>{`${verse.book},${verse.chapter},${verse.verse_number} `}</p>
+                   <p>{`${verse.scripture} `}</p>
+                </div>
+              ))}
+            {note && <p>{note.content}</p>}
             <button onClick={() => deleteCard()}>X</button>
           </div>
           {currentIndex !== cards.length - 1 && (
