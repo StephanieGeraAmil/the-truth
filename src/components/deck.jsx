@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   getCardsOfDeck,
   addCardToDeck,
   deleteCardFromDeck,
 } from "../actions/cardActions";
+import { getVersesOfCard } from "../actions/verseActions";
+import { getNotesOfCard } from "../actions/noteActions";
 
 import Plus from "../assets/plus.svg";
 import { NewNote } from "./newNote";
@@ -16,6 +18,10 @@ export const Deck = () => {
   const decks = useSelector(deckSelector);
   const cardSelector = (state) => (state.cards ? state.cards : null);
   const cards = useSelector(cardSelector);
+  const verseSelector = (state) => (state.verses ? state.verses : null);
+  const verses = useSelector(verseSelector);
+  const noteSelector = (state) => (state.note ? state.note : null);
+  const note = useSelector(noteSelector);
   const { id } = useParams();
   const [deck, setDeck] = useState(decks.find((element) => element.id == id));
   const [cardShown, setCardShown] = useState("");
@@ -25,6 +31,13 @@ export const Deck = () => {
   useEffect(() => {
     dispatch(getCardsOfDeck(deck));
   }, []);
+  useEffect(() => {
+    if (cardShown) {
+      console.log("about to fecth verses and notes");
+      dispatch(getVersesOfCard(cardShown));
+      dispatch(getNotesOfCard(cardShown));
+    }
+  }, [cardShown]);
   useEffect(() => {
     if (cards.length > 0) {
       if (cardShown === "") {
@@ -46,7 +59,7 @@ export const Deck = () => {
   };
 
   const deleteCard = () => {
-    setCurrentIndex(currentIndex - 1);
+    if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
     const cardToDelete = { card: cardShown.id };
     dispatch(deleteCardFromDeck(deck, cardToDelete));
   };
@@ -60,28 +73,40 @@ export const Deck = () => {
       {deck && <h1 className="section_title">{deck.name}</h1>}
       {cardShown && (
         <>
-          <button onClick={() => prevCard()}>Prev</button>
+          {currentIndex !== 0 && (
+            <button onClick={() => prevCard()}>Prev</button>
+          )}
 
           <div className="card">
             {!formShown ? (
               <>
-                <button onClick={() => setFormShown("Note")}>New Note</button>
+              {!note &&  <button onClick={() => setFormShown("Note")}>New Note</button>}
                 <button onClick={() => setFormShown("Verse")}>New Verse</button>
               </>
             ) : (
               <>
-                {formShown == "Note" ? (
-                  <NewNote card_id={cardShown.id} updateFormShown={setFormShown}></NewNote>
+                {formShown === "Note" ? (
+                  <NewNote
+                    card_id={cardShown.id}
+                    updateFormShown={setFormShown}
+                  ></NewNote>
                 ) : (
-                  <NewVerse card_id={cardShown.id} updateFormShown={setFormShown}></NewVerse>
+                  <NewVerse
+                    card_id={cardShown.id}
+                    updateFormShown={setFormShown}
+                  ></NewVerse>
                 )}
               </>
             )}
 
-            {/* <p>{cardShown.id}</p> */}
+            <p>{cardShown.id}</p>
+           {verses && verses.map((verse)=>(<p key={verse.id}>{verse.id}</p>))}
+            {note &&<p>{note.id}</p>}
             <button onClick={() => deleteCard()}>X</button>
           </div>
-          <button onClick={() => nextCard()}>Next</button>
+          {currentIndex !== cards.length - 1 && (
+            <button onClick={() => nextCard()}>Next</button>
+          )}
         </>
       )}
 

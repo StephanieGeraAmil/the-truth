@@ -61,7 +61,9 @@ export const getVersesWithTag=(tag_id) => async(dispatch)=>{
 
 export const getVersesOfCard = (card)=>async(dispatch,getState)=>{
     try { 
+
         const {data}= await api.fetchVersesOfCard(card);
+          
         const action={type:actions.GET_VERSES_OF_CARD, payload:data};
         dispatch(action);
     } catch (error) {

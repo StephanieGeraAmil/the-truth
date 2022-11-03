@@ -12,7 +12,7 @@ export default combineReducers({
   cards: cardsReducer,
   verses: versesReducer,
   decks: decksReducer,
-  notes: notesReducer,
+  note: notesReducer,
   tags: tagsReducer,
   selected: currentSelectionReducer
 });
