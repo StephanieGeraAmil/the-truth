@@ -6,8 +6,8 @@ import {
   addCardToDeck,
   deleteCardFromDeck,
 } from "../actions/cardActions";
-import { getVersesOfCard } from "../actions/verseActions";
-import { getNotesOfCard } from "../actions/noteActions";
+import { getVersesOfCard, deleteVerseFromCard } from "../actions/verseActions";
+import { getNotesOfCard, deleteNoteFromCard } from "../actions/noteActions";
 
 import Plus from "../assets/plus.svg";
 import { NewNote } from "./newNote";
@@ -100,15 +100,20 @@ export const Deck = () => {
               </>
             )}
 
-
             {verses &&
               verses.map((verse) => (
                 <div key={verse.id}>
                   <p>{`${verse.book},${verse.chapter},${verse.verse_number} `}</p>
-                   <p>{`${verse.scripture} `}</p>
+                  <p>{`${verse.scripture} `}</p>
+                   <button onClick={() => dispatch(deleteVerseFromCard( verse, cardShown))}>X</button>
                 </div>
               ))}
-            {note && <p>{note.content}</p>}
+            {note && (
+              <>
+                <p>{note.content}</p>
+                 <button onClick={() => dispatch(deleteNoteFromCard(note, cardShown))}>X</button>
+              </>
+            )}
             <button onClick={() => deleteCard()}>X</button>
           </div>
           {currentIndex !== cards.length - 1 && (

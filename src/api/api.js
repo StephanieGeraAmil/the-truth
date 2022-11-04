@@ -48,19 +48,19 @@ export const removeCardFromDeck=(card,deck)=> axios.delete(`${card_deck_url}/${d
 const verse_tag_url=backend_url+"/verse_tag";
 export const fetchVersesOfTag=(tag_id)=> axios.get(`${verse_tag_url}/${tag_id}`);
 export const addTagToVerse=(verseToAdd,tag)=> axios.post(`${verse_tag_url}/${tag.id}`, verseToAdd);
-export const removeTagFromVerse=(verse,tag)=> axios.delete(`${verse_tag_url}/${tag.id}`, verse);
+export const removeTagFromVerse=(verse,tag)=> axios.delete(`${verse_tag_url}/${tag.id}`,{data: verse});
 const tag_verse_url=backend_url+"/tag_verse";
 export const fetchTagsOfVerses=(verse)=> axios.get(`${tag_verse_url}/${verse.id}`);
 
 const verse_card_url=backend_url+"/verse_card";
 export const fetchVersesOfCard=(card)=> axios.get(`${verse_card_url}/${card.id}`);
 export const addVerseToCard=(verseToAdd,card_id)=> axios.post(`${verse_card_url}/${card_id}`, verseToAdd);
-export const removeVerseFromCard=(verse,card)=> axios.delete(`${verse_card_url}/${card.id}`, verse);
+export const removeVerseFromCard=(verse,card)=> axios.delete(`${verse_card_url}/${card.id}`, {data:verse});
 
 const note_card_url=backend_url+"/card_note";
 export const fetchNotesOfCard=(card)=> axios.get(`${note_card_url}/${card.id}`);
 export const addNoteToCard=(noteToAdd,card_id)=> axios.post(`${note_card_url}/${card_id}`, noteToAdd);
-export const removeNoteFromCard=(note,card)=> axios.delete(`${note_card_url}/${card.id}`, note);
+export const removeNoteFromCard=(note,card)=> axios.delete(`${note_card_url}/${card.id}`, {data:note});
 
 const deck_user_url=backend_url+"/deck_user";
 export const fetchDecksOfUser=(user)=>axios.get(`${deck_user_url}/${user.id}`);
