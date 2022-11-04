@@ -82,7 +82,9 @@ export const Deck = () => {
                 {!note && (
                   <button onClick={() => setFormShown("Note")}>New Note</button>
                 )}
+                 {verses.length==0 && (
                 <button onClick={() => setFormShown("Verse")}>New Verse</button>
+                 )}
               </>
             ) : (
               <>
@@ -100,20 +102,22 @@ export const Deck = () => {
               </>
             )}
 
-            {verses &&
-              verses.map((verse) => (
-                <div key={verse.id}>
-                  <p>{`${verse.book},${verse.chapter},${verse.verse_number} `}</p>
-                  <p>{`${verse.scripture} `}</p>
-                   <button onClick={() => dispatch(deleteVerseFromCard( verse, cardShown))}>X</button>
-                </div>
-              ))}
             {note && (
               <>
                 <p>{note.content}</p>
                  <button onClick={() => dispatch(deleteNoteFromCard(note, cardShown))}>X</button>
               </>
             )}
+
+            {verses &&
+              verses.map((verse) => (
+                <div key={verse.id}>
+                
+                  <p>{`${verse.scripture} `}</p>
+                    <p>{`${verse.book},${verse.chapter},${verse.verse_number} `}</p>
+                   <button onClick={() => dispatch(deleteVerseFromCard( verse, cardShown))}>X</button>
+                </div>
+              ))}
             <button onClick={() => deleteCard()}>X</button>
           </div>
           {currentIndex !== cards.length - 1 && (
