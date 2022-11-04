@@ -12,8 +12,6 @@ export default (verses = [], action) => {
     case actions.DELETE_VERSE:
       return verses.filter((verse) => verse.id !== action.payload);
 
-    // case actions.GET_TAGS_OF_VERSE:
-    //   return action.payload;
     case actions.GET_VERSES_OF_TAG:
       return action.payload;
 

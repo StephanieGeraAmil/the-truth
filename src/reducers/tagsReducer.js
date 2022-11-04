@@ -12,16 +12,9 @@ export default (tag = [], action) => {
     case actions.DELETE_TAG:
       return tag.filter((tag) => tag._id !== action.payload);
 
-    // case actions.GET_VERSES_OF_TAG:
-    //   return action.payload;
        case actions.GET_ALL_TAGS:
       return action.payload;
-    //     case actions.GET_TAGS_OF_VERSE:
-    //   return action.payload;
-    // case actions.ADD_TAG_VERSE:
-    //   return action.payload;
-    // case actions.DELETE_TAG_VERSE:
-    //   return action.payload;
+
 
     default:
       return tag;
