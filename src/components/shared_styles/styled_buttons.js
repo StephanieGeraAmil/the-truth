@@ -1,4 +1,5 @@
-import styled ,{css}from "styled-components";
+import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 export const StyledButton = styled.button`
   border: 0;
   border-radius: 10px;
@@ -27,7 +28,15 @@ export const StyledButton = styled.button`
     props.hidden &&
     css`
       opacity: 0;
-     
     `}
+`;
 
+export const NavLink = styled(Link)`
+  border: 0;
+  background-color: #433e3e;
+  display: flex;
+  justify-content: center;
+  color: fff;
+  margin: 5px;
+  z-index: 10;
 `;

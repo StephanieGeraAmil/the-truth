@@ -12,7 +12,8 @@ import { getUserByEmail } from "./../actions/userActions.js";
 import { getDecksOfUser } from "./../actions/deckActions.js";
 
 import styled from "styled-components";
-const NavContainer = styled.div`
+import { NavLink } from "./shared_styles/styled_buttons";
+const NavContainer = styled.nav`
   position: absolute;
   width: 50px;
   height: 100%;
@@ -44,6 +45,15 @@ const NavContainer = styled.div`
     transition-timing-function: ease-in-out;
   }
 `;
+// const NavLink = styled(Link)`
+//   border: 0;
+// background-color: #433e3e;
+// display: flex;
+// justify-content: center;
+// color: fff;
+//   margin: 5px;
+//   z-index: 10;
+//   `;
 
 export const Nav = () => {
   const dispatch = useDispatch();
@@ -65,23 +75,21 @@ export const Nav = () => {
       ) : (
         <>
           <Logout />
-          <Link
-            role="button"
-            className="nav_button"
+          <NavLink
             onClick={() => dispatch(getDecksOfUser(userLogged))}
             to="/decks"
           >
             <img src={Deck} alt="deck_page" />
-          </Link>
+          </NavLink>
 
           {/* <button>
             <img src={Note} alt="add_note" />
           </button> */}
         </>
       )}
-      <Link role="button" className="nav_button" to="/">
+      <NavLink to="/">
         <img src={Search} alt="look_for_a_new_turth" />
-      </Link>
+      </NavLink>
     </NavContainer>
   );
 };
