@@ -148,10 +148,12 @@ export const Deck = () => {
   }, [cards]);
 
   const nextCard = () => {
+    setFormShown(null);
     setCardShown(cards[currentIndex + 1]);
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
+    setFormShown(null);
     setCardShown(cards[currentIndex - 1]);
     setCurrentIndex(currentIndex - 1);
   };
@@ -161,6 +163,7 @@ export const Deck = () => {
     dispatch(deleteCardFromDeck(deck, cardToDelete));
   };
   const addCard = () => {
+    setFormShown(null);
     setCurrentIndex(cards.length);
     dispatch(addCardToDeck(deck));
   };
