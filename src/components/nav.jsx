@@ -10,6 +10,41 @@ import { Login } from "./login";
 import { Logout } from "./logout";
 import { getUserByEmail } from "./../actions/userActions.js";
 import { getDecksOfUser } from "./../actions/deckActions.js";
+
+import styled from "styled-components";
+const NavContainer = styled.div`
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  z-index: 10;
+  &:after {
+    background-color: #433e3e;
+    height: 150px;
+    width: 50px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    content: "";
+    border-radius: 0 10px 10px 0;
+  }
+  &:hover {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 600;
+    transition-timing-function: ease-in-out;
+  }
+`;
+
 export const Nav = () => {
   const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
@@ -21,7 +56,7 @@ export const Nav = () => {
     if (user) dispatch(getUserByEmail(user));
   }, [isAuthenticated]);
   return (
-    <div className="nav">
+    <NavContainer>
       {!isAuthenticated ? (
         // <button>
         //   <img src={User} alt="user_page" />
@@ -29,7 +64,7 @@ export const Nav = () => {
         <Login />
       ) : (
         <>
-          <Logout/>
+          <Logout />
           <Link
             role="button"
             className="nav_button"
@@ -47,6 +82,6 @@ export const Nav = () => {
       <Link role="button" className="nav_button" to="/">
         <img src={Search} alt="look_for_a_new_turth" />
       </Link>
-    </div>
+    </NavContainer>
   );
 };

@@ -13,6 +13,9 @@ import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
 
 import styled, { css } from "styled-components";
+import { PageTitle } from "./shared_styles/styled_page_headigns";
+import { StyledButton } from "./shared_styles/styled_buttons";
+
 const DeckContainer = styled.div`
   width: 100%;
   display: flex;
@@ -28,13 +31,9 @@ const DeckContent = styled.div`
   justify-content: space-evenly;
   align-items: center;
 `;
-const DeckTitle= styled.h1`
-  padding: 30px 0 0 30px;
-  font-size: 20px;
-  `;
+
 const CardContainer = styled.div`
   width: 55%;
-  /* margin: 0 auto; */
   height: 250px;
   padding: 30px;
   border-radius: 10px;
@@ -67,45 +66,6 @@ const CardContainer = styled.div`
   }
 `;
 
-const StyledButton = styled.button`
-  border: 0;
-  border-radius: 10px;
-  font-size: 12px;
-  padding: 6px;
-  /* background-color: #bbbaba; */
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
-  ${(props) =>
-    props.topRight &&
-    css`
-      position: absolute;
-      top: 0;
-      right: 0;
-    `}
-  ${(props) =>
-    props.adyacent &&
-    css`
-      position: relative;
-      top: -40px;
-      right: -320px;
-    `}
-  ${(props) =>
-    props.hidden &&
-    css`
-      opacity: 0;
-     
-    `}
-
-`;
-
-const PageNavButton = styled(StyledButton)`
-  background-color: #5b5b5b;
-  color: white;
-  
-`;
 export const Deck = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
@@ -170,14 +130,15 @@ export const Deck = () => {
 
   return (
     <DeckContainer>
-      {deck && <DeckTitle>{deck.name}</DeckTitle>}
+      {deck && <PageTitle>{deck.name}</PageTitle>}
       {cardShown && (
         <DeckContent>
           {currentIndex !== 0 ? (
-            <PageNavButton onClick={() => prevCard()}>{"<"}</PageNavButton>
-          ):
-          (
-            <PageNavButton hidden onClick={() => prevCard()}>{"<"}</PageNavButton>
+            <StyledButton onClick={() => prevCard()}>{"<"}</StyledButton>
+          ) : (
+            <StyledButton hidden onClick={() => prevCard()}>
+              {"<"}
+            </StyledButton>
           )}
 
           <CardContainer>
@@ -241,12 +202,13 @@ export const Deck = () => {
                 </div>
               ))}
           </CardContainer>
-          {currentIndex !== cards.length - 1 ?(
-            <PageNavButton onClick={() => nextCard()}>{">"}</PageNavButton>
-          ):(
-            <PageNavButton  hidden onClick={() => nextCard()}>{">"}</PageNavButton>
-          )
-          }
+          {currentIndex !== cards.length - 1 ? (
+            <StyledButton onClick={() => nextCard()}>{">"}</StyledButton>
+          ) : (
+            <StyledButton hidden onClick={() => nextCard()}>
+              {">"}
+            </StyledButton>
+          )}
         </DeckContent>
       )}
 

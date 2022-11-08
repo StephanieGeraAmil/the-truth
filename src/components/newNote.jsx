@@ -4,32 +4,32 @@ import {
   addNoteToCard,
 } from "../actions/noteActions";
 
+import styled, { css } from "styled-components";
+import { Form, FormTextArea } from "./shared_styles/styled_forms";
+import { StyledButton } from "./shared_styles/styled_buttons";
+
 export const NewNote = ({card_id, updateFormShown}) => {  
   const dispatch = useDispatch();
 
   const [textAreaInput, setTextAreaInput] = useState("");
-  const [display, setDisplay] = useState(true);
-
 
   const addNote=()=>{
     dispatch(addNoteToCard({content:textAreaInput},card_id));
     updateFormShown(null);
-    setDisplay(false);
+
   }
   
   return (
-    <>
-      {display && (
-        <div className="form">
-          <textarea
-          
+        <Form>
+             <StyledButton topRight onClick={() => updateFormShown(null)}>
+              X
+            </StyledButton>
+          <FormTextArea
             placeholder="Add the text of the note here"
             onChange={(event) => setTextAreaInput(event.target.value)}
             value={textAreaInput}
-          ></textarea>
-              <button onClick={()=>addNote()}>Save</button>
-        </div>
-      )}
-    </>
+          ></FormTextArea>
+              <StyledButton onClick={()=>addNote()}>Save</StyledButton>
+        </Form>
   );
 };

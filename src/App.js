@@ -5,6 +5,22 @@ import { Lie } from "./components/lie";
 import { Truth } from "./components/truth";
 import "./App.css";
 
+import styled, { ThemeProvider } from "styled-components";
+
+const theme = {
+  clr: "#433e3e",
+  bg: "white",
+  df_font_size: "15px",
+};
+const AppContainer = styled.div`
+  height: 100%;
+  color: ${(props) => props.theme.clr};
+  font-size: ${(props) => props.theme.df_font_size};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
 
 function App() {
   const dispatch = useDispatch();
@@ -13,13 +29,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      
-      <Lie></Lie>
-      <Truth></Truth>
-      {/* <div className="videos_list"></div>
+    <ThemeProvider theme={theme}>
+      <AppContainer>
+        <Lie></Lie>
+        <Truth></Truth>
+        {/* <div className="videos_list"></div>
          <div className="books_list"></div>  */}
-    </div>
+      </AppContainer>
+    </ThemeProvider>
   );
 }
 

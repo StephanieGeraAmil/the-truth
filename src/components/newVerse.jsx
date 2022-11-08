@@ -2,47 +2,58 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addVerseToCard } from "../actions/verseActions";
 
-export const NewVerse = ({card_id, updateFormShown}) => {
-  const dispatch = useDispatch();
+import styled, { css } from "styled-components";
+import { Form, FormTextArea, FormInput } from "./shared_styles/styled_forms";
+import { StyledButton } from "./shared_styles/styled_buttons";
 
+export const NewVerse = ({ card_id, updateFormShown }) => {
+  const dispatch = useDispatch();
 
   const [book, setBook] = useState("");
   const [chapter, setChapter] = useState("");
   const [verseNumber, setVerseNumber] = useState("");
-    const [scripture, setScripture] = useState("");
-  const [display, setDisplay] = useState(true);
+  const [scripture, setScripture] = useState("");
 
-   const addVerse=()=>{
-    dispatch(addVerseToCard({book:book, chapter: +chapter, verse_number:+verseNumber, version: "NTV", scripture:scripture},card_id));
+  const addVerse = () => {
+    dispatch(
+      addVerseToCard(
+        {
+          book: book,
+          chapter: +chapter,
+          verse_number: +verseNumber,
+          version: "NTV",
+          scripture: scripture,
+        },
+        card_id
+      )
+    );
     updateFormShown(null);
-    setDisplay(false);
-  }
-  
+  };
 
   return (
-<>
-      {display && (
-        <div >
-          <input
+        <Form>
+           <StyledButton topRight onClick={() => updateFormShown(null)}>
+              X
+            </StyledButton>
+          <FormInput
             onChange={(event) => setBook(event.target.value)}
             value={book}
-          ></input>
-           <input
+          ></FormInput>
+          <FormInput
             onChange={(event) => setChapter(event.target.value)}
             value={chapter}
-          ></input>
-           <input
+          ></FormInput>
+          <FormInput
             onChange={(event) => setVerseNumber(event.target.value)}
             value={verseNumber}
-          ></input>
-             <textarea
+          ></FormInput>
+          <FormTextArea
             onChange={(event) => setScripture(event.target.value)}
             value={scripture}
-          ></textarea>
+          ></FormTextArea>
 
-              <button onClick={()=>addVerse()}>Save</button>
-        </div>
-      )}
-    </>
+          <StyledButton onClick={() => addVerse()}>Save</StyledButton>
+        </Form>
+
   );
 };
