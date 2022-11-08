@@ -1,8 +1,56 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { clearHintSelected } from "../actions/currentSelectionActions";
-// import { getAllTags } from "../actions/tagActions";
 import { getVersesWithTag } from "../actions/verseActions";
+
+import styled, { css } from "styled-components";
+
+const LieContainer = styled.div`
+  background-color: rgb(245, 242, 242);
+  border-radius: 10px;
+  padding: 15px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const LieParagraph = styled.p`
+  margin: 0;
+`;
+
+const LieInput = styled.input`
+  background-color: #fff;
+  border-radius: inherit;
+  border: 0;
+  height: 30px;
+
+  color: inherit;
+  padding: 10px;
+  margin: 15px 0;
+  &:active,&:focus{
+    background-color: #fff;
+
+  border: 0;
+  height: 30px;
+  color: inherit;
+  padding: 10px;
+
+  z-index: 2;
+
+  }
+`;
+
+const LieSuggestions = styled.div`
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  margin-top: -25px;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  line-height: 2em;
+`;
 
 export const Lie = () => {
   const dispatch = useDispatch();
@@ -60,16 +108,16 @@ export const Lie = () => {
   //so somebody can look for verses to help future aperances
 
   return (
-    <div className="lie">
-      <p>I'm thinking...</p>
-      <input
+    <LieContainer>
+      <LieParagraph>I'm thinking...</LieParagraph>
+      <LieInput
         onChange={(event) => handleInputChange(event)}
         onClick={() => setDisplay(!display)}
         onKeyPress={(e) => handleKeyPress(e)}
         value={textInput}
-      ></input>
+      ></LieInput>
       {display ? (
-        <div ref={wrapperRef} className="suggestions">
+        <LieSuggestions ref={wrapperRef}>
           {tags
             .filter(
               (element) =>
@@ -83,10 +131,10 @@ export const Lie = () => {
                 {element.name}
               </span>
             ))}
-        </div>
+        </LieSuggestions>
       ) : (
-        <p>but...</p>
+        <LieParagraph>but...</LieParagraph>
       )}
-    </div>
+    </LieContainer>
   );
 };
