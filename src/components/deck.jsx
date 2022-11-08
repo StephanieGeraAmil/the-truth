@@ -8,10 +8,104 @@ import {
 } from "../actions/cardActions";
 import { getVersesOfCard, deleteVerseFromCard } from "../actions/verseActions";
 import { getNotesOfCard, deleteNoteFromCard } from "../actions/noteActions";
-
 import Plus from "../assets/plus.svg";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
+
+import styled, { css } from "styled-components";
+const DeckContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+`;
+const DeckContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+const DeckTitle= styled.h1`
+  padding: 30px 0 0 30px;
+  font-size: 20px;
+  `;
+const CardContainer = styled.div`
+  width: 55%;
+  /* margin: 0 auto; */
+  height: 250px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 7px #595959;
+  position: relative;
+  background-color: #fff;
+  &:after {
+    height: inherit;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px #595959;
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    z-index: -1;
+    content: "";
+    background-color: #fff;
+  }
+  &:before {
+    height: inherit;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px #595959;
+    position: absolute;
+    left: -10px;
+    top: 10px;
+    z-index: -2;
+    content: "";
+    background-color: #fff;
+  }
+`;
+
+const StyledButton = styled.button`
+  border: 0;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 6px;
+  /* background-color: #bbbaba; */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5px;
+  ${(props) =>
+    props.topRight &&
+    css`
+      position: absolute;
+      top: 0;
+      right: 0;
+    `}
+  ${(props) =>
+    props.adyacent &&
+    css`
+      position: relative;
+      top: -40px;
+      right: -320px;
+    `}
+  ${(props) =>
+    props.hidden &&
+    css`
+      opacity: 0;
+     
+    `}
+
+`;
+
+const PageNavButton = styled(StyledButton)`
+  background-color: #5b5b5b;
+  color: white;
+  
+`;
 export const Deck = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
@@ -22,7 +116,9 @@ export const Deck = () => {
   const verses = useSelector(verseSelector);
   const noteSelector = (state) => (state.note ? state.note : null);
   const note = useSelector(noteSelector);
+
   const { id } = useParams();
+
   const [deck, setDeck] = useState(decks.find((element) => element.id == id));
   const [cardShown, setCardShown] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,12 +127,14 @@ export const Deck = () => {
   useEffect(() => {
     dispatch(getCardsOfDeck(deck));
   }, []);
+
   useEffect(() => {
     if (cardShown) {
       dispatch(getVersesOfCard(cardShown));
       dispatch(getNotesOfCard(cardShown));
     }
   }, [cardShown]);
+
   useEffect(() => {
     if (cards.length > 0) {
       if (cardShown === "") {
@@ -48,6 +146,7 @@ export const Deck = () => {
       setCardShown(null);
     }
   }, [cards]);
+
   const nextCard = () => {
     setCardShown(cards[currentIndex + 1]);
     setCurrentIndex(currentIndex + 1);
@@ -56,7 +155,6 @@ export const Deck = () => {
     setCardShown(cards[currentIndex - 1]);
     setCurrentIndex(currentIndex - 1);
   };
-
   const deleteCard = () => {
     if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
     const cardToDelete = { card: cardShown.id };
@@ -68,23 +166,33 @@ export const Deck = () => {
   };
 
   return (
-    <div className="deck">
-      {deck && <h1 className="section_title">{deck.name}</h1>}
+    <DeckContainer>
+      {deck && <DeckTitle>{deck.name}</DeckTitle>}
       {cardShown && (
-        <>
-          {currentIndex !== 0 && (
-            <button onClick={() => prevCard()}>Prev</button>
+        <DeckContent>
+          {currentIndex !== 0 ? (
+            <PageNavButton onClick={() => prevCard()}>{"<"}</PageNavButton>
+          ):
+          (
+            <PageNavButton hidden onClick={() => prevCard()}>{"<"}</PageNavButton>
           )}
 
-          <div className="card">
+          <CardContainer>
+            <StyledButton topRight onClick={() => deleteCard()}>
+              X
+            </StyledButton>
             {!formShown ? (
               <>
                 {!note && (
-                  <button onClick={() => setFormShown("Note")}>New Note</button>
+                  <StyledButton onClick={() => setFormShown("Note")}>
+                    New Note
+                  </StyledButton>
                 )}
-                 {verses.length==0 && (
-                <button onClick={() => setFormShown("Verse")}>New Verse</button>
-                 )}
+                {verses.length == 0 && (
+                  <StyledButton onClick={() => setFormShown("Verse")}>
+                    New Verse
+                  </StyledButton>
+                )}
               </>
             ) : (
               <>
@@ -105,30 +213,43 @@ export const Deck = () => {
             {note && (
               <>
                 <p>{note.content}</p>
-                 <button onClick={() => dispatch(deleteNoteFromCard(note, cardShown))}>X</button>
+                <StyledButton
+                  adyacent
+                  onClick={() => dispatch(deleteNoteFromCard(note, cardShown))}
+                >
+                  X
+                </StyledButton>
               </>
             )}
 
             {verses &&
               verses.map((verse) => (
                 <div key={verse.id}>
-                
                   <p>{`${verse.scripture} `}</p>
-                    <p>{`${verse.book},${verse.chapter},${verse.verse_number} `}</p>
-                   <button onClick={() => dispatch(deleteVerseFromCard( verse, cardShown))}>X</button>
+                  <p>{`${verse.book},${verse.chapter},${verse.verse_number} `}</p>
+                  <StyledButton
+                    adyacent
+                    onClick={() =>
+                      dispatch(deleteVerseFromCard(verse, cardShown))
+                    }
+                  >
+                    X
+                  </StyledButton>
                 </div>
               ))}
-            <button onClick={() => deleteCard()}>X</button>
-          </div>
-          {currentIndex !== cards.length - 1 && (
-            <button onClick={() => nextCard()}>Next</button>
-          )}
-        </>
+          </CardContainer>
+          {currentIndex !== cards.length - 1 ?(
+            <PageNavButton onClick={() => nextCard()}>{">"}</PageNavButton>
+          ):(
+            <PageNavButton  hidden onClick={() => nextCard()}>{">"}</PageNavButton>
+          )
+          }
+        </DeckContent>
       )}
 
-      <button className="page_button" onClick={() => addCard()}>
+      <StyledButton onClick={() => addCard()}>
         <img src={Plus} alt="add_to_deck" />
-      </button>
-    </div>
+      </StyledButton>
+    </DeckContainer>
   );
 };
