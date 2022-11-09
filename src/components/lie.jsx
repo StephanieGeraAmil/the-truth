@@ -5,7 +5,7 @@ import { getVersesWithTag } from "../actions/verseActions";
 import styled, { css } from "styled-components";
 
 const LieContainer = styled.div`
-  background-color: rgb(245, 242, 242);
+  background-color: rgb(241, 158, 158);
   border-radius: 10px;
   padding: 15px;
   width: 50%;
