@@ -5,33 +5,8 @@ import { Lie } from "./components/lie";
 import { Truth } from "./components/truth";
 import "./App.css";
 
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
-  *, *::before, *::after {
-      box-sizing: border-box;
-      font-size: inherit;
-      font-weight: inherit;
-      font-family: inherit;
-      color: inherit;
-  }
-
-  a {
-    text-decoration: none;
-  }
-  html,
-  body,
-  #root {
-    height: 100%;
-    font-family: Helvetica, sans-serif;
-    font-weight: 100;
-    margin: 0;
-  }
-  #root {
-  height: 100%;
-  }
-
-`;
 
 const theme = {
   clr: "#433e3e",
@@ -54,16 +29,15 @@ function App() {
     dispatch(getAllTags());
   }, []);
 
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <AppContainer>
-        <Lie></Lie>
-        <Truth></Truth>
-        {/* <div className="videos_list"></div>
+  return (    
+      <ThemeProvider theme={theme}>
+        <AppContainer>
+          <Lie></Lie>
+          <Truth></Truth>
+          {/* <div className="videos_list"></div>
          <div className="books_list"></div>  */}
-      </AppContainer>
-    </ThemeProvider>
+        </AppContainer>
+      </ThemeProvider>
   );
 }
 

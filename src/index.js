@@ -15,11 +15,39 @@ import { DeckDashboard } from "./components/deckDashboard";
 import { Deck } from "./components/deck";
 import { Nav } from "./components/nav";
 import { NewDeck } from "./components/newDeck";
+import  { createGlobalStyle } from "styled-components";
 
 const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+
+const GlobalStyle = createGlobalStyle`
+  *, *::before, *::after {
+      box-sizing: border-box;
+      font-size: inherit;
+      font-weight: inherit;
+      font-family: inherit;
+      color: inherit;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    margin: 0;
+  }
+  #root {
+  height: 100%;
+  }
+
+`;
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,6 +58,7 @@ ReactDOM.render(
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
           redirectUri={window.location.origin}
         >
+            <GlobalStyle />
           <Nav></Nav>
           <Routes>
             <Route path="/" element={<App />}>
