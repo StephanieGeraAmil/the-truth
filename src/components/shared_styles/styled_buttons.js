@@ -28,6 +28,7 @@ export const StyledButton = styled.button`
     props.hidden &&
     css`
       opacity: 0;
+       pointer-events: none;
     `}
 `;
 
