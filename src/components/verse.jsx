@@ -4,23 +4,13 @@ import Plus from "../assets/plus.svg";
 import styled, { css } from "styled-components";
 import { Paragraph } from "./shared_styles/styled_content_components";
 import { StyledButton } from "./shared_styles/styled_buttons";
+import { VerseContainer ,VerseRef} from "./shared_styles/verses_styles";
 
 const VerseListItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
-const VerseContainer = styled.div`
- padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  color: grey;
-`;
-const VerseRef = styled.p`
- align-self: flex-end;
-  color: darkgrey;
-  `;
 
 export const Verse = ({ verse }) => {
   useEffect(() => {}, []);
@@ -37,7 +27,7 @@ export const Verse = ({ verse }) => {
             verse.verse_number}
         </VerseRef>
       </VerseContainer>
-      <StyledButton className="page_button"> 
+      <StyledButton> 
         <img src={Plus} alt="add_to_deck" />
       </StyledButton>
     </VerseListItemContainer>

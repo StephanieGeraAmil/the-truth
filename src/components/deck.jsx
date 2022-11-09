@@ -15,6 +15,8 @@ import { NewVerse } from "./newVerse";
 import styled, { css } from "styled-components";
 import { PageTitle } from "./shared_styles/styled_page_headigns";
 import { StyledButton } from "./shared_styles/styled_buttons";
+import { Paragraph } from "./shared_styles/styled_content_components";
+import { VerseContainer, VerseRef } from "./shared_styles/verses_styles";
 
 const DeckContainer = styled.div`
   width: 100%;
@@ -145,19 +147,9 @@ export const Deck = () => {
             <StyledButton topRight onClick={() => deleteCard()}>
               X
             </StyledButton>
+
             {!formShown ? (
-              <>
-                {!note && (
-                  <StyledButton onClick={() => setFormShown("Note")}>
-                    New Note
-                  </StyledButton>
-                )}
-                {verses.length == 0 && (
-                  <StyledButton onClick={() => setFormShown("Verse")}>
-                    New Verse
-                  </StyledButton>
-                )}
-              </>
+              <></>
             ) : (
               <>
                 {formShown === "Note" ? (
@@ -188,9 +180,19 @@ export const Deck = () => {
 
             {verses &&
               verses.map((verse) => (
-                <div key={verse.id}>
-                  <p>{`${verse.scripture} `}</p>
-                  <p>{`${verse.book},${verse.chapter},${verse.verse_number} `}</p>
+                <div key={`${verse.id}`}>
+                  <VerseContainer>
+                    <Paragraph>{verse.scripture}</Paragraph>
+                    <VerseRef>
+                      {verse.book.charAt(0).toUpperCase() +
+                        verse.book.slice(1) +
+                        " " +
+                        verse.chapter +
+                        ":" +
+                        verse.verse_number}
+                    </VerseRef>
+                  </VerseContainer>
+
                   <StyledButton
                     adyacent
                     onClick={() =>
@@ -201,6 +203,18 @@ export const Deck = () => {
                   </StyledButton>
                 </div>
               ))}
+            {!note && verses.length == 0 ? (
+              <>
+                <StyledButton onClick={() => setFormShown("Note")}>
+                  New Note
+                </StyledButton>
+                <StyledButton onClick={() => setFormShown("Verse")}>
+                  New Verse
+                </StyledButton>
+              </>
+            ) : (
+              <></>
+            )}
           </CardContainer>
           {currentIndex !== cards.length - 1 ? (
             <StyledButton onClick={() => nextCard()}>{">"}</StyledButton>
