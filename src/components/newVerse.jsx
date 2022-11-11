@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addVerseToCard } from "../actions/verseActions";
 
+import Done from "../assets/done.svg";
+import Delete from "../assets/delete.svg";
+
 import styled, { css } from "styled-components";
 import { Form, FormTextArea, FormInput } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
@@ -13,6 +16,17 @@ export const NewVerse = ({ card_id, updateFormShown }) => {
   const [chapter, setChapter] = useState("");
   const [verseNumber, setVerseNumber] = useState("");
   const [scripture, setScripture] = useState("");
+
+const VerseReferenceContainer = styled.div`
+
+  width: 80%;
+  height: 20%;
+  display: flex;
+
+  justify-content: space-around;
+
+  z-index: -1;
+`;
 
   const addVerse = () => {
     dispatch(
@@ -31,28 +45,30 @@ export const NewVerse = ({ card_id, updateFormShown }) => {
   };
 
   return (
-        <Form>
+        <Form >
+          <VerseReferenceContainer>
            <StyledButton topRight onClick={() => updateFormShown(null)}>
-              X
+        <img src={Delete} alt="esc" />
             </StyledButton>
-          <FormInput
+          <FormInput medium
             onChange={(event) => setBook(event.target.value)}
             value={book}
           ></FormInput>
-          <FormInput
+          <FormInput little
             onChange={(event) => setChapter(event.target.value)}
             value={chapter}
           ></FormInput>
-          <FormInput
+          <FormInput little
             onChange={(event) => setVerseNumber(event.target.value)}
             value={verseNumber}
           ></FormInput>
+          </VerseReferenceContainer>
           <FormTextArea
             onChange={(event) => setScripture(event.target.value)}
             value={scripture}
           ></FormTextArea>
 
-          <StyledButton onClick={() => addVerse()}>Save</StyledButton>
+          <StyledButton bottomRight onClick={() => addVerse()}><img src={Done} alt="add" /></StyledButton>
         </Form>
 
   );

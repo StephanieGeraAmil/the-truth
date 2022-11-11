@@ -5,7 +5,7 @@ import User from "../assets/user-white.svg";
 import Log_out from "../assets/logout.svg";
 import { unSetUser } from "./../actions/userActions.js";
 
-import { NavLink } from "./shared_styles/styled_buttons";
+import { StyledLink } from "./shared_styles/styled_buttons";
 
 export const Logout = () => {
   const dispatch = useDispatch();
@@ -15,8 +15,8 @@ export const Logout = () => {
   };
   const { logout } = useAuth0();
   return (
-    <NavLink className="nav_button" onClick={() => handleLogout()}>
+    <StyledLink className="nav_button" onClick={() => handleLogout()}>
       <img src={Log_out} alt="logout" />
-    </NavLink>
+    </StyledLink>
   );
 };

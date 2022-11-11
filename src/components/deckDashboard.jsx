@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { deleteDeck } from "./../actions/deckActions.js";
-import Plus from "../assets/plus.svg";
+import Add from "../assets/add.svg";
+import Delete from "../assets/delete.svg";
 
 import styled from "styled-components";
-import {PageTitle} from "./shared_styles/styled_page_headigns"
+import { PageTitle } from "./shared_styles/styled_page_headigns";
+import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
 const DeckDashboardContainer = styled.div`
   padding: 30px;
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
   z-index: -1;
 `;
 const DeckPreviewContainer = styled.div`
@@ -68,20 +71,22 @@ export const DeckDashboard = () => {
         {decks.length > 0 ? (
           decks.map((element) => (
             <div key={element.name + "deck"}>
-              <Link to={`/decks/${element.id}`}>
-                <DeckPreviewContainer>{element.name}</DeckPreviewContainer>
-              </Link>
-              <button onClick={() => removeDeck(element)}>X</button>
+              <DeckPreviewContainer>
+                <StyledLink whiteButton to={`/decks/${element.id}`}>
+                  <h1>{element.name}</h1>
+                </StyledLink>
+                <StyledButton topRight onClick={() => removeDeck(element)}>
+                  <img src={Delete} alt="delete_deck" />
+                </StyledButton>
+              </DeckPreviewContainer>
             </div>
           ))
         ) : (
           <p>User without decks yet</p>
         )}
-        <Link to={`/newDeck`}>
-          {/* <button className="page_button" > */}
-          <img src={Plus} alt="add_to_deck" />
-        </Link>
-        {/* </button> */}
+        <StyledLink whiteButton to={`/newDeck`}>
+          <img src={Add} alt="add_deck" />
+        </StyledLink>
       </DeckDashboardContainer>
     </div>
   );

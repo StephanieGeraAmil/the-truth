@@ -12,7 +12,7 @@ import { getUserByEmail } from "./../actions/userActions.js";
 import { getDecksOfUser } from "./../actions/deckActions.js";
 
 import styled from "styled-components";
-import { NavLink } from "./shared_styles/styled_buttons";
+import { StyledLink } from "./shared_styles/styled_buttons";
 const NavContainer = styled.nav`
   position: absolute;
   width: 50px;
@@ -45,7 +45,7 @@ const NavContainer = styled.nav`
     transition-timing-function: ease-in-out;
   }
 `;
-// const NavLink = styled(Link)`
+// const StyledLink = styled(Link)`
 //   border: 0;
 // background-color: #433e3e;
 // display: flex;
@@ -75,21 +75,21 @@ export const Nav = () => {
       ) : (
         <>
           <Logout />
-          <NavLink
+          <StyledLink
             onClick={() => dispatch(getDecksOfUser(userLogged))}
             to="/decks"
           >
             <img src={Deck} alt="deck_page" />
-          </NavLink>
+          </StyledLink>
 
           {/* <button>
             <img src={Note} alt="add_note" />
           </button> */}
         </>
       )}
-      <NavLink to="/">
+      <StyledLink to="/">
         <img src={Search} alt="look_for_a_new_turth" />
-      </NavLink>
+      </StyledLink>
     </NavContainer>
   );
 };

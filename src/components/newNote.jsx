@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addNoteToCard,
 } from "../actions/noteActions";
+import Done from "../assets/done.svg";
+import Delete from "../assets/delete.svg";
 
 import styled, { css } from "styled-components";
 import { Form, FormTextArea } from "./shared_styles/styled_forms";
@@ -22,14 +24,14 @@ export const NewNote = ({card_id, updateFormShown}) => {
   return (
         <Form>
              <StyledButton topRight onClick={() => updateFormShown(null)}>
-              X
+              <img src={Delete} alt="esc" />
             </StyledButton>
           <FormTextArea
             placeholder="Add the text of the note here"
             onChange={(event) => setTextAreaInput(event.target.value)}
             value={textAreaInput}
           ></FormTextArea>
-              <StyledButton onClick={()=>addNote()}>Save</StyledButton>
+              <StyledButton onClick={()=>addNote()}><img src={Done} alt="add" /></StyledButton>
         </Form>
   );
 };

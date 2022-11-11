@@ -7,7 +7,7 @@ export const VerseContainer = styled.div`
   //color:#06035c;
 `;
 export const VerseRef = styled.p`
- align-self: flex-end;
+ align-self: flex-start;
  font-weight: 400;
   //color: #06035c;
   `;

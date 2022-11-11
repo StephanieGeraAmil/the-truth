@@ -8,7 +8,12 @@ import {
 } from "../actions/cardActions";
 import { getVersesOfCard, deleteVerseFromCard } from "../actions/verseActions";
 import { getNotesOfCard, deleteNoteFromCard } from "../actions/noteActions";
-import Plus from "../assets/plus.svg";
+import Add from "../assets/add.svg";
+import Delete from "../assets/delete.svg";
+import Prev from "../assets/prev.svg";
+import Next from "../assets/next.svg";
+import Bible from "../assets/bible.svg";
+import Note from "../assets/note.svg";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
 
@@ -33,8 +38,37 @@ const DeckContent = styled.div`
   justify-content: space-evenly;
   align-items: center;
 `;
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
+const NoteContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const VerseDivContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+`;
+const AddContentButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
 const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 55%;
   height: 250px;
   padding: 30px;
@@ -85,6 +119,8 @@ export const Deck = () => {
   const [cardShown, setCardShown] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
+  const [isHoveringNote, setIsHoveringNote] = useState(false);
+  const [isHoveringVerse, setIsHoveringVerse] = useState(false);
 
   useEffect(() => {
     dispatch(getCardsOfDeck(deck));
@@ -136,98 +172,111 @@ export const Deck = () => {
       {cardShown && (
         <DeckContent>
           {currentIndex !== 0 ? (
-            <StyledButton onClick={() => prevCard()}>{"<"}</StyledButton>
+            <StyledButton onClick={() => prevCard()}>
+              {" "}
+              <img src={Prev} alt="prev_card" />
+            </StyledButton>
           ) : (
             <StyledButton hidden onClick={() => prevCard()}>
-              {"<"}
+              <img src={Prev} alt="prev_card" />
             </StyledButton>
           )}
 
           <CardContainer>
             <StyledButton topRight onClick={() => deleteCard()}>
-              X
+              <img src={Delete} alt="delete_card" />
             </StyledButton>
 
-            {!formShown ? (
-              <></>
-            ) : (
-              <>
-                {formShown === "Note" ? (
-                  <NewNote
-                    card_id={cardShown.id}
-                    updateFormShown={setFormShown}
-                  ></NewNote>
-                ) : (
-                  <NewVerse
-                    card_id={cardShown.id}
-                    updateFormShown={setFormShown}
-                  ></NewVerse>
-                )}
-              </>
+            {formShown && formShown === "Note" && (
+              <NewNote
+                card_id={cardShown.id}
+                updateFormShown={setFormShown}
+              ></NewNote>
             )}
-
-            {note && (
-              <>
-                <p>{note.content}</p>
-                <StyledButton
-                  adyacent
-                  onClick={() => dispatch(deleteNoteFromCard(note, cardShown))}
+            {formShown && formShown === "Verse" && (
+              <NewVerse
+                card_id={cardShown.id}
+                updateFormShown={setFormShown}
+              ></NewVerse>
+            )}
+            <CardContent>
+              {note && (
+                <NoteContainer
+                  onMouseOver={() => setIsHoveringNote(true)}
+                  onMouseLeave={() => setIsHoveringNote(false)}
                 >
-                  X
-                </StyledButton>
-              </>
-            )}
+                  <p>{note.content}</p>
+                  {isHoveringNote && (
+                    <StyledButton
+                      adyacent
+                      onClick={() =>
+                        dispatch(deleteNoteFromCard(note, cardShown))
+                      }
+                    >
+                      <img src={Delete} alt="delete_note_from_card" />
+                    </StyledButton>
+                  )}
+                </NoteContainer>
+              )}
 
-            {verses &&
-              verses.map((verse) => (
-                <div key={`${verse.id}`}>
-                  <VerseContainer>
-                    <Paragraph>{verse.scripture}</Paragraph>
-                    <VerseRef>
-                      {verse.book.charAt(0).toUpperCase() +
-                        verse.book.slice(1) +
-                        " " +
-                        verse.chapter +
-                        ":" +
-                        verse.verse_number}
-                    </VerseRef>
-                  </VerseContainer>
-
-                  <StyledButton
-                    adyacent
-                    onClick={() =>
-                      dispatch(deleteVerseFromCard(verse, cardShown))
-                    }
+              {verses &&
+                verses.map((verse) => (
+                  <VerseDivContainer
+                    onMouseOver={() => setIsHoveringVerse(true)}
+                    onMouseLeave={() => setIsHoveringVerse(false)}
                   >
-                    X
-                  </StyledButton>
-                </div>
-              ))}
-            {!note && verses.length == 0 ? (
-              <>
+                    <VerseContainer key={`${verse.id}`}>
+                      <Paragraph>{verse.scripture}</Paragraph>
+                      <VerseRef>
+                        {verse.book.charAt(0).toUpperCase() +
+                          verse.book.slice(1) +
+                          " " +
+                          verse.chapter +
+                          ":" +
+                          verse.verse_number}
+                      </VerseRef>
+                    </VerseContainer>
+                    {isHoveringVerse && (
+                      <StyledButton
+                        adyacent
+                        onClick={() =>
+                          dispatch(deleteVerseFromCard(verse, cardShown))
+                        }
+                      >
+                        <img src={Delete} alt="delete_verse_from_card" />
+                      </StyledButton>
+                    )}
+                  </VerseDivContainer>
+                ))}
+            </CardContent>
+            <AddContentButtonsContainer>
+              {!note && (
                 <StyledButton onClick={() => setFormShown("Note")}>
-                  New Note
+                  <img src={Note} alt="add_to_note_to_card" />
                 </StyledButton>
+              )}
+              {verses.length == 0 && (
                 <StyledButton onClick={() => setFormShown("Verse")}>
-                  New Verse
+                  <img src={Bible} alt="add_to_verse_to_card" />
                 </StyledButton>
-              </>
-            ) : (
-              <></>
-            )}
+              )}
+            </AddContentButtonsContainer>
           </CardContainer>
           {currentIndex !== cards.length - 1 ? (
-            <StyledButton onClick={() => nextCard()}>{">"}</StyledButton>
+            <StyledButton onClick={() => nextCard()}>
+              {" "}
+              <img src={Next} alt="next_card" />
+            </StyledButton>
           ) : (
             <StyledButton hidden onClick={() => nextCard()}>
-              {">"}
+              <img src={Next} alt="next_card" />
             </StyledButton>
           )}
         </DeckContent>
       )}
 
       <StyledButton onClick={() => addCard()}>
-        <img src={Plus} alt="add_to_deck" />
+        <img src={Add} alt="add_card_to_deck" />
       </StyledButton>
     </DeckContainer>
   );
