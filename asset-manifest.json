@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/the-truth/static/css/main.79a522b5.css",
+    "main.js": "/the-truth/static/js/main.b321473a.js",
+    "static/media/magnolia_sky.ttf": "/the-truth/static/media/magnolia_sky.6a2ee4a4b3e7c4a66723.ttf",
+    "static/media/SulphurPoint-Regular.ttf": "/the-truth/static/media/SulphurPoint-Regular.059a9f123be25c52cbf3.ttf",
+    "static/media/deck-white.svg": "/the-truth/static/media/deck-white.298213107e01be52b0c441e8ae96ab20.svg",
+    "static/media/prev.svg": "/the-truth/static/media/prev.1f8306e4280deb8152ca742ce3cddaa6.svg",
+    "static/media/next.svg": "/the-truth/static/media/next.c7308d0cf1fe9ef9a65967a1d9b42ebf.svg",
+    "static/media/note.svg": "/the-truth/static/media/note.81c6961485b892f8a241b85da6fdcecf.svg",
+    "static/media/notes-white.svg": "/the-truth/static/media/notes-white.1889c400fbae4ff809dcd5d577415063.svg",
+    "static/media/done.svg": "/the-truth/static/media/done.1b3da891a4251fe971a9962ca949aadc.svg",
+    "index.html": "/the-truth/index.html",
+    "static/media/logout.svg": "/the-truth/static/media/logout.66dd9c9088493ac88bb5a55fbd3a20fa.svg",
+    "static/media/add.svg": "/the-truth/static/media/add.db969cf4543127afe743661619cd88fe.svg",
+    "static/media/user-white.svg": "/the-truth/static/media/user-white.9c4c43b34d8ecf69241e3ff6b42ba447.svg",
+    "static/media/delete.svg": "/the-truth/static/media/delete.8242791d9f5234ba5b37bdbad6323ac6.svg",
+    "static/media/search-white.svg": "/the-truth/static/media/search-white.8bb3a620f8476959b6e5900278939c29.svg",
+    "static/media/plus.svg": "/the-truth/static/media/plus.7f3c87ba14b08fa1056ab333e6e74e79.svg",
+    "static/media/bible.svg": "/the-truth/static/media/bible.d1e669d02bd81bb466693358c3c7345a.svg",
+    "main.79a522b5.css.map": "/the-truth/static/css/main.79a522b5.css.map",
+    "main.b321473a.js.map": "/the-truth/static/js/main.b321473a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79a522b5.css",
+    "static/js/main.b321473a.js"
+  ]
+}
