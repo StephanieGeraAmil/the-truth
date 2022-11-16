@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/the-truth/static/css/main.79a522b5.css",
-    "main.js": "/the-truth/static/js/main.7073a473.js",
+    "main.js": "/the-truth/static/js/main.b321473a.js",
     "static/media/magnolia_sky.ttf": "/the-truth/static/media/magnolia_sky.6a2ee4a4b3e7c4a66723.ttf",
     "static/media/SulphurPoint-Regular.ttf": "/the-truth/static/media/SulphurPoint-Regular.059a9f123be25c52cbf3.ttf",
     "static/media/deck-white.svg": "/the-truth/static/media/deck-white.298213107e01be52b0c441e8ae96ab20.svg",
@@ -19,10 +19,10 @@
     "static/media/plus.svg": "/the-truth/static/media/plus.7f3c87ba14b08fa1056ab333e6e74e79.svg",
     "static/media/bible.svg": "/the-truth/static/media/bible.d1e669d02bd81bb466693358c3c7345a.svg",
     "main.79a522b5.css.map": "/the-truth/static/css/main.79a522b5.css.map",
-    "main.7073a473.js.map": "/the-truth/static/js/main.7073a473.js.map"
+    "main.b321473a.js.map": "/the-truth/static/js/main.b321473a.js.map"
   },
   "entrypoints": [
     "static/css/main.79a522b5.css",
-    "static/js/main.7073a473.js"
+    "static/js/main.b321473a.js"
   ]
 }
