@@ -9,10 +9,11 @@ import { StyledLink } from "./shared_styles/styled_buttons";
 
 export const Logout = () => {
   const dispatch = useDispatch();
+
+  const redirection=process.env.REDIRECTION_URL?(process.env.REDIRECTION_URL+"/"): window.location.origin
   const handleLogout = () => {
     dispatch(unSetUser());
-   // logout({ returnTo: window.location.origin });
-logout({ returnTo:"https://stephaniegeraamil.github.io/the-truth/" });
+logout({ returnTo:redirection });
   
   };
   const { logout } = useAuth0();

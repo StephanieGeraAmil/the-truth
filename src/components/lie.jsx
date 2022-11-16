@@ -118,7 +118,7 @@ export const Lie = () => {
       ></LieInput>
       {display ? (
         <LieSuggestions ref={wrapperRef}>
-          {tags
+          {tags && tags
             .filter(
               (element) =>
                 element.name.indexOf(textInput.toLocaleLowerCase()) > -1
