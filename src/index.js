@@ -60,7 +60,7 @@ ReactDOM.render(
             <GlobalStyle />
           <Nav></Nav>
           <Routes>
-            <Route path="/desa" element={<App />}>
+            <Route path="/" element={<App />}>
               {" "}
             </Route>
             <Route path="/decks" element={<DeckDashboard />}>
