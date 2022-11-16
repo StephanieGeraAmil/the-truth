@@ -55,7 +55,7 @@ ReactDOM.render(
         <Auth0Provider
           domain="dev-7pl37pty.us.auth0.com"
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
-          redirectUri={window.location.origin}
+          redirectUri="https://stephaniegeraamil.github.io"
         >
             <GlobalStyle />
           <Nav></Nav>
