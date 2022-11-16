@@ -12,7 +12,7 @@ export const Logout = () => {
   const handleLogout = () => {
     dispatch(unSetUser());
    // logout({ returnTo: window.location.origin });
-logout({ returnTo: "https://stephaniegeraamil.github.io/the-truth" });
+logout({ returnTo:"https://stephaniegeraamil.github.io/the-truth/" });
   
   };
   const { logout } = useAuth0();
