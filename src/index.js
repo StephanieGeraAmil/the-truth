@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import "./fonts/magnolia_sky.ttf";
 import "./fonts/SulphurPoint-Regular.ttf";
@@ -50,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <Auth0Provider
           domain="dev-7pl37pty.us.auth0.com"
@@ -73,7 +73,7 @@ ReactDOM.render(
           </Routes>
         </Auth0Provider>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
