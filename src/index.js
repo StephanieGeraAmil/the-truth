@@ -10,7 +10,6 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers/reducers.js";
-import { Landing } from "./components/landing";
 import { DeckDashboard } from "./components/deckDashboard";
 import { Deck } from "./components/deck";
 // import { Nav } from "./components/nav";
@@ -29,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
       font-weight: inherit;
       font-family: inherit;
       color: inherit;
+          height: 100%;
   
   }
 
@@ -61,8 +61,7 @@ ReactDOM.render(
           <GlobalStyle />
           {/* <Nav></Nav> */}
           <Routes>
-            <Route path="/the-truth/" element={<Landing />} />
-            <Route path="/the-truth/home" element={<App />} />
+            <Route path="/the-truth/" element={<App />} />
             <Route path="/the-truth/decks" element={<DeckDashboard />} />
             <Route path="/the-truth/newdeck" element={<NewDeck />} />
             <Route path="/the-truth/decks/:id" element={<Deck />} />

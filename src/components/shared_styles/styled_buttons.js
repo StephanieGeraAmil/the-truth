@@ -8,14 +8,9 @@ export const StyledButton = styled.button`
   border-radius:2vw;
   background-color: #201352;
   display: flex;
-
   justify-content: center;
   align-items:center;
 
-
-
-
-  
   ${(props) =>
     props.topRight &&
     css`

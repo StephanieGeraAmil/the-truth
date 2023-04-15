@@ -13,6 +13,7 @@ const LieContainer = styled.div`
   flex-direction:row;
   justify-content:center;
   align-items:center;
+  margin-top:1.5vw;
 `;
 
 
@@ -41,7 +42,6 @@ const LieSuggestions = styled.div`
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 0 0 2vw 2vw;
-
   margin-top: -25px;
   font-size: 1vw;
   z-index: 1;
@@ -53,11 +53,9 @@ const LieSuggestions = styled.div`
 const SearchButton = styled(StyledButton)`
   position: absolute;
   background: #201352;
-  font-size: 1.2vw;
+  font-size: 0.9vw;
   color: #fff;
-
   top: 50%;
-
   right: 0;
   transform: translateY(-50%) translateX(-2%);
   z-index: 10;
