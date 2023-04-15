@@ -14,57 +14,45 @@ import cloud from "./assets/cloud.png";
 
 const fade = keyframes`
   from {
- opacity: 1; 
-  }
-
-  to {
- opacity: 0; 
+      opacity: 1; 
+  }to {
+      opacity: 0; 
   }
 `;
 const appear = keyframes`
   from {
- opacity: 0; 
-  }
-
-  to {
- opacity: 1; 
+      opacity: 0; 
+  }to {
+      opacity: 1; 
   }
 `;
 const appearAndFade = keyframes`
   0% {
- opacity: 0; 
-  }
-
-  50% {
- opacity: 1; 
-  }
-    100% {
- opacity: 0; 
+      opacity: 0; 
+  }50% {
+      opacity: 1; 
+  }100% {
+      opacity: 0; 
   }
 `;
 const Left = styled.div`
   width: 40%;
-    height:80%;
-    max-height:60vw;
-
+  height: 80%;
+  max-height: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 const Paragraphs = styled.div`
-margin:0;
-padding:0;
-height:10vw;
-  
-
-
-  
+  margin: 0;
+  padding: 0;
+  height: 10vw;
 `;
 const Wrapper = styled.div`
   position: relative;
-   max-height:40vw;
+  max-height: 40vw;
   width: 40%;
-  height:  80%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,9 +64,8 @@ const Section = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-
   justify-content: center;
-  align-items:center;
+  align-items: center;
   border-radius: 0 0 2vw 2vw;
   box-shadow: 5px 3px 6px #333;
 `;
@@ -118,7 +105,7 @@ const Dialog = styled.img`
   &.withGod {
     height: 8vw;
     width: 8vw;
-    right:4vw;
+    right: 4vw;
     top: 0;
     opacity: 0;
     animation: ${appear} 1s linear forwards 8s;
@@ -132,7 +119,6 @@ const Dialog = styled.img`
     opacity: 0;
     animation: ${appearAndFade} 4s linear forwards 2s;
   }
-
   position: absolute;
   z-index: 10;
 `;
@@ -140,21 +126,21 @@ const Dialog = styled.img`
 const Title = styled.h1`
   font-size: 3.5vw;
   font-weight: 900;
-  height:10vw;
+  height: 10vw;
   margin: 1vw;
   color: #fff;
 `;
 const SubTitle = styled.h3`
   font-size: 1.5vw;
   font-weight: 500;
-    height:2vw;
+  height: 2vw;
   margin: 0.8vw;
   color: #fff;
 `;
 const Info = styled.p`
   font-size: 0.9vw;
-   height:2.2vw;
-line-height:1.2em;
+  height: 2.2vw;
+  line-height: 1.2em;
   font-weight: 100;
   margin: 0;
   padding-left: 0.5vw;
@@ -190,21 +176,22 @@ function App() {
             <Title>Can you identify your thoughts??</Title>
             <SubTitle>What would God say about them?</SubTitle>
             <Paragraphs>
-            <Info>
-              Sometimes the enemy lies to us, and we start to believe those
-              lies.
-            </Info>
-            <Info>
-              The only way to spot a lie is to know the truth, Do you know where to find the truth? In the word of God, the
-              Bible.
-            </Info>
-            <Info>
-              This website is meant to be a tool to find and learn the truth
-            </Info>
-            <Info>
-              Just type in the thoughts you are battling with and find verses
-              related to them. You can create your own study decks to help you remember them.
-            </Info>
+              <Info>
+                Sometimes the enemy lies to us, and we start to believe those
+                lies.
+              </Info>
+              <Info>
+                The only way to spot a lie is to know the truth, Do you know
+                where to find the truth? In the word of God, the Bible.
+              </Info>
+              <Info>
+                This website is meant to be a tool to find and learn the truth
+              </Info>
+              <Info>
+                Just type in the thoughts you are battling with and find verses
+                related to them. You can create your own study decks to help you
+                remember them.
+              </Info>
             </Paragraphs>
             <Lie />
           </Left>
