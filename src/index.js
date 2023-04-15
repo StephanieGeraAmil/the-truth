@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import "./fonts/magnolia_sky.ttf";
 import "./fonts/SulphurPoint-Regular.ttf";
@@ -10,17 +10,17 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers/reducers.js";
+import { Landing } from "./components/landing";
 import { DeckDashboard } from "./components/deckDashboard";
 import { Deck } from "./components/deck";
-import { Nav } from "./components/nav";
+// import { Nav } from "./components/nav";
 import { NewDeck } from "./components/newDeck";
-import  { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
-
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
       font-weight: inherit;
       font-family: inherit;
       color: inherit;
+  
   }
 
   a {
@@ -38,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
   body,
   #root {
     height: 100%;
-    font-family: Helvetica, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 100;
     margin: 0;
   }
@@ -50,30 +51,25 @@ const GlobalStyle = createGlobalStyle`
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
+      <BrowserRouter>
       <Provider store={store}>
         <Auth0Provider
           domain="dev-7pl37pty.us.auth0.com"
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
-          redirectUri={ process.env.REDIRECTION_URL|| window.location.origin }
+          redirectUri={process.env.REDIRECTION_URL || window.location.origin}
         >
-            <GlobalStyle />
-          <Nav></Nav>
+          <GlobalStyle />
+          {/* <Nav></Nav> */}
           <Routes>
-            <Route path="/" element={<App />}>
-              {" "}
-            </Route>
-            <Route path="/decks" element={<DeckDashboard />}>
-              {" "}
-            </Route>
-            <Route path="/newdeck" element={<NewDeck />}>
-              {" "}
-            </Route>
-            <Route path="/decks/:id" element={<Deck />} />
+            <Route path="/the-truth/" element={<Landing />} />
+            <Route path="/the-truth/home" element={<App />} />
+            <Route path="/the-truth/decks" element={<DeckDashboard />} />
+            <Route path="/the-truth/newdeck" element={<NewDeck />} />
+            <Route path="/the-truth/decks/:id" element={<Deck />} />
           </Routes>
         </Auth0Provider>
       </Provider>
-    </HashRouter>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

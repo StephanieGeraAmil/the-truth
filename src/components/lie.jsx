@@ -3,55 +3,66 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVersesWithTag } from "../actions/verseActions";
 
 import styled, { css } from "styled-components";
+import { StyledButton } from "./shared_styles/styled_buttons";
 
 const LieContainer = styled.div`
-  background-color: rgb(241, 158, 158);
-  border-radius: 10px;
-  padding: 15px;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 3.8vw;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
 `;
 
-const LieParagraph = styled.p`
-  margin: 0;
-`;
+
 
 const LieInput = styled.input`
+  width: 100%;
+  height: 80%;
   background-color: #fff;
-  border-radius: inherit;
+  border-radius: 2vw;
   border: 0;
-  height: 30px;
-
+  font-size: 1.2vw;
+  font-weight: 300;
   color: inherit;
-  padding: 10px;
-  margin: 15px 0;
-  &:active,&:focus{
+  padding: 0.5vw;
+  margin: 0;
+  &:active,
+  &:focus {
     background-color: #fff;
-
-  border: 0;
-  height: 30px;
-  color: inherit;
-  padding: 10px;
-
-  z-index: 2;
-
+    border: 0;
+    color: inherit;
+    z-index: 2;
   }
 `;
 
 const LieSuggestions = styled.div`
   box-sizing: border-box;
   background-color: #fff;
-  border-radius: 0 0 10px 10px;
-  padding: 10px;
+  border-radius: 0 0 2vw 2vw;
+
   margin-top: -25px;
+  font-size: 1vw;
   z-index: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   line-height: 2em;
 `;
+const SearchButton = styled(StyledButton)`
+  position: absolute;
+  background: #201352;
+  font-size: 1.2vw;
+  color: #fff;
 
+  top: 50%;
+
+  right: 0;
+  transform: translateY(-50%) translateX(-2%);
+  z-index: 10;
+
+`;
 export const Lie = () => {
   const dispatch = useDispatch();
   const tagsSelector = (state) => (state.tags ? state.tags : null);
@@ -75,20 +86,19 @@ export const Lie = () => {
   const handleKeyPress = (e) => {
     setDisplay(true);
     if (e.key === "Enter") {
-          setDisplay(!display);
-      const search=tags.filter((element) => element.name===textInput);
-      
-      if(search.length===1)searchResults(search[0]);
-  
+      setDisplay(!display);
+      const search = tags.filter((element) => element.name === textInput);
+
+      if (search.length === 1) searchResults(search[0]);
     }
   };
   const handleClickOutside = (event) => {
     const { current: wrap } = wrapperRef;
     if (wrap && !wrap.contains(event.target)) {
       setDisplay(false);
-        const search=tags.filter((element) => element.name===textInput)
-      
-      if(search.length===1)searchResults(search[0]);
+      const search = tags.filter((element) => element.name === textInput);
+
+      if (search.length === 1) searchResults(search[0]);
     }
   };
   const searchResults = (tag) => {
@@ -109,31 +119,32 @@ export const Lie = () => {
 
   return (
     <LieContainer>
-      <LieParagraph>I'm thinking...</LieParagraph>
+  
       <LieInput
         onChange={(event) => handleInputChange(event)}
         onClick={() => setDisplay(!display)}
         onKeyPress={(e) => handleKeyPress(e)}
         value={textInput}
-      ></LieInput>
-      {display ? (
+      />
+
+      <SearchButton>Search</SearchButton>
+      {display && (
         <LieSuggestions ref={wrapperRef}>
-          {tags && tags
-            .filter(
-              (element) =>
-                element.name.indexOf(textInput.toLocaleLowerCase()) > -1
-            )
-            .map((element) => (
-              <span
-                key={element.id}
-                onClick={() => handleClickOnSuggestion(element)}
-              >
-                {element.name}
-              </span>
-            ))}
+          {tags &&
+            tags
+              .filter(
+                (element) =>
+                  element.name.indexOf(textInput.toLocaleLowerCase()) > -1
+              )
+              .map((element) => (
+                <span
+                  key={element.id}
+                  onClick={() => handleClickOnSuggestion(element)}
+                >
+                  {element.name}
+                </span>
+              ))}
         </LieSuggestions>
-      ) : (
-        <LieParagraph>but...</LieParagraph>
       )}
     </LieContainer>
   );

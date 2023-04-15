@@ -6,13 +6,13 @@ import styled, { css } from "styled-components";
 
 
 const TruthContainer = styled.div`
-  box-sizing: border-box;
+  /* box-sizing: border-box;
   background-color: rgb(138, 175, 205);
   border-radius: 10px;
   padding: 15px;
-  width: 50%;
+  width: 50%; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 const ListVersesContainer = styled.div`
   background-color: #fff;
@@ -36,7 +36,7 @@ export const Truth = () => {
 
   return (
     <TruthContainer>
-      <TruthParagraph>God says...</TruthParagraph>
+      {/* <TruthParagraph>God says...</TruthParagraph> */}
       <ListVersesContainer>
         {versesOfTag.map((element) => (
             <Verse verse={element} key={`${element.id}_div`} />

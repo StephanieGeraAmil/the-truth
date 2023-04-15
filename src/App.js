@@ -26,16 +26,14 @@ const AppContainer = styled.div`
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllTags());
+  //  dispatch(getAllTags());
   }, []);
 
   return (    
       <ThemeProvider theme={theme}>
         <AppContainer>
-          <Lie></Lie>
+          {/* <Lie></Lie> */}
           <Truth></Truth>
-          {/* <div className="videos_list"></div>
-         <div className="books_list"></div>  */}
         </AppContainer>
       </ThemeProvider>
   );

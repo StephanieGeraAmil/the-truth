@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 export const StyledButton = styled.button`
-  width: 25px;
+  width: 7vw;
+  height:70%;
+  z-index:10;
   border: 0;
-  background-color: #fff;
+  border-radius:2vw;
+  background-color: #201352;
   display: flex;
-  flex-direction: column;
+
   justify-content: center;
-  margin: 5px;
+  align-items:center;
+
+
 
 
   
