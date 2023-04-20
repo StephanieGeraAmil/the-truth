@@ -55,7 +55,7 @@ export const Truth = () => {
             <Verse verse={element} />
           </TruthCard>
         ))}
-      <>
+      {/* <>
             <TruthCard key={"2"}>
             </TruthCard>
             <TruthCard key={"3"}>
@@ -72,7 +72,7 @@ export const Truth = () => {
             </TruthCard>
             <TruthCard key={"9"}>
             </TruthCard>
-          </>
+          </> */}
     </TruthContainer>
   );
 };
