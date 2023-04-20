@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import "./fonts/magnolia_sky.ttf";
 import "./fonts/SulphurPoint-Regular.ttf";
@@ -24,14 +24,7 @@ const store = createStore(
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
       box-sizing: border-box;
-      font-size: inherit;
-      font-weight: inherit;
-      font-family: inherit;
-      color: inherit;
-          height: 100%;
-  
   }
-
   a {
     text-decoration: none;
   }
@@ -43,15 +36,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 100;
     margin: 0;
   }
-  #root {
-  height: 100%;
+  textarea:focus, input:focus{
+    outline: none;
   }
-
 `;
 
 ReactDOM.render(
   <React.StrictMode>
-      <BrowserRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <Auth0Provider
           domain="dev-7pl37pty.us.auth0.com"
@@ -68,7 +60,7 @@ ReactDOM.render(
           </Routes>
         </Auth0Provider>
       </Provider>
-      </BrowserRouter>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

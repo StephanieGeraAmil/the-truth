@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVersesWithTag } from "../actions/verseActions";
+import { getVersesRelated } from "../actions/verseActions";
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { StyledButton } from "./shared_styles/styled_buttons";
 
 const LieContainer = styled.div`
   position: relative;
   width: 100%;
   height: 3.8vw;
-  display:flex;
-  flex-direction:row;
-  justify-content:center;
-  align-items:center;
-  margin-top:1.5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 500px) {
+    height: 15vw;
+  }
 `;
-
-
 
 const LieInput = styled.input`
   width: 100%;
@@ -26,29 +26,50 @@ const LieInput = styled.input`
   border: 0;
   font-size: 1.2vw;
   font-weight: 300;
-  color: inherit;
-  padding: 0.5vw;
+
+  padding: 1vw;
   margin: 0;
+  box-shadow: 5px 3px 10px #333;
+  @media (max-width: 500px) {
+    border-radius: 20px;
+    height: 12vw;
+    font-size: 1.2em;
+    padding: 1em;
+  }
   &:active,
   &:focus {
-    background-color: #fff;
-    border: 0;
-    color: inherit;
     z-index: 2;
   }
 `;
 
 const LieSuggestions = styled.div`
-  box-sizing: border-box;
+  padding-top: 2vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  width: 100%;
+  position: absolute;
+  top: 2vw;
+  left: 0;
   background-color: #fff;
   border-radius: 0 0 2vw 2vw;
-  margin-top: -25px;
+
   font-size: 1vw;
   z-index: 1;
-  width: 100%;
+
   display: flex;
   flex-direction: column;
   line-height: 2em;
+  box-shadow: 5px 3px 10px #333;
+  @media (max-width: 500px) {
+    top: 2.2em;
+    padding: 1em;
+    padding-top: 1.8em;
+    border-radius: 0 0 20px 20px;
+    font-size: 1em;
+  }
+  @media (max-width: 400px) {
+     top: 1.5em;
+  }
 `;
 const SearchButton = styled(StyledButton)`
   position: absolute;
@@ -59,12 +80,17 @@ const SearchButton = styled(StyledButton)`
   right: 0;
   transform: translateY(-50%) translateX(-2%);
   z-index: 10;
-
+  @media (max-width: 500px) {
+    border-radius: 20px;
+    height: 10vw;
+    width: 25vw;
+    font-size: 1.2em;
+  }
 `;
 export const Lie = () => {
   const dispatch = useDispatch();
-  const tagsSelector = (state) => (state.tags ? state.tags : null);
-  const tags = useSelector(tagsSelector);
+  const thoughtSelector = (state) => (state.thoughts ? state.thoughts : null);
+  const thoughts = useSelector(thoughtSelector);
 
   const wrapperRef = useRef(null);
 
@@ -77,31 +103,31 @@ export const Lie = () => {
   };
   const handleClickOnSuggestion = (suggestion) => {
     setDisplay(!display);
-    setTextInput(suggestion.name);
-    searchResults(suggestion);
+
+    setTextInput(suggestion);
+
+    dispatch(getVersesRelated(suggestion));
   };
 
   const handleKeyPress = (e) => {
     setDisplay(true);
     if (e.key === "Enter") {
       setDisplay(!display);
-      const search = tags.filter((element) => element.name === textInput);
-
-      if (search.length === 1) searchResults(search[0]);
+      dispatch(getVersesRelated(textInput));
     }
+  };
+  const handleSearch = () => {
+    setDisplay(false);
+    dispatch(getVersesRelated(textInput));
   };
   const handleClickOutside = (event) => {
     const { current: wrap } = wrapperRef;
     if (wrap && !wrap.contains(event.target)) {
       setDisplay(false);
-      const search = tags.filter((element) => element.name === textInput);
-
-      if (search.length === 1) searchResults(search[0]);
+      // dispatch(getVersesRelated(textInput));
     }
   };
-  const searchResults = (tag) => {
-    dispatch(getVersesWithTag(tag.id));
-  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -117,7 +143,6 @@ export const Lie = () => {
 
   return (
     <LieContainer>
-  
       <LieInput
         onChange={(event) => handleInputChange(event)}
         onClick={() => setDisplay(!display)}
@@ -125,21 +150,20 @@ export const Lie = () => {
         value={textInput}
       />
 
-      <SearchButton>Search</SearchButton>
+      <SearchButton onClick={() => handleSearch()}>Search</SearchButton>
       {display && (
         <LieSuggestions ref={wrapperRef}>
-          {tags &&
-            tags
+          {thoughts &&
+            thoughts
               .filter(
-                (element) =>
-                  element.name.indexOf(textInput.toLocaleLowerCase()) > -1
+                (element) => element.indexOf(textInput.toLocaleLowerCase()) > -1
               )
               .map((element) => (
                 <span
-                  key={element.id}
+                  key={element}
                   onClick={() => handleClickOnSuggestion(element)}
                 >
-                  {element.name}
+                  {element}
                 </span>
               ))}
         </LieSuggestions>

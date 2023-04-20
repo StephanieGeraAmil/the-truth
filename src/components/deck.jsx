@@ -6,8 +6,8 @@ import {
   addCardToDeck,
   deleteCardFromDeck,
 } from "../actions/cardActions";
-import { getVersesOfCard, deleteVerseFromCard } from "../actions/verseActions";
-import { getNotesOfCard, deleteNoteFromCard } from "../actions/noteActions";
+import {  deleteVerseFromCard } from "../actions/verseActions";
+import {  deleteNoteFromCard } from "../actions/noteActions";
 import Add from "../assets/add.svg";
 import Delete from "../assets/delete.svg";
 import Prev from "../assets/prev.svg";
@@ -128,8 +128,8 @@ export const Deck = () => {
 
   useEffect(() => {
     if (cardShown) {
-      dispatch(getVersesOfCard(cardShown));
-      dispatch(getNotesOfCard(cardShown));
+      // dispatch(getVersesOfCard(cardShown));
+      // dispatch(getNotesOfCard(cardShown));
     }
   }, [cardShown]);
 

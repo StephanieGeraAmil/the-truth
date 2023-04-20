@@ -12,7 +12,7 @@ export default (verses = [], action) => {
     case actions.DELETE_VERSE:
       return verses.filter((verse) => verse.id !== action.payload);
 
-    case actions.GET_VERSES_OF_TAG:
+    case actions.GET_VERSES_RELATED:
       return action.payload;
 
     case actions.GET_VERSES_OF_CARD:

@@ -5,14 +5,14 @@ export const DELETE_VERSE="verse/delete_verse";
 // export const GET_VERSES_OF_TAG= "verse/get_verses_of_tag";
 export const GET_TAGS_OF_VERSE= "verse/get_tags_of_verse";
 
-export const CREATE_TAG="tag/create_tag";
-export const UPDATE_TAG="tag/update_tag";
-export const DELETE_TAG="tag/delete_tag";
-export const GET_ALL_TAGS= "tag/get_all_tags";
+// export const CREATE_TAG="tag/create_tag";
+// export const UPDATE_TAG="tag/update_tag";
+// export const DELETE_TAG="tag/delete_tag";
+export const GET_ALL_THOUGHTS= "thought/get_all_thoughts";
 // export const GET_TAGS_OF_VERSE= "tag/get_tags_of_verse";
-export const GET_VERSES_OF_TAG= "tag/get_verses_of_tag";
-export const ADD_TAG_VERSE= "tag/add_verses_of_tag";
-export const DELETE_TAG_VERSE= "tag/delete_verses_of_tag";
+export const GET_VERSES_RELATED= "thought/get_verses_related";
+export const ADD_THOUGHT_VERSE= "thought/add_verses_to_thought";
+export const DELETE_THOUGHT_VERSE= "thought/delete_verses_to_thought";
 
 export const CREATE_NOTE="note/create_note";
 export const UPDATE_NOTE="note/update_note";

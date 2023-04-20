@@ -1,13 +1,18 @@
 import styled from "styled-components";
 export const VerseContainer = styled.div`
- padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  //color:#06035c;
+  justify-content: space-around;
+  margin :0;
 `;
+export const VerseScripture = styled.p`
+ font-weight: 100;
+   margin :0;
+  `;
+
 export const VerseRef = styled.p`
- align-self: flex-start;
+ align-self: flex-end;
  font-weight: 400;
-  //color: #06035c;
+    margin :0;
+
   `;
