@@ -34,6 +34,7 @@ const TruthCard = styled(StyledCard)`
   border-radius: 2vw;
   height: 20vh;
   min-width: 40vh; 
+   max-width: 30vw; 
 
   @media (max-width: 500px) {
     min-height: 35vh;
