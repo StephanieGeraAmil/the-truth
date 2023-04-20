@@ -16,11 +16,12 @@ const TruthContainer = styled.div`
   @media (max-width: 500px) {
     flex-direction: column;
     align-items: center;
+    justify-content:flex-start;
     gap: 3vh;
     height: 80vh;
     margin:auto;
     margin-top: 5vh;
-    width:90%;
+    width:100%;
 
   }
 `;
@@ -38,6 +39,7 @@ const TruthCard = styled(StyledCard)`
 
   @media (max-width: 500px) {
     min-height: 35vh;
+      min-width: 80vw; 
       width:90%;
         margin: auto;
   }
