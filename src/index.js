@@ -1,19 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import "./fonts/magnolia_sky.ttf";
-import "./fonts/SulphurPoint-Regular.ttf";
-import { Auth0Provider } from "@auth0/auth0-react";
-import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers/reducers.js";
+import { Auth0Provider } from "@auth0/auth0-react";
+
+import { Nav } from "./components/nav";
+import App from "./App";
 import { DeckDashboard } from "./components/deckDashboard";
 import { Deck } from "./components/deck";
-// import { Nav } from "./components/nav";
 import { NewDeck } from "./components/newDeck";
+
 import { createGlobalStyle } from "styled-components";
 
 const store = createStore(
@@ -51,7 +51,7 @@ ReactDOM.render(
           redirectUri={process.env.REDIRECTION_URL || window.location.origin}
         >
           <GlobalStyle />
-          {/* <Nav></Nav> */}
+          <Nav/>
           <Routes>
             <Route path="/the-truth/" element={<App />} />
             <Route path="/the-truth/decks" element={<DeckDashboard />} />

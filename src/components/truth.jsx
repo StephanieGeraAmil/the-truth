@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { Verse } from "./verse";
 
 import styled from "styled-components";
-
 import { StyledCard } from "./shared_styles/styled_cards";
 
 const TruthContainer = styled.div`

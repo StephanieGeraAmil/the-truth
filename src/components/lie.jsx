@@ -26,7 +26,6 @@ const LieInput = styled.input`
   border: 0;
   font-size: 1.2vw;
   font-weight: 300;
-
   padding: 1vw;
   margin: 0;
   box-shadow: 5px 3px 10px #333;
@@ -52,10 +51,8 @@ const LieSuggestions = styled.div`
   left: 0;
   background-color: #fff;
   border-radius: 0 0 2vw 2vw;
-
   font-size: 1vw;
   z-index: 1;
-
   display: flex;
   flex-direction: column;
   line-height: 2em;
@@ -103,9 +100,7 @@ export const Lie = () => {
   };
   const handleClickOnSuggestion = (suggestion) => {
     setDisplay(!display);
-
     setTextInput(suggestion);
-
     dispatch(getVersesRelated(suggestion));
   };
 

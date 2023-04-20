@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-// import { Link } from "react-router-dom";
 import { deleteDeck } from "./../actions/deckActions.js";
-import Add from "../assets/add.svg";
-import Delete from "../assets/delete.svg";
 
 import styled from "styled-components";
-import { PageTitle } from "./shared_styles/styled_page_headigns";
+import { Title } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
+
 const DeckDashboardContainer = styled.div`
   padding: 30px;
   width: 100%;
@@ -66,17 +63,17 @@ export const DeckDashboard = () => {
 
   return (
     <div>
-      <PageTitle>Decks</PageTitle>
+      <Title>Decks</Title>
       <DeckDashboardContainer>
         {decks.length > 0 ? (
           decks.map((element) => (
             <div key={element.name + "deck"}>
               <DeckPreviewContainer>
-                <StyledLink whiteButton to={`/decks/${element.id}`}>
+                <StyledLink  to={`the-truth/decks/${element.id}`}>
                   <h1>{element.name}</h1>
                 </StyledLink>
                 <StyledButton topRight onClick={() => removeDeck(element)}>
-                  <img src={Delete} alt="delete_deck" />
+           delete
                 </StyledButton>
               </DeckPreviewContainer>
             </div>
@@ -84,8 +81,8 @@ export const DeckDashboard = () => {
         ) : (
           <p>User without decks yet</p>
         )}
-        <StyledLink whiteButton to={`/newDeck`}>
-          <img src={Add} alt="add_deck" />
+        <StyledLink  to={`../the-truth/newDeck`}>
+          new
         </StyledLink>
       </DeckDashboardContainer>
     </div>

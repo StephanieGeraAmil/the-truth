@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Plus from "../assets/plus.svg";
+// import Plus from "../assets/plus.svg";
 import styled, { css } from "styled-components";
 
 import {

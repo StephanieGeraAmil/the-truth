@@ -1,7 +1,7 @@
-import styled,{css} from "styled-components";
-export const Form= styled.div`
-   margin-top:10px;
-  height:80%;
+import styled, { css } from "styled-components";
+export const Form = styled.div`
+  margin-top: 10px;
+  height: 80%;
   width: 80%;
   padding: 20px;
 
@@ -12,33 +12,30 @@ export const Form= styled.div`
   justify-content: space-evenly;
   align-items: center;
   background-color: #fff;
-  position:absolute;
-  top:50%;
-  left:50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   translate: -49% -55%;
   ${(props) =>
     props.embeded &&
     css`
-      box-shadow:none;
-      border:none;
+      box-shadow: none;
+      border: none;
       width: 90%;
       height: 90%;
-      padding:0;
-
+      padding: 0;
     `}
-      ${(props) =>
+  ${(props) =>
     props.little &&
     css`
-        height:40%;
-  width: 40%;
-
+      height: 40%;
+      width: 40%;
     `}
- 
-  `;
-  export const FormInput= styled.input`
-     margin-top:10px;
+`;
+export const FormInput = styled.input`
+  margin-top: 10px;
   width: 80%;
-  border:none;
+  border: none;
   border-bottom: 1px solid grey;
   resize: none;
   outline: none;
@@ -46,26 +43,22 @@ export const Form= styled.div`
   ${(props) =>
     props.little &&
     css`
-     width: 10%;
+      width: 10%;
     `}
-    ${(props) =>
+  ${(props) =>
     props.medium &&
     css`
-     width: 40%;
+      width: 40%;
     `}
-  `;
-    export const FormTextArea= styled.textarea`
-    margin-top:20px;
-     width: 80%;
- height: 80%;
-   box-shadow: inset 0 0 5px #595959;
-     border-radius: 10px;
-  border:none;
+`;
+export const FormTextArea = styled.textarea`
+  margin-top: 20px;
+  width: 80%;
+  height: 80%;
+  box-shadow: inset 0 0 5px #595959;
+  border-radius: 10px;
+  border: none;
   background-color: transparent;
   resize: none;
   outline: none;
-  `;
-
-  
-  
-
+`;

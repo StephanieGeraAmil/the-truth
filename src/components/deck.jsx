@@ -6,21 +6,14 @@ import {
   addCardToDeck,
   deleteCardFromDeck,
 } from "../actions/cardActions";
-import {  deleteVerseFromCard } from "../actions/verseActions";
-import {  deleteNoteFromCard } from "../actions/noteActions";
-import Add from "../assets/add.svg";
-import Delete from "../assets/delete.svg";
-import Prev from "../assets/prev.svg";
-import Next from "../assets/next.svg";
-import Bible from "../assets/bible.svg";
-import Note from "../assets/note.svg";
+import { deleteVerseFromCard } from "../actions/verseActions";
+import { deleteNoteFromCard } from "../actions/noteActions";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
 
 import styled, { css } from "styled-components";
-import { PageTitle } from "./shared_styles/styled_page_headigns";
+import { Title } from "./shared_styles/styled_text";
 import { StyledButton } from "./shared_styles/styled_buttons";
-import { Paragraph } from "./shared_styles/styled_content_components";
 import { VerseContainer, VerseRef } from "./shared_styles/verses_styles";
 
 const DeckContainer = styled.div`
@@ -168,23 +161,20 @@ export const Deck = () => {
 
   return (
     <DeckContainer>
-      {deck && <PageTitle>{deck.name}</PageTitle>}
+      {deck && <Title>{deck.name}</Title>}
       {cardShown && (
         <DeckContent>
           {currentIndex !== 0 ? (
-            <StyledButton onClick={() => prevCard()}>
-              {" "}
-              <img src={Prev} alt="prev_card" />
-            </StyledButton>
+            <StyledButton onClick={() => prevCard()}>next</StyledButton>
           ) : (
             <StyledButton hidden onClick={() => prevCard()}>
-              <img src={Prev} alt="prev_card" />
+              prev
             </StyledButton>
           )}
 
           <CardContainer>
             <StyledButton topRight onClick={() => deleteCard()}>
-              <img src={Delete} alt="delete_card" />
+              delete
             </StyledButton>
 
             {formShown && formShown === "Note" && (
@@ -199,7 +189,7 @@ export const Deck = () => {
                 updateFormShown={setFormShown}
               ></NewVerse>
             )}
-            <CardContent>
+            {/* <CardContent>
               {note && (
                 <NoteContainer
                   onMouseOver={() => setIsHoveringNote(true)}
@@ -213,7 +203,7 @@ export const Deck = () => {
                         dispatch(deleteNoteFromCard(note, cardShown))
                       }
                     >
-                      <img src={Delete} alt="delete_note_from_card" />
+                 
                     </StyledButton>
                   )}
                 </NoteContainer>
@@ -243,40 +233,39 @@ export const Deck = () => {
                           dispatch(deleteVerseFromCard(verse, cardShown))
                         }
                       >
-                        <img src={Delete} alt="delete_verse_from_card" />
+                       
                       </StyledButton>
                     )}
                   </VerseDivContainer>
                 ))}
-            </CardContent>
+            </CardContent> */}
             <AddContentButtonsContainer>
               {!note && (
                 <StyledButton onClick={() => setFormShown("Note")}>
-                  <img src={Note} alt="add_to_note_to_card" />
+                add note
                 </StyledButton>
               )}
               {verses.length == 0 && (
                 <StyledButton onClick={() => setFormShown("Verse")}>
-                  <img src={Bible} alt="add_to_verse_to_card" />
+                  add verse
                 </StyledButton>
               )}
             </AddContentButtonsContainer>
           </CardContainer>
           {currentIndex !== cards.length - 1 ? (
             <StyledButton onClick={() => nextCard()}>
-              {" "}
-              <img src={Next} alt="next_card" />
+      next
             </StyledButton>
           ) : (
             <StyledButton hidden onClick={() => nextCard()}>
-              <img src={Next} alt="next_card" />
+      next
             </StyledButton>
           )}
         </DeckContent>
       )}
 
       <StyledButton onClick={() => addCard()}>
-        <img src={Add} alt="add_card_to_deck" />
+      add card
       </StyledButton>
     </DeckContainer>
   );
