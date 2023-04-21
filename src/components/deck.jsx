@@ -7,6 +7,7 @@ import {
   createCard,
   deleteCard,
   cleanCards,
+  deleteResourceFromCard,
 } from "../actions/cardActions";
 import { createCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 import { NewNote } from "./newNote";
@@ -105,38 +106,30 @@ export const Deck = () => {
   const { id } = useParams();
   const deck = decks.find((element) => element.id == id);
 
-  const [cardShown, setCardShown] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
 
   useEffect(() => {
     dispatch(getCardsOfDeck(deck));
+  
     return () => {
       dispatch(cleanCards());
     };
   }, []);
-  useEffect(() => {
-    if (cards.length > 0) {
-      setCardShown(cards[currentIndex]);
-    }else{
-      setCardShown("")
-    }
-  }, [cards]);
+
 
   const nextCard = () => {
     setFormShown(null);
-    setCardShown(cards[currentIndex + 1]);
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
     setFormShown(null);
-    setCardShown(cards[currentIndex - 1]);
     setCurrentIndex(currentIndex - 1);
   };
   const removeCard = () => {
     if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
-    dispatch(deleteCard(cardShown.id));
-    dispatch(deleteCardFromDeck(deck.id, cardShown.id));
+    dispatch(deleteCard(cards[currentIndex].id));
+    dispatch(deleteCardFromDeck(deck.id, cards[currentIndex].id));
   };
   const addCard = () => {
     setFormShown(null);
@@ -149,86 +142,51 @@ export const Deck = () => {
   return (
     <DeckContainer>
       {deck && <Title>{deck.name}</Title>}
-      {cardShown && (
+      {cards.length>0 && (
         <DeckContent>
           {currentIndex !== 0 ? (
             <StyledButton transparent onClick={() => prevCard()}>
               prev
             </StyledButton>
           ) : (
-            <StyledButton transparent hidden onClick={() => prevCard()}>
-              prev
-            </StyledButton>
+            <></>
           )}
 
           <CardContainer>
-            <StyledButton transparent topRight onClick={() => removeCard()}>
-              delete
+            <StyledButton transparent onClick={() => removeCard()}>
+              -
             </StyledButton>
 
-            {formShown && formShown === "Note" && (
+            {formShown && formShown === "Note" &&cards[currentIndex]&& (
               <NewNote
-                card_id={cardShown.id}
+                card_id={cards[currentIndex].id}
                 updateFormShown={setFormShown}
               ></NewNote>
             )}
-            {formShown && formShown === "Verse" && (
+            {formShown && formShown === "Verse"&&cards[currentIndex] && (
               <NewVerse
-                card_id={cardShown.id}
+                card_id={cards[currentIndex].id}
                 updateFormShown={setFormShown}
               ></NewVerse>
             )}
-            <CardContent>{cardShown.id}</CardContent>
-            {/* <CardContent>
-              {note && (
-                <NoteContainer
-                  onMouseOver={() => setIsHoveringNote(true)}
-                  onMouseLeave={() => setIsHoveringNote(false)}
-                >
-                  <p>{note.content}</p>
-                  {isHoveringNote && (
-                    <StyledButton
-                      adyacent
-                      onClick={() =>
-                        dispatch(deleteNoteFromCard(note, cardShown))
-                      }
-                    >
-                 
-                    </StyledButton>
-                  )}
-                </NoteContainer>
-              )}
-
-              {verses &&
-                verses.map((verse) => (
-                  <VerseDivContainer
-                    onMouseOver={() => setIsHoveringVerse(true)}
-                    onMouseLeave={() => setIsHoveringVerse(false)}
+            <CardContent>
+              {cards[currentIndex]&&cards[currentIndex].resources.map((res) => (
+                <div key={res.id}>
+              
+                    {res.content ? res.content : res.scripture}
+                  
+                  <StyledButton
+                    transparent
+                    onClick={() =>
+                      dispatch(deleteResourceFromCard(res.id, cards[currentIndex].id))
+                    }
                   >
-                    <VerseContainer key={`${verse.id}`}>
-                      <Paragraph>{verse.scripture}</Paragraph>
-                      <VerseRef>
-                        {verse.book.charAt(0).toUpperCase() +
-                          verse.book.slice(1) +
-                          " " +
-                          verse.chapter +
-                          ":" +
-                          verse.verse_number}
-                      </VerseRef>
-                    </VerseContainer>
-                    {isHoveringVerse && (
-                      <StyledButton
-                        adyacent
-                        onClick={() =>
-                          dispatch(deleteVerseFromCard(verse, cardShown))
-                        }
-                      >
-                       
-                      </StyledButton>
-                    )}
-                  </VerseDivContainer>
-                ))}
-            </CardContent> */}
+                   -
+                  </StyledButton>
+                </div >
+              ))}
+            </CardContent>
+  
             <AddContentButtonsContainer>
               <StyledButton transparent onClick={() => setFormShown("Note")}>
                 add note
@@ -242,11 +200,7 @@ export const Deck = () => {
             <StyledButton transparent onClick={() => nextCard()}>
               next
             </StyledButton>
-          ) : (
-            <StyledButton transparent hidden onClick={() => nextCard()}>
-              next
-            </StyledButton>
-          )}
+          ) :<></>}
         </DeckContent>
       )}
 

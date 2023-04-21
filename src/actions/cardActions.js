@@ -72,13 +72,14 @@ export const deleteResourceFromCard =
   (Resource_id, Card_id) => async (dispatch) => {
     try {
       // await api.deleteCard(Card_id);
+     
 
          setCards(cards.map((card) =>
         card.id === Card_id
           ? {
               ...card,
               resources: card.resources.filter(
-                (resource) => resource !== Resource_id
+                (resource) => resource.id !== Resource_id
               ),
             }
           : card

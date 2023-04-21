@@ -25,12 +25,7 @@ export const Form = styled.div`
       height: 90%;
       padding: 0;
     `}
-  ${(props) =>
-    props.little &&
-    css`
-      height: 40%;
-      width: 40%;
-    `}
+
 `;
 export const FormInput = styled.input`
   margin-top: 10px;
@@ -40,16 +35,7 @@ export const FormInput = styled.input`
   resize: none;
   outline: none;
   background-color: transparent;
-  ${(props) =>
-    props.little &&
-    css`
-      width: 10%;
-    `}
-  ${(props) =>
-    props.medium &&
-    css`
-      width: 40%;
-    `}
+ 
 `;
 export const FormTextArea = styled.textarea`
   margin-top: 20px;

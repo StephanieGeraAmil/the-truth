@@ -27,7 +27,7 @@ export default (cards = [], action) => {
           ? {
               ...card,
               resources: card.resources.filter(
-                (resource) => resource !== action.payload.Resource_id
+                (resource) => resource.id !== action.payload.Resource_id
               )
             }
           : card
