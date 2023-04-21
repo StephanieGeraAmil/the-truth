@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  getCardsOfDeck,
-  addCardToDeck,
-  deleteCardFromDeck,
-} from "../actions/cardActions";
+import { v4 } from "uuid";
+import { getCardsOfDeck, createCard, deleteCard } from "../actions/cardActions";
+import { createCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 import { deleteVerseFromCard } from "../actions/verseActions";
 import { deleteNoteFromCard } from "../actions/noteActions";
 import { NewNote } from "./newNote";
@@ -148,15 +146,17 @@ export const Deck = () => {
     setCardShown(cards[currentIndex - 1]);
     setCurrentIndex(currentIndex - 1);
   };
-  const deleteCard = () => {
+  const removeCard = () => {
     if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
-    const cardToDelete = { card: cardShown.id };
-    dispatch(deleteCardFromDeck(deck, cardToDelete));
+    dispatch(deleteCard(cardShown.id));
+    dispatch(deleteCardFromDeck(deck.id, cardShown.id));
   };
   const addCard = () => {
     setFormShown(null);
     setCurrentIndex(cards.length);
-    dispatch(addCardToDeck(deck));
+    const card = { id: v4() };
+    dispatch(createCard(card));
+    dispatch(createCardOnDeck(deck.id, card.id));
   };
 
   return (
@@ -165,15 +165,17 @@ export const Deck = () => {
       {cardShown && (
         <DeckContent>
           {currentIndex !== 0 ? (
-            <StyledButton onClick={() => prevCard()}>next</StyledButton>
+            <StyledButton transparent onClick={() => prevCard()}>
+              prev
+            </StyledButton>
           ) : (
-            <StyledButton hidden onClick={() => prevCard()}>
+            <StyledButton transparent hidden onClick={() => prevCard()}>
               prev
             </StyledButton>
           )}
 
           <CardContainer>
-            <StyledButton topRight onClick={() => deleteCard()}>
+            <StyledButton transparent topRight onClick={() => removeCard()}>
               delete
             </StyledButton>
 
@@ -189,6 +191,7 @@ export const Deck = () => {
                 updateFormShown={setFormShown}
               ></NewVerse>
             )}
+            <CardContent>{cardShown.id}</CardContent>
             {/* <CardContent>
               {note && (
                 <NoteContainer
@@ -241,31 +244,31 @@ export const Deck = () => {
             </CardContent> */}
             <AddContentButtonsContainer>
               {!note && (
-                <StyledButton onClick={() => setFormShown("Note")}>
-                add note
+                <StyledButton transparent onClick={() => setFormShown("Note")}>
+                  add note
                 </StyledButton>
               )}
               {verses.length == 0 && (
-                <StyledButton onClick={() => setFormShown("Verse")}>
+                <StyledButton transparent onClick={() => setFormShown("Verse")}>
                   add verse
                 </StyledButton>
               )}
             </AddContentButtonsContainer>
           </CardContainer>
           {currentIndex !== cards.length - 1 ? (
-            <StyledButton onClick={() => nextCard()}>
-      next
+            <StyledButton transparent onClick={() => nextCard()}>
+              next
             </StyledButton>
           ) : (
-            <StyledButton hidden onClick={() => nextCard()}>
-      next
+            <StyledButton transparent hidden onClick={() => nextCard()}>
+              next
             </StyledButton>
           )}
         </DeckContent>
       )}
 
-      <StyledButton onClick={() => addCard()}>
-      add card
+      <StyledButton transparent onClick={() => addCard()}>
+        add card
       </StyledButton>
     </DeckContainer>
   );

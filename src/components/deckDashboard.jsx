@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteDeck } from "./../actions/deckActions.js";
+import {getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
 
 import styled from "styled-components";
-import { Title } from "./shared_styles/styled_text";
+import { Title, SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
 
 const DeckDashboardContainer = styled.div`
@@ -60,6 +60,9 @@ export const DeckDashboard = () => {
   const removeDeck = (deck) => {
     dispatch(deleteDeck(deck.id));
   };
+  useEffect(()=>{ 
+    if(decks.length===0){dispatch(getDecksOfUser("notUserYet"));}
+  },[])
 
   return (
     <div>
@@ -69,11 +72,11 @@ export const DeckDashboard = () => {
           decks.map((element) => (
             <div key={element.name + "deck"}>
               <DeckPreviewContainer>
-                <StyledLink  to={`the-truth/decks/${element.id}`}>
-                  <h1>{element.name}</h1>
+                <StyledLink  to={`../the-truth/decks/${element.id}`}>
+                  <SubTitle >{element.name}</SubTitle>
                 </StyledLink>
-                <StyledButton topRight onClick={() => removeDeck(element)}>
-           delete
+                <StyledButton transparent onClick={() => removeDeck(element)}>
+          -
                 </StyledButton>
               </DeckPreviewContainer>
             </div>
