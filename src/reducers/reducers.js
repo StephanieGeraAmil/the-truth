@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import decksReducer from "./decksReducer.js";
-import notesReducer from "./notesReducer.js";
 import versesReducer from "./versesReducer.js";
 import thoughtsReducer from "./thoughtsReducer.js";
 import usersReducer from "./usersReducer.js";
@@ -12,7 +11,6 @@ export default combineReducers({
   cards: cardsReducer,
   verses: versesReducer,
   decks: decksReducer,
-  note: notesReducer,
   thoughts: thoughtsReducer,
   selected: currentSelectionReducer
 });

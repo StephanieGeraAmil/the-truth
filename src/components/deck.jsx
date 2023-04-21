@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
-import { getCardsOfDeck, createCard, deleteCard } from "../actions/cardActions";
+import {
+  getCardsOfDeck,
+  createCard,
+  deleteCard,
+  cleanCards,
+} from "../actions/cardActions";
 import { createCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
-import { deleteVerseFromCard } from "../actions/verseActions";
-import { deleteNoteFromCard } from "../actions/noteActions";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
-
 import styled, { css } from "styled-components";
 import { Title } from "./shared_styles/styled_text";
 import { StyledButton } from "./shared_styles/styled_buttons";
@@ -99,40 +101,25 @@ export const Deck = () => {
   const decks = useSelector(deckSelector);
   const cardSelector = (state) => (state.cards ? state.cards : null);
   const cards = useSelector(cardSelector);
-  const verseSelector = (state) => (state.verses ? state.verses : null);
-  const verses = useSelector(verseSelector);
-  const noteSelector = (state) => (state.note ? state.note : null);
-  const note = useSelector(noteSelector);
 
   const { id } = useParams();
+  const deck = decks.find((element) => element.id == id);
 
-  const [deck, setDeck] = useState(decks.find((element) => element.id == id));
   const [cardShown, setCardShown] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
-  const [isHoveringNote, setIsHoveringNote] = useState(false);
-  const [isHoveringVerse, setIsHoveringVerse] = useState(false);
 
   useEffect(() => {
     dispatch(getCardsOfDeck(deck));
+    return () => {
+      dispatch(cleanCards());
+    };
   }, []);
-
-  useEffect(() => {
-    if (cardShown) {
-      // dispatch(getVersesOfCard(cardShown));
-      // dispatch(getNotesOfCard(cardShown));
-    }
-  }, [cardShown]);
-
   useEffect(() => {
     if (cards.length > 0) {
-      if (cardShown === "") {
-        setCardShown(cards[0]);
-      } else {
-        setCardShown(cards[currentIndex]);
-      }
-    } else {
-      setCardShown(null);
+      setCardShown(cards[currentIndex]);
+    }else{
+      setCardShown("")
     }
   }, [cards]);
 
@@ -243,16 +230,12 @@ export const Deck = () => {
                 ))}
             </CardContent> */}
             <AddContentButtonsContainer>
-              {!note && (
-                <StyledButton transparent onClick={() => setFormShown("Note")}>
-                  add note
-                </StyledButton>
-              )}
-              {verses.length == 0 && (
-                <StyledButton transparent onClick={() => setFormShown("Verse")}>
-                  add verse
-                </StyledButton>
-              )}
+              <StyledButton transparent onClick={() => setFormShown("Note")}>
+                add note
+              </StyledButton>
+              <StyledButton transparent onClick={() => setFormShown("Verse")}>
+                add verse
+              </StyledButton>
             </AddContentButtonsContainer>
           </CardContainer>
           {currentIndex !== cards.length - 1 ? (

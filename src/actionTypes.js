@@ -36,15 +36,13 @@ export const CREATE_CARD="card/create_card";
 export const UPDATE_CARD="card/update_card";
 export const DELETE_CARD="card/delete_card";
 export const GET_CARDS_OF_DECK= "card/get_cards_of_decks";
-// export const ADD_CARD_DECK= "card/add_card_decks";
-// export const DELETE_CARD_DECK= "card/delete_card_decks";
+
+
 export const GET_VERSES_OF_CARD ="card/get_verses_of_cards";
 export const ADD_CARD_VERSE= "card/add_verses_of_cards";
 export const DELETE_CARD_VERSE= "card/delete_verses_of_cards";
 
-export const GET_NOTES_OF_CARD ="note/get_notes_of_cards";
-export const ADD_CARD_NOTE= "note/add_notes_of_cards";
-export const DELETE_CARD_NOTE= "note/delete_notes_of_cards";
+
 
 
 export const SELECTED_HINT ="selected/select_hint";
@@ -54,3 +52,6 @@ export const SETTING_FORM_FOR_NEW_CARD ="selected/seting_form_to_new_card";
 export const SETTING_FORM_FOR_EDIT_DECK="selected/seting_form_to_edit_deck";
 export const SETTING_FORM_FOR_EDIT_CARD ="selected/seting_form_to_edit_card";
 export const CLEAR_FORM_PURPOSE="selected/unseting_form";
+
+export const ADD_RESOURCE_TO_CARD="card/add_resource_to_card";
+export const DELETE_RESOURCE_FROM_CARD="card/delete_resource_from_card";

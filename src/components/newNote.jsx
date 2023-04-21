@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addNoteToCard,
-} from "../actions/noteActions";
-
+// import {createNote} from "../actions/noteActions";
+import {addResourceToCard} from "../actions/cardActions";
+import { v4 } from "uuid";
 
 import styled, { css } from "styled-components";
 import { Form, FormTextArea } from "./shared_styles/styled_forms";
@@ -15,14 +14,18 @@ export const NewNote = ({card_id, updateFormShown}) => {
   const [textAreaInput, setTextAreaInput] = useState("");
 
   const addNote=()=>{
-    dispatch(addNoteToCard({content:textAreaInput},card_id));
+ 
+     const note={content:textAreaInput, id:v4(), type:"note"}
+    // dispatch(createNote(note));
+     dispatch(addResourceToCard(note,card_id));
     updateFormShown(null);
 
   }
   
   return (
         <Form>
-             <StyledButton topRight onClick={() => updateFormShown(null)}>
+             <StyledButton transparent onClick={() => updateFormShown(null)}>
+              delete
               {/* <img src={Delete} alt="esc" /> */}
             </StyledButton>
           <FormTextArea
@@ -30,7 +33,8 @@ export const NewNote = ({card_id, updateFormShown}) => {
             onChange={(event) => setTextAreaInput(event.target.value)}
             value={textAreaInput}
           ></FormTextArea>
-              <StyledButton onClick={()=>addNote()}>
+              <StyledButton transparent onClick={()=>addNote()}>
+                save
                 {/* <img src={Done} alt="add" /> */}
                 </StyledButton>
         </Form>

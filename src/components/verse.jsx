@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import Plus from "../assets/plus.svg";
 import styled, { css } from "styled-components";
 
 import {
@@ -35,7 +34,7 @@ export const Verse = ({ verse }) => {
   useEffect(() => {}, []);
   return (
     <Container>
-      <Scripture>{verse.verse}</Scripture>
+      <Scripture>{verse.scripture}</Scripture>
       <Ref>{verse.ref}</Ref>
     </Container>
   );

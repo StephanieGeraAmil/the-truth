@@ -173,21 +173,21 @@ function App() {
     <AppContainer>
       <Section>
         <Left>
-          <Title>Can you identify your thoughts??</Title>
-          <SubTitle>What would God say about them?</SubTitle>
+          <Title white >Can you identify your thoughts??</Title>
+          <SubTitle white>What would God say about them?</SubTitle>
           <Paragraphs>
-            <Info>
+            <Info white>
               Sometimes the enemy lies to us, and we start to believe those
               lies.
             </Info>
-            <Info>
+            <Info white>
               The only way to spot a lie is to know the truth, Do you know where
               to find the truth? In the word of God, the Bible.
             </Info>
-            <Info>
+            <Info white>
               This website is meant to be a tool to find and learn the truth
             </Info>
-            <Info>
+            <Info white>
               Just type in the thoughts you are battling with and find verses
               related to them. You can create your own study decks to help you
               remember them.

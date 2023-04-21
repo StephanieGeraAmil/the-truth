@@ -1,37 +1,38 @@
 export const thoughts = [
   {
     key: "ugly",
-    resources: ["6"],
+    verses: ["v6"],
   },
   {
     key: "fear",
-    resources: ["5"],
+    verses: ["v5"],
   },
   {
     key: "uncapable",
-    resources: ["4"],
+    verses: ["v4","v2"],
   },
   {
     key: "not enough",
-    resources: ["3"],
+    verses: ["v3"],
   },
   {
     key: "lazy",
-    resources: ["2"],
+    verses: ["v2"],
   },
   {
     key: "unsure",
-    resources: ["1"],
+    verses: ["v1"],
   },
 ];
-export const decks = [
+
+export let decks = [
   {
     id:"d1",
     name: "acceptance",
     cards: ["c1","c2"],
   },
 ];
-export const cards = [
+export let cards = [
   {
     id:"c1",
     resources: ["v1","n2","n3"],
@@ -81,31 +82,38 @@ export const verses = [
     scripture:
       "I praise you, for I am fearfully and wonderfully made. Wonderful are your works; my soul knows it very well.",
   },
-];
-export const notes = [
-  {
-    id: "n6",
-    text: "God doesn't make mistakes",
-  },
-  {
-    id: "n5",
-    text: "God is in control",
-  },
+ ];
+// export const notes = [
+//   {
+//     id: "n6",
+//     content: "God doesn't make mistakes",
+//   },
+//   {
+//     id: "n5",
+//     content: "God is in control",
+//   },
 
-  {
-    id: "n4",
-    text: "Yes, you can do hard things!",
-  },
-    {
-    id: "n3",
-    text: "Don't think, trust",
-  },
-  {
-    id: "n2",
-    text: "You need to do your part",
-  },
-  {
-    id: "n1",
-    text: "Keep praying and keep on going",
-  },
-];
+//   {
+//     id: "n4",
+//     content: "Yes, you can do hard things!",
+//   },
+//     {
+//     id: "n3",
+//     content: "Don't think, trust",
+//   },
+//   {
+//     id: "n2",
+//     content: "You need to do your part",
+//   },
+//   {
+//     id: "n1",
+//     content: "Keep praying and keep on going",
+//   },
+//];
+
+export const setCards=(newArrayOfCards)=>{
+cards=newArrayOfCards;
+}
+export const setDecks=(newArrayOfDecks)=>{
+decks=newArrayOfDecks;
+}
