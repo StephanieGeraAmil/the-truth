@@ -12,9 +12,10 @@ import {
 import { createCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
+
+import { FaPlus,FaMinus ,FaArrowLeft,FaArrowRight} from "react-icons/fa";
 import styled, { css } from "styled-components";
 import { Title } from "./shared_styles/styled_text";
-import { StyledButton } from "./shared_styles/styled_buttons";
 import { VerseContainer, VerseRef } from "./shared_styles/verses_styles";
 
 const DeckContainer = styled.div`
@@ -24,6 +25,7 @@ const DeckContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 40px;
+  z-index:-10;
 `;
 const DeckContent = styled.div`
   width: 100%;
@@ -31,38 +33,34 @@ const DeckContent = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+
 `;
 const CardContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
-`;
 
-const NoteContainer = styled.div`
+`;
+const NavigationSection = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+
 `;
 
-const VerseDivContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-`;
 const AddContentButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+   z-index:0;
 `;
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   width: 55%;
   height: 250px;
   padding: 30px;
@@ -70,6 +68,7 @@ const CardContainer = styled.div`
   box-shadow: 2px 2px 7px #595959;
   position: relative;
   background-color: #fff;
+   z-index:0;
   &:after {
     height: inherit;
     width: 100%;
@@ -94,6 +93,20 @@ const CardContainer = styled.div`
     content: "";
     background-color: #fff;
   }
+`;
+export const StyledButton = styled.button`
+  width: 7vw;
+  height: 70%;
+  z-index: 0;
+  border:0;
+  background:transparent;
+    ${(props) =>
+    props.hidden &&
+    css`
+      opacity: 0;
+
+    `}
+     
 `;
 
 export const Deck = () => {
@@ -141,21 +154,21 @@ export const Deck = () => {
 
   return (
     <DeckContainer>
-      {deck && <Title>{deck.name}</Title>}
+      {deck && <Title white>{deck.name}</Title>}
       {cards.length>0 && (
         <DeckContent>
-          {currentIndex !== 0 ? (
-            <StyledButton transparent onClick={() => prevCard()}>
-              prev
+          {currentIndex !== 0 && (
+            <StyledButton  onClick={() => prevCard()}>
+             <FaArrowLeft/>
             </StyledButton>
-          ) : (
-            <></>
-          )}
+          ) }
 
           <CardContainer>
-            <StyledButton transparent onClick={() => removeCard()}>
-              -
+            <NavigationSection>
+            <StyledButton onClick={() => removeCard()}>
+            <FaArrowLeft style={{color: 'purple', fontSize: '1.5vw'}}/>
             </StyledButton>
+            </NavigationSection>
 
             {formShown && formShown === "Note" &&cards[currentIndex]&& (
               <NewNote
@@ -181,31 +194,33 @@ export const Deck = () => {
                       dispatch(deleteResourceFromCard(res.id, cards[currentIndex].id))
                     }
                   >
-                   -
+                    <FaMinus style={{color: 'purple', fontSize: '1.5vw'}}/>
                   </StyledButton>
                 </div >
               ))}
             </CardContent>
   
             <AddContentButtonsContainer>
-              <StyledButton transparent onClick={() => setFormShown("Note")}>
-                add note
+              <StyledButton  onClick={() => setFormShown("Note")}>
+                 <FaPlus style={{color: 'purple', fontSize: '1.5vw'}}/> 
+                 note
               </StyledButton>
-              <StyledButton transparent onClick={() => setFormShown("Verse")}>
-                add verse
+              <StyledButton  onClick={() => setFormShown("Verse")}>
+             <FaPlus style={{color: 'purple', fontSize: '1.5vw'}}/>
+             verse
               </StyledButton>
             </AddContentButtonsContainer>
           </CardContainer>
-          {currentIndex !== cards.length - 1 ? (
+          {currentIndex !== cards.length - 1 &&(
             <StyledButton transparent onClick={() => nextCard()}>
-              next
+              <FaArrowRight/>
             </StyledButton>
-          ) :<></>}
+          )}
         </DeckContent>
       )}
 
       <StyledButton transparent onClick={() => addCard()}>
-        add card
+        <FaPlus style={{color: 'purple', fontSize: '1.5vw'}}/>
       </StyledButton>
     </DeckContainer>
   );

@@ -35,11 +35,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: Montserrat, sans-serif;
     font-weight: 100;
     margin: 0;
+      background: #201352;
   }
   textarea:focus, input:focus{
     outline: none;
   }
 `;
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -51,6 +53,7 @@ ReactDOM.render(
           redirectUri={process.env.REDIRECTION_URL || window.location.origin}
         >
           <GlobalStyle />
+          <>
           <Nav/>
           <Routes>
             <Route path="/the-truth/" element={<App />} />
@@ -58,6 +61,7 @@ ReactDOM.render(
             <Route path="/the-truth/newdeck" element={<NewDeck />} />
             <Route path="/the-truth/decks/:id" element={<Deck />} />
           </Routes>
+          </>
         </Auth0Provider>
       </Provider>
     </BrowserRouter>

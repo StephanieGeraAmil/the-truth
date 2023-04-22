@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+    font-family: Montserrat, sans-serif;
 
   ${(props) =>
     props.hidden &&
@@ -25,9 +26,11 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledLink = styled(Link)`
+  font-family: Montserrat, sans-serif;
   border: 0;
   display: flex;
   justify-content: center;
+  font-size:0.8em;
   color: fff;
   margin: 5px;
   z-index: 10;

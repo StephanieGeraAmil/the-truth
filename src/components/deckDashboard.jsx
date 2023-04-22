@@ -1,20 +1,66 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
+import { Link } from "react-router-dom";
+
+import { FaPlus,FaMinus } from "react-icons/fa";
 
 import styled from "styled-components";
 import { Title, SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
 
+
+const StyledTitle = styled(Title)`
+  font-size:  6vw;
+  text-align:center;
+  color:white;
+
+  @media (max-width: 500px) {
+    font-size: 3em;
+  }
+    @media (min-width: 1000px) {
+    font-size: 4vw;
+  }
+`;
+const StyledSubTitle = styled(SubTitle)`
+  font-size:  2.5vw;
+  text-align:center;
+
+
+  @media (max-width: 500px) {
+    font-size: 2em;
+  }
+    @media (min-width: 1000px) {
+    font-size: 2vw;
+  }
+`;
+
 const DeckDashboardContainer = styled.div`
+    width: 100%;
+    height:100%;
+
+
+      z-index: -20;
+
+      padding:0;
+        display: flex;
+        flex-direction:column;
+  align-items: center;
+  justify-content:center;
+  @media (max-width: 500px) {
+    height: 300vh;
+  }
+`;
+
+const DeckListContainer = styled.div`
   padding: 30px;
   width: 100%;
   height: 100%;
+  overflow:auto;
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   gap: 40px;
-  z-index: -1;
+  z-index: 0;
 `;
 const DeckPreviewContainer = styled.div`
   height: 150px;
@@ -26,7 +72,6 @@ const DeckPreviewContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   &:after {
     height: inherit;
     width: 100%;
@@ -65,18 +110,18 @@ export const DeckDashboard = () => {
   },[])
 
   return (
-    <div>
-      <Title>Decks</Title>
-      <DeckDashboardContainer>
+    <DeckDashboardContainer>
+      <StyledTitle>Decks</StyledTitle>
+      <DeckListContainer>
         {decks.length > 0 ? (
           decks.map((element) => (
             <div key={element.name + "deck"}>
               <DeckPreviewContainer>
                 <StyledLink  to={`../the-truth/decks/${element.id}`}>
-                  <SubTitle >{element.name}</SubTitle>
+                  <StyledSubTitle >{element.name}</StyledSubTitle>
                 </StyledLink>
                 <StyledButton transparent onClick={() => removeDeck(element)}>
-          -
+         <FaMinus style={{color: 'purple', fontSize: '1.5vw'}}/>
                 </StyledButton>
               </DeckPreviewContainer>
             </div>
@@ -84,10 +129,10 @@ export const DeckDashboard = () => {
         ) : (
           <p>User without decks yet</p>
         )}
-        <StyledLink  to={`../the-truth/newDeck`}>
-          new
-        </StyledLink>
-      </DeckDashboardContainer>
-    </div>
+        <Link  to={`../the-truth/newDeck`}>
+         <FaPlus style={{color: 'purple', fontSize: '1.5vw'}}/>
+        </Link>
+      </DeckListContainer>
+    </DeckDashboardContainer>
   );
 };

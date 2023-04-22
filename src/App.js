@@ -19,7 +19,6 @@ import aloneThought from "./assets/alone.png";
 import beautifulResponse from "./assets/beautiful.png";
 import withGodResponse from "./assets/withgod.png";
 
-
 const GirlSadImg = styled.img`
   position: absolute;
   z-index: 1;
@@ -131,30 +130,63 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `;
-const Section = styled.div`
-  background: #201352;
+const TruthContainer = styled.div`
+  background: #d9d9d9;
   height: 60vh;
   width: 100%;
+  border-radius: 2vw 2vw 0 0;
+  padding: 2vw;
+  box-shadow: 6px 5px 16px #000;
+
+  @media (max-width: 500px) {
+    height: 110vh;
+    border-radius: 3vw 3vw 0 0;
+  }
+  @media (min-width: 700px) {
+    height: 50vh;
+  }
+  @media (min-width: 850px) {
+    height: 35vh;
+  }
+`;
+const Section = styled.div`
+  background: #201352;
+  height: 55vh;
+  width: 100%;
+
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 0 0 2vw 2vw;
-  box-shadow: 5px 3px 6px #333;
   gap: 3vh;
+
+  /* &:after {
+   content: "";
+    width: 100%;
+    height: 1px;
+    margin-top: 88px;
+    margin-left: -75px;
+    display: block;
+    position: absolute;
+  
+    z-index: -1;
+  } */
   @media (max-width: 500px) {
     flex-direction: column-reverse;
     justify-content: space-around;
-    height: 210vh;
+    height: 240vh;
   }
+  @media (min-width: 700px) {
+    height: 60vh;
+  }
+
   @media (min-width: 850px) {
-    height: 70vh;
+    height: 65vh;
   }
 `;
 
 const AppContainer = styled.div`
   color: "#433e3e";
-  background: #d9d9d9;
   height: 100vh;
   @media (max-width: 500px) {
     height: 300vh;
@@ -173,7 +205,7 @@ function App() {
     <AppContainer>
       <Section>
         <Left>
-          <Title white >Can you identify your thoughts??</Title>
+          <Title white>Can you identify your thoughts??</Title>
           <SubTitle white>What would God say about them?</SubTitle>
           <Paragraphs>
             <Info white>
@@ -204,7 +236,9 @@ function App() {
           <GirlHappyImg src={girlHappyImage} />
         </Wrapper>
       </Section>
-      <Truth />
+      <TruthContainer>
+        <Truth />
+      </TruthContainer>
     </AppContainer>
   );
 }
