@@ -146,31 +146,19 @@ const TruthContainer = styled.div`
     height: 50vh;
   }
   @media (min-width: 850px) {
-    height: 35vh;
+     padding: 1vw;
+    height:30vh;
   }
 `;
 const Section = styled.div`
   background: #201352;
   height: 55vh;
   width: 100%;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 3vh;
-
-  /* &:after {
-   content: "";
-    width: 100%;
-    height: 1px;
-    margin-top: 88px;
-    margin-left: -75px;
-    display: block;
-    position: absolute;
-  
-    z-index: -1;
-  } */
   @media (max-width: 500px) {
     flex-direction: column-reverse;
     justify-content: space-around;
@@ -188,8 +176,12 @@ const Section = styled.div`
 const AppContainer = styled.div`
   color: "#433e3e";
   height: 100vh;
+  overflow:hidden;
   @media (max-width: 500px) {
     height: 300vh;
+  }
+   @media (min-width: 850px) {
+    height: 95vh;
   }
 `;
 

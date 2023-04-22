@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createDeck } from "../actions/deckActions";
+import { Link } from "react-router-dom";
 
 import styled, { css } from "styled-components";
 import { Form, FormInput } from "./shared_styles/styled_forms";
-import { StyledLink } from "./shared_styles/styled_buttons";
 
 const ActionButtonsSection = styled.div`
   width: 100%;
-  height: 5vh;
+  height: 3vh;
   overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 40px;
+`;
+const StyledLink = styled(Link)`
+  font-size: 2vh;
+  color: "#433e3e";
+  margin:0;
+  padding:0;
+
 `;
 export const NewDeck = () => {
   const dispatch = useDispatch();

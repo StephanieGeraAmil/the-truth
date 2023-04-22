@@ -9,13 +9,20 @@ import { Form, FormTextArea } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
 
 const ActionButtonsSection = styled.div`
-  width: 100%;
-  height: 5vh;
+  width: 90%;
+height: 3vh;
   overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 40px;
+`;
+  const Button = styled(StyledButton)`
+  font-size: 2vh;
+  color: "#433e3e";
+  margin:0;
+  padding:0;
+
 `;
 export const NewNote = ({ card_id, updateFormShown }) => {
   const dispatch = useDispatch();
@@ -29,6 +36,7 @@ export const NewNote = ({ card_id, updateFormShown }) => {
     updateFormShown(null);
   };
 
+
   return (
     <Form>
       <FormTextArea
@@ -37,12 +45,12 @@ export const NewNote = ({ card_id, updateFormShown }) => {
         value={textAreaInput}
       ></FormTextArea>
       <ActionButtonsSection>
-        <StyledButton transparent onClick={() => updateFormShown(null)}>
+        <Button transparent onClick={() => updateFormShown(null)}>
           close
-        </StyledButton>
-        <StyledButton transparent onClick={() => addNote()}>
+        </Button>
+        <Button transparent onClick={() => addNote()}>
           save
-        </StyledButton>
+        </Button>
       </ActionButtonsSection>
     </Form>
   );

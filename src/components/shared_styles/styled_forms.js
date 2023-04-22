@@ -1,15 +1,16 @@
 import styled, { css } from "styled-components";
 export const Form = styled.div`
-  margin-top: 10px;
-  height: 150px;
-  width: 230px;
-  padding: 20px;
+  margin-top: auto;
 
-  border-radius: 10px;
+  height: 30vh;
+  width: 40vh;
+  padding: 4vh;
+  z-index: 5;
+  border-radius: 2vh;
   box-shadow: 2px 2px 7px #595959;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
   position: absolute;
@@ -28,8 +29,10 @@ export const Form = styled.div`
 `;
 export const FormInput = styled.input`
   font-family: Montserrat, sans-serif;
+  font-size:2vh;
+  color:#201352;
   width: 90%;
-  border:none;
+  border: none;
   border-bottom: 0.8px solid #ccc;
   resize: none;
   outline: none;
@@ -37,6 +40,8 @@ export const FormInput = styled.input`
 `;
 export const FormTextArea = styled.textarea`
   font-family: Montserrat, sans-serif;
+   font-size:2vh;
+   color:#201352;
   width: 90%;
   height: 90%;
   border: none;

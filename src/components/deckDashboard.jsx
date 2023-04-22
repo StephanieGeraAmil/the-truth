@@ -1,71 +1,73 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
+import { getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
 import { Link } from "react-router-dom";
 
-import { FaPlus,FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 import styled from "styled-components";
 import { Title, SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
 
-
 const StyledTitle = styled(Title)`
-  font-size:  6vw;
-  text-align:center;
-  color:white;
+  font-size: 6vw;
+  text-align: center;
+  color: white;
 
   @media (max-width: 500px) {
     font-size: 3em;
   }
-    @media (min-width: 1000px) {
+  @media (min-width: 1000px) {
     font-size: 4vw;
   }
 `;
 const StyledSubTitle = styled(SubTitle)`
-  font-size:  2.5vw;
-  text-align:center;
-
+  font-size: 2.5vw;
+  text-align: center;
 
   @media (max-width: 500px) {
     font-size: 2em;
   }
-    @media (min-width: 1000px) {
+  @media (min-width: 1000px) {
     font-size: 2vw;
   }
 `;
 
 const DeckDashboardContainer = styled.div`
-    width: 100%;
-    height:100%;
+  width: 100%;
+  height: 100%;
 
+  z-index: -20;
 
-      z-index: -20;
-
-      padding:0;
-        display: flex;
-        flex-direction:column;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   @media (max-width: 500px) {
     height: 300vh;
   }
 `;
 
 const DeckListContainer = styled.div`
-  padding: 30px;
+  padding: 10vh;
   width: 100%;
   height: 100%;
-  overflow:auto;
+  overflow: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 5vw;
   z-index: 0;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 const DeckPreviewContainer = styled.div`
-  height: 150px;
-  width: 230px;
-  border-radius: 10px;
+  /* height: 150px;
+  width: 230px; */
+  height: 30vh;
+  width: 40vh;
+  border-radius: 2vh;
   box-shadow: 2px 2px 7px #595959;
   position: relative;
   background-color: #fff;
@@ -75,11 +77,11 @@ const DeckPreviewContainer = styled.div`
   &:after {
     height: inherit;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 2vh;
     box-shadow: 2px 2px 7px #595959;
     position: absolute;
-    left: -5px;
-    top: 5px;
+    left: -1vh;
+    top: 1vh;
     z-index: -1;
     content: "";
     background-color: #fff;
@@ -87,14 +89,19 @@ const DeckPreviewContainer = styled.div`
   &:before {
     height: inherit;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 2vh;
     box-shadow: 2px 2px 7px #595959;
     position: absolute;
-    left: -10px;
-    top: 10px;
+    left: -2vh;
+    top: 2vh;
     z-index: -2;
     content: "";
     background-color: #fff;
+  }
+  @media (max-width: 500px) {
+    height: 40vh;
+    width: 90%;
+    margin: auto;
   }
 `;
 
@@ -105,9 +112,11 @@ export const DeckDashboard = () => {
   const removeDeck = (deck) => {
     dispatch(deleteDeck(deck.id));
   };
-  useEffect(()=>{ 
-    if(decks.length===0){dispatch(getDecksOfUser("notUserYet"));}
-  },[])
+  useEffect(() => {
+    if (decks.length === 0) {
+      dispatch(getDecksOfUser("notUserYet"));
+    }
+  }, []);
 
   return (
     <DeckDashboardContainer>
@@ -117,11 +126,11 @@ export const DeckDashboard = () => {
           decks.map((element) => (
             <div key={element.name + "deck"}>
               <DeckPreviewContainer>
-                <StyledLink  to={`../decks/${element.id}`}>
-                  <StyledSubTitle >{element.name}</StyledSubTitle>
+                <StyledLink to={`../decks/${element.id}`}>
+                  <StyledSubTitle>{element.name}</StyledSubTitle>
                 </StyledLink>
                 <StyledButton transparent onClick={() => removeDeck(element)}>
-         <FaMinus style={{color: 'purple', fontSize: '1.5vw'}}/>
+                  <FaMinus style={{ color: "purple", fontSize: "2.5vh" }} />
                 </StyledButton>
               </DeckPreviewContainer>
             </div>
@@ -129,8 +138,8 @@ export const DeckDashboard = () => {
         ) : (
           <p>User without decks yet</p>
         )}
-        <Link  to={`../newDeck`}>
-         <FaPlus style={{color: 'purple', fontSize: '1.5vw'}}/>
+        <Link to={`../newDeck`}>
+          <FaPlus style={{ color: "purple", fontSize: "2.5vh" }} />
         </Link>
       </DeckListContainer>
     </DeckDashboardContainer>

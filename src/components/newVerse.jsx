@@ -9,14 +9,21 @@ import { Form, FormTextArea, FormInput } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
 
 const ActionButtonsSection = styled.div`
-  width: 100%;
-  height: 5vh;
+  width: 90%;
+  height: 3vh;
   margin-top:1vw;
   overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 40px;
+`;
+  const Button = styled(StyledButton)`
+  font-size: 2vh;
+  color: "#433e3e";
+  margin:0;
+  padding:0;
+
 `;
 export const NewVerse = ({ card_id, updateFormShown }) => {
   const dispatch = useDispatch();
@@ -43,12 +50,12 @@ export const NewVerse = ({ card_id, updateFormShown }) => {
         placeholder="Book Ch:Vs"
       ></FormInput>
       <ActionButtonsSection>
-        <StyledButton transparent onClick={() => updateFormShown(null)}>
+        <Button transparent onClick={() => updateFormShown(null)}>
           close
-        </StyledButton>
-        <StyledButton transparent onClick={() => addVerse()}>
+        </Button>
+        <Button transparent onClick={() => addVerse()}>
           save
-        </StyledButton>
+        </Button>
       </ActionButtonsSection>
     </Form>
   );
