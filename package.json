@@ -2,7 +2,7 @@
   "name": "the-truth",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://stephaniegeraamil.github.io/the-truth",
+
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
     "@testing-library/jest-dom": "^5.11.4",

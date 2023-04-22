@@ -38,7 +38,7 @@ export const Nav = () => {
     <NavContainer>
       <StyledLink
         onClick={() => dispatch(getDecksOfUser("userLogged"))}
-        to="/the-truth/decks"
+        to="/decks"
       >
         <img src={Deck} alt="deck_page" />
       </StyledLink>

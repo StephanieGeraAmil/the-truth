@@ -117,7 +117,7 @@ export const DeckDashboard = () => {
           decks.map((element) => (
             <div key={element.name + "deck"}>
               <DeckPreviewContainer>
-                <StyledLink  to={`../the-truth/decks/${element.id}`}>
+                <StyledLink  to={`../decks/${element.id}`}>
                   <StyledSubTitle >{element.name}</StyledSubTitle>
                 </StyledLink>
                 <StyledButton transparent onClick={() => removeDeck(element)}>
@@ -129,7 +129,7 @@ export const DeckDashboard = () => {
         ) : (
           <p>User without decks yet</p>
         )}
-        <Link  to={`../the-truth/newDeck`}>
+        <Link  to={`../newDeck`}>
          <FaPlus style={{color: 'purple', fontSize: '1.5vw'}}/>
         </Link>
       </DeckListContainer>

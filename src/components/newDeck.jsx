@@ -29,9 +29,9 @@ export const NewDeck = () => {
         value={deckName}
       ></FormInput>
       <ActionButtonsSection>
-        <StyledLink to={`../the-truth/decks`}>close</StyledLink>
+        <StyledLink to={`../decks`}>close</StyledLink>
         <StyledLink
-          to={`../the-truth/decks`}
+          to={`../decks`}
           onClick={() => dispatch(createDeck(deckName))}
         >
           {/* <StyledLink   to={`/decks/`} onClick={()=> dispatch(createDeck({name:deckName, UserId:userLogged.id}))}></StyledLink> */}
