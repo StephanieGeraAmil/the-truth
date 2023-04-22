@@ -56,10 +56,10 @@ ReactDOM.render(
           <>
           <Nav/>
           <Routes>
-            <Route path="/the-truth/" element={<App />} />
-            <Route path="/the-truth/decks" element={<DeckDashboard />} />
-            <Route path="/the-truth/newdeck" element={<NewDeck />} />
-            <Route path="/the-truth/decks/:id" element={<Deck />} />
+            <Route path="/" element={<App />} />
+            <Route path="/decks" element={<DeckDashboard />} />
+            <Route path="/newdeck" element={<NewDeck />} />
+            <Route path="/decks/:id" element={<Deck />} />
           </Routes>
           </>
         </Auth0Provider>
