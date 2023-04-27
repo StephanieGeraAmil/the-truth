@@ -150,8 +150,9 @@ const TruthContainer = styled.div`
     height:30vh;
   }
 `;
+//201352
 const Section = styled.div`
-  background: #201352;
+  background: #0D0C3C;
   height: 55vh;
   width: 100%;
   display: flex;

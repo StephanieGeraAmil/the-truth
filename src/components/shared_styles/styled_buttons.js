@@ -6,7 +6,7 @@ export const StyledButton = styled.button`
   z-index: 10;
   border: 0;
   border-radius: 2vw;
-  background-color: #201352;
+  background-color: #0D0C3C;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Montserrat, sans-serif;
     font-weight: 100;
     margin: 0;
-      background: #201352;
+      background: #0D0C3C;
   }
   textarea:focus, input:focus{
     outline: none;

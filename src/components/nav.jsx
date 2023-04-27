@@ -16,7 +16,7 @@ import Deck from "../assets/deck.png";
 const NavContainer = styled.nav`
   height: 7vh;
   width: 100%;
-  background-color: #201352;
+  background-color: #0D0C3C;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
