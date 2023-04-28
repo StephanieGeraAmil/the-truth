@@ -13,11 +13,10 @@ const StyledTitle = styled(Title)`
   font-size: 6vw;
   text-align: center;
   color: white;
-    height: 8%;
-
+  height: 8%;
   @media (max-width: 500px) {
     font-size: 3em;
-        height: 5%;
+    height: 5%;
   }
   @media (min-width: 1000px) {
     font-size: 4vw;
@@ -26,7 +25,6 @@ const StyledTitle = styled(Title)`
 const StyledSubTitle = styled(SubTitle)`
   font-size: 2.5vw;
   text-align: center;
-
   @media (max-width: 500px) {
     font-size: 2em;
   }
@@ -34,13 +32,10 @@ const StyledSubTitle = styled(SubTitle)`
     font-size: 2vw;
   }
 `;
-
 const DeckDashboardContainer = styled.div`
   width: 100%;
   height: 100%;
-
   z-index: -20;
-
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -50,7 +45,6 @@ const DeckDashboardContainer = styled.div`
     height: 300vh;
   }
 `;
-
 const DeckListContainer = styled.div`
   padding: 10vh;
   width: 100%;
@@ -62,12 +56,10 @@ const DeckListContainer = styled.div`
   z-index: 0;
   @media (max-width: 500px) {
     flex-direction: column;
-      height: 95%;
+    height: 95%;
   }
 `;
 const DeckPreviewContainer = styled.div`
-  /* height: 150px;
-  width: 230px; */
   height: 30vh;
   width: 40vh;
   border-radius: 2vh;
@@ -107,7 +99,6 @@ const DeckPreviewContainer = styled.div`
     margin: auto;
   }
 `;
-
 export const DeckDashboard = () => {
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
@@ -120,7 +111,6 @@ export const DeckDashboard = () => {
       dispatch(getDecksOfUser("notUserYet"));
     }
   }, []);
-
   return (
     <DeckDashboardContainer>
       <StyledTitle>Decks</StyledTitle>

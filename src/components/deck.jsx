@@ -12,7 +12,6 @@ import {
 import { createCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
-
 import {
   FaPlus,
   FaMinus,
@@ -28,65 +27,11 @@ import {
   VerseRef,
 } from "./shared_styles/verses_styles";
 
-const DeckContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  z-index: -10;
-  @media (min-width: 1800px) {
-    width: 80%;
-    margin: auto;
-  }
-`;
-const DeckContent = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  @media (min-width: 1800px) {
-    width: 80%;
-    margin: auto;
-    margin-bottom: 2vw;
-  }
-`;
-const StyledResource = styled.div`
-width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  /* min-width: 50%; */
-`;
-const CardContent = styled.div`
-  /* display: flex; */
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 2vh;
-  height: 60%;
-  width: 85%;
-  margin: 0;
-  overflow: auto;
-  z-index: 1;
-  /* @media (max-width: 500px) {
-    width: 80%;
-  } */
-`;
-const NavigationSection = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 1;
+const BottomButtons = styled.div`
+  height: 10vw;
 `;
 
-const AddContentButtonsContainer = styled.div`
+const ActionButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -95,9 +40,86 @@ const AddContentButtonsContainer = styled.div`
   height: 8%;
   width: 50%;
 `;
-const BottomButtons = styled.div`
-  height: 10vw;
+
+const StyledTitle = styled(Title)`
+  font-size: 10vh;
+  text-align: center;
+  color: white; */
+  height: 40vw;
+  @media (max-width: 500px) {
+    font-size: 8vh; 
+    height: 10vh;
+  }
 `;
+export const StyledButton = styled.button`
+  width: 4vh;
+  height: 4vh;
+  z-index: 0;
+  border: 0;
+  background: transparent;
+  ${(props) =>
+    props.hidden &&
+    css`
+      opacity: 0;
+    `}
+`;
+const StyledInfo = styled(Info)`
+  font-size: 2vh;
+ 
+  width: 100%;
+  padding: 0;
+  color: #433e3e;
+  margin: 0;
+  ${(props) =>
+    props.white &&
+    css`
+      color: #fff;
+    `}
+  @media (min-width: 1800px) {
+    font-size: 0.9vw;
+  }
+`;
+const StyledScripture = styled(VerseScripture)`
+  font-size: 2vh;
+  color: #433e3e;
+  @media (min-width: 1800px) {
+    font-size: 0.9vw;
+  }
+`;
+const StyledRef = styled(VerseRef)`
+  font-size: 2vh;
+  color: #433e3e;
+  @media (min-width: 1800px) {
+    font-size: 0.9vw;
+  }
+`;
+const MinusDiv = styled.div`
+  width: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+const StyledResource = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3vh;
+  height: 60%;
+  width: 85%;
+  margin: 0;
+  overflow: auto;
+  z-index: 1;
+`;
+
 const CardContainer = styled.div`
   height: 50vh;
   width: 60vw;
@@ -145,61 +167,31 @@ const CardContainer = styled.div`
     width: 80vh;
   }
 `;
-const StyledTitle = styled(Title)`
-   font-size: 10vh;
-  text-align: center;
-  color: white; */
-    height: 40vw;
 
-  @media (max-width: 500px) {
-     font-size: 8vh; 
-        height: 10vh;
+const DeckContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 1800px) {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2vw;
   }
 `;
-export const StyledButton = styled.button`
-  width: 4vh;
-  height: 4vh;
-  z-index: 0;
-  border: 0;
-  background: transparent;
-  ${(props) =>
-    props.hidden &&
-    css`
-      opacity: 0;
-    `}
-`;
-const StyledInfo = styled(Info)`
- font-size: 2vh;
-  height: 4vh;
-  /* width: 100%; */
-  /* font-size: 2vh; */
-  /* color: "#433e3e"; */
-  margin: 0;
-  /* display: flex; */
-  /* flex-direction: column;
-  justify-content: space-around; */
-  ${(props) =>
-    props.white &&
-    css`
-      color: #fff;
-    `}
+const DeckContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  z-index: -10;
   @media (min-width: 1800px) {
-    font-size: 0.9vw;
-  }
-`;
-
-const StyledScripture = styled(VerseScripture)`
-  font-size: 2vh;
-  /* color: "#433e3e"; */
-  @media (min-width: 1800px) {
-    font-size: 0.9vw;
-  }
-`;
-const StyledRef = styled(VerseRef)`
-  font-size: 2vh;
-  /* color: "#433e3e"; */
-  @media (min-width: 1800px) {
-    font-size: 0.9vw;
+    width: 80%;
+    margin: auto;
   }
 `;
 
@@ -213,8 +205,7 @@ export const Deck = () => {
   const deck = decks.find((element) => element.id == id);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
-  const [display, setDisplay] = useState(true);
-
+  const [display, setDisplay] = useState(false);
   useEffect(() => {
     if (deck) {
       dispatch(getCardsOfDeck(deck));
@@ -223,7 +214,6 @@ export const Deck = () => {
       dispatch(cleanCards());
     };
   }, []);
-
   const nextCard = () => {
     setFormShown(null);
     setCurrentIndex(currentIndex + 1);
@@ -244,7 +234,6 @@ export const Deck = () => {
     dispatch(createCard(card));
     dispatch(createCardOnDeck(deck.id, card.id));
   };
-
   return (
     <DeckContainer>
       {deck && <StyledTitle white>{deck.name}</StyledTitle>}
@@ -258,7 +247,6 @@ export const Deck = () => {
             ) : (
               <StyledButton></StyledButton>
             )}
-
             <CardContainer>
               {formShown && formShown === "Note" && cards[currentIndex] && (
                 <NewNote
@@ -281,23 +269,23 @@ export const Deck = () => {
                       onMouseLeave={(e) => setDisplay(false)}
                     >
                       {display && (
-                        <>
-                        <StyledButton
-                          transparent
-                          onClick={() =>
-                            dispatch(
-                              deleteResourceFromCard(
-                                res.id,
-                                cards[currentIndex].id
+                        <MinusDiv>
+                          <StyledButton
+                            transparent
+                            onClick={() =>
+                              dispatch(
+                                deleteResourceFromCard(
+                                  res.id,
+                                  cards[currentIndex].id
+                                )
                               )
-                            )
-                          }
-                        >
-                          <FaMinus
-                            style={{ color: "purple", fontSize: "0.9vh" }}
-                          />
-                        </StyledButton>
-                        </>
+                            }
+                          >
+                            <FaMinus
+                              style={{ color: "purple", fontSize: "0.9vh" }}
+                            />
+                          </StyledButton>
+                        </MinusDiv>
                       )}
                       {res.content ? (
                         <StyledInfo>{res.content}</StyledInfo>
@@ -310,8 +298,7 @@ export const Deck = () => {
                     </StyledResource>
                   ))}
               </CardContent>
-
-              <AddContentButtonsContainer>
+              <ActionButtonsContainer>
                 <StyledButton onClick={() => removeCard()}>
                   <FaTrash style={{ color: "purple", fontSize: "1.9vh" }} />
                 </StyledButton>
@@ -323,7 +310,7 @@ export const Deck = () => {
                   <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />
                   <StyledInfo>verse</StyledInfo>
                 </StyledButton>
-              </AddContentButtonsContainer>
+              </ActionButtonsContainer>
             </CardContainer>
             {currentIndex !== cards.length - 1 ? (
               <StyledButton transparent onClick={() => nextCard()}>
@@ -337,7 +324,7 @@ export const Deck = () => {
         <BottomButtons>
           <StyledButton transparent onClick={() => addCard()}>
             <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />{" "}
-            <StyledInfo white> card</StyledInfo>
+            <StyledInfo white>card</StyledInfo>
           </StyledButton>
         </BottomButtons>
       </>
