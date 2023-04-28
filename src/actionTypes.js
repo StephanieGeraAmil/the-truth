@@ -5,7 +5,8 @@ export const GET_TAGS_OF_VERSE= "verse/get_tags_of_verse";
 
 
 export const GET_ALL_THOUGHTS= "thought/get_all_thoughts";
-export const GET_VERSES_RELATED= "thought/get_verses_related";
+export const GET_VERSES_RELATED= "verses/get_verses_related";
+export const CLEAN_VERSES_RELATED ="verses/clean_verses_related";
 export const ADD_THOUGHT_VERSE= "thought/add_verses_to_thought";
 export const DELETE_THOUGHT_VERSE= "thought/delete_verses_to_thought";
 

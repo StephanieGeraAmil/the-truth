@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllThoughts } from "./actions/thoughtActions";
 
@@ -146,13 +146,13 @@ const TruthContainer = styled.div`
     height: 50vh;
   }
   @media (min-width: 850px) {
-     padding: 1vw;
-    height:30vh;
+    padding: 1vw;
+    height: 30vh;
   }
 `;
 //201352
 const Section = styled.div`
-  background: #0D0C3C;
+  background: #0d0c3c;
   height: 55vh;
   width: 100%;
   display: flex;
@@ -177,17 +177,20 @@ const Section = styled.div`
 const AppContainer = styled.div`
   color: "#433e3e";
   height: 100vh;
-  overflow:hidden;
+  overflow: hidden;
   @media (max-width: 500px) {
     height: 300vh;
   }
-   @media (min-width: 850px) {
+  @media (min-width: 850px) {
     height: 95vh;
   }
 `;
 
 function App() {
   const dispatch = useDispatch();
+  const versesSelector = (state) => (state.verses ? state.verses : null);
+  const versesRelated = useSelector(versesSelector);
+  console.log(versesRelated);
 
   useEffect(() => {
     console.log("The backend is not yet deployed");
@@ -229,9 +232,11 @@ function App() {
           <GirlHappyImg src={girlHappyImage} />
         </Wrapper>
       </Section>
-      <TruthContainer>
-        <Truth />
-      </TruthContainer>
+      {versesRelated.length>0 && (
+        <TruthContainer>
+          <Truth />
+        </TruthContainer>
+      )}
     </AppContainer>
   );
 }
