@@ -31,6 +31,7 @@ export const deleteCard = (Card_id) => async (dispatch) => {
 export const getCardsOfDeck = (deck) => async (dispatch, getState) => {
   try {
     // const {data}= await api.fetchCardsOfDeck(deck)
+
     const data =
       deck.cards && deck.cards.length > 0
         ? cards.filter((card) => deck.cards.indexOf(card.id) > -1)
