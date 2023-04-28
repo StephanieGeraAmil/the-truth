@@ -242,7 +242,7 @@ export const Deck = () => {
           <DeckContent>
             {currentIndex !== 0 ? (
               <StyledButton onClick={() => prevCard()}>
-                <FaArrowLeft style={{ color: "purple", fontSize: "1.9vh" }} />
+                <FaArrowLeft style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
               </StyledButton>
             ) : (
               <StyledButton></StyledButton>
@@ -282,7 +282,7 @@ export const Deck = () => {
                             }
                           >
                             <FaMinus
-                              style={{ color: "purple", fontSize: "0.9vh" }}
+                              style={{ color: "#0D0C3C", fontSize: "0.9vh" }}
                             />
                           </StyledButton>
                         </MinusDiv>
@@ -300,21 +300,22 @@ export const Deck = () => {
               </CardContent>
               <ActionButtonsContainer>
                 <StyledButton onClick={() => removeCard()}>
-                  <FaTrash style={{ color: "purple", fontSize: "1.9vh" }} />
+                  <FaTrash style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
+                   <StyledInfo>card</StyledInfo>
                 </StyledButton>
                 <StyledButton onClick={() => setFormShown("Note")}>
-                  <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />
+                  <FaPlus style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
                   <StyledInfo>note</StyledInfo>
                 </StyledButton>
                 <StyledButton onClick={() => setFormShown("Verse")}>
-                  <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />
+                  <FaPlus style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
                   <StyledInfo>verse</StyledInfo>
                 </StyledButton>
               </ActionButtonsContainer>
             </CardContainer>
             {currentIndex !== cards.length - 1 ? (
               <StyledButton transparent onClick={() => nextCard()}>
-                <FaArrowRight style={{ color: "purple", fontSize: "1.9vh" }} />
+                <FaArrowRight style={{ color:"#0D0C3C", fontSize: "1.9vh" }} />
               </StyledButton>
             ) : (
               <StyledButton></StyledButton>
@@ -323,7 +324,7 @@ export const Deck = () => {
         )}
         <BottomButtons>
           <StyledButton transparent onClick={() => addCard()}>
-            <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />{" "}
+            <FaPlus style={{ color:"#FFF", fontSize: "1.9vh" }} />{" "}
             <StyledInfo white>card</StyledInfo>
           </StyledButton>
         </BottomButtons>
