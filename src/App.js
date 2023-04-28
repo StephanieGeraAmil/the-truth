@@ -190,7 +190,6 @@ function App() {
   const dispatch = useDispatch();
   const versesSelector = (state) => (state.verses ? state.verses : null);
   const versesRelated = useSelector(versesSelector);
-  console.log(versesRelated);
 
   useEffect(() => {
     console.log("The backend is not yet deployed");
