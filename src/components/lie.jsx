@@ -70,7 +70,7 @@ const LieSuggestions = styled.div`
 `;
 const SearchButton = styled(StyledButton)`
   position: absolute;
-  background: #201352;
+  background: #0D0C3C;
   font-size: 0.9vw;
   color: #fff;
   top: 50%;

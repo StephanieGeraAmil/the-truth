@@ -30,6 +30,7 @@ import {
 
 const DeckContainer = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,6 +44,7 @@ const DeckContainer = styled.div`
 `;
 const DeckContent = styled.div`
   width: 100%;
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -50,63 +52,68 @@ const DeckContent = styled.div`
   @media (min-width: 1800px) {
     width: 80%;
     margin: auto;
-    margin-bottom:2vw;
+    margin-bottom: 2vw;
   }
 `;
 const StyledResource = styled.div`
+width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  min-width:50%;
+  /* min-width: 50%; */
 `;
 const CardContent = styled.div`
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
+  gap: 2vh;
   height: 60%;
-  width: 70%;
-  margin: auto;
-  overflow:auto;
-    z-index: 1;
-      @media (max-width: 500px) {
-    width: 60%;}
+  width: 85%;
+  margin: 0;
+  overflow: auto;
+  z-index: 1;
+  /* @media (max-width: 500px) {
+    width: 80%;
+  } */
 `;
 const NavigationSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-   z-index: 1;
+  z-index: 1;
 `;
 
 const AddContentButtonsContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   z-index: 0;
-  height:80%;
-   @media (max-width: 500px) {
-   width:15%;
-   
-   }
+  height: 8%;
+  width: 50%;
+`;
+const BottomButtons = styled.div`
+  height: 10vw;
 `;
 const CardContainer = styled.div`
-height: 40vh;
-  width: 60vh;
+  height: 50vh;
+  width: 60vw;
   border-radius: 2vh;
+  padding: 0 2vh;
   box-shadow: 2px 2px 7px #595959;
   position: relative;
   background-color: #fff;
   display: flex;
-  flex-direction:row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-      z-index: 0;
+  gap: 5vh;
+  z-index: 0;
   &:after {
-     height: inherit;
+    height: inherit;
     width: 100%;
     border-radius: 2vh;
     box-shadow: 2px 2px 7px #595959;
@@ -116,10 +123,9 @@ height: 40vh;
     z-index: -2;
     content: " ";
     background-color: #fff;
-  
   }
   &:before {
-      height: inherit;
+    height: inherit;
     width: 100%;
     border-radius: 2vh;
     box-shadow: 2px 2px 7px #595959;
@@ -129,55 +135,30 @@ height: 40vh;
     z-index: -1;
     content: " ";
     background-color: #fff;
-   
   }
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 60vh;
-  height: 40vh;
-  padding: 4vh;
- border-radius: 2vh;
-  box-shadow: 2px 2px 7px #595959;
-  position: relative;
-  background-color: #fff;
-  z-index: 0;
- 
 
-  &:after {
-    height: inherit;
-    width: 100%;
-    border-radius: 2vh;
-    box-shadow: 2px 2px 7px #595959;
-    position: absolute;
-    left: -1vh;
-    top: 1vh;
-    z-index: -1;
-    content: "";
-    background-color: #fff;
+  @media (max-width: 500px) {
+    width: 90%;
+    height: 55vh;
   }
-  &:before {
-    height: inherit;
-    width: 100%;
-    border-radius: 2vh;
-    box-shadow: 2px 2px 7px #595959;
-    position: absolute;
-    left: -2vh;
-    top: 2vh;
-    z-index: -2;
-    content: "";
-    background-color: #fff;
-  } */
- 
-      @media (max-width: 500px) {
-   width:90%;
-    height:50vh;
-   }
+  @media (min-width: 700px) {
+    width: 80vh;
+  }
+`;
+const StyledTitle = styled(Title)`
+   font-size: 10vh;
+  text-align: center;
+  color: white; */
+    height: 40vw;
 
+  @media (max-width: 500px) {
+     font-size: 8vh; 
+        height: 10vh;
+  }
 `;
 export const StyledButton = styled.button`
-  width: 7vw;
-  height: 70%;
+  width: 4vh;
+  height: 4vh;
   z-index: 0;
   border: 0;
   background: transparent;
@@ -188,32 +169,37 @@ export const StyledButton = styled.button`
     `}
 `;
 const StyledInfo = styled(Info)`
-  font-size: 2vh;
-
-  color: "#433e3e";
-  margin:0;
-  padding:0;
+ font-size: 2vh;
+  height: 4vh;
+  /* width: 100%; */
+  /* font-size: 2vh; */
+  /* color: "#433e3e"; */
+  margin: 0;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: space-around; */
   ${(props) =>
     props.white &&
     css`
       color: #fff;
     `}
-   @media (min-width: 1800px) {
-  font-size: 0.9vw;
+  @media (min-width: 1800px) {
+    font-size: 0.9vw;
   }
 `;
+
 const StyledScripture = styled(VerseScripture)`
   font-size: 2vh;
-  color: "#433e3e";
-   @media (min-width: 1800px) {
- font-size: 0.9vw;
+  /* color: "#433e3e"; */
+  @media (min-width: 1800px) {
+    font-size: 0.9vw;
   }
 `;
 const StyledRef = styled(VerseRef)`
   font-size: 2vh;
-  color: "#433e3e";
-   @media (min-width: 1800px) {
-   font-size: 0.9vw;
+  /* color: "#433e3e"; */
+  @media (min-width: 1800px) {
+    font-size: 0.9vw;
   }
 `;
 
@@ -223,16 +209,16 @@ export const Deck = () => {
   const decks = useSelector(deckSelector);
   const cardSelector = (state) => (state.cards ? state.cards : null);
   const cards = useSelector(cardSelector);
-
   const { id } = useParams();
   const deck = decks.find((element) => element.id == id);
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
+  const [display, setDisplay] = useState(true);
 
   useEffect(() => {
-    dispatch(getCardsOfDeck(deck));
-
+    if (deck) {
+      dispatch(getCardsOfDeck(deck));
+    }
     return () => {
       dispatch(cleanCards());
     };
@@ -261,88 +247,100 @@ export const Deck = () => {
 
   return (
     <DeckContainer>
-      {deck && <Title white>{deck.name}</Title>}
-      {cards.length > 0 && (
-        <DeckContent>
-          {currentIndex !== 0 ? (
-            <StyledButton onClick={() => prevCard()}>
-              <FaArrowLeft style={{ color: "purple", fontSize: "1.9vh" }} />
-            </StyledButton>
-          ) : (
-            <StyledButton></StyledButton>
-          )}
-
-          <CardContainer>
-            
-
-            {formShown && formShown === "Note" && cards[currentIndex] && (
-              <NewNote
-                card_id={cards[currentIndex].id}
-                updateFormShown={setFormShown}
-              ></NewNote>
+      {deck && <StyledTitle white>{deck.name}</StyledTitle>}
+      <>
+        {cards.length > 0 && (
+          <DeckContent>
+            {currentIndex !== 0 ? (
+              <StyledButton onClick={() => prevCard()}>
+                <FaArrowLeft style={{ color: "purple", fontSize: "1.9vh" }} />
+              </StyledButton>
+            ) : (
+              <StyledButton></StyledButton>
             )}
-            {formShown && formShown === "Verse" && cards[currentIndex] && (
-              <NewVerse
-                card_id={cards[currentIndex].id}
-                updateFormShown={setFormShown}
-              ></NewVerse>
-            )}
-            <CardContent>
-              {cards[currentIndex] &&
-                cards[currentIndex].resources.map((res) => (
-                  <StyledResource key={res.id}>
-                    {res.content ? (
-                      <StyledInfo>{res.content}</StyledInfo>
-                    ) : (
-                      <VerseContainer>
-                        <StyledScripture>{res.scripture}</StyledScripture>
-                        <StyledRef>{res.ref}</StyledRef>
-                      </VerseContainer>
-                    )}
 
-                    <StyledButton
-                      transparent
-                      onClick={() =>
-                        dispatch(
-                          deleteResourceFromCard(res.id, cards[currentIndex].id)
-                        )
-                      }
+            <CardContainer>
+              {formShown && formShown === "Note" && cards[currentIndex] && (
+                <NewNote
+                  card_id={cards[currentIndex].id}
+                  updateFormShown={setFormShown}
+                ></NewNote>
+              )}
+              {formShown && formShown === "Verse" && cards[currentIndex] && (
+                <NewVerse
+                  card_id={cards[currentIndex].id}
+                  updateFormShown={setFormShown}
+                ></NewVerse>
+              )}
+              <CardContent>
+                {cards[currentIndex] &&
+                  cards[currentIndex].resources.map((res) => (
+                    <StyledResource
+                      key={res.id}
+                      onMouseEnter={(e) => setDisplay(true)}
+                      onMouseLeave={(e) => setDisplay(false)}
                     >
-                      <FaMinus style={{ color: "purple", fontSize: "0.9vw" }} />
-                    </StyledButton>
-                  </StyledResource>
-                ))}
-            </CardContent>
+                      {display && (
+                        <>
+                        <StyledButton
+                          transparent
+                          onClick={() =>
+                            dispatch(
+                              deleteResourceFromCard(
+                                res.id,
+                                cards[currentIndex].id
+                              )
+                            )
+                          }
+                        >
+                          <FaMinus
+                            style={{ color: "purple", fontSize: "0.9vh" }}
+                          />
+                        </StyledButton>
+                        </>
+                      )}
+                      {res.content ? (
+                        <StyledInfo>{res.content}</StyledInfo>
+                      ) : (
+                        <VerseContainer>
+                          <StyledScripture>{res.scripture}</StyledScripture>
+                          <StyledRef>{res.ref}</StyledRef>
+                        </VerseContainer>
+                      )}
+                    </StyledResource>
+                  ))}
+              </CardContent>
 
-            <AddContentButtonsContainer>
-              {/* <NavigationSection> */}
-              <StyledButton onClick={() => removeCard()}>
-                <FaTrash style={{ color: "purple", fontSize: "1.9vh" }} />
+              <AddContentButtonsContainer>
+                <StyledButton onClick={() => removeCard()}>
+                  <FaTrash style={{ color: "purple", fontSize: "1.9vh" }} />
+                </StyledButton>
+                <StyledButton onClick={() => setFormShown("Note")}>
+                  <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />
+                  <StyledInfo>note</StyledInfo>
+                </StyledButton>
+                <StyledButton onClick={() => setFormShown("Verse")}>
+                  <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />
+                  <StyledInfo>verse</StyledInfo>
+                </StyledButton>
+              </AddContentButtonsContainer>
+            </CardContainer>
+            {currentIndex !== cards.length - 1 ? (
+              <StyledButton transparent onClick={() => nextCard()}>
+                <FaArrowRight style={{ color: "purple", fontSize: "1.9vh" }} />
               </StyledButton>
-            {/* </NavigationSection> */}
-              <StyledButton onClick={() => setFormShown("Note")}>
-                <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />
-                <StyledInfo>note</StyledInfo>
-              </StyledButton>
-              <StyledButton onClick={() => setFormShown("Verse")}>
-                <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />
-                <StyledInfo>verse</StyledInfo>
-              </StyledButton>
-            </AddContentButtonsContainer>
-          </CardContainer>
-          {currentIndex !== cards.length - 1 ? (
-            <StyledButton transparent onClick={() => nextCard()}>
-              <FaArrowRight style={{ color: "purple", fontSize: "1.9vh" }} />
-            </StyledButton>
-          ) : (
-            <StyledButton></StyledButton>
-          )}
-        </DeckContent>
-      )}
-
-      <StyledButton transparent onClick={() => addCard()}>
-        <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} /> <StyledInfo white> card</StyledInfo>
-      </StyledButton>
+            ) : (
+              <StyledButton></StyledButton>
+            )}
+          </DeckContent>
+        )}
+        <BottomButtons>
+          <StyledButton transparent onClick={() => addCard()}>
+            <FaPlus style={{ color: "purple", fontSize: "1.9vh" }} />{" "}
+            <StyledInfo white> card</StyledInfo>
+          </StyledButton>
+        </BottomButtons>
+      </>
     </DeckContainer>
   );
 };

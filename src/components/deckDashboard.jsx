@@ -13,9 +13,11 @@ const StyledTitle = styled(Title)`
   font-size: 6vw;
   text-align: center;
   color: white;
+    height: 8%;
 
   @media (max-width: 500px) {
     font-size: 3em;
+        height: 5%;
   }
   @media (min-width: 1000px) {
     font-size: 4vw;
@@ -52,7 +54,7 @@ const DeckDashboardContainer = styled.div`
 const DeckListContainer = styled.div`
   padding: 10vh;
   width: 100%;
-  height: 100%;
+  height: 92%;
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
@@ -60,6 +62,7 @@ const DeckListContainer = styled.div`
   z-index: 0;
   @media (max-width: 500px) {
     flex-direction: column;
+      height: 95%;
   }
 `;
 const DeckPreviewContainer = styled.div`
