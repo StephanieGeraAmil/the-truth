@@ -12,30 +12,14 @@ const Container = styled(VerseContainer)`
   width: 80%;
 `;
 
-const Scripture = styled(VerseScripture)`
-  font-size: 1.5vh;
-  overflow:auto;
-  @media (max-width: 500px) {
-    font-size: 1.1em;
-    line-height: 1.1em;
-  }
-`;
-const Ref = styled(VerseRef)`
-  font-size: 1.5vh;
-   margin-top :0.5vh;
-  @media (max-width: 500px) {
-    font-size: 1.1em;
-    line-height: 1.1em;
-     margin-top :0.5em;
-  }
-`;
+
 
 export const Verse = ({ verse }) => {
   useEffect(() => {}, []);
   return (
     <Container>
-      <Scripture>{verse.scripture}</Scripture>
-      <Ref>{verse.ref}</Ref>
+      <VerseScripture>{verse.scripture}</VerseScripture>
+      <VerseRef>{verse.ref}</VerseRef>
     </Container>
   );
 };

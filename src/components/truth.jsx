@@ -6,12 +6,17 @@ import { StyledCard } from "./shared_styles/styled_cards";
 import { RiAddBoxFill } from "react-icons/ri";
 export const StyledButton = styled.button`
 position:absolute;
-  top:2vh ;
-  right:1vh;
+  bottom:5% ;
+  left:5%;
   z-index: 0;
   border: 0;
   background: transparent;
   align-self: flex-end;
+
+  @media (min-width: 1500px) {
+  bottom:10% ;
+  left:10%;
+  }
 `;
 
 const TruthCard = styled(StyledCard)`
@@ -22,9 +27,10 @@ position:relative;
   justify-content: center;
   align-items: center;
   border-radius: 2vw;
-  height: 20vh;
+  height: 30vh;
   min-width: 40vh;
   max-width: 30vw;
+  z-index: 6;
 
   @media (max-width: 500px) {
     min-height: 35vh;
@@ -38,8 +44,9 @@ const TruthContainer = styled.div`
   flex-direction: row;
   overflow: auto;
   gap: 2.5vw;
-  height: 25vh;
-  margin: 3.5vh 0 0 3.5vh;
+  z-index: 5;
+  /* height: 25vh; */
+  margin: 4.5vh;
   @media (max-width: 500px) {
     flex-direction: column;
     align-items: center;
@@ -69,7 +76,7 @@ export const Truth = () => {
                // dispatch(addResourceToDeck(element,deck));
               }}
             >
-              <RiAddBoxFill style={{ color: "#0D0C3C", fontSize: "2vh" }} />
+              <RiAddBoxFill style={{ color: "#6096BA", fontSize: "3vh" }} />
             </StyledButton>
             <Verse verse={element} />
           </TruthCard>

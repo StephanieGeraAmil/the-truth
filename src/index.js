@@ -34,14 +34,17 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: Montserrat, sans-serif;
     font-weight: 100;
+    font-size:100%;
     margin: 0;
-      background: #0D0C3C;
+    background: #274C77;
+
+
   }
   textarea:focus, input:focus{
     outline: none;
+
   }
 `;
-
 
 ReactDOM.render(
   <React.StrictMode>
@@ -54,13 +57,13 @@ ReactDOM.render(
         >
           <GlobalStyle />
           <>
-          <Nav/>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/decks" element={<DeckDashboard />} />
-            <Route path="/newdeck" element={<NewDeck />} />
-            <Route path="/decks/:id" element={<Deck />} />
-          </Routes>
+            {/* <Nav/> */}
+            <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="/decks" element={<DeckDashboard />} />
+              <Route path="/newdeck" element={<NewDeck />} />
+              <Route path="/decks/:id" element={<Deck />} />
+            </Routes>
           </>
         </Auth0Provider>
       </Provider>

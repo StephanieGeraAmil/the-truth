@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-export const StyledButton = styled.button`
-  width: 7vw;
-  height: 70%;
-  z-index: 10;
+export const SearchButton = styled.button`
+  width:15%;
+  min-width:90px;
+  height: 80%;
+  z-index: 2;
   border: 0;
   border-radius: 2vw;
-  background-color: #0D0C3C;
+  background-color: #6096ba;
   display: flex;
   justify-content: center;
   align-items: center;
-    font-family: Montserrat, sans-serif;
-
+  font-size: 0.6rem;
   ${(props) =>
     props.hidden &&
     css`
@@ -23,14 +23,42 @@ export const StyledButton = styled.button`
     css`
       background-color: transparent;
     `}
+      @media (max-width: 500px) {
+border-radius: 4vw;
+  }
+      @media (min-width: 1500px) {
+    font-size: 2vh;
+  }
 `;
-
+export const StyledButton = styled.button`
+  z-index: 2;
+  border: 0;
+  border-radius: 2vw;
+  background-color: #6096ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.6rem;
+  ${(props) =>
+    props.hidden &&
+    css`
+      opacity: 0;
+      pointer-events: none;
+    `}
+  ${(props) =>
+    props.transparent &&
+    css`
+      background-color: transparent;
+    `}
+      @media (min-width: 1500px) {
+    font-size: 2vh;
+  }
+`;
 export const StyledLink = styled(Link)`
-  font-family: Montserrat, sans-serif;
   border: 0;
   display: flex;
   justify-content: center;
-  font-size:0.8em;
+  font-size: 0.8em;
   color: fff;
   margin: 5px;
   z-index: 10;

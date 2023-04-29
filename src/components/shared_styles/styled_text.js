@@ -1,64 +1,56 @@
 import styled, { css } from "styled-components";
 export const Title = styled.h1`
-  font-size: 3.5vw;
+font-size:2.5rem;
   font-weight: 900;
-  height: 10vw;
-  margin: 1vw;
-  color:  #201352;
+  margin: 0;
+  margin-bottom: 1vh;
+  padding: 0;
+  color: #8b8c89;
   ${(props) =>
     props.white &&
     css`
       color: #fff;
     `}
-  @media (max-width: 500px) {
-    font-size: 3em;
-    height: 34vh;
-  }
-  @media (max-width: 390px) {
-    font-size: 2.8em;
-  }
-  @media (max-width: 355px) {
-    font-size: 2.6em;
+  @media (min-width: 1200px) {
+    font-size: 9vh;
   }
 `;
 export const SubTitle = styled.h3`
-  font-size: 1.5vw;
+  font-size: 6vh;
   font-weight: 500;
-  height: 2vw;
-  margin: 0.8vw;
-  color:  #201352;
+  margin: 0;
+  /* margin-bottom: 1vh; */
+  padding: 0;
+  color: #8b8c89;
   ${(props) =>
     props.white &&
     css`
       color: #fff;
     `}
-  @media (max-width: 500px) {
-    font-size: 1.3em;
+  /* @media (max-width: 500px) {
+    font-size: 7vh;
     height: 8vh;
-  }
-  @media (max-width: 407px) {
-    font-size: 1.1em;
-    height: 6vh;
-  }
+  } */
 `;
 export const Info = styled.p`
-  font-size: clamp(0.45em, 0.9vw, 2.5em);
-  line-height: clamp(1em, 1vw, 1.2em);
+font-size:0.6rem;
+  line-height: 1.1em;
   font-weight: 100;
   margin: 0;
-  padding-left: 0.5vw;
-  color: #201352;
+  margin-bottom: 0.5em;
+  padding: 0;
+  color: #8b8c89;
   ${(props) =>
     props.white &&
     css`
       color: #fff;
     `}
   @media (max-width: 500px) {
-    font-size: 0.9em;
-    line-height: 1.1em;
+    font-size:0.8rem;
+    line-height: 1.2em;
   }
-  @media (max-width: 400px) {
-    font-size: 0.8em;
-    line-height: 1em;
+  @media (min-width: 1200px) {
+    font-size:2vh;
+  
   }
 `;

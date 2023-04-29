@@ -3,37 +3,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVersesRelated } from "../actions/verseActions";
 
 import styled from "styled-components";
-import { StyledButton } from "./shared_styles/styled_buttons";
+import { SearchButton } from "./shared_styles/styled_buttons";
 
 const LieContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 3.8vw;
+  height: 8vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top:1vh;
   align-items: center;
   @media (max-width: 500px) {
-    height: 15vw;
+    height: 13vh;
   }
 `;
 
 const LieInput = styled.input`
   width: 100%;
-  height: 80%;
+  height: 100%;
   background-color: #fff;
   border-radius: 2vw;
   border: 0;
   font-size: 1.2vw;
-  font-weight: 300;
-  padding: 1vw;
+  font-weight: 100;
+  padding: 0.5vh;
+    padding-left:5%;
   margin: 0;
   box-shadow: 5px 3px 10px #333;
+  color:#8B8C89;
   @media (max-width: 500px) {
-    border-radius: 20px;
-    height: 12vw;
-    font-size: 1.2em;
-    padding: 1em;
+    border-radius: 6vw;
+    height: 12vh;
+    font-size: 1.1em;
+    padding: 0.5em;
+
   }
   &:active,
   &:focus {
@@ -57,8 +61,9 @@ const LieSuggestions = styled.div`
   flex-direction: column;
   line-height: 2em;
   box-shadow: 5px 3px 10px #333;
+  color:#8B8C89;
   @media (max-width: 500px) {
-    top: 2.2em;
+    top: 2.1em;
     padding: 1em;
     padding-top: 1.8em;
     border-radius: 0 0 20px 20px;
@@ -68,20 +73,14 @@ const LieSuggestions = styled.div`
      top: 1.5em;
   }
 `;
-const SearchButton = styled(StyledButton)`
+const Search = styled(SearchButton)`
   position: absolute;
-  background: #0D0C3C;
-  font-size: 0.9vw;
   color: #fff;
   top: 50%;
   right: 0;
-  transform: translateY(-50%) translateX(-2%);
-  z-index: 10;
+  transform: translateY(-50%) translateX(-5%);
   @media (max-width: 500px) {
     border-radius: 20px;
-    height: 10vw;
-    width: 25vw;
-    font-size: 1.2em;
   }
 `;
 export const Lie = () => {
@@ -145,7 +144,7 @@ export const Lie = () => {
         value={textInput}
       />
 
-      <SearchButton onClick={() => handleSearch()}>Search</SearchButton>
+      <Search onClick={() => handleSearch()}>Search</Search>
       {display && (
         <LieSuggestions ref={wrapperRef}>
           {thoughts &&

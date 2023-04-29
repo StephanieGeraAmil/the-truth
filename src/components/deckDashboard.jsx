@@ -8,6 +8,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import styled from "styled-components";
 import { Title, SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
+import { Nav } from "./nav.jsx";
 
 const StyledTitle = styled(Title)`
   font-size: 6vw;
@@ -112,6 +113,8 @@ export const DeckDashboard = () => {
     }
   }, []);
   return (
+    <>
+    <Nav/>
     <DeckDashboardContainer>
       <StyledTitle>Decks</StyledTitle>
       <DeckListContainer>
@@ -136,5 +139,6 @@ export const DeckDashboard = () => {
         </Link>
       </DeckListContainer>
     </DeckDashboardContainer>
+    </>
   );
 };
