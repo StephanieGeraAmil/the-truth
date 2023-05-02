@@ -23,7 +23,7 @@ const GrayCircle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  /* z-index: 3; */
 `;
 const StepInfoSection = styled.div`
   height: 20vh;
@@ -45,7 +45,7 @@ const WhiteShape = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
+  /* z-index: 2; */
   @media (max-width: 500px) {
     height: 100%;
     min-height: 220px;
@@ -105,7 +105,7 @@ export const BottomSection = () => {
                 style={{
                   color: "#274C77",
                   fontSize: "3vh",
-                  zIndex: 4,
+                  // zIndex: 4,
                   opacity: 1,
                 }}
               />
@@ -128,7 +128,7 @@ export const BottomSection = () => {
                 style={{
                   color: "#274C77",
                   fontSize: "4.5vh",
-                  zIndex: 4,
+                  // zIndex: 4,
                   opacity: 1,
                 }}
               />
@@ -151,7 +151,7 @@ export const BottomSection = () => {
                 style={{
                   color: "#274C77",
                   fontSize: "3vh",
-                  zIndex: 4,
+                  // zIndex: 4,
                   opacity: 1,
                 }}
               />
@@ -174,7 +174,7 @@ export const BottomSection = () => {
                 style={{
                   color: "#274C77",
                   fontSize: "4.5vh",
-                  zIndex: 4,
+                  // zIndex: 4,
                   opacity: 1,
                 }}
               />
