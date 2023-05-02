@@ -36,7 +36,7 @@ const LieInput = styled.input`
   margin: 0;
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
-    z-index:2;
+  z-index: 2;
   @media (max-width: 500px) {
     border-radius: 6vw;
     height: 12vh;
@@ -83,7 +83,7 @@ const Search = styled(SearchButton)`
   top: 50%;
   right: 0;
   transform: translateY(-50%) translateX(-5%);
-  z-index:3;
+  z-index: 3;
   @media (max-width: 500px) {
     border-radius: 20px;
   }
@@ -127,7 +127,6 @@ export const Lie = () => {
     const { current: wrap } = wrapperRef;
     if (wrap && !wrap.contains(event.target)) {
       setDisplay(false);
-      // dispatch(getVersesRelated(textInput));
     }
   };
 
@@ -143,12 +142,6 @@ export const Lie = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  //the hint list must be ordered by amount of voutes that relate it to the tag
-  //if it's not in the hint list I should look for it on thethought/tag table that isn't created yet
-  //if I don't have nothing to suggest I should display a message inviting the user to search the web
-  //or seek counseling and add the information to the site and we must store the search
-  //so somebody can look for verses to help future aperances
 
   return (
     <LieContainer>
