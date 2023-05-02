@@ -1,15 +1,15 @@
 import * as actions from "../actionTypes";
-export const verseSelected = (currentSelection) => (dispatch) => {
+export const thoughtSelected = (thought) => (dispatch) => {
   try {
-    const action = { type: actions.SELECTED_VERSE, payload: currentSelection };
+    const action = { type: actions.SELECTED_THOUGHT, payload: thought };
     dispatch(action);
   } catch (error) {
     console.log(error);
   }
 };
-export const clearVerseSelected = () => (dispatch) => {
+export const clearThoughtSelected = () => (dispatch) => {
   try {
-    const action = { type: actions.UNSELECTED_VERSE };
+    const action = { type: actions.UNSELECTED_THOUGHT };
     dispatch(action);
   } catch (error) {
     console.log(error);

@@ -1,11 +1,11 @@
 import * as actions from "../actionTypes";
-export default (selected = { verse: null, form: null }, action) => {
+export default (selected = { thought: null, form: null }, action) => {
   switch (action.type) {
-    case actions.SELECTED_VERSE:
-      return { ...selected, verse: action.payload };
+    case actions.SELECTED_THOUGHT:
+      return { ...selected, thought: action.payload };
 
-    case actions.UNSELECTED_VERSE:
-      return { ...selected, verse: null };
+    case actions.UNSELECTED_THOUGHT:
+      return { ...selected, thought: null };
 
     case actions.SET_FORM_PURPOSE:
       return { ...selected, form: action.payload };
