@@ -59,8 +59,8 @@ export const AddToDeck = ({
   };
   useEffect(() => {
     setDecksSelected(decks.map((d) => ({ ...d, selected: false })));
-
-    // const decksThatHaveVerse= decks.filter((d)=>d.cards.filter((c)=>c.resources.find((r)=>r.ref==verse.ref)>-1).length>0);
+    // I dont have the cards on the state , I look for them just for showing the deck, so I cant know it without a bd query until I make some kind of change 
+    // const decksThatHaveVerse= decks.filter((d)=>d.cards.find((c)=>c.resources.find((r)=>r.ref==verse.ref)>-1)>-1);
     // console.log(decksThatHaveVerse);
   }, [decks]);
 
