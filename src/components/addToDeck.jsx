@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addVerseToCreatedCardOnDeck } from "../actions/cardActions";
+import { addVerseToCreatedCardOnDeck } from "../actions/deckActions";
 import { settingFormPurpose } from "../actions/currentSelectionActions";
 import styled, { css } from "styled-components";
 import { Form, FormInput } from "./shared_styles/styled_forms";
@@ -51,7 +51,9 @@ export const AddToDeck = ({
     console.log(decksSelected);
     setDisplayAddToDeckForm(false);
     decksSelected.map(async (deck) => {
-      dispatch(addVerseToCreatedCardOnDeck(verse, deck));
+      if (deck.selected) {
+        dispatch(addVerseToCreatedCardOnDeck(verse, deck));
+      }
     });
     setVerseSelected(null);
   };

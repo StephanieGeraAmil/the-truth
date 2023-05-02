@@ -14,7 +14,8 @@ export default (decks = [], action) => {
 
     case actions.GET_DECKS_OF_USER:
       return action.payload;
-    case actions.CREATE_CARD_ON_DECK:
+      
+    case actions.ADD_CARD_ON_DECK:
       return decks.map((deck) =>
         deck.id === action.payload.Deck_id
           ? { ...deck, cards: [...deck.cards, action.payload.Card_id] }

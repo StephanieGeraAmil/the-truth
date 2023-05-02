@@ -1,6 +1,6 @@
 import * as actions from "../actionTypes";
 import * as api from "../api/api.js";
-import { cards, setCards, decks, setDecks } from "../data.js";
+import { cards, setCards } from "../data.js";
 import { v4 } from "uuid";
 
 export const createCard = (card) => async (dispatch, getState) => {
@@ -88,25 +88,3 @@ export const deleteResourceFromCard =
     }
   };
 
-export const addVerseToCreatedCardOnDeck =
-  (Verse, Deck) => async (dispatch, getState) => {
-    try {
-      const card_id = v4();
-      const Card = { id: card_id, resources: [Verse] };
-      setCards([...cards, Card]);
-      setDecks(
-        decks.map((deck) =>
-          deck.id === Deck.id
-            ? { ...deck, cards: [...deck.cards, Card.id] }
-            : deck
-        )
-      );
-      //  const actionCard = { type: actions.CREATE_CARD, payload: Card };
-      // dispatch(actionCard);
-       const actionDeck = { type: actions.CREATE_CARD_ON_DECK, payload: Card };
-      dispatch(actionDeck);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };

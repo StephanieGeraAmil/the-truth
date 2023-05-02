@@ -14,7 +14,7 @@ export const GET_CARDS_OF_DECK= "card/get_cards_of_decks";
 export const ADD_RESOURCE_TO_CARD="card/add_resource_to_card";
 export const DELETE_RESOURCE_FROM_CARD="card/delete_resource_from_card";
 
-export const CREATE_CARD_ON_DECK="deck/create_card_deck";
+export const ADD_CARD_ON_DECK="deck/add_card_deck";
 export const DELETE_CARD_FROM_DECK="deck/delete_card_deck";
 
 export const GET_DECKS_OF_USER= "deck/get_decks_of_user";

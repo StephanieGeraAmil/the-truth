@@ -9,7 +9,7 @@ import {
   cleanCards,
   deleteResourceFromCard,
 } from "../actions/cardActions";
-import { createCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
+import { addCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
 
@@ -260,7 +260,7 @@ export const Deck = () => {
     setCurrentIndex(cards.length);
     const card = { id: v4() };
     dispatch(createCard(card));
-    dispatch(createCardOnDeck(deck.id, card.id));
+    dispatch(addCardOnDeck(deck.id, card.id));
   };
   const editCard = () => {
     setDisplay(true);
