@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createDeck } from "../actions/deckActions";
-
+import { addVerseToCreatedCardOnDeck } from "../actions/cardActions";
+import { settingFormPurpose } from "../actions/currentSelectionActions";
 import styled, { css } from "styled-components";
 import { Form, FormInput } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
@@ -9,8 +9,7 @@ import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 const AddToDeckForm = styled(Form)`
   top: 35vh;
-  z-index: 10;
-
+  z-index: 9;
 `;
 const ActionButtonsSection = styled.div`
   position: absolute;
@@ -35,16 +34,33 @@ const ListOfDecks = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  flex-wrap:wrap
+  overflow-y: auto;
 `;
 const CheckboxContainer = styled.div``;
-export const AddToDeck = ({ verse, setDisplayForm, setVerseSelected }) => {
+export const AddToDeck = ({
+  verse,
+  setDisplayAddToDeckForm,
+  setVerseSelected,
+}) => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
-  const [decksSelected, setDecksSelected] = useState(
-    decks.map((d) => ({ ...d, selected: false }))
-  );
+
+  const [decksSelected, setDecksSelected] = useState([]);
+  const handleAddToDeck = async () => {
+    console.log(decksSelected);
+    setDisplayAddToDeckForm(false);
+    decksSelected.map(async (deck) => {
+      dispatch(addVerseToCreatedCardOnDeck(verse, deck));
+    });
+    setVerseSelected(null);
+  };
+  useEffect(() => {
+    setDecksSelected(decks.map((d) => ({ ...d, selected: false })));
+
+    // const decksThatHaveVerse= decks.filter((d)=>d.cards.filter((c)=>c.resources.find((r)=>r.ref==verse.ref)>-1).length>0);
+    // console.log(decksThatHaveVerse);
+  }, [decks]);
 
   return (
     <AddToDeckForm>
@@ -79,21 +95,22 @@ export const AddToDeck = ({ verse, setDisplayForm, setVerseSelected }) => {
         <StyledButton
           transparent
           onClick={() => {
-            setDisplayForm(false);
+            setDisplayAddToDeckForm(false);
             setVerseSelected(null);
           }}
         >
           <MdArrowBack style={{ color: "#6096BA", fontSize: "3vh" }} />
         </StyledButton>
-        <StyledButton transparent onClick={() => {}}>
-          <FiPlusCircle style={{ color: "#6096BA", fontSize: "2vh" }} />{" "}
+        <StyledButton
+          transparent
+          onClick={() => dispatch(settingFormPurpose("New Deck"))}
+        >
+          <FiPlusCircle style={{ color: "#8B8C89", fontSize: "2vh" }} />
         </StyledButton>
         <StyledButton
           transparent
           onClick={() => {
-            console.log(decksSelected);
-            setDisplayForm(false);
-            setVerseSelected(null);
+            handleAddToDeck();
           }}
         >
           <MdOutlineDone style={{ color: "#6096BA", fontSize: "3vh" }} />
