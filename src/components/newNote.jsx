@@ -10,23 +10,21 @@ import { StyledButton } from "./shared_styles/styled_buttons";
 import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 
 const ActionButtonsSection = styled.div`
-position: absolute;
-bottom:2vh;
-right:2vh;
+  position: absolute;
+  bottom: 2vh;
+  right: 2vh;
   width: 90%;
-height: 3vh;
+  height: 3vh;
   overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 `;
-  const Button = styled(StyledButton)`
+const Button = styled(StyledButton)`
   font-size: 2vh;
 
-  margin:0;
-  padding:0;
-
+  margin: 0;
+  padding: 0;
 `;
 export const NewNote = ({ card_id, updateFormShown }) => {
   const dispatch = useDispatch();
@@ -34,11 +32,12 @@ export const NewNote = ({ card_id, updateFormShown }) => {
   const [textAreaInput, setTextAreaInput] = useState("");
 
   const addNote = () => {
-    const note = { content: textAreaInput, id: v4() };
-    dispatch(addResourceToCard(note, card_id));
-    updateFormShown(null);
+    if (textAreaInput != "") {
+      const note = { content: textAreaInput, id: v4() };
+      dispatch(addResourceToCard(note, card_id));
+      updateFormShown(null);
+    }
   };
-
 
   return (
     <Form>

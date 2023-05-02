@@ -45,8 +45,10 @@ export const NewDeck = () => {
         <StyledButton
           transparent
           onClick={() => {
-            dispatch(createDeck(deckName));
-            dispatch(clearFormPurpose());
+            if (deckName != "") {
+              dispatch(createDeck(deckName));
+              dispatch(clearFormPurpose());
+            }
           }}
         >
           {/* <StyledLink   to={`/decks/`} onClick={()=> dispatch(createDeck({name:deckName, UserId:userLogged.id}))}></StyledLink> */}
