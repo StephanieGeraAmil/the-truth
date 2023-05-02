@@ -40,14 +40,14 @@ export const SubTitle = styled.h3`
           font-weight: 600;
           text-align: center;
         `}
-     @media (max-width: 720px) {
+     @media (max-width: 800px) {
   
       ${(props) =>
         props.smaller &&
         css`
           font-size: 3vh;
         `}
-      @media (max-width: 500px) {
+      @media (max-width: 505px) {
   
       ${(props) =>
         props.smaller &&
@@ -74,7 +74,7 @@ export const Info = styled.p`
     css`
       font-size: 0.7rem;
     `}
-  @media (max-width: 500px) {
+  @media (max-width: 505px) {
     font-size: 0.8rem;
     line-height: 1.2em;
   }
