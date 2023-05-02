@@ -9,8 +9,8 @@ export const createCard = (card) => async (dispatch, getState) => {
     // const { data } = await api.createCard(Card);
     const data = { ...card, resources: [] };
     setCards([...cards, data]);
-    // const action = { type: actions.CREATE_CARD, payload: data };
-    // dispatch(action);
+    const action = { type: actions.CREATE_CARD, payload: data };
+    dispatch(action);
   } catch (error) {
     console.log(error);
   }
@@ -19,8 +19,8 @@ export const deleteCard = (Card_id) => async (dispatch) => {
   try {
     // await api.deleteCard(Card_id);
     setCards(cards.filter((card) => card.id !== Card_id));
-    // const action = { type: actions.DELETE_CARD, payload: Card_id };
-    // dispatch(action);
+    const action = { type: actions.DELETE_CARD, payload: Card_id };
+    dispatch(action);
   } catch (error) {
     console.log(error);
   }
@@ -57,9 +57,9 @@ export const addResourceToCard =
             : card
         )
       );
-      // const data = { Card_id, Resource };
-      // const action = { type: actions.ADD_RESOURCE_TO_CARD, payload: data };
-      // dispatch(action);
+      const data = { Card_id, Resource };
+      const action = { type: actions.ADD_RESOURCE_TO_CARD, payload: data };
+      dispatch(action);
     } catch (error) {
       console.log(error);
     }
@@ -80,9 +80,9 @@ export const deleteResourceFromCard =
             : card
         )
       );
-      // const data = { Resource_id, Card_id };
-      // const action = { type: actions.DELETE_RESOURCE_FROM_CARD, payload: data };
-      // dispatch(action);
+      const data = { Resource_id, Card_id };
+      const action = { type: actions.DELETE_RESOURCE_FROM_CARD, payload: data };
+      dispatch(action);
     } catch (error) {
       console.log(error);
     }
