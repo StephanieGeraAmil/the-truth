@@ -8,7 +8,7 @@ import { SubTitle, Info } from "./shared_styles/styled_text";
 
 import { FaSearch, FaPen } from "react-icons/fa";
 import { BiRepeat } from "react-icons/bi";
-import {TbCards} from  "react-icons/tb";
+import { TbCards } from "react-icons/tb";
 
 const GrayCircle = styled.div`
   height: 10vh;
@@ -44,7 +44,7 @@ const WhiteShape = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 500px) {
+  @media (max-width: 505px) {
     height: 100%;
     min-height: 220px;
     width: 42vh;
@@ -61,7 +61,7 @@ const StepSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  @media (max-width: 500px) {
+  @media (max-width: 505px) {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -77,7 +77,7 @@ const StyledSection = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 78vh;
-  @media (max-width: 500px) {
+  @media (max-width: 505px) {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -87,110 +87,105 @@ const StyledSection = styled.div`
 
 export const BottomSection = () => {
   const dispatch = useDispatch();
+  const currentThoughtSelected = (state) =>
+    state.selected.thought ? state.selected.thought : null;
+  const ThoughtSelected = useSelector(currentThoughtSelected);
 
-  const currentFormSelected = (state) =>
-    state.selected.form ? state.selected.form : null;
-  const formSelected = useSelector(currentFormSelected);
+  const show = ThoughtSelected ? true : false;
 
   return (
     <StyledSection>
-      {formSelected === "truth" && <Truth />}
-      {formSelected !== "truth" && (
-        <StepSection>
-          <WhiteShape>
-            <GrayCircle>
-              <FaSearch
-                style={{
-                  color: "#274C77",
-                  fontSize: "3vh",
-                  // zIndex: 4,
-                  opacity: 1,
-                }}
-              />
-            </GrayCircle>
-            <StepTitleSection>
-              <SubTitle blue smaller>
-                Search
-              </SubTitle>
-            </StepTitleSection>
-            <StepInfoSection>
-              <Info bigger>
-                Introduce your thoughts, or related keywords, and read what God
-                has to say about that
-              </Info>
-            </StepInfoSection>
-          </WhiteShape>
-          <WhiteShape>
-            <GrayCircle>
-                <TbCards
-                style={{
-                  color: "#274C77",
-                  fontSize: "4.5vh",
-                  // zIndex: 4,
-                  opacity: 1,
-                }}
-              />
-            </GrayCircle>
-            <StepTitleSection>
-              <SubTitle blue smaller>
-                Create Study Decks
-              </SubTitle>
-            </StepTitleSection>
-            <StepInfoSection>
-              <Info bigger>
-                You can create study decks for each truth you find, so you can
-                visit them later
-              </Info>
-            </StepInfoSection>
-          </WhiteShape>
-          <WhiteShape>
-            <GrayCircle>
-              <FaPen
-                style={{
-                  color: "#274C77",
-                  fontSize: "3vh",
-                  // zIndex: 4,
-                  opacity: 1,
-                }}
-              />
-            </GrayCircle>
-            <StepTitleSection>
-              <SubTitle blue smaller>
-                Add verses and notes
-              </SubTitle>
-            </StepTitleSection>
+      <StepSection>
+        <WhiteShape>
+          <GrayCircle>
+            <FaSearch
+              style={{
+                color: "#274C77",
+                fontSize: "3vh",
+                opacity: 1,
+              }}
+            />
+          </GrayCircle>
+          <StepTitleSection>
+            <SubTitle blue smaller>
+              Search
+            </SubTitle>
+          </StepTitleSection>
+          <StepInfoSection>
+            <Info bigger>
+              Introduce your thoughts, or related keywords, and read what God
+              has to say about that
+            </Info>
+          </StepInfoSection>
+        </WhiteShape>
+        <WhiteShape>
+          <GrayCircle>
+            <TbCards
+              style={{
+                color: "#274C77",
+                fontSize: "4.5vh",
+                opacity: 1,
+              }}
+            />
+          </GrayCircle>
+          <StepTitleSection>
+            <SubTitle blue smaller>
+              Create Study Decks
+            </SubTitle>
+          </StepTitleSection>
+          <StepInfoSection>
+            <Info bigger>
+              You can create study decks for each truth you find, so you can
+              visit them later
+            </Info>
+          </StepInfoSection>
+        </WhiteShape>
+        <WhiteShape>
+          <GrayCircle>
+            <FaPen
+              style={{
+                color: "#274C77",
+                fontSize: "3vh",
+                opacity: 1,
+              }}
+            />
+          </GrayCircle>
+          <StepTitleSection>
+            <SubTitle blue smaller>
+              Add verses and notes
+            </SubTitle>
+          </StepTitleSection>
 
-            <StepInfoSection>
-              <Info bigger>
-                Add notes and verses that help you focus on the truth
-              </Info>
-            </StepInfoSection>
-          </WhiteShape>
-          <WhiteShape>
-            <GrayCircle>
-              <BiRepeat
-                style={{
-                  color: "#274C77",
-                  fontSize: "4.5vh",
-                  // zIndex: 4,
-                  opacity: 1,
-                }}
-              />
-            </GrayCircle>
-            <StepTitleSection>
-              <SubTitle blue smaller>
-                Study
-              </SubTitle>
-            </StepTitleSection>
-            <StepInfoSection>
-              <Info bigger>
-                Go through the Decks as much as you can, untill you are able to
-                know and understand the truth
-              </Info>
-            </StepInfoSection>
-          </WhiteShape>
-        </StepSection>
-      )}
+          <StepInfoSection>
+            <Info bigger>
+              Add notes and verses that help you focus on the truth
+            </Info>
+          </StepInfoSection>
+        </WhiteShape>
+        <WhiteShape>
+          <GrayCircle>
+            <BiRepeat
+              style={{
+                color: "#274C77",
+                fontSize: "4.5vh",
+                opacity: 1,
+              }}
+            />
+          </GrayCircle>
+          <StepTitleSection>
+            <SubTitle blue smaller>
+              Study
+            </SubTitle>
+          </StepTitleSection>
+          <StepInfoSection>
+            <Info bigger>
+              Go through the Decks as much as you can, untill you are able to
+              know and understand the truth
+            </Info>
+          </StepInfoSection>
+        </WhiteShape>
+      </StepSection>
+      {show && <Truth />}
     </StyledSection>
   );
 };

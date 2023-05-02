@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  settingFormPurpose,
-  clearFormPurpose,
+  clearThoughtSelected,
 } from "../actions/currentSelectionActions";
 
 import { Verse } from "./verse";
 import { AddToDeck } from "./addToDeck";
+import { NewDeck } from "./newDeck";
 
 import styled from "styled-components";
 import { StyledCard } from "./shared_styles/styled_cards";
@@ -61,15 +61,17 @@ const TruthCard = styled(StyledCard)`
   }
 `;
 const TruthContainer = styled.div`
-  position: relative;
+  position: absolute;
+  bottom: -70vh;
+  left: 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   overflow: auto;
   gap: 2.5vw;
-  z-index: 5;
-  height: 100%;
+  z-index: 2;
+  height: 74vh;
   width: 100%;
   background: #8b8c89;
   box-shadow: 6px 5px 16px #000;
@@ -92,16 +94,18 @@ export const Truth = () => {
   const versesSelector = (state) => (state.verses ? state.verses : null);
   const versesRelated = useSelector(versesSelector);
   const wrapperRef = useRef(null);
-  //     const currentVerseSelected = (state) => (state.selected.verse ? state.selected.verse : null);
-  // const verseSelected = useSelector(currentVerseSelected);
 
-  const [displayForm, setDisplayForm] = useState(false);
+  const currentFormSelected = (state) =>
+    state.selected.form ? state.selected.form : null;
+  const formSelected = useSelector(currentFormSelected);
+
+  const [displayAddToDeckForm, setDisplayAddToDeckForm] = useState(false);
   const [verseSelected, setVerseSelected] = useState(null);
 
   const handleClickOutside = (event) => {
     const { current: wrap } = wrapperRef;
     if (wrap && !wrap.contains(event.target)) {
-      dispatch(clearFormPurpose());
+      dispatch(clearThoughtSelected());
     }
   };
   useEffect(() => {
@@ -113,14 +117,14 @@ export const Truth = () => {
 
   return (
     <TruthContainer ref={wrapperRef}>
-      <CloseButton transparent onClick={() => dispatch(clearFormPurpose())}>
+      <CloseButton transparent onClick={() => dispatch(clearThoughtSelected())}>
         <MdArrowBack style={{ color: "#1E1D25", fontSize: "4vh" }} />
       </CloseButton>
-      {displayForm && (
+      {displayAddToDeckForm && (
         <AddToDeck
           verse={verseSelected}
           setVerseSelected={setVerseSelected}
-          setDisplayForm={setDisplayForm}
+          setDisplayAddToDeckForm={setDisplayAddToDeckForm}
         ></AddToDeck>
       )}
       {versesRelated &&
@@ -129,11 +133,8 @@ export const Truth = () => {
             <StyledButton
               transparent
               onClick={() => {
-                setDisplayForm(true);
+                setDisplayAddToDeckForm(true);
                 setVerseSelected(element);
-
-                //ask whick deck should it be added to
-                // dispatch(addResourceToDeck(element,deck));
               }}
             >
               <FiPlusCircle style={{ color: "#6096BA", fontSize: "3vh" }} />
@@ -141,6 +142,7 @@ export const Truth = () => {
             <Verse verse={element} />
           </TruthCard>
         ))}
+      {formSelected == "New Deck" && <NewDeck />}
     </TruthContainer>
   );
 };

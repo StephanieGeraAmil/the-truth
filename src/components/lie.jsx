@@ -4,6 +4,7 @@ import { getVersesRelated } from "../actions/verseActions";
 import {
   settingFormPurpose,
   clearFormPurpose,
+  thoughtSelected,
 } from "../actions/currentSelectionActions";
 
 import styled from "styled-components";
@@ -95,6 +96,9 @@ export const Lie = () => {
   const currentFormSelected = (state) =>
     state.selected.form ? state.selected.form : null;
   const formSelected = useSelector(currentFormSelected);
+  const currentThoughtSelected = (state) =>
+    state.selected.thought ? state.selected.thought : null;
+  const ThoughtSelected = useSelector(currentThoughtSelected);
 
   const wrapperRef = useRef(null);
 
@@ -109,7 +113,7 @@ export const Lie = () => {
     setDisplay(!display);
     setTextInput(suggestion);
     dispatch(getVersesRelated(suggestion));
-    dispatch(settingFormPurpose("truth"));
+    dispatch(thoughtSelected(suggestion));
   };
 
   const handleKeyPress = (e) => {
@@ -117,11 +121,13 @@ export const Lie = () => {
     if (e.key === "Enter") {
       setDisplay(!display);
       dispatch(getVersesRelated(textInput));
+      dispatch(thoughtSelected(textInput));
     }
   };
   const handleSearch = () => {
     setDisplay(false);
     dispatch(getVersesRelated(textInput));
+    dispatch(thoughtSelected(textInput));
   };
   const handleClickOutside = (event) => {
     const { current: wrap } = wrapperRef;
@@ -131,10 +137,10 @@ export const Lie = () => {
   };
 
   useEffect(() => {
-    if (formSelected !== "truth") {
+    if (ThoughtSelected === null) {
       setTextInput("");
     }
-  }, [formSelected]);
+  }, [ThoughtSelected]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
