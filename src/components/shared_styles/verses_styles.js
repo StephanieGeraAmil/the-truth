@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const VerseContainer = styled.div`
+width:95%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

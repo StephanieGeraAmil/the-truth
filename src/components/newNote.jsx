@@ -7,19 +7,23 @@ import { v4 } from "uuid";
 import styled, { css } from "styled-components";
 import { Form, FormTextArea } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
+import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 
 const ActionButtonsSection = styled.div`
+position: absolute;
+bottom:2vh;
+right:2vh;
   width: 90%;
 height: 3vh;
   overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 40px;
+
 `;
   const Button = styled(StyledButton)`
   font-size: 2vh;
-  color: "#433e3e";
+
   margin:0;
   padding:0;
 
@@ -30,8 +34,7 @@ export const NewNote = ({ card_id, updateFormShown }) => {
   const [textAreaInput, setTextAreaInput] = useState("");
 
   const addNote = () => {
-    const note = { content: textAreaInput, id: v4(), type: "note" };
-    // dispatch(createNote(note));
+    const note = { content: textAreaInput, id: v4() };
     dispatch(addResourceToCard(note, card_id));
     updateFormShown(null);
   };
@@ -46,10 +49,10 @@ export const NewNote = ({ card_id, updateFormShown }) => {
       ></FormTextArea>
       <ActionButtonsSection>
         <Button transparent onClick={() => updateFormShown(null)}>
-          close
+          <MdArrowBack style={{ color: "#6096BA", fontSize: "3vh" }} />
         </Button>
         <Button transparent onClick={() => addNote()}>
-          save
+          <MdOutlineDone style={{ color: "#6096BA", fontSize: "3vh" }} />
         </Button>
       </ActionButtonsSection>
     </Form>

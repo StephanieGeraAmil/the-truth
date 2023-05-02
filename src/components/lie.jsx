@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVersesRelated } from "../actions/verseActions";
+import {
+  settingFormPurpose,
+  clearFormPurpose,
+} from "../actions/currentSelectionActions";
 
 import styled from "styled-components";
 import { SearchButton } from "./shared_styles/styled_buttons";
@@ -12,7 +16,7 @@ const LieContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top:1vh;
+  margin-top: 1vh;
   align-items: center;
   @media (max-width: 500px) {
     height: 13vh;
@@ -28,16 +32,15 @@ const LieInput = styled.input`
   font-size: 1.2vw;
   font-weight: 100;
   padding: 0.5vh;
-    padding-left:5%;
+  padding-left: 5%;
   margin: 0;
   box-shadow: 5px 3px 10px #333;
-  color:#8B8C89;
+  color: #8b8c89;
   @media (max-width: 500px) {
     border-radius: 6vw;
     height: 12vh;
     font-size: 1.1em;
     padding: 0.5em;
-
   }
   &:active,
   &:focus {
@@ -61,7 +64,7 @@ const LieSuggestions = styled.div`
   flex-direction: column;
   line-height: 2em;
   box-shadow: 5px 3px 10px #333;
-  color:#8B8C89;
+  color: #8b8c89;
   @media (max-width: 500px) {
     top: 2.1em;
     padding: 1em;
@@ -70,7 +73,7 @@ const LieSuggestions = styled.div`
     font-size: 1em;
   }
   @media (max-width: 400px) {
-     top: 1.5em;
+    top: 1.5em;
   }
 `;
 const Search = styled(SearchButton)`
@@ -87,6 +90,9 @@ export const Lie = () => {
   const dispatch = useDispatch();
   const thoughtSelector = (state) => (state.thoughts ? state.thoughts : null);
   const thoughts = useSelector(thoughtSelector);
+  const currentFormSelected = (state) =>
+    state.selected.form ? state.selected.form : null;
+  const formSelected = useSelector(currentFormSelected);
 
   const wrapperRef = useRef(null);
 
@@ -101,6 +107,7 @@ export const Lie = () => {
     setDisplay(!display);
     setTextInput(suggestion);
     dispatch(getVersesRelated(suggestion));
+    dispatch(settingFormPurpose("truth"));
   };
 
   const handleKeyPress = (e) => {
@@ -121,6 +128,12 @@ export const Lie = () => {
       // dispatch(getVersesRelated(textInput));
     }
   };
+
+  useEffect(() => {
+    if (formSelected !== "truth") {
+      setTextInput("");
+    }
+  }, [formSelected]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);

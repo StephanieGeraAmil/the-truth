@@ -28,7 +28,22 @@ export const thoughts = [
 export let decks = [
   {
     id: "d1",
-    name: "acceptance",
+    name: "diligence",
+    cards: ["c1", "c2"],
+  },
+    {
+    id: "d2",
+    name: "fear",
+    cards: ["c1", "c2"],
+  },
+  {
+    id: "d3",
+    name: "purpose",
+    cards: ["c1", "c2"],
+  },
+   {
+    id: "d4",
+    name: "forgiveness",
     cards: ["c1", "c2"],
   },
 ];
@@ -88,6 +103,30 @@ export let cards = [
         id: "n6",
         content: "God doesn't make mistakes",
       },
+    ],
+  },
+  {
+    id: "c4",
+    resources: [
+     
+    ],
+  },
+    {
+    id: "c5",
+    resources: [
+     
+    ],
+  },
+    {
+    id: "c6",
+    resources: [
+     
+    ],
+  },
+  {
+    id: "c7",
+    resources: [
+     
     ],
   },
 ];

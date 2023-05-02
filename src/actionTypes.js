@@ -46,12 +46,13 @@ export const DELETE_CARD_VERSE= "card/delete_verses_of_cards";
 
 
 
-export const SELECTED_HINT ="selected/select_hint";
-export const UNSELECTED_HINT ="selected/unselect_hint";
+export const SELECTED_VERSE ="selected/select_verse";
+export const UNSELECTED_VERSE ="selected/unselect_verse";
 export const SETTING_FORM_FOR_NEW_DECK ="selected/seting_form_to_new_deck";
 export const SETTING_FORM_FOR_NEW_CARD ="selected/seting_form_to_new_card";
 export const SETTING_FORM_FOR_EDIT_DECK="selected/seting_form_to_edit_deck";
 export const SETTING_FORM_FOR_EDIT_CARD ="selected/seting_form_to_edit_card";
+export const SET_FORM_PURPOSE="selected/seting_form";
 export const CLEAR_FORM_PURPOSE="selected/unseting_form";
 
 export const ADD_RESOURCE_TO_CARD="card/add_resource_to_card";

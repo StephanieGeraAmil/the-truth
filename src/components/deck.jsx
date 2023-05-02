@@ -12,13 +12,7 @@ import {
 import { createCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 import { NewNote } from "./newNote";
 import { NewVerse } from "./newVerse";
-import {
-  FaPlus,
-  FaMinus,
-  FaArrowLeft,
-  FaArrowRight,
-  FaTrash,
-} from "react-icons/fa";
+
 import styled, { css } from "styled-components";
 import { Title, Info } from "./shared_styles/styled_text";
 import {
@@ -27,18 +21,25 @@ import {
   VerseRef,
 } from "./shared_styles/verses_styles";
 
-const BottomButtons = styled.div`
-  height: 10vw;
-`;
+import { FaMinus, FaTrash, FaPen } from "react-icons/fa";
+import { FiPlusCircle } from "react-icons/fi";
+import { MdOutlineDone } from "react-icons/md";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+
 
 const ActionButtonsContainer = styled.div`
+  position: absolute;
+  bottom: 2vh;
+  right: 1vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  align-self: flex-end;
+  gap: 2vh;
   z-index: 0;
-  height: 8%;
-  width: 50%;
+  height: 5vh;
 `;
 
 const StyledTitle = styled(Title)`
@@ -52,6 +53,26 @@ const StyledTitle = styled(Title)`
   }
 `;
 export const StyledButton = styled.button`
+  z-index: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.6rem;
+  font-weight: 100;
+  vertical-align: center;
+  color: #8b8c89;
+  ${(props) =>
+    props.hidden &&
+    css`
+      opacity: 0;
+    `}
+  @media (max-width: 500px) {
+    font-size: 0.8rem;
+  }
+  @media (min-width: 1200px) {
+    font-size: 2vh;
+  }
+`;
+export const PrevAndNext = styled.button`
   width: 4vh;
   height: 4vh;
   z-index: 0;
@@ -65,8 +86,8 @@ export const StyledButton = styled.button`
 `;
 const StyledInfo = styled(Info)`
   font-size: 2vh;
- 
-  width: 100%;
+
+  width: 95%;
   padding: 0;
   color: #433e3e;
   margin: 0;
@@ -94,7 +115,8 @@ const StyledRef = styled(VerseRef)`
   }
 `;
 const MinusDiv = styled.div`
-  width: 4vh;
+  width: 3vh;
+  height: 3vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -102,6 +124,7 @@ const MinusDiv = styled.div`
 `;
 const StyledResource = styled.div`
   width: 100%;
+  min-height: 3vh;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -132,7 +155,7 @@ const CardContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5vh;
+  gap: 2vh;
   z-index: 0;
   &:after {
     height: inherit;
@@ -174,6 +197,7 @@ const DeckContent = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 10vh;
   @media (min-width: 1800px) {
     width: 80%;
     margin: auto;
@@ -206,6 +230,7 @@ export const Deck = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
   const [display, setDisplay] = useState(false);
+
   useEffect(() => {
     if (deck) {
       dispatch(getCardsOfDeck(deck));
@@ -214,11 +239,14 @@ export const Deck = () => {
       dispatch(cleanCards());
     };
   }, []);
+
   const nextCard = () => {
+    setDisplay(false);
     setFormShown(null);
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
+    setDisplay(false);
     setFormShown(null);
     setCurrentIndex(currentIndex - 1);
   };
@@ -234,20 +262,72 @@ export const Deck = () => {
     dispatch(createCard(card));
     dispatch(createCardOnDeck(deck.id, card.id));
   };
+  const editCard = () => {
+    setDisplay(true);
+  };
+  const FinishEditCard = () => {
+    setDisplay(false);
+  };
   return (
     <DeckContainer>
       {deck && <StyledTitle white>{deck.name}</StyledTitle>}
       <>
+        {cards.length == 0 && (
+          <>
+            <StyledButton transparent onClick={() => addCard()}>
+              <FiPlusCircle style={{ color: "#6096BA", fontSize: "3vh" }} />
+                  <Info>Add First Card</Info>
+            </StyledButton>
+          </>
+        )}
         {cards.length > 0 && (
           <DeckContent>
             {currentIndex !== 0 ? (
-              <StyledButton onClick={() => prevCard()}>
-                <FaArrowLeft style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
-              </StyledButton>
+              <PrevAndNext onClick={() => prevCard()}>
+                <IoIosArrowBack style={{ color: "#8B8C89", fontSize: "3vh" }} />
+              </PrevAndNext>
             ) : (
-              <StyledButton></StyledButton>
+              <PrevAndNext> </PrevAndNext>
             )}
             <CardContainer>
+              <ActionButtonsContainer>
+                {display && (
+                  <>
+                    <StyledButton onClick={() => FinishEditCard()}>
+                      <MdOutlineDone
+                        style={{ color: "#6096BA", fontSize: "3vh" }}
+                      />{" "}
+                    </StyledButton>
+                    <StyledButton onClick={() => setFormShown("Note")}>
+                      <FiPlusCircle
+                        style={{ color: "#6096BA", fontSize: "2vh" }}
+                      />{" "}
+                      <Info> Note</Info>
+                    </StyledButton>
+                    <StyledButton onClick={() => setFormShown("Verse")}>
+                      <FiPlusCircle
+                        style={{ color: "#6096BA", fontSize: "2vh" }}
+                      />{" "}
+                      <Info> Verse</Info>
+                    </StyledButton>
+                  </>
+                )}
+                {!display && (
+                  <>
+                    <StyledButton onClick={() => removeCard()}>
+                      <FaTrash style={{ color: "#6096BA", fontSize: "3vh" }} />
+                    </StyledButton>
+                    <StyledButton onClick={() => editCard()}>
+                      <FaPen style={{ color: "#6096BA", fontSize: "3vh" }} />
+                    </StyledButton>
+                    <StyledButton transparent onClick={() => addCard()}>
+                      <FiPlusCircle
+                        style={{ color: "#6096BA", fontSize: "3vh" }}
+                      />{" "}
+                    </StyledButton>
+                  </>
+                )}
+              </ActionButtonsContainer>
               {formShown && formShown === "Note" && cards[currentIndex] && (
                 <NewNote
                   card_id={cards[currentIndex].id}
@@ -265,8 +345,6 @@ export const Deck = () => {
                   cards[currentIndex].resources.map((res) => (
                     <StyledResource
                       key={res.id}
-                      onMouseEnter={(e) => setDisplay(true)}
-                      onMouseLeave={(e) => setDisplay(false)}
                     >
                       {display && (
                         <MinusDiv>
@@ -298,36 +376,18 @@ export const Deck = () => {
                     </StyledResource>
                   ))}
               </CardContent>
-              <ActionButtonsContainer>
-                <StyledButton onClick={() => removeCard()}>
-                  <FaTrash style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
-                   <StyledInfo>card</StyledInfo>
-                </StyledButton>
-                <StyledButton onClick={() => setFormShown("Note")}>
-                  <FaPlus style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
-                  <StyledInfo>note</StyledInfo>
-                </StyledButton>
-                <StyledButton onClick={() => setFormShown("Verse")}>
-                  <FaPlus style={{ color: "#0D0C3C", fontSize: "1.9vh" }} />
-                  <StyledInfo>verse</StyledInfo>
-                </StyledButton>
-              </ActionButtonsContainer>
             </CardContainer>
             {currentIndex !== cards.length - 1 ? (
-              <StyledButton transparent onClick={() => nextCard()}>
-                <FaArrowRight style={{ color:"#0D0C3C", fontSize: "1.9vh" }} />
-              </StyledButton>
+              <PrevAndNext transparent onClick={() => nextCard()}>
+                <IoIosArrowForward
+                  style={{ color: "#8B8C89", fontSize: "3vh" }}
+                />
+              </PrevAndNext>
             ) : (
-              <StyledButton></StyledButton>
+              <PrevAndNext></PrevAndNext>
             )}
           </DeckContent>
         )}
-        <BottomButtons>
-          <StyledButton transparent onClick={() => addCard()}>
-            <FaPlus style={{ color:"#FFF", fontSize: "1.9vh" }} />{" "}
-            <StyledInfo white>card</StyledInfo>
-          </StyledButton>
-        </BottomButtons>
       </>
     </DeckContainer>
   );

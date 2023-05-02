@@ -1,30 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch} from "react-redux";
 import { v4 } from "uuid";
-
 import { addResourceToCard } from "../actions/cardActions";
-
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Form, FormTextArea, FormInput } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
+import { MdArrowBack, MdOutlineDone } from "react-icons/md";
+
+
 
 const ActionButtonsSection = styled.div`
+position: absolute;
+bottom:2vh;
+right:2vh;
   width: 90%;
   height: 3vh;
-  margin-top:1vw;
   overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 40px;
-`;
-  const Button = styled(StyledButton)`
-  font-size: 2vh;
-  color: "#433e3e";
-  margin:0;
-  padding:0;
 
 `;
+const Button = styled(StyledButton)`
+  font-size: 2vh;
+  margin: 0;
+  padding: 0;
+`;
+
 export const NewVerse = ({ card_id, updateFormShown }) => {
   const dispatch = useDispatch();
 
@@ -37,26 +39,28 @@ export const NewVerse = ({ card_id, updateFormShown }) => {
     updateFormShown(null);
   };
 
-  return (
+   return (
     <Form>
-      <FormTextArea
-        placeholder="Scripture"
+      
+      <FormInput
+        placeholder="Add the Reference of the verse"
+        onChange={(event) => setRef(event.target.value)}
+        value={ref}
+      ></FormInput>
+        <FormTextArea
+        placeholder="Add the Scripture"
         onChange={(event) => setScripture(event.target.value)}
         value={scripture}
       ></FormTextArea>
-       <FormInput
-        onChange={(event) => setRef(event.target.value)}
-        value={ref}
-        placeholder="Book Ch:Vs"
-      ></FormInput>
-      <ActionButtonsSection>
+    
+    <ActionButtonsSection> 
         <Button transparent onClick={() => updateFormShown(null)}>
-          close
+          <MdArrowBack style={{ color: "#6096BA", fontSize: "3vh" }} />
         </Button>
         <Button transparent onClick={() => addVerse()}>
-          save
+          <MdOutlineDone style={{ color: "#6096BA", fontSize: "3vh" }} />
         </Button>
-      </ActionButtonsSection>
+      </ActionButtonsSection> 
     </Form>
   );
 };

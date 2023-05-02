@@ -1,28 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
-import { Link } from "react-router-dom";
-
-import { FaPlus, FaMinus } from "react-icons/fa";
+import { settingFormPurpose } from "../actions/currentSelectionActions.js";
+import { Nav } from "./nav.jsx";
+import { NewDeck } from "./newDeck";
 
 import styled from "styled-components";
 import { Title, SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
-import { Nav } from "./nav.jsx";
+import { FaPlus, FaMinus } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { FiPlusCircle } from "react-icons/fi";
 
-const StyledTitle = styled(Title)`
-  font-size: 6vw;
-  text-align: center;
-  color: white;
-  height: 8%;
-  @media (max-width: 500px) {
-    font-size: 3em;
-    height: 5%;
-  }
-  @media (min-width: 1000px) {
-    font-size: 4vw;
-  }
-`;
 const StyledSubTitle = styled(SubTitle)`
   font-size: 2.5vw;
   text-align: center;
@@ -101,9 +91,14 @@ const DeckPreviewContainer = styled.div`
   }
 `;
 export const DeckDashboard = () => {
+  const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
-  const dispatch = useDispatch();
+
+  const currentFormSelected = (state) =>
+    state.selected.form ? state.selected.form : null;
+  const formSelected = useSelector(currentFormSelected);
+
   const removeDeck = (deck) => {
     dispatch(deleteDeck(deck.id));
   };
@@ -113,10 +108,8 @@ export const DeckDashboard = () => {
     }
   }, []);
   return (
-    <>
-    <Nav/>
     <DeckDashboardContainer>
-      <StyledTitle>Decks</StyledTitle>
+      {formSelected == "New Deck" && <NewDeck />}
       <DeckListContainer>
         {decks.length > 0 ? (
           decks.map((element) => (
@@ -126,7 +119,15 @@ export const DeckDashboard = () => {
                   <StyledSubTitle>{element.name}</StyledSubTitle>
                 </StyledLink>
                 <StyledButton transparent onClick={() => removeDeck(element)}>
-                  <FaMinus style={{ color: "purple", fontSize: "2.5vh" }} />
+                  <MdDelete
+                    style={{
+                      position: "absolute",
+                      top: "2vh",
+                      right: "2vh",
+                      color: "#6096BA",
+                      fontSize: "3vh",
+                    }}
+                  />
                 </StyledButton>
               </DeckPreviewContainer>
             </div>
@@ -134,11 +135,12 @@ export const DeckDashboard = () => {
         ) : (
           <p>User without decks yet</p>
         )}
-        <Link to={`../newDeck`}>
-          <FaPlus style={{ color: "purple", fontSize: "2.5vh" }} />
-        </Link>
+
+        <StyledButton transparent onClick={() => dispatch(settingFormPurpose("New Deck"))}>
+          <FiPlusCircle style={{ color: "#8B8C89", fontSize: "3vh" }} />
+        </StyledButton>
+
       </DeckListContainer>
     </DeckDashboardContainer>
-    </>
   );
 };

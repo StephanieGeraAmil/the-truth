@@ -11,7 +11,7 @@ import { Logout } from "./logout";
 import styled from "styled-components";
 import { StyledLink } from "./shared_styles/styled_buttons";
 
-import Deck from "../assets/deck.png";
+import Deck from "../assets/deck.svg";
 
 const NavContainer = styled.nav`
   height: 7vh;
@@ -20,7 +20,7 @@ const NavContainer = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding: 1vh;
+  padding: 3vh;
   padding-right: 5%;
   gap: 2vw;
 `;
@@ -45,13 +45,13 @@ export const Nav = () => {
         to="/decks"
         
       >
-        <img src={Deck} alt="deck_page" style={{height:  "3vh"}} />
+        <img src={Deck} alt="deck_page" style={{ color:"#8B8C89",height:  "4vh"}} />
       </StyledLink>}
       {location.pathname!=="/"&& <StyledLink
         onClick={() => dispatch(getDecksOfUser("userLogged"))}
         to="/"
       >
-        <FaSearch style={{color: 'white', fontSize: "3vh" }}/>
+        <FaSearch style={{color: '#8B8C89', fontSize: "3.5vh" }}/>
       </StyledLink>}
     </NavContainer>
   );

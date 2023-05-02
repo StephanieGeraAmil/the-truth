@@ -1,52 +1,29 @@
 import * as actions from "../actionTypes";
-export const hintSelected = (currentSelection) => (dispatch) => {
+export const verseSelected = (currentSelection) => (dispatch) => {
   try {
-    const action = { type: actions.SELECTED_HINT, payload: currentSelection };
+    const action = { type: actions.SELECTED_VERSE, payload: currentSelection };
     dispatch(action);
   } catch (error) {
     console.log(error);
   }
 };
-export const clearHintSelected = () => (dispatch) => {
+export const clearVerseSelected = () => (dispatch) => {
   try {
-    const action = { type: actions.UNSELECTED_HINT };
+    const action = { type: actions.UNSELECTED_VERSE };
     dispatch(action);
   } catch (error) {
     console.log(error);
   }
 };
-export const settingFormPurposeToAddDeck = () => (dispatch) => {
+export const settingFormPurpose = (form) => (dispatch) => {
   try {
-    const action = { type: actions.SETTING_FORM_FOR_NEW_DECK };
+    const action = { type: actions.SET_FORM_PURPOSE, payload: form };
     dispatch(action);
   } catch (error) {
     console.log(error);
   }
 };
-export const settingFormPurposeToEditDeck = () => (dispatch) => {
-  try {
-    const action = { type: actions.SETTING_FORM_FOR_EDIT_DECK };
-    dispatch(action);
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const settingFormPurposeToAddCard = () => (dispatch) => {
-  try {
-    const action = { type: actions.SETTING_FORM_FOR_NEW_CARD };
-    dispatch(action);
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const settingFormPurposeToEditCard = () => (dispatch) => {
-  try {
-    const action = { type: actions.SETTING_FORM_FOR_EDIT_CARD };
-    dispatch(action);
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 export const clearFormPurpose = () => (dispatch) => {
   try {
     const action = { type: actions.CLEAR_FORM_PURPOSE };

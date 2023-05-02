@@ -12,7 +12,7 @@ import { Nav } from "./components/nav";
 import App from "./App";
 import { DeckDashboard } from "./components/deckDashboard";
 import { Deck } from "./components/deck";
-import { NewDeck } from "./components/newDeck";
+
 
 import { createGlobalStyle } from "styled-components";
 
@@ -57,12 +57,28 @@ ReactDOM.render(
         >
           <GlobalStyle />
           <>
-            {/* <Nav/> */}
+
             <Routes>
               <Route path="/" element={<App />} />
-              <Route path="/decks" element={<DeckDashboard />} />
-              <Route path="/newdeck" element={<NewDeck />} />
-              <Route path="/decks/:id" element={<Deck />} />
+              <Route
+                path="/decks"
+                element={
+                  <>
+                    <Nav />
+                    <DeckDashboard />
+                  </>
+                }
+              />
+       
+              <Route
+                path="/decks/:id"
+                element={
+                  <>
+                    <Nav />
+                    <Deck />
+                  </>
+                }
+              />
             </Routes>
           </>
         </Auth0Provider>
