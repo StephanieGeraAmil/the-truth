@@ -36,6 +36,7 @@ const LieInput = styled.input`
   margin: 0;
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
+    z-index:2;
   @media (max-width: 500px) {
     border-radius: 6vw;
     height: 12vh;
@@ -49,12 +50,12 @@ const LieInput = styled.input`
 `;
 
 const LieSuggestions = styled.div`
-  padding-top: 2vw;
+  padding-top: 4.5vh;
   padding-left: 1vw;
   padding-bottom: 1vw;
   width: 100%;
   position: absolute;
-  top: 2vw;
+  top: 3.3vh;
   left: 0;
   background-color: #fff;
   border-radius: 0 0 2vw 2vw;
@@ -82,6 +83,7 @@ const Search = styled(SearchButton)`
   top: 50%;
   right: 0;
   transform: translateY(-50%) translateX(-5%);
+  z-index:3;
   @media (max-width: 500px) {
     border-radius: 20px;
   }
