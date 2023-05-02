@@ -19,12 +19,7 @@ const ActionButtonsSection = styled.div`
   justify-content: space-between;
   gap: 40px;
 `;
-// const StyledLink = styled(Link)`
-//   font-size: 2vh;
-//   color: #6096ba;
-//   margin: 0;
-//   padding: 0;
-// `;
+
 export const NewDeck = () => {
   const dispatch = useDispatch();
   const userLoggedSelector = (state) => (state.user ? state.user : null);

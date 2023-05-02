@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  clearThoughtSelected,
-} from "../actions/currentSelectionActions";
+import { clearThoughtSelected } from "../actions/currentSelectionActions";
 
 import { Verse } from "./verse";
 import { AddToDeck } from "./addToDeck";
@@ -53,11 +51,21 @@ const TruthCard = styled(StyledCard)`
   max-width: 30vw;
   z-index: 6;
 
-  @media (max-width: 500px) {
+  @media (max-width: 650px) {
     min-height: 35vh;
     min-width: 80vw;
     width: 90%;
-    margin: auto;
+
+  }
+`;
+const NewDeckForm = styled.div`
+  position: relative;
+  z-index: 12;
+  bottom: 10%;
+  left: 50%;
+  @media (max-width: 650px) {
+    top: 10%;
+  left: 0;
   }
 `;
 const TruthContainer = styled.div`
@@ -76,16 +84,22 @@ const TruthContainer = styled.div`
   background: #8b8c89;
   box-shadow: 6px 5px 16px #000;
   padding-left: 10vh;
-
-  @media (max-width: 500px) {
+  @media (max-width: 650px) {
+    width: 100%;
+    top: 90vh;
+    height: 200vh;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+      padding-left: 0;
+    padding-top:10vh;
     gap: 3vh;
-    height: 80vh;
-    margin: auto;
-    margin-top: 5vh;
+  }
+
+  @media (max-width: 500px) {
     width: 100%;
+    top: 93vh;
+    height: 320vh;
   }
 `;
 
@@ -120,6 +134,11 @@ export const Truth = () => {
       <CloseButton transparent onClick={() => dispatch(clearThoughtSelected())}>
         <MdArrowBack style={{ color: "#1E1D25", fontSize: "4vh" }} />
       </CloseButton>
+      {formSelected == "New Deck" && (
+        <NewDeckForm>
+          <NewDeck />
+        </NewDeckForm>
+      )}
       {displayAddToDeckForm && (
         <AddToDeck
           verse={verseSelected}
@@ -142,7 +161,6 @@ export const Truth = () => {
             <Verse verse={element} />
           </TruthCard>
         ))}
-      {formSelected == "New Deck" && <NewDeck />}
     </TruthContainer>
   );
 };

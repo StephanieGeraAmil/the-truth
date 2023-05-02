@@ -15,12 +15,12 @@ const Img = styled.img`
   position: absolute;
   left: -8vh;
   top: 8vh;
-  z-index: 2;
+  z-index: 1;
   height: 80vh;
 `;
 const GrayRectangle = styled.div`
   height: 80vh;
-
+  z-index: 0;
   width: 55vh;
   min-width: 300px;
   box-shadow: 2px 3px 16px #333;
