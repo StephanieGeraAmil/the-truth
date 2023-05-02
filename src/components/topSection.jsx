@@ -20,7 +20,9 @@ const Img = styled.img`
 `;
 const GrayRectangle = styled.div`
   height: 80vh;
+
   width: 55vh;
+  min-width: 300px;
   box-shadow: 2px 3px 16px #333;
   position: relative;
   background-color: #8b8c89;
@@ -33,9 +35,14 @@ const Right = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  @media (max-width: 650px) {
+    justify-content: center;
+    width: 50vh;
+    height: 95vh;
+    margin: auto;
+  }
   @media (max-width: 500px) {
     justify-content: center;
-    margin-top: 6vh;
     width: 100%;
   }
 `;
@@ -47,7 +54,7 @@ const Left = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 3vh;
-  @media (max-width: 500px) {
+  @media (max-width: 650px) {
     height: 95vh;
     width: 90%;
   }
@@ -62,10 +69,15 @@ const StyledSection = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 10vh;
-  @media (max-width: 500px) {
+  @media (max-width: 650px) {
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10vh;
+    gap: 0;
+    width: 80%;
+    height: 180vh;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
   }
   @media (min-width: 900px) {
     width: 90%;
