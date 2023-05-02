@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
 import { settingFormPurpose } from "../actions/currentSelectionActions.js";
-import { Nav } from "./nav.jsx";
 import { NewDeck } from "./newDeck";
 
 import styled from "styled-components";
-import { Title, SubTitle } from "./shared_styles/styled_text";
+import { SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
-import { FaPlus, FaMinus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 
@@ -94,7 +91,6 @@ export const DeckDashboard = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
-
   const currentFormSelected = (state) =>
     state.selected.form ? state.selected.form : null;
   const formSelected = useSelector(currentFormSelected);
@@ -136,10 +132,12 @@ export const DeckDashboard = () => {
           <p>User without decks yet</p>
         )}
 
-        <StyledButton transparent onClick={() => dispatch(settingFormPurpose("New Deck"))}>
+        <StyledButton
+          transparent
+          onClick={() => dispatch(settingFormPurpose("New Deck"))}
+        >
           <FiPlusCircle style={{ color: "#8B8C89", fontSize: "3vh" }} />
         </StyledButton>
-
       </DeckListContainer>
     </DeckDashboardContainer>
   );
