@@ -7,10 +7,7 @@ import { Form, FormInput } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
 import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
-const AddToDeckForm = styled(Form)`
-  top: 35vh;
-  z-index: 9;
-`;
+
 const ActionButtonsSection = styled.div`
   position: absolute;
   bottom: 2vh;
@@ -36,7 +33,16 @@ const ListOfDecks = styled.div`
   align-items: flex-start;
   overflow-y: auto;
 `;
-const CheckboxContainer = styled.div``;
+const CheckboxContainer = styled.div`
+display: flex;
+flex-direction:row;
+justify-content:flex-start;
+  align-items: center;
+`;
+const AddToDeckForm = styled(Form)`
+  top: 35vh;
+  z-index: 9;
+`;
 export const AddToDeck = ({
   verse,
   setDisplayAddToDeckForm,
