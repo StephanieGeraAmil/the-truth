@@ -9,7 +9,8 @@ export const DELETE_DECK="deck/delete_deck";
 export const CREATE_CARD="card/create_card";
 export const UPDATE_CARD="card/update_card";
 export const DELETE_CARD="card/delete_card";
-export const GET_CARDS_OF_DECK= "card/get_cards_of_decks";
+export const GET_CARDS_OF_USER= "card/get_cards_of_user";
+// export const GET_CARDS_OF_DECK= "card/get_cards_of_decks";
 
 export const ADD_RESOURCE_TO_CARD="card/add_resource_to_card";
 export const DELETE_RESOURCE_FROM_CARD="card/delete_resource_from_card";

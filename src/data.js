@@ -29,22 +29,22 @@ export let decks = [
   {
     id: "d1",
     name: "diligence",
-    cards: ["c1", "c2"],
+    cards: ["c1", "c2", "c7"],
   },
-    {
+  {
     id: "d2",
     name: "fear",
-    cards: ["c1", "c2"],
+    cards: ["c3", "c5"],
   },
   {
     id: "d3",
     name: "purpose",
-    cards: ["c1", "c2"],
+    cards: ["c2", "c4"],
   },
-   {
+  {
     id: "d4",
     name: "forgiveness",
-    cards: ["c1", "c2"],
+    cards: ["c6", "c7"],
   },
 ];
 export let cards = [
@@ -76,10 +76,7 @@ export let cards = [
         scripture:
           "Do not be fooled. You cannot fool God. A man will get back whatever he plants! 8 If a man does things to please his sinful old self, his soul will be lost. If a man does things to please the Holy Spirit, he will have life that lasts forever.",
       },
-      {
-        id: "n4",
-        content: "Yes, you can do hard things!",
-      },
+
       {
         id: "n6",
         content: "God doesn't make mistakes",
@@ -95,6 +92,11 @@ export let cards = [
         scripture:
           "His divine power has given us everything we need for a godly life through our knowledge of him who called us by his own glory and goodness.",
       },
+    ],
+  },
+  {
+    id: "c4",
+    resources: [
       {
         id: "n1",
         content: "Keep praying and keep on going",
@@ -106,27 +108,36 @@ export let cards = [
     ],
   },
   {
-    id: "c4",
-    resources: [
-     
-    ],
-  },
-    {
     id: "c5",
     resources: [
-     
+         {
+        id: "v2",
+        ref: "galatians 6:7-8",
+        scripture:
+          "Do not be fooled. You cannot fool God. A man will get back whatever he plants! 8 If a man does things to please his sinful old self, his soul will be lost. If a man does things to please the Holy Spirit, he will have life that lasts forever.",
+      },
     ],
   },
-    {
+  {
     id: "c6",
     resources: [
-     
+      {
+        id: "v8",
+        ref: "Ephesians 4:32",
+        scripture:
+          "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+      },
     ],
   },
   {
     id: "c7",
     resources: [
-     
+      {
+        id: "v7",
+        ref: "Proverbs 21:5",
+        scripture:
+          "The plans of the diligent lead surely to abundance and advantage, but everyone who acts in haste comes surely to poverty.",
+      },
     ],
   },
 ];
@@ -165,6 +176,18 @@ export const verses = [
     ref: "psalms 139:14",
     scripture:
       "I praise you, for I am fearfully and wonderfully made. Wonderful are your works; my soul knows it very well.",
+  },
+  {
+    id: "v7",
+    ref: "Proverbs 21:5",
+    scripture:
+      "The plans of the diligent lead surely to abundance and advantage, but everyone who acts in haste comes surely to poverty.",
+  },
+  {
+    id: "v8",
+    ref: "Ephesians 4:32",
+    scripture:
+      "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
   },
 ];
 // export const notes = [

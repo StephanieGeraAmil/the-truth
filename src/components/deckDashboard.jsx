@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
+import { getAllCardsOfUser } from "../actions/cardActions";
 import { settingFormPurpose } from "../actions/currentSelectionActions.js";
 import { NewDeck } from "./newDeck";
 
@@ -91,6 +92,8 @@ export const DeckDashboard = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
+  const cardSelector = (state) => (state.cards ? state.cards : null);
+  const cards = useSelector(cardSelector);
   const currentFormSelected = (state) =>
     state.selected.form ? state.selected.form : null;
   const formSelected = useSelector(currentFormSelected);
@@ -101,6 +104,9 @@ export const DeckDashboard = () => {
   useEffect(() => {
     if (decks.length === 0) {
       dispatch(getDecksOfUser("notUserYet"));
+    }
+    if (cards.length === 0) {
+      dispatch(getAllCardsOfUser("notUserYet"));
     }
   }, []);
   return (

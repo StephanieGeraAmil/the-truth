@@ -25,22 +25,31 @@ export const deleteCard = (Card_id) => async (dispatch) => {
     console.log(error);
   }
 };
-export const getCardsOfDeck = (deck) => async (dispatch, getState) => {
+export const getAllCardsOfUser= (user) => async (dispatch, getState) => {
   try {
-    // const {data}= await api.fetchCardsOfDeck(deck)
-    const data =
-      deck.cards && deck.cards.length > 0
-        ? cards.filter((card) => deck.cards.indexOf(card.id) > -1)
-        : [];
-    const action = { type: actions.GET_CARDS_OF_DECK, payload: data };
+    const action = { type: actions.GET_CARDS_OF_USER, payload: cards };
     dispatch(action);
   } catch (error) {
     console.log(error);
   }
 };
+// export const getCardsOfDeck = (deck) => async (dispatch, getState) => {
+//   try {
+//     // const {data}= await api.fetchCardsOfDeck(deck)
+//     const data =
+//       deck.cards && deck.cards.length > 0
+//         ? cards.filter((card) => deck.cards.indexOf(card.id) > -1)
+//         : [];
+//     const action = { type: actions.GET_CARDS_OF_DECK, payload: data };
+//     dispatch(action);
+//   } catch (error) {
+//     console.log(error);
+//   }
+//};
 export const cleanCards = () => async (dispatch, getState) => {
   try {
-    const action = { type: actions.GET_CARDS_OF_DECK, payload: [] };
+    //  const action = { type: actions.GET_CARDS_OF_DECK, payload: [] };
+    const action = { type: actions.GET_CARDS_OF_USER, payload: [] };
     dispatch(action);
   } catch (error) {
     console.log(error);

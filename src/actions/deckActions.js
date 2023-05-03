@@ -102,6 +102,9 @@ export const addVerseToCreatedCardOnDeck =
             : deck
         )
       );
+
+      const actionCard = { type: actions.CREATE_CARD, payload: Card };
+      dispatch(actionCard);
       const data = { Card_id: Card.id, Deck_id: Deck.id };
       const actionDeck = { type: actions.ADD_CARD_ON_DECK, payload: data };
       dispatch(actionDeck);

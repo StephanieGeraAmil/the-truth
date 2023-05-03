@@ -34,9 +34,9 @@ const ListOfDecks = styled.div`
   overflow-y: auto;
 `;
 const CheckboxContainer = styled.div`
-display: flex;
-flex-direction:row;
-justify-content:flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 `;
 const AddToDeckForm = styled(Form)`
@@ -51,10 +51,32 @@ export const AddToDeck = ({
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
+  const cardSelector = (state) => (state.cards ? state.cards : null);
+  const cards = useSelector(cardSelector);
+  const cardsWithVerse = cards
+    .filter((c) => c.resources.filter((r) => r.id == verse.id).length > 0)
+    .map((c) => c.id);
+  let decksWithVerseIds = [];
+
+  if (cardsWithVerse.length > 0) {
+    const decksWithVerse = cardsWithVerse.reduce(
+      (acc, cwv) => acc.concat(decks.filter((d) => d.cards.indexOf(cwv) > -1)),
+      []
+    );
+    decksWithVerseIds = decksWithVerse.map((d) => d.id);
+  }
 
   const [decksSelected, setDecksSelected] = useState([]);
+
+  const setSelectedOnDecks = (decks) => {
+    setDecksSelected(
+      decks
+        .filter((d) => decksWithVerseIds.indexOf(d.id) < 0)
+        .map((d) => ({ ...d, selected: false }))
+    );
+  };
+
   const handleAddToDeck = async () => {
-    console.log(decksSelected);
     setDisplayAddToDeckForm(false);
     decksSelected.map(async (deck) => {
       if (deck.selected) {
@@ -63,41 +85,60 @@ export const AddToDeck = ({
     });
     setVerseSelected(null);
   };
+
   useEffect(() => {
-    setDecksSelected(decks.map((d) => ({ ...d, selected: false })));
-    // I dont have the cards on the state , I look for them just for showing the deck, so I cant know it without a bd query until I make some kind of change 
-    // const decksThatHaveVerse= decks.filter((d)=>d.cards.find((c)=>c.resources.find((r)=>r.ref==verse.ref)>-1)>-1);
-    // console.log(decksThatHaveVerse);
+    if (decks.length > 0) {
+      setSelectedOnDecks(decks);
+    }
   }, [decks]);
 
   return (
     <AddToDeckForm>
       <ListOfDecks>
-        {decksSelected.length > 0 &&
-          decksSelected.map((element) => (
-            <CheckboxContainer key={element.name}>
-              <StyledCheckbox
-                type="checkbox"
-                id={element.name}
-                name={element.name}
-                value={
-                  decksSelected.find((d) => d.name === element.name).selected
-                }
-                onChange={(e) => {
-                  setDecksSelected(
-                    decksSelected.map((d) =>
-                      d.name === element.name
-                        ? { ...d, selected: e.target.checked }
-                        : d
-                    )
-                  );
-                }}
-              />
-              <StyledCheckboxLabel htmlFor={element.name}>
-                {element.name}
-              </StyledCheckboxLabel>
-            </CheckboxContainer>
-          ))}
+        {decks.length > 0 &&
+          decks.map((element) => {
+            return decksWithVerseIds.indexOf(element.id) > -1 ? (
+              <CheckboxContainer key={element.name}>
+                <StyledCheckbox
+                  disabled={true}
+                  checked={true}
+                  type="checkbox"
+                  id={element.name}
+                  name={element.name}
+                />
+                <StyledCheckboxLabel htmlFor={element.name}>
+                  {element.name}
+                </StyledCheckboxLabel>
+              </CheckboxContainer>
+            ) : (
+              <CheckboxContainer key={element.name}>
+                <StyledCheckbox
+                  type="checkbox"
+                  id={element.name}
+                  name={element.name}
+                  value={
+                    decksSelected.length > 0 &&
+                    decksSelected.find((d) => d.name === element.name) &&
+                    decksSelected.find((d) => d.name === element.name).selected
+                  }
+                  onChange={(e) => {
+                    if (decksSelected) {
+                      setDecksSelected(
+                        decksSelected.map((d) =>
+                          d.name === element.name
+                            ? { ...d, selected: e.target.checked }
+                            : d
+                        )
+                      );
+                    }
+                  }}
+                />
+                <StyledCheckboxLabel htmlFor={element.name}>
+                  {element.name}
+                </StyledCheckboxLabel>
+              </CheckboxContainer>
+            );
+          })}
       </ListOfDecks>
       <ActionButtonsSection>
         <StyledButton

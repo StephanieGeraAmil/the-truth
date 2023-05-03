@@ -28,7 +28,6 @@ const Button = styled(StyledButton)`
 `;
 export const NewNote = ({ card_id, updateFormShown }) => {
   const dispatch = useDispatch();
-
   const [textAreaInput, setTextAreaInput] = useState("");
 
   const addNote = () => {

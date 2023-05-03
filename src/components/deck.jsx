@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import {
-  getCardsOfDeck,
+  // getCardsOfDeck,
   createCard,
   deleteCard,
   cleanCards,
@@ -25,8 +25,6 @@ import { FaMinus, FaTrash, FaPen } from "react-icons/fa";
 import { FiPlusCircle } from "react-icons/fi";
 import { MdOutlineDone } from "react-icons/md";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
-
 
 const ActionButtonsContainer = styled.div`
   position: absolute;
@@ -225,20 +223,13 @@ export const Deck = () => {
   const decks = useSelector(deckSelector);
   const cardSelector = (state) => (state.cards ? state.cards : null);
   const cards = useSelector(cardSelector);
+
   const { id } = useParams();
   const deck = decks.find((element) => element.id == id);
+  const [cardsOfDeck, setCardsOfDeck] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
   const [display, setDisplay] = useState(false);
-
-  useEffect(() => {
-    if (deck) {
-      dispatch(getCardsOfDeck(deck));
-    }
-    return () => {
-      dispatch(cleanCards());
-    };
-  }, []);
 
   const nextCard = () => {
     setDisplay(false);
@@ -252,12 +243,12 @@ export const Deck = () => {
   };
   const removeCard = () => {
     if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
-    dispatch(deleteCard(cards[currentIndex].id));
-    dispatch(deleteCardFromDeck(deck.id, cards[currentIndex].id));
+    dispatch(deleteCard(cardsOfDeck[currentIndex].id));
+    dispatch(deleteCardFromDeck(deck.id, cardsOfDeck[currentIndex].id));
   };
   const addCard = () => {
     setFormShown(null);
-    setCurrentIndex(cards.length);
+    setCurrentIndex(cardsOfDeck.length);
     const card = { id: v4() };
     dispatch(createCard(card));
     dispatch(addCardOnDeck(deck.id, card.id));
@@ -268,19 +259,26 @@ export const Deck = () => {
   const FinishEditCard = () => {
     setDisplay(false);
   };
+  useEffect(() => {
+    
+    setCardsOfDeck(cards.filter((c) => deck.cards.indexOf(c.id) > -1));
+
+  }, [cards]);
+
+ 
   return (
     <DeckContainer>
       {deck && <StyledTitle white>{deck.name}</StyledTitle>}
       <>
-        {cards.length == 0 && (
+        {cardsOfDeck.length == 0 && (
           <>
             <StyledButton transparent onClick={() => addCard()}>
               <FiPlusCircle style={{ color: "#6096BA", fontSize: "3vh" }} />
-                  <Info>Add First Card</Info>
+              <Info>Add First Card</Info>
             </StyledButton>
           </>
         )}
-        {cards.length > 0 && (
+        {cardsOfDeck.length > 0 && (
           <DeckContent>
             {currentIndex !== 0 ? (
               <PrevAndNext onClick={() => prevCard()}>
@@ -328,24 +326,26 @@ export const Deck = () => {
                   </>
                 )}
               </ActionButtonsContainer>
-              {formShown && formShown === "Note" && cards[currentIndex] && (
-                <NewNote
-                  card_id={cards[currentIndex].id}
-                  updateFormShown={setFormShown}
-                ></NewNote>
-              )}
-              {formShown && formShown === "Verse" && cards[currentIndex] && (
-                <NewVerse
-                  card_id={cards[currentIndex].id}
-                  updateFormShown={setFormShown}
-                ></NewVerse>
-              )}
+              {formShown &&
+                formShown === "Note" &&
+                cardsOfDeck[currentIndex] && (
+                  <NewNote
+                    card_id={cardsOfDeck[currentIndex].id}
+                    updateFormShown={setFormShown}
+                  ></NewNote>
+                )}
+              {formShown &&
+                formShown === "Verse" &&
+                cardsOfDeck[currentIndex] && (
+                  <NewVerse
+                    card_id={cardsOfDeck[currentIndex].id}
+                    updateFormShown={setFormShown}
+                  ></NewVerse>
+                )}
               <CardContent>
-                {cards[currentIndex] &&
-                  cards[currentIndex].resources.map((res) => (
-                    <StyledResource
-                      key={res.id}
-                    >
+                {cardsOfDeck[currentIndex] &&
+                  cardsOfDeck[currentIndex].resources.map((res) => (
+                    <StyledResource key={res.id}>
                       {display && (
                         <MinusDiv>
                           <StyledButton
@@ -354,7 +354,7 @@ export const Deck = () => {
                               dispatch(
                                 deleteResourceFromCard(
                                   res.id,
-                                  cards[currentIndex].id
+                                  cardsOfDeck[currentIndex].id
                                 )
                               )
                             }
@@ -377,7 +377,7 @@ export const Deck = () => {
                   ))}
               </CardContent>
             </CardContainer>
-            {currentIndex !== cards.length - 1 ? (
+            {currentIndex !== cardsOfDeck.length - 1 ? (
               <PrevAndNext transparent onClick={() => nextCard()}>
                 <IoIosArrowForward
                   style={{ color: "#8B8C89", fontSize: "3vh" }}
