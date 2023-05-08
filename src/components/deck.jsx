@@ -201,6 +201,9 @@ const DeckContent = styled.div`
     margin: auto;
     margin-bottom: 2vw;
   }
+  @media (max-width: 500px) {
+    gap: 1vh;
+  }
 `;
 const DeckContainer = styled.div`
   width: 100%;

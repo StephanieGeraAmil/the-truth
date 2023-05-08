@@ -46,6 +46,8 @@ const DeckListContainer = styled.div`
   @media (max-width: 500px) {
     flex-direction: column;
     height: 95%;
+      padding: 1vh;
+        gap: 10vw;
   }
 `;
 const DeckPreviewContainer = styled.div`
