@@ -4,6 +4,25 @@ import { getAllThoughts } from "./actions/thoughtActions";
 
 import { TopSection } from "./components/topSection";
 import { BottomSection } from "./components/bottomSection";
+import styled from "styled-components";
+
+
+const StyledSection = styled.div`
+    width: 100%;
+    height: 150%;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+     @media (max-width: 650px) {
+          padding-top:5%;
+    height: 210%;
+  }
+   @media (max-width: 500px) {
+    height: 290%;
+  }
+
+`;
 
 function App() {
   const dispatch = useDispatch();
@@ -14,10 +33,10 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <StyledSection>
       <TopSection />
       <BottomSection />
-    </div>
+    </StyledSection>
   );
 }
 

@@ -41,13 +41,29 @@ const ActionButtonsContainer = styled.div`
 `;
 
 const StyledTitle = styled(Title)`
-  font-size: 10vh;
+  font-size: 8vw;
+ 
+  overflow: auto;
   text-align: center;
-  color: white; */
-  height: 40vw;
-  @media (max-width: 500px) {
-    font-size: 8vh; 
-    height: 10vh;
+  color: white; 
+  height: 20vh;
+    margin:0;
+      @media (min-width: 1800px) {
+            margin:2vw;
+  font-size: 7vw;
+    height: 30vh;
+  }
+  @media (max-width: 800px) {
+     width:95%;
+  margin:0 auto 2vw;
+    font-size: 8vw; 
+    height: 10vw;
+  }
+    @media (max-width: 500px) {
+     width:95%;
+  margin:0 auto 1rem;
+    font-size: 3rem; 
+    height: 7rem;
   }
 `;
 export const StyledButton = styled.button`
@@ -207,12 +223,12 @@ const DeckContent = styled.div`
 `;
 const DeckContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+
   z-index: -10;
   @media (min-width: 1800px) {
     width: 80%;

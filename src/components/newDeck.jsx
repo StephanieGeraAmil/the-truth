@@ -19,7 +19,16 @@ const ActionButtonsSection = styled.div`
   justify-content: space-between;
   gap: 40px;
 `;
-
+const NewDeckForm = styled(Form)`
+  position: absolute;
+  z-index: 10;
+  width: 90%;
+  height: 80%;
+  max-width: 40vh;
+  max-height: 40vh;
+  top: 60%;
+  left: 50%;
+`;
 export const NewDeck = () => {
   const dispatch = useDispatch();
   const userLoggedSelector = (state) => (state.user ? state.user : null);
@@ -27,7 +36,7 @@ export const NewDeck = () => {
 
   const [deckName, setDeckName] = useState("");
   return (
-    <Form>
+    <NewDeckForm>
       <FormInput
         placeholder="Add the deck title here"
         onChange={(e) => setDeckName(e.target.value)}
@@ -50,6 +59,6 @@ export const NewDeck = () => {
           <MdOutlineDone style={{ color: "#6096BA", fontSize: "3vh" }} />
         </StyledButton>
       </ActionButtonsSection>
-    </Form>
+    </NewDeckForm>
   );
 };

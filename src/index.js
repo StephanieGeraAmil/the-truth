@@ -31,18 +31,15 @@ const GlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
-    height: 100%;
+    height: 100vh;
     font-family: Montserrat, sans-serif;
     font-weight: 100;
     font-size:100%;
     margin: 0;
     background: #274C77;
-
-
   }
   textarea:focus, input:focus{
     outline: none;
-
   }
 `;
 

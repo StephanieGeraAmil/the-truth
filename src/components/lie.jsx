@@ -12,38 +12,49 @@ import { SearchButton } from "./shared_styles/styled_buttons";
 
 const LieContainer = styled.div`
   position: relative;
-  width: 100%;
-  height: 8vh;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 1vh;
+  margin-top: 0;
   align-items: center;
+  font-size: 0.8vw;
+  height: 3em;
+  @media (max-width: 1500px) {
+    font-size: 1.2vw;
+  }
+  @media (max-width: 700px) {
+    font-size: 1.6vw;
+  }
   @media (max-width: 500px) {
-    height: 13vh;
+    font-size: 1rem;
+    width: 100%;
   }
 `;
 
 const LieInput = styled.input`
   width: 100%;
-  height: 100%;
+  height: 1.2em;
   background-color: #fff;
-  border-radius: 2vw;
+  /* border-radius: 2vw; */
   border: 0;
-  font-size: 1.2vw;
+  /* font-size: 0.8vw; */
+  font-size: 2vh;
   font-weight: 100;
-  padding: 0.5vh;
-  padding-left: 5%;
+  padding: 2em 1.5em;
   margin: 0;
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
   z-index: 2;
-  @media (max-width: 500px) {
-    border-radius: 6vw;
-    height: 12vh;
-    font-size: 1.1em;
-    padding: 0.5em;
+  /* @media (max-width: 1500px) {
+  font-size: 1.2vw;
+  } 
+  @media (max-width: 700px) {
+  font-size: 1.6vw;˝
   }
+  @media (max-width: 500px) {
+  font-size: 1rem;
+  } */
   &:active,
   &:focus {
     z-index: 2;
@@ -51,42 +62,49 @@ const LieInput = styled.input`
 `;
 
 const LieSuggestions = styled.div`
-  padding-top: 4.5vh;
-  padding-left: 1vw;
-  padding-bottom: 1vw;
-  width: 100%;
   position: absolute;
-  top: 3.3vh;
-  left: 0;
-  background-color: #fff;
-  border-radius: 0 0 2vw 2vw;
-  font-size: 1vw;
+  top: 1.8em;
+  padding: 1.5em;
+  padding-top: 3em;
+  width: 100%;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  line-height: 2em;
+  /* border-radius: 0 0 2vw 2vw; */
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
-  @media (max-width: 500px) {
-    top: 2.1em;
-    padding: 1em;
-    padding-top: 1.8em;
-    border-radius: 0 0 20px 20px;
-    font-size: 1em;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8vw;
+  line-height: 2em;
+  @media (max-width: 1500px) {
+    font-size: 1.2vw;
   }
-  @media (max-width: 400px) {
-    top: 1.5em;
+  @media (max-width: 700px) {
+    font-size: 1.6vw;
+    /* border-radius: 0 0 2.5vw 2.5vw; */
+  }
+  @media (max-width: 500px) {
+    font-size: 1rem;
+    /* border-radius: 0 0 3vw 3vw; */
   }
 `;
 const Search = styled(SearchButton)`
   position: absolute;
-  color: #fff;
+  width: 6.5em;
+  height: 80%;
   top: 50%;
   right: 0;
+  color: #fff;
   transform: translateY(-50%) translateX(-5%);
   z-index: 3;
+  font-size: 1vw;
+  @media (max-width: 700px) {
+    font-size: 1.6vw;
+    border-radius: 2.5vw;
+  }
   @media (max-width: 500px) {
-    border-radius: 20px;
+    font-size: 1rem;
+    border-radius: 3vw;
   }
 `;
 export const Lie = () => {

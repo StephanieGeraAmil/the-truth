@@ -10,30 +10,28 @@ import { SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
 import { MdDelete } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
-
+const FormContainer = styled.div`
+  position: relative;
+  width: 40vh;
+  height: 40vh;
+  display:flex;
+  justify-content: center;
+  align-items:flex-start;
+`;
 const StyledSubTitle = styled(SubTitle)`
-  font-size: 2.5vw;
+  font-size: 2rem;
   text-align: center;
   @media (max-width: 500px) {
     font-size: 2em;
   }
   @media (min-width: 1000px) {
+    font-size: 2.5vw;
+  }
+  @media (min-width: 2000px) {
     font-size: 2vw;
   }
 `;
-const DeckDashboardContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: -20;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 500px) {
-    height: 300vh;
-  }
-`;
+
 const DeckListContainer = styled.div`
   padding: 10vh;
   width: 100%;
@@ -46,8 +44,8 @@ const DeckListContainer = styled.div`
   @media (max-width: 500px) {
     flex-direction: column;
     height: 95%;
-      padding: 1vh;
-        gap: 10vw;
+    padding: 1vh;
+    gap: 10vw;
   }
 `;
 const DeckPreviewContainer = styled.div`
@@ -90,6 +88,19 @@ const DeckPreviewContainer = styled.div`
     margin: auto;
   }
 `;
+const DeckDashboardContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  z-index: -20;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 500px) {
+    height: 300vh;
+  }
+`;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
@@ -113,7 +124,6 @@ export const DeckDashboard = () => {
   }, []);
   return (
     <DeckDashboardContainer>
-      {formSelected == "New Deck" && <NewDeck />}
       <DeckListContainer>
         {decks.length > 0 ? (
           decks.map((element) => (
@@ -139,13 +149,15 @@ export const DeckDashboard = () => {
         ) : (
           <p>User without decks yet</p>
         )}
-
-        <StyledButton
-          transparent
-          onClick={() => dispatch(settingFormPurpose("New Deck"))}
-        >
-          <FiPlusCircle style={{ color: "#8B8C89", fontSize: "3vh" }} />
-        </StyledButton>
+        <FormContainer>
+          {formSelected == "New Deck" && <NewDeck />}
+          <StyledButton
+            transparent
+            onClick={() => dispatch(settingFormPurpose("New Deck"))}
+          >
+            <FiPlusCircle style={{ color: "#8B8C89", fontSize: "3vh" }} />
+          </StyledButton>
+        </FormContainer>
       </DeckListContainer>
     </DeckDashboardContainer>
   );

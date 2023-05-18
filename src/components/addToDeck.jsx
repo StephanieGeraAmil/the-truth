@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addVerseToCreatedCardOnDeck } from "../actions/deckActions";
 import { settingFormPurpose } from "../actions/currentSelectionActions";
+
+import { NewDeck } from "./newDeck";
+
 import styled, { css } from "styled-components";
 import { Form, FormInput } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
@@ -40,8 +43,12 @@ const CheckboxContainer = styled.div`
   align-items: center;
 `;
 const AddToDeckForm = styled(Form)`
-  top: 35vh;
-  z-index: 9;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  z-index: 5;
+  width:80%;
+  height:75%;
 `;
 export const AddToDeck = ({
   verse,
@@ -57,6 +64,9 @@ export const AddToDeck = ({
     .filter((c) => c.resources.filter((r) => r.id == verse.id).length > 0)
     .map((c) => c.id);
   let decksWithVerseIds = [];
+  const currentFormSelected = (state) =>
+    state.selected.form ? state.selected.form : null;
+  const formSelected = useSelector(currentFormSelected);
 
   if (cardsWithVerse.length > 0) {
     const decksWithVerse = cardsWithVerse.reduce(
@@ -94,6 +104,7 @@ export const AddToDeck = ({
 
   return (
     <AddToDeckForm>
+      {formSelected == "New Deck" && <NewDeck />}
       <ListOfDecks>
         {decks.length > 0 &&
           decks.map((element) => {

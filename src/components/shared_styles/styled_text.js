@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 export const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 8vh;
   font-weight: 900;
   margin: 0;
-  margin-bottom: 1vh;
+  margin-bottom: 0.5em;
   padding: 0;
   color: #8b8c89;
   ${(props) =>
@@ -11,16 +11,11 @@ export const Title = styled.h1`
     css`
       color: #fff;
     `}
-
-  @media (min-width: 1200px) {
-    font-size: 9vh;
-  }
 `;
 export const SubTitle = styled.h3`
-  font-size: 6vh;
+  font-size: 4vh;
   font-weight: 500;
   margin: 0;
-  /* margin-bottom: 1vh; */
   padding: 0;
   color: #8b8c89;
   ${(props) =>
@@ -33,31 +28,16 @@ export const SubTitle = styled.h3`
     css`
       color: #6096ba;
     `}
-      ${(props) =>
-        props.smaller &&
-        css`
-          font-size: 4vh;
-          font-weight: 600;
-          text-align: center;
-        `}
-     @media (max-width: 800px) {
-  
-      ${(props) =>
-        props.smaller &&
-        css`
-          font-size: 3vh;
-        `}
-      @media (max-width: 505px) {
-  
-      ${(props) =>
-        props.smaller &&
-        css`
-          font-size: 4vh;
-        `}
-  }
+  ${(props) =>
+    props.smaller &&
+    css`
+      font-size: 3.5vh;
+      font-weight: 600;
+      text-align: center;
+    `} 
 `;
 export const Info = styled.p`
-  font-size: 0.6rem;
+  font-size: 2vh;
   line-height: 1.1em;
   font-weight: 100;
   margin: 0;
@@ -72,19 +52,6 @@ export const Info = styled.p`
   ${(props) =>
     props.bigger &&
     css`
-      font-size: 0.7rem;
-    `}
-  @media (max-width: 505px) {
-    font-size: 0.8rem;
-    line-height: 1.2em;
-  }
-  @media (min-width: 1200px) {
-    font-size: 2vh;
-    ${(props) =>
-      props.bigger &&
-      css`
-        font-size: 2.1vh;
-        font-weight: 200;
-      `}
-  }
+      font-size: 2.2vh;
+    `} 
 `;
