@@ -12,7 +12,7 @@ import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 
 const ActionButtonsSection = styled.div`
   width: 100%;
-  height: 3vh;
+  height: 3em;
   overflow: auto;
   display: flex;
   flex-direction: row;
@@ -28,6 +28,10 @@ const NewDeckForm = styled(Form)`
   max-height: 40vh;
   top: 60%;
   left: 50%;
+
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 export const NewDeck = () => {
   const dispatch = useDispatch();

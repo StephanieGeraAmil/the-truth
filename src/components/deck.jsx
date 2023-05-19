@@ -116,6 +116,7 @@ const StyledInfo = styled(Info)`
 `;
 const StyledScripture = styled(VerseScripture)`
   font-size: 2vh;
+   min-height: 3em;
   color: #433e3e;
   @media (min-width: 1800px) {
     font-size: 0.9vw;
@@ -130,7 +131,7 @@ const StyledRef = styled(VerseRef)`
 `;
 const MinusDiv = styled.div`
   width: 3vh;
-  height: 3vh;
+  height: 3em;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -138,7 +139,7 @@ const MinusDiv = styled.div`
 `;
 const StyledResource = styled.div`
   width: 100%;
-  min-height: 3vh;
+  min-height: 3em;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

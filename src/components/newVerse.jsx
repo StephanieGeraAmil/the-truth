@@ -8,11 +8,9 @@ import { StyledButton } from "./shared_styles/styled_buttons";
 import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 
 const ActionButtonsSection = styled.div`
-  position: absolute;
-  bottom: 2vh;
-  right: 2vh;
-  width: 90%;
-  height: 3vh;
+
+  width: 100%;
+  height: 3em;
   overflow: auto;
   display: flex;
   flex-direction: row;
@@ -56,7 +54,7 @@ export const NewVerse = ({ card_id, updateFormShown }) => {
           <MdArrowBack style={{ color: "#6096BA", fontSize: "3vh" }} />
         </Button>
         <Button transparent onClick={() => addVerse()}>
-          <MdOutlineDone style={{ color: "#6096BA", fontSize: "3vh" }} />
+          <MdOutlineDone style={{ color: "#6096BA", fontSize: "3vh"}} />
         </Button>
       </ActionButtonsSection>
     </Form>

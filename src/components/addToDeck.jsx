@@ -12,11 +12,8 @@ import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 
 const ActionButtonsSection = styled.div`
-  position: absolute;
-  bottom: 2vh;
-  left: 0;
-  height: 3vh;
-  width: 95%;
+  height: 3em;
+  width: 100%;
   overflow: auto;
   display: flex;
   flex-direction: row;
@@ -28,9 +25,6 @@ const StyledCheckboxLabel = styled.label`
 `;
 const StyledCheckbox = styled.input`
   height: 2vh;
-   /* @media (min-width: 1000px) {
-  font-size: vw;
-  } */
 `;
 const ListOfDecks = styled.div`
   display: flex;
@@ -52,6 +46,7 @@ const AddToDeckForm = styled(Form)`
   z-index: 5;
   width:80%;
   height:75%;
+
 `;
 export const AddToDeck = ({
   verse,
