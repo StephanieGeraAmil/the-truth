@@ -19,7 +19,7 @@ const LieContainer = styled.div`
   margin-top: 0;
   align-items: center;
   font-size: 0.8vw;
-  height: 3em;
+
   @media (max-width: 1500px) {
     font-size: 1.2vw;
   }
@@ -36,9 +36,7 @@ const LieInput = styled.input`
   width: 100%;
   height: 1.2em;
   background-color: #fff;
-  /* border-radius: 2vw; */
   border: 0;
-  /* font-size: 0.8vw; */
   font-size: 2vh;
   font-weight: 100;
   padding: 2em 1.5em;
@@ -46,18 +44,13 @@ const LieInput = styled.input`
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
   z-index: 2;
-  /* @media (max-width: 1500px) {
-  font-size: 1.2vw;
-  } 
-  @media (max-width: 700px) {
-  font-size: 1.6vw;˝
-  }
-  @media (max-width: 500px) {
-  font-size: 1rem;
-  } */
+
   &:active,
   &:focus {
     z-index: 2;
+  }
+   @media (max-width: 1800px)  and (min-height: 1000px){
+    font-size: 1rem;
   }
 `;
 
@@ -68,43 +61,36 @@ const LieSuggestions = styled.div`
   padding-top: 3em;
   width: 100%;
   z-index: 1;
-  /* border-radius: 0 0 2vw 2vw; */
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 0.8vw;
+  font-size: 2vh;
   line-height: 2em;
-  @media (max-width: 1500px) {
-    font-size: 1.2vw;
-  }
-  @media (max-width: 700px) {
-    font-size: 1.6vw;
-    /* border-radius: 0 0 2.5vw 2.5vw; */
-  }
-  @media (max-width: 500px) {
+
+  @media (max-width: 1800px)  and (min-height: 1000px){
     font-size: 1rem;
-    /* border-radius: 0 0 3vw 3vw; */
   }
 `;
 const Search = styled(SearchButton)`
   position: absolute;
   width: 6.5em;
-  height: 80%;
+  height: 3em;
   top: 50%;
   right: 0;
   color: #fff;
   transform: translateY(-50%) translateX(-5%);
   z-index: 3;
-  font-size: 1vw;
+    font-size: 2vh;
   @media (max-width: 700px) {
-    font-size: 1.6vw;
     border-radius: 2.5vw;
   }
   @media (max-width: 500px) {
-    font-size: 1rem;
     border-radius: 3vw;
+  }
+   @media (max-width: 1800px)  and (min-height: 1000px){
+    font-size: 1rem;
   }
 `;
 export const Lie = () => {

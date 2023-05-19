@@ -11,7 +11,8 @@ export const SearchButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.6rem;
+  /* font-size: 0.6rem; */
+  font-size: 2vh;
   ${(props) =>
     props.hidden &&
     css`
@@ -23,12 +24,14 @@ export const SearchButton = styled.button`
     css`
       background-color: transparent;
     `}
-      @media (max-width: 500px) {
+      /* @media (max-width: 500px) {
 border-radius: 4vw;
   }
       @media (min-width: 1500px) {
     font-size: 2vh;
-  }
+  } */
+        @media (max-width: 1800px)  and (min-height: 1000px){
+    font-size: 1rem;
 `;
 export const StyledButton = styled.button`
   z-index: 2;

@@ -53,8 +53,9 @@ const TruthContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  @media (max-width: 500px) {
-    height: 130%;
+
+  @media (max-width: 550px) {
+    height: 128%;
   }
   @media (max-width: 405px) {
     height: 132%;

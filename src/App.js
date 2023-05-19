@@ -18,8 +18,12 @@ const StyledSection = styled.div`
           padding-top:5%;
     height: 210%;
   }
-   @media (max-width: 500px) {
+   @media (max-width: 550px) {
     height: 290%;
+  }
+    @media (max-width: 1800px)  and (min-height: 1000px){
+  height: 100%;
+       /* height: 60%; */
   }
 
 `;

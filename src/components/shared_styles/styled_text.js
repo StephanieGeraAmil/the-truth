@@ -11,6 +11,9 @@ export const Title = styled.h1`
     css`
       color: #fff;
     `}
+     @media (max-width: 1800px)  and (min-height: 1000px){
+    font-size: 4rem;
+  }
 `;
 export const SubTitle = styled.h3`
   font-size: 4vh;
@@ -49,9 +52,7 @@ export const Info = styled.p`
     css`
       color: #fff;
     `}
-  ${(props) =>
-    props.bigger &&
-    css`
-      font-size: 2.2vh;
-    `} 
+      @media (max-width: 1800px)  and (min-height: 1000px){
+    font-size: 1rem;
+  }
 `;

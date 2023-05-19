@@ -30,12 +30,6 @@ const GrayCircle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* @media (max-width: 1000px) {
-    height: 5rem;
-  }
-  @media (max-width: 650px) {
-    height: 4rem;
-  } */
 `;
 
 const StepTitleSection = styled.div``;
@@ -56,23 +50,10 @@ const WhiteShape = styled.div`
    width: 80%;
    min-height: 40vh;
   }
-   @media (max-width: 650px) {
+   @media (max-width: 550px) {
    min-height: 20vh;
   }
-  /* @media (max-width: 600px) {
-    height: 100%;
-    min-height: 220px; 
-    width: 42vw;
-  }
-  @media (max-width: 505px) {
-    height: 80%;
-    width: 80%;
-    padding: 8%;
-  }
-  @media (min-width: 930px) {
-    height: 80%;
-    width: 35vw;
-  } */
+ 
 `;
 
 const StepSection = styled.div`
@@ -80,10 +61,6 @@ const StepSection = styled.div`
   width: 95%;
   display:grid;
   grid-template-columns: repeat(4, 1fr);
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center; */
  gap: 3%;
   @media (min-width: 1000px) {
      width: 75%;
@@ -92,22 +69,11 @@ const StepSection = styled.div`
       width: 90%;
       row-gap: 6%;
       grid-template-columns: repeat(2, 1fr);
-       /* grid-template-rows: repeat(2, 1fr); */
   }
-    @media (max-width: 500px) {    
+    @media (max-width: 550px) {    
      grid-template-columns: 1fr;
        row-gap: 5%;
-       /* grid-template-rows: repeat(2, 1fr); */
   }
-
-  /* 
-  @media (max-width: 600px) {
-    width: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 6rem;
-  } */
 `;
 
 const StyledSection = styled.div`
@@ -117,11 +83,13 @@ const StyledSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+    @media (max-width: 1080px) and (min-height: 550px) {
+     height: 105%;
+  }
   @media (max-width: 650px) {
     height: 100%;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
       height: 180%;
   }
         
@@ -148,7 +116,7 @@ export const BottomSection = () => {
             </SubTitle>
           </StepTitleSection>
 
-          <Info bigger>
+          <Info>
             Introduce your thoughts, or related keywords, and read what God has
             to say about that
           </Info>
@@ -162,7 +130,7 @@ export const BottomSection = () => {
               Create Study Decks
             </SubTitle>
           </StepTitleSection>
-          <Info bigger>
+          <Info>
             You can create study decks for each truth you find, so you can visit
             them later
           </Info>
@@ -177,7 +145,7 @@ export const BottomSection = () => {
             </SubTitle>
           </StepTitleSection>
 
-          <Info bigger>
+          <Info>
             Add notes and verses that help you focus on the truth
           </Info>
         </WhiteShape>
@@ -191,7 +159,7 @@ export const BottomSection = () => {
             </SubTitle>
           </StepTitleSection>
 
-          <Info bigger>
+          <Info>
             Go through the Decks as much as you can, untill you are able to know
             and understand the truth
           </Info>

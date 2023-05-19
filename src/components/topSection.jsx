@@ -24,9 +24,9 @@ const Img = styled.img`
   object-fit: cover;
   max-height: 70vh;
   max-width: 50vh;
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     height: 90%;
-    width:100%;
+    width: 100%;
   }
 `;
 const GrayRectangle = styled.div`
@@ -42,7 +42,7 @@ const GrayRectangle = styled.div`
   max-height: 70vh;
   max-width: 50vh;
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     height: 85%;
     transform: translate(50%, -50%);
   }
@@ -53,28 +53,37 @@ const Right = styled.div`
   position: relative;
   height: 80%;
   width: 50%;
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     width: 100%;
     height: 80%;
     min-height: 50vh;
   }
+  @media (max-width: 1800px) and (min-height: 1000px) {
+    width: 35%;
+  }
 `;
 const Left = styled.div`
   width: 40%;
-  height: 65%;
+  height: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1em;
+  @media (max-width: 800px) and (min-height: 550px) {
+    width: 55%;
+  }
   @media (max-width: 1000px) {
     height: 80%;
   }
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
     width: 50%;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     width: 80%;
+  }
+  @media (max-width: 1800px) and (min-height: 1000px) {
+    width: 55%;
   }
 `;
 
@@ -86,15 +95,24 @@ const StyledSection = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  @media (max-width: 1080px) and (min-height: 550px) {
+    width: 90%;
+       height: 145%;
+  }
   @media (max-width: 700px) {
     width: 90%;
   }
   @media (max-width: 650px) {
     height: 110%;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     flex-direction: column;
     justify-content: flex-start;
+    gap:2%;
+  }
+
+  @media (max-width: 1800px) and (min-height: 1000px) {
+    width: 100%;
   }
 `;
 

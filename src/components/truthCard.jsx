@@ -33,8 +33,12 @@ const Card = styled(StyledCard)`
   z-index: 6;
   @media (max-width: 650px) {
     width: 80%;
-    max-width: 80%;
+    max-width: 60vw;
     min-height: 30vh;
+  }
+   @media (max-width: 450px) {
+     width: 60%;
+      min-width: 40vh;
   }
 `;
 

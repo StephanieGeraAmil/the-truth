@@ -28,6 +28,9 @@ const StyledCheckboxLabel = styled.label`
 `;
 const StyledCheckbox = styled.input`
   height: 2vh;
+   /* @media (min-width: 1000px) {
+  font-size: vw;
+  } */
 `;
 const ListOfDecks = styled.div`
   display: flex;
