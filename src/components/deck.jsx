@@ -42,27 +42,27 @@ const ActionButtonsContainer = styled.div`
 
 const StyledTitle = styled(Title)`
   font-size: 8vw;
- 
+
   overflow: auto;
   text-align: center;
-  color: white; 
+  color: white;
   height: 20vh;
-    margin:0;
-      @media (min-width: 1800px) {
-            margin:2vw;
-  font-size: 7vw;
+  margin: 0;
+  @media (min-width: 1800px) {
+    margin: 2vw;
+    font-size: 7vw;
     height: 30vh;
   }
   @media (max-width: 800px) {
-     width:95%;
-  margin:0 auto 2vw;
-    font-size: 8vw; 
+    width: 95%;
+    margin: 0 auto 2vw;
+    font-size: 8vw;
     height: 10vw;
   }
-    @media (max-width: 500px) {
-     width:95%;
-  margin:0 auto 1rem;
-    font-size: 3rem; 
+  @media (max-width: 500px) {
+    width: 95%;
+    margin: 0 auto 1rem;
+    font-size: 3rem;
     height: 7rem;
   }
 `;
@@ -100,7 +100,6 @@ export const PrevAndNext = styled.button`
 `;
 const StyledInfo = styled(Info)`
   font-size: 2vh;
-
   width: 95%;
   padding: 0;
   color: #433e3e;
@@ -116,7 +115,7 @@ const StyledInfo = styled(Info)`
 `;
 const StyledScripture = styled(VerseScripture)`
   font-size: 2vh;
-   min-height: 3em;
+  min-height: 3em;
   color: #433e3e;
   @media (min-width: 1800px) {
     font-size: 0.9vw;
@@ -280,12 +279,9 @@ export const Deck = () => {
     setDisplay(false);
   };
   useEffect(() => {
-    
     setCardsOfDeck(cards.filter((c) => deck.cards.indexOf(c.id) > -1));
-
   }, [cards]);
 
- 
   return (
     <DeckContainer>
       {deck && <StyledTitle white>{deck.name}</StyledTitle>}

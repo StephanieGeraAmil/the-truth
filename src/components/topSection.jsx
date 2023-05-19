@@ -24,6 +24,12 @@ const Img = styled.img`
   object-fit: cover;
   max-height: 70vh;
   max-width: 50vh;
+  @media(min-height: 850px) {
+    max-height: 80%;
+  }
+    /* @media(min-height: 100px) {
+    max-height: 50vw;
+  } */
   @media (max-width: 550px) {
     height: 90%;
     width: 100%;
@@ -41,7 +47,9 @@ const GrayRectangle = styled.div`
   background-color: #8b8c89;
   max-height: 70vh;
   max-width: 50vh;
-
+@media(min-height: 850px) {
+    max-height: 80%;
+  }
   @media (max-width: 550px) {
     height: 85%;
     transform: translate(50%, -50%);
@@ -53,14 +61,18 @@ const Right = styled.div`
   position: relative;
   height: 80%;
   width: 50%;
+    @media(min-height: 850px) {
+height: 90%;
+  }
+   @media (max-width: 1800px) and (min-height: 1000px) {
+    width: 35%;
+  }
   @media (max-width: 550px) {
     width: 100%;
     height: 80%;
     min-height: 50vh;
   }
-  @media (max-width: 1800px) and (min-height: 1000px) {
-    width: 35%;
-  }
+ 
 `;
 const Left = styled.div`
   width: 40%;
@@ -70,21 +82,26 @@ const Left = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   gap: 1em;
+   @media(min-height: 850px) {
+height: 85%;
+width:50%;
+  }
   @media (max-width: 800px) and (min-height: 550px) {
     width: 55%;
   }
   @media (max-width: 1000px) {
     height: 80%;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 850px) {
     width: 50%;
+        height: 90%;
   }
   @media (max-width: 550px) {
     width: 80%;
   }
-  @media (max-width: 1800px) and (min-height: 1000px) {
+  /* @media (max-width: 1800px) and (min-height: 1000px) {
     width: 55%;
-  }
+  } */
 `;
 
 const StyledSection = styled.div`
@@ -95,6 +112,7 @@ const StyledSection = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  
   @media (max-width: 1080px) and (min-height: 550px) {
     width: 90%;
        height: 145%;
@@ -113,6 +131,7 @@ const StyledSection = styled.div`
 
   @media (max-width: 1800px) and (min-height: 1000px) {
     width: 100%;
+    height: 150%;
   }
 `;
 

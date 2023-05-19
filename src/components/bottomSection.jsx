@@ -83,6 +83,9 @@ const StyledSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+    @media(min-height: 850px) {
+     height: 50%;
+  }
     @media (max-width: 1080px) and (min-height: 550px) {
      height: 105%;
   }
