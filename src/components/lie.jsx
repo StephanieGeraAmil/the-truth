@@ -12,14 +12,16 @@ import { SearchButton } from "./shared_styles/styled_buttons";
 
 const LieContainer = styled.div`
   position: relative;
-  width: 80%;
+  height:8%;
+  width: 60%;
+  /* margin:5% auto; */
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 0;
+
   align-items: center;
   font-size: 0.8vw;
-
+/* 
   @media (max-width: 1500px) {
     font-size: 1.2vw;
   }
@@ -29,10 +31,11 @@ const LieContainer = styled.div`
   @media (max-width: 500px) {
     font-size: 1rem;
     width: 100%;
-  }
+  } */
 `;
 
 const LieInput = styled.input`
+
   width: 100%;
   height: 1.2em;
   background-color: #fff;
@@ -41,6 +44,7 @@ const LieInput = styled.input`
   font-weight: 100;
   padding: 2em 1.5em;
   margin: 0;
+    border-radius:4vw;
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
   z-index: 2;
@@ -56,11 +60,12 @@ const LieInput = styled.input`
 
 const LieSuggestions = styled.div`
   position: absolute;
-  top: 1.8em;
+  top: 0.5em;
   padding: 1.5em;
-  padding-top: 3em;
+  padding-top: 3.8em;
   width: 100%;
   z-index: 1;
+  border-radius: 3vw 3vw 4vw 4vw;
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
   background-color: #fff;

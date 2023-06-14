@@ -6,9 +6,9 @@ import { StyledLink } from "./shared_styles/styled_buttons";
 
 export const Login = () => {
   const { loginWithRedirect } = useAuth0();
-  return (
-    <StyledLink onClick={() => loginWithRedirect()}>
-      {/* <img src={User} alt="login" /> */}
-    </StyledLink>
+  return (<></>
+    // <StyledLink onClick={() => loginWithRedirect()}>
+    //   {/* <img src={User} alt="login" /> */}
+    // </StyledLink>
   );
 };

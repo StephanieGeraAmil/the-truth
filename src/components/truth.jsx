@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { PreviewCard } from "./shared_styles/styled_cards";
 import { clearThoughtSelected } from "../actions/currentSelectionActions";
 
 import { Verse } from "./verse";
@@ -16,50 +16,65 @@ import { FiPlusCircle } from "react-icons/fi";
 import { MdArrowBack, MdOutlineDone } from "react-icons/md";
 
 
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 1.5vh;
-  right: 2vh;
-  z-index: 0;
-  border: 0;
-  background: transparent;
-  align-self: flex-end;
-`;
+// export const CloseButton = styled.button`
+//   position: absolute;
+//   top: 1.5vh;
+//   right: 2vh;
+//   z-index: 0;
+//   border: 0;
+//   background: transparent;
+//   align-self: flex-end;
+// `;
 
-const Truthlist = styled.div`
-  overflow: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2%;
-  height: 80%;
-  @media (max-width: 650px) {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-`;
+// const Truthlist = styled.div`
+//   overflow: auto;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   justify-content: flex-start;
+//   align-items: center;
+//   gap: 2%;
+//   height: 100%;
+//   /* @media (max-width: 650px) {
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: flex-start;
+//   } */
+// `;
 
 const TruthContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-  background: #8b8c89;
-  box-shadow: 6px 5px 16px #000;
-  padding-left: 3vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* position: absolute;
+  bottom: 0; */
+   position: relative;
+   align-self:flex-start;
+  height:70%;
 
-  @media (max-width: 550px) {
+  width: 90%;
+  margin:0 auto;
+  z-index: 0;
+  /* background: #8b8c89;
+  box-shadow: 6px 5px 16px #000; */
+  /* padding-left: 3vw; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+overflow:auto;
+  display: grid;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+    grid-gap: 2%;
+  /* grid-auto-flow: row; */
+  grid-template-columns: repeat( auto-fill,minmax(200px,1fr) );
+    grid-auto-rows: 230px;
+  /* justify-content: flex-start;
+  align-items: center; */
+
+  /* @media (max-width: 550px) {
     height: 128%;
   }
   @media (max-width: 405px) {
     height: 132%;
-  }
+  } */
 `;
 
 export const Truth = () => {
@@ -84,17 +99,20 @@ export const Truth = () => {
 
   return (
     <TruthContainer ref={wrapperRef}>
-      <CloseButton transparent onClick={() => dispatch(clearThoughtSelected())}>
+      {/* <CloseButton transparent onClick={() => dispatch(clearThoughtSelected())}>
         <MdArrowBack style={{ color: "#1E1D25", fontSize: "4vh" }} />
-      </CloseButton>
+      </CloseButton> */}
       
-      <Truthlist>
+      {/* <Truthlist> */}
         {versesRelated &&
           versesRelated.map((element) => (
-            <TruthCard key={element.ref} verse={element}>
-            </TruthCard>
+              <PreviewCard  static key={element.ref}>{element ? element.scripture : ""}</PreviewCard>
+            // <TruthCard key={element.ref} verse={element}>
+            // </TruthCard>
           ))}
-      </Truthlist>
+     
+
+      {/* </Truthlist> */}
     </TruthContainer>
   );
 };

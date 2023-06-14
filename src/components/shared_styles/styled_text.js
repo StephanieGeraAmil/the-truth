@@ -3,56 +3,45 @@ export const Title = styled.h1`
   font-size: 8vh;
   font-weight: 900;
   margin: 0;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.2em;
   padding: 0;
-  color: #8b8c89;
-  ${(props) =>
-    props.white &&
-    css`
-      color: #fff;
-    `}
-     @media (max-width: 1800px)  and (min-height: 1000px){
+  color: #fff;
+
+  & > span {
+    /* color: #3D7FD8; */
+    /* color:#2D93FA; */
+    /* color: #5aa2f0; */
+    color:#33ABB9
+  }
+  @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 4rem;
   }
 `;
 export const SubTitle = styled.h3`
-  font-size: 4vh;
+  font-size: 4.5vh;
   font-weight: 500;
   margin: 0;
+  margin-bottom: 0.5em;
   padding: 0;
-  color: #8b8c89;
+  color: #fff;
   ${(props) =>
-    props.white &&
+    props.color &&
     css`
-      color: #fff;
+      /* color: #5aa2f0; */
+          color:#33ABB9
     `}
-  ${(props) =>
-    props.blue &&
-    css`
-      color: #6096ba;
-    `}
-  ${(props) =>
-    props.smaller &&
-    css`
-      font-size: 3.5vh;
-      font-weight: 600;
-      text-align: center;
-    `} 
 `;
 export const Info = styled.p`
   font-size: 2vh;
   line-height: 1.1em;
   font-weight: 100;
   margin: 0;
-  margin-bottom: 0.5em;
+  width: 80%;
+  align-self: flex-start;
+  /* margin-bottom: 0.5em; */
   padding: 0;
-  color: #8b8c89;
-  ${(props) =>
-    props.white &&
-    css`
-      color: #fff;
-    `}
-      @media (max-width: 1800px)  and (min-height: 1000px){
+  color: #fff;
+  @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 1rem;
   }
 `;

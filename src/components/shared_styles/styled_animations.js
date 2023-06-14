@@ -1,24 +1,20 @@
 import styled, { keyframes } from "styled-components";
-export const Fade = keyframes`
-  from {
-      opacity: 1; 
-  }to {
-      opacity: 0; 
-  }
+
+export const float = keyframes`
+    0% {  rotate: 0deg; scale: 1.1; }
+    50% {  rotate: 5deg; scale: 1.2; }
+    100% {  rotate: 0deg; scale: 1.1;}
 `;
-export const Appear = keyframes`
-  from {
-      opacity: 0; 
-  }to {
-      opacity: 1; 
-  }
+export const move = keyframes`
+    0% { transform: translatey(0); }
+    50% {  transform: translatey(-15px); }
+    100% {  transform: translatey(0); }
 `;
-export const AppearAndFade = keyframes`
-  0% {
-      opacity: 0; 
-  }50% {
-      opacity: 1; 
-  }100% {
-      opacity: 0; 
-  }
+export const enterRight = keyframes`
+    0% {transform: translate(100px); opacity: 0;}
+    100% { transform: translate(0);opacity: 1;scale: 1.1;}
+`;
+export const enterLeft= keyframes`
+    0% {transform: translate(-100px); opacity: 0;}
+    100% { transform: translate(0);opacity: 1;scale: 1.1;}
 `;

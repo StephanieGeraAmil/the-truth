@@ -11,8 +11,8 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import { Nav } from "./components/nav";
 import App from "./App";
 import { DeckDashboard } from "./components/deckDashboard";
+import { Search } from "./components/search";
 import { Deck } from "./components/deck";
-
 
 import { createGlobalStyle } from "styled-components";
 
@@ -32,11 +32,13 @@ const GlobalStyle = createGlobalStyle`
   body,
   #root {
     height: 100vh;
-    font-family: Montserrat, sans-serif;
+    /* font-family: Montserrat, sans-serif; */
+    font-family: Inter, sans-serif;
     font-weight: 100;
     font-size:100%;
     margin: 0;
-    background: #274C77;
+    background: #000;
+    /* background: #274C77; */
   }
   textarea:focus, input:focus{
     outline: none;
@@ -52,30 +54,14 @@ ReactDOM.render(
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
           redirectUri={process.env.REDIRECTION_URL || window.location.origin}
         >
-          <GlobalStyle />
+          <GlobalStyle/>
           <>
-
+            <Nav/>
             <Routes>
               <Route path="/" element={<App />} />
-              <Route
-                path="/decks"
-                element={
-                  <>
-                    <Nav />
-                    <DeckDashboard />
-                  </>
-                }
-              />
-       
-              <Route
-                path="/decks/:id"
-                element={
-                  <>
-                    <Nav />
-                    <Deck />
-                  </>
-                }
-              />
+              <Route path="/search" element={<Search />} />
+              <Route path="/decks" element={<DeckDashboard />} />
+              <Route path="/decks/:id" element={<Deck />} />
             </Routes>
           </>
         </Auth0Provider>

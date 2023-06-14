@@ -4,102 +4,128 @@ import { getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
 import { getAllCardsOfUser } from "../actions/cardActions";
 import { settingFormPurpose } from "../actions/currentSelectionActions.js";
 import { NewDeck } from "./newDeck";
-
+import { PreviewDeck } from "./previewDeck";
 import styled from "styled-components";
 import { SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
 import { MdDelete } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
-const FormContainer = styled.div`
-  position: relative;
-  width: 40vh;
-  height: 40vh;
-  display:flex;
-  justify-content: center;
-  align-items:flex-start;
-`;
-const StyledSubTitle = styled(SubTitle)`
-  font-size: 2rem;
-  text-align: center;
-  @media (max-width: 500px) {
-    font-size: 2em;
-  }
-  @media (min-width: 1000px) {
-    font-size: 2.5vw;
-  }
-  @media (min-width: 2000px) {
-    font-size: 2vw;
-  }
-`;
+// const FormContainer = styled.div`
+//   position: relative;
+//   width: 40vh;
+//   height: 40vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-start;
+// `;
+// const StyledSubTitle = styled(SubTitle)`
+//   font-size: 2rem;
+//   text-align: center;
+//   @media (max-width: 500px) {
+//     font-size: 2em;
+//   }
+//   @media (min-width: 1000px) {
+//     font-size: 2.5vw;
+//   }
+//   @media (min-width: 2000px) {
+//     font-size: 2vw;
+//   }
+// `;
 
 const DeckListContainer = styled.div`
-  padding: 10vh;
-  width: 100%;
-  height: 92%;
+  /* padding: 10vh; */
+
+  width: 90%;
+  height: 90%;
+  margin-top: 10% auto;
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 5vw;
+  gap: 2%;
   z-index: 0;
-  @media (max-width: 500px) {
+  /* @media (max-width: 500px) {
     flex-direction: column;
     height: 95%;
     padding: 1vh;
     gap: 10vw;
-  }
+  } */
 `;
-const DeckPreviewContainer = styled.div`
-  height: 30vh;
-  width: 40vh;
-  border-radius: 2vh;
-  box-shadow: 2px 2px 7px #595959;
-  position: relative;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:after {
-    height: inherit;
-    width: 100%;
-    border-radius: 2vh;
-    box-shadow: 2px 2px 7px #595959;
-    position: absolute;
-    left: -1vh;
-    top: 1vh;
-    z-index: -1;
-    content: "";
-    background-color: #fff;
-  }
-  &:before {
-    height: inherit;
-    width: 100%;
-    border-radius: 2vh;
-    box-shadow: 2px 2px 7px #595959;
-    position: absolute;
-    left: -2vh;
-    top: 2vh;
-    z-index: -2;
-    content: "";
-    background-color: #fff;
-  }
-  @media (max-width: 500px) {
-    height: 40vh;
-    width: 90%;
-    margin: auto;
-  }
+const ListItemStyled = styled.div`
+  width: 45%;
+  height: 50%;
+    position:relative;
 `;
+// const DeckPreviewContainer = styled.div`
+//   height: 30vh;
+//   width: 40vh;
+//   border-radius: 2vh;
+//   box-shadow: 2px 2px 7px #595959;
+//   position: relative;
+//   background-color: #fff;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   &:after {
+//     height: inherit;
+//     width: 100%;
+//     border-radius: 2vh;
+//     box-shadow: 2px 2px 7px #595959;
+//     position: absolute;
+//     left: -1vh;
+//     top: 1vh;
+//     z-index: -1;
+//     content: "";
+//     background-color: #fff;
+//   }
+//   &:before {
+//     height: inherit;
+//     width: 100%;
+//     border-radius: 2vh;
+//     box-shadow: 2px 2px 7px #595959;
+//     position: absolute;
+//     left: -2vh;
+//     top: 2vh;
+//     z-index: -2;
+//     content: "";
+//     background-color: #fff;
+//   }
+//   @media (max-width: 500px) {
+//     height: 40vh;
+//     width: 90%;
+//     margin: auto;
+//   }
+// `;
+
+// {/* <DeckPreviewContainer>
+//   <StyledLink to={`../decks/${element.id}`}>
+//     <StyledSubTitle>{element.name}</StyledSubTitle>
+//   </StyledLink>
+//   <StyledButton transparent onClick={() => removeDeck(element)}>
+//     <MdDelete
+//       style={{
+//         position: "absolute",
+//         top: "2vh",
+//         right: "2vh",
+//         color: "#6096BA",
+//         fontSize: "3vh",
+//       }}
+//     />
+//   </StyledButton>
+// </DeckPreviewContainer>*/}
 const DeckDashboardContainer = styled.div`
   width: 100%;
   height: 100%;
-  z-index: -20;
+  /* z-index: -20; */
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (max-width: 500px) {
+    /* background-image: radial-gradient(circle farthest-corner at 100% 100%  ,#000 0%,#00025D 30%, #3D7FD8 100% ); */
+      background-image: radial-gradient(circle farthest-corner at 0% 0% ,#000 0%,#15464C 70%, #33ABB9 100% );
+  /* @media (max-width: 500px) {
     height: 300vh;
-  }
+  } */
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
@@ -127,29 +153,14 @@ export const DeckDashboard = () => {
       <DeckListContainer>
         {decks.length > 0 ? (
           decks.map((element) => (
-            <div key={element.name + "deck"}>
-              <DeckPreviewContainer>
-                <StyledLink to={`../decks/${element.id}`}>
-                  <StyledSubTitle>{element.name}</StyledSubTitle>
-                </StyledLink>
-                <StyledButton transparent onClick={() => removeDeck(element)}>
-                  <MdDelete
-                    style={{
-                      position: "absolute",
-                      top: "2vh",
-                      right: "2vh",
-                      color: "#6096BA",
-                      fontSize: "3vh",
-                    }}
-                  />
-                </StyledButton>
-              </DeckPreviewContainer>
-            </div>
+            <ListItemStyled key={element.name}>
+              <PreviewDeck text={element.name} />
+            </ListItemStyled>
           ))
         ) : (
           <p>User without decks yet</p>
         )}
-        <FormContainer>
+        {/* <FormContainer>
           {formSelected == "New Deck" && <NewDeck />}
           <StyledButton
             transparent
@@ -157,7 +168,7 @@ export const DeckDashboard = () => {
           >
             <FiPlusCircle style={{ color: "#8B8C89", fontSize: "3vh" }} />
           </StyledButton>
-        </FormContainer>
+        </FormContainer> */}
       </DeckListContainer>
     </DeckDashboardContainer>
   );

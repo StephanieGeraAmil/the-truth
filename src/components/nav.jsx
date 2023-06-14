@@ -1,25 +1,27 @@
-import React, { useEffect ,useState} from "react";
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import { getUserByEmail } from "./../actions/userActions.js";
-import {FaSearch,FaClone,FaCaretLeft,FaPen} from "react-icons/fa";
-import { Login } from "./login";
-import { Logout } from "./logout";
-
+// import { useAuth0 } from "@auth0/auth0-react";
+// import { getUserByEmail } from "./../actions/userActions.js";
+// import {FaSearch,FaClone,FaCaretLeft,FaPen} from "react-icons/fa";
+// import { Login } from "./login";
+// import { Logout } from "./logout";
 import styled from "styled-components";
 import { StyledLink } from "./shared_styles/styled_buttons";
 
-import Deck from "../assets/deck.svg";
 
 const NavContainer = styled.nav`
-  height: 7vh;
   width: 100%;
-  background-color: #274C77;
+  background: rgba(1, 1, 1, 0.09);
+  backdrop-filter: blur(4.5px);
+  color: #fff;
+  position: fixed;
+  top:0;
+  z-index: 10;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding: 3vh;
+  padding: 1vh;
   padding-right: 5%;
   gap: 2vw;
 `;
@@ -39,17 +41,19 @@ export const Nav = () => {
 
   return (
     <NavContainer>
-     {location.pathname!=="/decks"&& <StyledLink
-        to="/decks"
-        
-      >
-        <img src={Deck} alt="deck_page" style={{ color:"#8B8C89",height:  "4vh"}} />
-      </StyledLink>}
-      {location.pathname!=="/"&& <StyledLink
-        to="/"
-      >
-        <FaSearch style={{color: '#8B8C89', fontSize: "3.5vh" }}/>
-      </StyledLink>}
+      {location.pathname !== "/decks" && (
+        <StyledLink to="/decks">
+          Decks
+        </StyledLink>
+      )}
+      {location.pathname !== "/" && (
+        <StyledLink to="/">
+          Home
+        </StyledLink>
+      )}
+      {location.pathname !== "/search" && (
+        <StyledLink to="/search">Search</StyledLink>
+      )}
     </NavContainer>
   );
 };

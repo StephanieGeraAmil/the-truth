@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 // import Log_out from "../assets/logout.svg";
 import { unSetUser } from "./../actions/userActions.js";
 
-import { StyledLink } from "./shared_styles/styled_buttons";
+// import { StyledLink } from "./shared_styles/styled_buttons";
 
 export const Logout = () => {
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ logout({ returnTo:redirection });
   
   };
   const { logout } = useAuth0();
-  return (
-    <StyledLink className="nav_button" onClick={() => handleLogout()}>
-      {/* <img src={Log_out} alt="logout" /> */}
-    </StyledLink>
+  return (<></>
+    // <StyledLink className="nav_button" onClick={() => handleLogout()}>
+    //   {/* <img src={Log_out} alt="logout" /> */}
+    // </StyledLink>
   );
 };
