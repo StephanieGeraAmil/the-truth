@@ -10,12 +10,12 @@ bottom:0;
 right:0;
 
 `;
-export const PreviewDeck = ({ text }) => {
+export const PreviewDeck = ({children}) => {
   return (
      <StyledDeckPreview>
       <PreviewCard small />
       <PreviewCard medium />
-      <PreviewCard> <SubTitle color>{text ? text : ""}</SubTitle> </PreviewCard>
+      <PreviewCard>{children} </PreviewCard>
     </StyledDeckPreview>
   );
 };

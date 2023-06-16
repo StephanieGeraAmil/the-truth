@@ -27,6 +27,7 @@ export const FormInput = styled.input`
   background-color: transparent;
   resize: none;
   outline: none;
+  
 `;
 export const FormTextArea = styled.textarea`
   font-family: Montserrat, sans-serif;
@@ -38,4 +39,11 @@ export const FormTextArea = styled.textarea`
   background-color: transparent;
   resize: none;
   outline: none;
+  ${(props) =>
+    props.subtitle &&
+    css`
+      font-size: 4.5vh;
+      font-weight: 500;
+        height: 80%;
+    `}
 `;

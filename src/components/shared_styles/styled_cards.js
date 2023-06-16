@@ -14,9 +14,9 @@ export const PreviewCard = styled.div`
   z-index: 3;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  padding:2%;
+  padding:5%;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);

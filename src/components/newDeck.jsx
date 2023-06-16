@@ -5,34 +5,35 @@ import { Link } from "react-router-dom";
 import { clearFormPurpose } from "../actions/currentSelectionActions.js";
 
 import styled, { css } from "styled-components";
-import { Form, FormInput } from "./shared_styles/styled_forms";
+import { Form, FormInput ,FormTextArea} from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
 
-import { MdArrowBack, MdOutlineDone } from "react-icons/md";
+import { MdDelete, MdOutlineDone } from "react-icons/md";
+import { PreviewDeck } from "./previewDeck";
 
 const ActionButtonsSection = styled.div`
   width: 100%;
-  height: 3em;
+  height: 4vh;
   overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 40px;
 `;
-const NewDeckForm = styled(Form)`
-  position: absolute;
-  z-index: 10;
-  width: 90%;
-  height: 80%;
-  max-width: 40vh;
-  max-height: 40vh;
-  top: 60%;
-  left: 50%;
+// const NewDeckForm = styled(Form)`
+//   position: absolute;
+//   z-index: 10;
+//   width: 90%;
+//   height: 80%;
+//   max-width: 40vh;
+//   max-height: 40vh;
+//   top: 60%;
+//   left: 50%;
 
-    display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+// `;
 export const NewDeck = () => {
   const dispatch = useDispatch();
   const userLoggedSelector = (state) => (state.user ? state.user : null);
@@ -40,15 +41,16 @@ export const NewDeck = () => {
 
   const [deckName, setDeckName] = useState("");
   return (
-    <NewDeckForm>
-      <FormInput
-        placeholder="Add the deck title here"
+    <PreviewDeck>
+      <FormTextArea subtitle
+
+        placeholder="Deck title"
         onChange={(e) => setDeckName(e.target.value)}
         value={deckName}
-      ></FormInput>
+      ></FormTextArea>
       <ActionButtonsSection>
         <StyledButton transparent onClick={() => dispatch(clearFormPurpose())}>
-          <MdArrowBack style={{ color: "#6096BA", fontSize: "3vh" }} />
+          <MdDelete style={{ color: "#6096BA", fontSize: "3vh" }} />
         </StyledButton>
         <StyledButton
           transparent
@@ -59,10 +61,10 @@ export const NewDeck = () => {
             }
           }}
         >
-          {/* <StyledLink   to={`/decks/`} onClick={()=> dispatch(createDeck({name:deckName, UserId:userLogged.id}))}></StyledLink> */}
           <MdOutlineDone style={{ color: "#6096BA", fontSize: "3vh" }} />
         </StyledButton>
       </ActionButtonsSection>
-    </NewDeckForm>
+    </PreviewDeck>
+    
   );
 };

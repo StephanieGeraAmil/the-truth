@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
   align-self: flex-start;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   z-index: 2;
   border: 0;
   border-radius: 2vw;

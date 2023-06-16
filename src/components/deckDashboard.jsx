@@ -53,7 +53,9 @@ const DeckListContainer = styled.div`
 const ListItemStyled = styled.div`
   width: 45%;
   height: 50%;
-    position:relative;
+  position: relative;
+  display: flex;
+  justify-content: center;
 `;
 // const DeckPreviewContainer = styled.div`
 //   height: 30vh;
@@ -96,33 +98,21 @@ const ListItemStyled = styled.div`
 //   }
 // `;
 
-// {/* <DeckPreviewContainer>
-//   <StyledLink to={`../decks/${element.id}`}>
-//     <StyledSubTitle>{element.name}</StyledSubTitle>
-//   </StyledLink>
-//   <StyledButton transparent onClick={() => removeDeck(element)}>
-//     <MdDelete
-//       style={{
-//         position: "absolute",
-//         top: "2vh",
-//         right: "2vh",
-//         color: "#6096BA",
-//         fontSize: "3vh",
-//       }}
-//     />
-//   </StyledButton>
-// </DeckPreviewContainer>*/}
+
 const DeckDashboardContainer = styled.div`
   width: 100%;
   height: 100%;
-  /* z-index: -20; */
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-    /* background-image: radial-gradient(circle farthest-corner at 100% 100%  ,#000 0%,#00025D 30%, #3D7FD8 100% ); */
-      background-image: radial-gradient(circle farthest-corner at 0% 0% ,#000 0%,#15464C 70%, #33ABB9 100% );
+  background-image: radial-gradient(
+    circle farthest-corner at 0% 0%,
+    #000 0%,
+    #15464c 70%,
+    #33abb9 100%
+  );
   /* @media (max-width: 500px) {
     height: 300vh;
   } */
@@ -154,21 +144,26 @@ export const DeckDashboard = () => {
         {decks.length > 0 ? (
           decks.map((element) => (
             <ListItemStyled key={element.name}>
-              <PreviewDeck text={element.name} />
+              <PreviewDeck>
+                 <SubTitle color>{element.name}</SubTitle>
+              </PreviewDeck>
             </ListItemStyled>
           ))
         ) : (
           <p>User without decks yet</p>
         )}
-        {/* <FormContainer>
-          {formSelected == "New Deck" && <NewDeck />}
-          <StyledButton
-            transparent
-            onClick={() => dispatch(settingFormPurpose("New Deck"))}
-          >
-            <FiPlusCircle style={{ color: "#8B8C89", fontSize: "3vh" }} />
-          </StyledButton>
-        </FormContainer> */}
+        <ListItemStyled>
+          {formSelected == "New Deck" ? (
+            <NewDeck />
+          ) : (
+            <StyledButton
+              transparent
+              onClick={() => dispatch(settingFormPurpose("New Deck"))}
+            >
+              <FiPlusCircle style={{ color: "#8B8C89", fontSize: "4vh" }} />
+            </StyledButton>
+          )}
+        </ListItemStyled>
       </DeckListContainer>
     </DeckDashboardContainer>
   );
