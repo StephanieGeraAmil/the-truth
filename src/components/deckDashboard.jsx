@@ -97,7 +97,18 @@ const ListItemStyled = styled.div`
 //     margin: auto;
 //   }
 // `;
-
+const ActionButtonsSection = styled.div`
+ justify-self: flex-end;
+ align-self: flex-end;
+  width: 100%;
+  height: 4vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+ 
+  gap: 40px;
+`;
 
 const DeckDashboardContainer = styled.div`
   width: 100%;
@@ -145,7 +156,12 @@ export const DeckDashboard = () => {
           decks.map((element) => (
             <ListItemStyled key={element.name}>
               <PreviewDeck>
-                 <SubTitle color>{element.name}</SubTitle>
+                <SubTitle color>{element.name}</SubTitle>
+                <ActionButtonsSection>
+                  <StyledButton transparent onClick={() => removeDeck(element)}>
+                    <MdDelete style={{ color: "#6096BA", fontSize: "3vh" }} />
+                  </StyledButton>
+                </ActionButtonsSection>
               </PreviewDeck>
             </ListItemStyled>
           ))

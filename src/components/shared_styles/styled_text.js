@@ -24,6 +24,12 @@ export const SubTitle = styled.h3`
   margin-bottom: 0.5em;
   padding: 0;
   color: #fff;
+ height:70%;
+ display:flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+
   ${(props) =>
     props.color &&
     css`

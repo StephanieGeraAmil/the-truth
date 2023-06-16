@@ -15,7 +15,7 @@ export const PreviewDeck = ({children}) => {
      <StyledDeckPreview>
       <PreviewCard small />
       <PreviewCard medium />
-      <PreviewCard>{children} </PreviewCard>
+      <PreviewCard >{children} </PreviewCard>
     </StyledDeckPreview>
   );
 };
