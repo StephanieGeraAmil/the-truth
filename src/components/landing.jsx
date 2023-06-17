@@ -76,7 +76,7 @@ export const Landing = () => {
           <Title>
             Focus on <span>the Truth</span> & be free
           </Title>
-          <Info>
+          <Info wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
             are that your brain keeps going back to some thoughts that are
@@ -88,9 +88,9 @@ export const Landing = () => {
         </ImgContainer>
       </RowSection>
       <RowSection>
-        <TextContainer>
+        <TextContainer wide>
           <SubTitle>Detect the hurtful pathways your brain have</SubTitle>
-          <Info>
+          <Info wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>
@@ -133,7 +133,7 @@ export const Landing = () => {
         </ImgContainer>
         <TextContainer>
           <SubTitle>Search for the truth </SubTitle>
-          <Info>
+          <Info wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>
@@ -141,9 +141,9 @@ export const Landing = () => {
         </TextContainer>
       </RowSection>
       <RowSection>
-        <TextContainer>
+        <TextContainer wide>
           <SubTitle>Create decks that you can revisit</SubTitle>
-          <Info>
+          <Info wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>

@@ -10,6 +10,7 @@ import { SubTitle } from "./shared_styles/styled_text";
 import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
 import { MdDelete } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
+import {Next, Prev,Plus,Remove} from "./shared_styles/styled_icons";
 // const FormContainer = styled.div`
 //   position: relative;
 //   width: 40vh;
@@ -35,14 +36,20 @@ import { FiPlusCircle } from "react-icons/fi";
 const DeckListContainer = styled.div`
   /* padding: 10vh; */
 
-  width: 90%;
+  width: 98%;
   height: 90%;
-  margin-top: 10% auto;
-  overflow: auto;
+   margin-top: 10% auto;
+  /*overflow: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 2%;
-  z-index: 0;
+  z-index: 0; */
+
+   overflow: auto;
+  display: grid;
+  grid-gap: 2%;
+  grid-template-columns: repeat(auto-fill, minmax(60vh, 1fr));
+  grid-auto-rows: 50vh;
   /* @media (max-width: 500px) {
     flex-direction: column;
     height: 95%;
@@ -51,11 +58,15 @@ const DeckListContainer = styled.div`
   } */
 `;
 const ListItemStyled = styled.div`
-  width: 45%;
-  height: 50%;
+  /* width: 70vh;
+  height: 50%; */
+   width: 100%;
+  height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+
+  //media-> mobile width:40%
 `;
 // const DeckPreviewContainer = styled.div`
 //   height: 30vh;
@@ -124,9 +135,9 @@ const DeckDashboardContainer = styled.div`
     #15464c 70%,
     #33abb9 100%
   );
-  /* @media (max-width: 500px) {
-    height: 300vh;
-  } */
+
+   
+
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
@@ -154,12 +165,13 @@ export const DeckDashboard = () => {
       <DeckListContainer>
         {decks.length > 0 ? (
           decks.map((element) => (
-            <ListItemStyled key={element.name}>
-              <PreviewDeck>
+            <ListItemStyled key={element.id}>
+              <PreviewDeck id={element.id}>
                 <SubTitle color>{element.name}</SubTitle>
                 <ActionButtonsSection>
-                  <StyledButton transparent onClick={() => removeDeck(element)}>
-                    <MdDelete style={{ color: "#6096BA", fontSize: "3vh" }} />
+                  <StyledButton  onClick={() => removeDeck(element)}>
+                    {/* <MdDelete style={{ color: "#33abb9", fontSize: "3vh" }} /> */}
+                       <Remove  color/>
                   </StyledButton>
                 </ActionButtonsSection>
               </PreviewDeck>
@@ -173,10 +185,11 @@ export const DeckDashboard = () => {
             <NewDeck />
           ) : (
             <StyledButton
-              transparent
+              big
               onClick={() => dispatch(settingFormPurpose("New Deck"))}
             >
-              <FiPlusCircle style={{ color: "#8B8C89", fontSize: "4vh" }} />
+                 <Plus big/>
+              {/* <FiPlusCircle style={{ color: "#8B8C89", fontSize: "4vh" }} /> */}
             </StyledButton>
           )}
         </ListItemStyled>

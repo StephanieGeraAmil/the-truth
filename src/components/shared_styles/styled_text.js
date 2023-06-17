@@ -1,30 +1,39 @@
 import styled, { css } from "styled-components";
+const bigSize='8vh';
+const mediumSize='5vh';
+const smallSize='2vh';
+const thick='900';
+const bold='500';
+const regular='300';
+const thin='100';
+const primaryColor= "#133F45";
+const secondaryColor= "#33ABB9";
+const white= "#FFF";
+const gray= "#FFF";
+const black= "#000";
 export const Title = styled.h1`
-  font-size: 8vh;
-  font-weight: 900;
+  font-size: ${bigSize};
+  font-weight: ${thick};
   margin: 0;
   margin-bottom: 0.2em;
   padding: 0;
-  color: #fff;
+  color: ${white};
 
   & > span {
-    /* color: #3D7FD8; */
-    /* color:#2D93FA; */
-    /* color: #5aa2f0; */
-    color:#33ABB9
+    color: ${secondaryColor}
   }
   @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 4rem;
   }
 `;
 export const SubTitle = styled.h3`
-  font-size: 4.5vh;
-  font-weight: 500;
+  font-size: ${mediumSize};
+  font-weight: ${bold};
   margin: 0;
   margin-bottom: 0.5em;
   padding: 0;
-  color: #fff;
- height:70%;
+  color: ${white};
+ height:20vh;
  display:flex;
  flex-direction: column;
  justify-content: center;
@@ -33,31 +42,33 @@ export const SubTitle = styled.h3`
   ${(props) =>
     props.color &&
     css`
-      /* color: #5aa2f0; */
-          color:#33ABB9;
+          color:${primaryColor};
     `}
     
 `;
 export const Info = styled.p`
-  font-size: 2vh;
+  font-size: ${smallSize};
   line-height: 1.1em;
-  font-weight: 100;
+  font-weight: ${thin};
   width: 80%;
     margin: 0 auto;
   align-self: flex-start;
-  /* margin-bottom: 0.5em; */
   padding: 0;
-  color: #fff;
+  color: ${white};
    ${(props) =>
     props.gray &&
     css`
-      /* color: #5aa2f0; */
-          color:#000;
+          color:${black};
     `}
      ${(props) =>
     props.bold &&
     css`
-          font-weight:500;
+          font-weight:${bold};
+    `}
+         ${(props) =>
+    props.wide &&
+    css`
+        width: 100%;
     `}
   @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 1rem;

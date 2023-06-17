@@ -7,10 +7,13 @@ export const StyledCard = styled.div`
 `;
 export const PreviewCard = styled.div`
   height: 80%;
+ 
   width: 45%;
+max-width:35vw;
+
   position: absolute;
   bottom: 10%;
-  right: 0%;
+  right: 10%;
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -37,9 +40,10 @@ export const PreviewCard = styled.div`
       position: absolute;
       z-index: 2;
       bottom: 15%;
-      right: 20%;
+      right: 30%;
       height: 70%;
       width: 35%;
+      max-width:25vw;
     `}
   ${(props) =>
     props.small &&
@@ -47,8 +51,9 @@ export const PreviewCard = styled.div`
       position: absolute;
       z-index: 1;
       bottom: 20%;
-      right: 35%;
+      right: 45%;
       height: 60%;
       width: 30%;
+      max-width:20vw;
     `}
 `;
