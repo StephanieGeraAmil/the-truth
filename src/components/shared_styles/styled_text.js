@@ -9,7 +9,7 @@ const thin='100';
 const primaryColor= "#133F45";
 const secondaryColor= "#33ABB9";
 const white= "#FFF";
-const gray= "#FFF";
+const gray= "#8b8c89;";
 const black= "#000";
 export const Title = styled.h1`
   font-size: ${bigSize};
@@ -38,9 +38,16 @@ export const SubTitle = styled.h3`
  flex-direction: column;
  justify-content: center;
  align-items: center;
+  ${(props) =>
+    props.$big &&
+    css`
+            font-size: ${bigSize};
+             height:10vh;
+
+    `}
 
   ${(props) =>
-    props.color &&
+    props.$color &&
     css`
           color:${primaryColor};
     `}
@@ -56,19 +63,30 @@ export const Info = styled.p`
   padding: 0;
   color: ${white};
    ${(props) =>
-    props.gray &&
+    props.$gray &&
     css`
           color:${black};
     `}
+    ${(props) =>
+    props.$right &&
+    css`
+           align-self: flex-end;
+             margin: 0;
+    `}
      ${(props) =>
-    props.bold &&
+    props.$bold &&
     css`
           font-weight:${bold};
     `}
          ${(props) =>
-    props.wide &&
+    props.$wide &&
     css`
         width: 100%;
+    `}
+    ${(props) =>
+    props.$short &&
+    css`
+        width: 50%;
     `}
   @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 1rem;

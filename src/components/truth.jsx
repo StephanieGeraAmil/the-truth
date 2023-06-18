@@ -6,11 +6,10 @@ import { clearThoughtSelected } from "../actions/currentSelectionActions";
 import { Verse } from "./verse";
 import { AddToDeck } from "./addToDeck";
 import { NewDeck } from "./newDeck";
-import { TruthCard } from "./truthCard";
+// import { TruthCard } from "./truthCard";
 
 import styled from "styled-components";
-import { StyledCard } from "./shared_styles/styled_cards";
-import { Form, FormInput } from "./shared_styles/styled_forms";
+
 import { Info } from "./shared_styles/styled_text";
 import { RiAddBoxFill } from "react-icons/ri";
 import { FiPlusCircle } from "react-icons/fi";

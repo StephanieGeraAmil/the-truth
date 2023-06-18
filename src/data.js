@@ -56,15 +56,16 @@ export let cards = [
         ref: "proverbs 3:5-6",
         scripture:
           "Trust in the Lord with all your heart; do not depend on your own understanding. Seek his will in all you do, and he will show you which path to take.",
-      },
-      {
-        id: "n1",
-        content: "Keep praying and keep on going",
-      },
-      {
-        id: "n4",
-        content: "Yes, you can do hard things!",
-      },
+      }
+      // ,
+      // {
+      //   id: "n1",
+      //   content: "Keep praying and keep on going",
+      // },
+      // {
+      //   id: "n4",
+      //   content: "Yes, you can do hard things!",
+      // },
     ],
   },
   {
@@ -75,12 +76,13 @@ export let cards = [
         ref: "galatians 6:7-8",
         scripture:
           "Do not be fooled. You cannot fool God. A man will get back whatever he plants! 8 If a man does things to please his sinful old self, his soul will be lost. If a man does things to please the Holy Spirit, he will have life that lasts forever.",
-      },
+      }
+      // ,
 
-      {
-        id: "n6",
-        content: "God doesn't make mistakes",
-      },
+      // {
+      //   id: "n6",
+      //   content: "God doesn't make mistakes",
+      // },
     ],
   },
   {
@@ -100,11 +102,12 @@ export let cards = [
       {
         id: "n1",
         content: "Keep praying and keep on going",
-      },
-      {
-        id: "n6",
-        content: "God doesn't make mistakes",
-      },
+      }
+      // ,
+      // {
+      //   id: "n6",
+      //   content: "God doesn't make mistakes",
+      // },
     ],
   },
   {

@@ -3,34 +3,43 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import {
-  // getCardsOfDeck,
   createCard,
   deleteCard,
-  cleanCards,
-  deleteResourceFromCard,
+  addResourceToCard,
 } from "../actions/cardActions";
+
 import { StyledButton } from "./shared_styles/styled_buttons";
 import { addCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
-import { NewNote } from "./newNote";
-import { NewVerse } from "./newVerse";
 
+import { CardOfDeck } from "./shared_styles/styled_cards";
 import styled, { css } from "styled-components";
-import { Title, Info } from "./shared_styles/styled_text";
-import {
-  VerseContainer,
-  VerseScripture,
-  VerseRef,
-} from "./shared_styles/verses_styles";
-import {Next, Prev,Plus,Remove} from "./shared_styles/styled_icons";
-import { FaMinus, FaTrash, FaPen } from "react-icons/fa";
-import { FiPlusCircle } from "react-icons/fi";
-import { MdOutlineDone } from "react-icons/md";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { SubTitle, Info } from "./shared_styles/styled_text";
+import { FormInput, FormTextArea } from "./shared_styles/styled_forms";
+import { Next, Prev, Plus, Remove, Save } from "./shared_styles/styled_icons";
 
+const AddMenu = styled.div`
+  height: 12vh;
+  width: 15vh;
+  padding: 5%;
+  background: #fff;
+  border-radius: 20%;
+  box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  bottom: -5vh;
+  right: -5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2vh;
+  z-index: 2;
+`;
+const NewCardBttonContainer = styled.div`
+  position: relative;
+  height: 12vh;
+  width: 15vh;
+`;
 const ActionButtonsContainer = styled.div`
-  /* position: absolute;
-  bottom: 2vh;
-  right: 1vh; */
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -38,193 +47,55 @@ const ActionButtonsContainer = styled.div`
   align-self: flex-end;
   gap: 2vh;
   z-index: 0;
-  /* height: 5vh; */
-  width:20%;
-
+  width: 50%;
+  height: 6vh;
 `;
 
-const StyledTitle = styled(Title)`
-  font-size: 8vw;
-
-  overflow: auto;
-  text-align: center;
-  color: white;
-  height: 20vh;
-  margin: 0;
-  @media (min-width: 1800px) {
-    margin: 2vw;
-    font-size: 7vw;
-    height: 30vh;
-  }
-  @media (max-width: 800px) {
-    width: 95%;
-    margin: 0 auto 2vw;
-    font-size: 8vw;
-    height: 10vw;
-  }
-  @media (max-width: 500px) {
-    width: 95%;
-    margin: 0 auto 1rem;
-    font-size: 3rem;
-    height: 7rem;
-  }
-`;
-// export const StyledButton = styled.button`
-//   z-index: 0;
-//   border: 0;
-//   background: transparent;
-//   font-size: 0.6rem;
-//   font-weight: 100;
-//   vertical-align: center;
-//   /* color: #8b8c89; */
-//     height: 6vh;
-//   width:6vh;
-//   /* ${(props) =>
-//     props.hidden &&
-//     css`
-//       opacity: 0;
-//     `} */
-//   @media (max-width: 500px) {
-//     font-size: 0.8rem;
-//   }
-//   @media (min-width: 1200px) {
-//     font-size: 2vh;
-//   }
-// `;
-export const PrevAndNext = styled.button`
-  width: 4vh;
-  height: 4vh;
-  z-index: 0;
-  border: 0;
-  background: transparent;
-  ${(props) =>
-    props.hidden &&
-    css`
-      opacity: 0;
-    `}
-`;
-const StyledInfo = styled(Info)`
-  font-size: 2vh;
-  width: 95%;
-  padding: 0;
-  color: #433e3e;
-  margin: 0;
-  ${(props) =>
-    props.white &&
-    css`
-      color: #fff;
-    `}
-  @media (min-width: 1800px) {
-    font-size: 0.9vw;
-  }
-`;
-const StyledScripture = styled(VerseScripture)`
-  font-size: 2vh;
-  min-height: 3em;
-  color: #433e3e;
-  @media (min-width: 1800px) {
-    font-size: 0.9vw;
-  }
-`;
-const StyledRef = styled(VerseRef)`
-  font-size: 2vh;
-  color: #433e3e;
-  @media (min-width: 1800px) {
-    font-size: 0.9vw;
-  }
-`;
-const MinusDiv = styled.div`
-  width: 3vh;
-  height: 3em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
 const StyledResource = styled.div`
   width: 100%;
-  min-height: 3em;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-`;
-const CardContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  /* gap: 3vh; */
-  height: 60%;
-  width: 85%;
-  margin: 0;
-  overflow: auto;
-  z-index: 1;
-`;
-
-const CardContainer = styled.div`
-  height: 50vh;
-  width: 60vw;
-  border-radius: 2vh;
-  padding: 0 2vh;
-  box-shadow: 2px 2px 7px #595959;
-  position: relative;
-  background-color: #fff;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2vh;
-  z-index: 0;
-  &:after {
-    height: inherit;
-    width: 100%;
-    border-radius: 2vh;
-    box-shadow: 2px 2px 7px #595959;
-    position: absolute;
-    left: -0.1vh;
-    top: 0.1vh;
-    z-index: -2;
-    content: " ";
-    background-color: #fff;
-  }
-  &:before {
-    height: inherit;
-    width: 100%;
-    border-radius: 2vh;
-    box-shadow: 2px 2px 7px #595959;
-    position: absolute;
-    left: 1vh;
-    top: -1vh;
-    z-index: -1;
-    content: " ";
-    background-color: #fff;
-  }
-
-  @media (max-width: 500px) {
-    width: 90%;
-    height: 55vh;
-  }
-  @media (min-width: 700px) {
-    width: 80vh;
-  }
 `;
+const CardContent = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: auto;
+  z-index: 1;
+`;
+
+//   @media (max-width: 500px) {
+//     width: 90%;
+//     height: 55vh;
+//   }
+//   @media (min-width: 700px) {
+//     width: 80vh;
+//   }
+// `;
 
 const DeckContent = styled.div`
   width: 100%;
+  height: 70%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10vh;
-  @media (min-width: 1800px) {
+  gap: 5vh;
+  /* @media (min-width: 1800px) {
     width: 80%;
     margin: auto;
     margin-bottom: 2vw;
   }
   @media (max-width: 500px) {
     gap: 1vh;
-  }
+  } */
 `;
 const DeckContainer = styled.div`
   width: 100%;
@@ -240,20 +111,12 @@ const DeckContainer = styled.div`
     #15464c 70%,
     #33abb9 100%
   );
-  /* width: 100%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  z-index: -10;
+  /* 
   @media (min-width: 1800px) {
     width: 80%;
     margin: auto;
   } */
 `;
-
 
 export const Deck = () => {
   const dispatch = useDispatch();
@@ -267,162 +130,209 @@ export const Deck = () => {
   const [cardsOfDeck, setCardsOfDeck] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formShown, setFormShown] = useState(null);
-  const [display, setDisplay] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(false);
+  const [textAreaInput, setTextAreaInput] = useState("");
+  const [textInput, setTextInput] = useState("");
 
   const nextCard = () => {
-    setDisplay(false);
+    setDisplayMenu(false);
     setFormShown(null);
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
-    setDisplay(false);
+    setDisplayMenu(false);
     setFormShown(null);
     setCurrentIndex(currentIndex - 1);
+  };
+  const addCard = () => {
+    const card = { id: v4() };
+    dispatch(createCard(card));
+    dispatch(addCardOnDeck(id, card.id));
+      setCurrentIndex(cardsOfDeck.length );
+      console.log(currentIndex)
   };
   const removeCard = () => {
     if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
     dispatch(deleteCard(cardsOfDeck[currentIndex].id));
     dispatch(deleteCardFromDeck(deck.id, cardsOfDeck[currentIndex].id));
   };
-  const addCard = () => {
+  const handleClose = () => {
+    setTextAreaInput("");
+    setTextInput("");
     setFormShown(null);
-    setCurrentIndex(cardsOfDeck.length);
-    const card = { id: v4() };
-    dispatch(createCard(card));
-    dispatch(addCardOnDeck(deck.id, card.id));
   };
-  const editCard = () => {
-    setDisplay(true);
+  const handleAddNoteClick = () => {
+        addCard();
+    setFormShown("Note");
+    setDisplayMenu(false);
+
+    //     const card = { id: v4() };
+    // dispatch(createCard(card));
   };
-  const FinishEditCard = () => {
-    setDisplay(false);
+  const handleAddVerseClick = () => {
+     addCard();
+    setFormShown("Verse");
+    setDisplayMenu(false);
+       
+    //     const card = { id: v4() };
+    // dispatch(createCard(card));
   };
+  const handleSaveNoteClick = () => {
+    if (textAreaInput !== "") {
+      const note = { content: textAreaInput, id: v4() };
+      // const card = { id: v4() };
+      // dispatch(createCard(card));
+      // dispatch(addCardOnDeck(id,  cardsOfDeck[currentIndex].id));
+      console.log(currentIndex)
+      dispatch(addResourceToCard(note, cardsOfDeck[currentIndex].id));
+      handleClose();
+    }
+  };
+
+  const handleSaveVerseClick = () => {
+    if (textAreaInput !== "" && textInput !== "") {
+      const verse = { scripture: textAreaInput, ref: textInput, id: v4() };
+      // const card = { id: v4() };
+      // dispatch(createCard(card));
+      // dispatch(addCardOnDeck(id,  cardsOfDeck[currentIndex].id));
+      dispatch(addResourceToCard(verse, cardsOfDeck[currentIndex].id));
+      handleClose();
+    }
+  };
+
   useEffect(() => {
     setCardsOfDeck(cards.filter((c) => deck.cards.indexOf(c.id) > -1));
+    console.log(cardsOfDeck)
   }, [cards]);
 
   return (
     <DeckContainer>
-      {deck && <StyledTitle white>{deck.name}</StyledTitle>}
+      {deck && <SubTitle $big>{deck.name}</SubTitle>}
       <>
         {cardsOfDeck.length == 0 && (
-          <>
-            <StyledButton transparent onClick={() => addCard()}>
-                      <FiPlusCircle style={{ color: "#8B8C89", fontSize: "4vh" }} />
-              <Info>Add First Card</Info>
+          <NewCardBttonContainer>
+            <StyledButton $wide onClick={() => setDisplayMenu(true)}>
+              <Plus />
+
+              <Info $wide>Add First Card</Info>
             </StyledButton>
-          </>
+            {displayMenu && (
+              <AddMenu>
+                <StyledButton wide onClick={() => handleAddNoteClick()}>
+                  <Info $gray $wide>
+                    New Note
+                  </Info>
+                </StyledButton>
+                <StyledButton wide onClick={() => handleAddVerseClick()}>
+                  <Info $gray $wide>
+                    {" "}
+                    New Verse
+                  </Info>
+                </StyledButton>
+              </AddMenu>
+            )}
+          </NewCardBttonContainer>
         )}
         {cardsOfDeck.length > 0 && (
           <DeckContent>
-            {currentIndex !== 0 ? (
-              <PrevAndNext onClick={() => prevCard()}>
-                <IoIosArrowBack style={{ color: "#8B8C89", fontSize: "3vh" }} />
-              </PrevAndNext>
+            {currentIndex > 0 ? (
+              <StyledButton onClick={() => prevCard()}>
+                <Prev />
+              </StyledButton>
             ) : (
-              <PrevAndNext> </PrevAndNext>
+              <StyledButton></StyledButton>
             )}
-            <CardContainer>
-             
-              {formShown &&
-                formShown === "Note" &&
-                cardsOfDeck[currentIndex] && (
-                  <NewNote
-                    card_id={cardsOfDeck[currentIndex].id}
-                    updateFormShown={setFormShown}
-                  ></NewNote>
-                )}
-              {formShown &&
-                formShown === "Verse" &&
-                cardsOfDeck[currentIndex] && (
-                  <NewVerse
-                    card_id={cardsOfDeck[currentIndex].id}
-                    updateFormShown={setFormShown}
-                  ></NewVerse>
-                )}
+            <CardOfDeck>
               <CardContent>
-                {cardsOfDeck[currentIndex] &&
+                {formShown && formShown === "Note" && (
+                  <StyledResource>
+                    <FormTextArea
+                      placeholder="Note content"
+                      value={textAreaInput}
+                      onChange={(e) => setTextAreaInput(e.target.value)}
+                    />
+                  </StyledResource>
+                )}
+                {formShown && formShown === "Verse" && (
+                  <StyledResource>
+                    <FormTextArea
+                      placeholder="Verse scripture"
+                      value={textAreaInput}
+                      onChange={(e) => setTextAreaInput(e.target.value)}
+                    />
+                    <FormInput
+                      placeholder="Verse reference"
+                      value={textInput}
+                      onChange={(e) => setTextInput(e.target.value)}
+                    />
+                  </StyledResource>
+                )}
+
+                {!formShown &&
+                  cardsOfDeck[currentIndex] &&
                   cardsOfDeck[currentIndex].resources.map((res) => (
                     <StyledResource key={res.id}>
-                      {display && (
-                        <MinusDiv>
-                          <StyledButton
-                            transparent
-                            onClick={() =>
-                              dispatch(
-                                deleteResourceFromCard(
-                                  res.id,
-                                  cardsOfDeck[currentIndex].id
-                                )
-                              )
-                            }
-                          >
-                            <FaMinus
-                              style={{ color: "#0D0C3C", fontSize: "0.9vh" }}
-                            />
-                          </StyledButton>
-                        </MinusDiv>
-                      )}
                       {res.content ? (
-                        <StyledInfo>{res.content}</StyledInfo>
+                        <Info $gray $wide>
+                          {res.content}
+                        </Info>
                       ) : (
-                        <VerseContainer>
-                          <StyledScripture>{res.scripture}</StyledScripture>
-                          <StyledRef>{res.ref}</StyledRef>
-                        </VerseContainer>
+                        <StyledResource>
+                          <Info $gray $wide>
+                            {res.scripture}{" "}
+                          </Info>
+                          <Info $gray $bold $wide>
+                            {res.ref}
+                          </Info>
+                        </StyledResource>
                       )}
                     </StyledResource>
                   ))}
-                   <ActionButtonsContainer>
-                {/* {display && (
-                  <>
-                    <StyledButton onClick={() => FinishEditCard()}>
-                      <MdOutlineDone
-                        style={{ color: "#6096BA", fontSize: "3vh" }}
-                      />{" "}
+
+                <ActionButtonsContainer>
+                  <StyledButton onClick={() => removeCard()}>
+                    <Remove $color />
+                  </StyledButton>
+
+                  {!formShown && (
+                    <StyledButton onClick={() => setDisplayMenu(true)}>
+                      <Plus $color />
                     </StyledButton>
-                    <StyledButton onClick={() => setFormShown("Note")}>
-                      <FiPlusCircle
-                        style={{ color: "#6096BA", fontSize: "2vh" }}
-                      />{" "}
-                      <Info> Note</Info>
+                  )}
+                  {formShown && formShown == "Verse" && (
+                    <StyledButton onClick={() => handleSaveVerseClick()}>
+                      <Save $color />
                     </StyledButton>
-                    <StyledButton onClick={() => setFormShown("Verse")}>
-                      <FiPlusCircle
-                        style={{ color: "#6096BA", fontSize: "2vh" }}
-                      />{" "}
-                      <Info> Verse</Info>
+                  )}
+                  {formShown && formShown == "Note" && (
+                    <StyledButton onClick={() => handleSaveNoteClick()}>
+                      <Save $color />
                     </StyledButton>
-                  </>
-                )} */}
-                {/* {!display && ( */}
-                  {/* <> */}
-                    <StyledButton onClick={() => removeCard()}>
-                      {/* <FaTrash style={{ color: "#6096BA", fontSize: "3vh" }} /> */}
-                      <Remove color/>
-                    </StyledButton>
-                    {/* <StyledButton onClick={() => editCard()}>
-                      <FaPen style={{ color: "#6096BA", fontSize: "3vh" }} />
-                    </StyledButton> */}
-                    <StyledButton transparent onClick={() => addCard()}>
-                      <Plus color/>
-                      {/* <FiPlusCircle
-                        style={{ color: "#6096BA", fontSize: "3vh" }}
-                      />{" "} */}
-                    </StyledButton>
-                  {/* </> */}
-                {/* )} */}
-              </ActionButtonsContainer>
+                  )}
+                  {displayMenu && (
+                    <AddMenu>
+                      <StyledButton $wide onClick={() => handleAddNoteClick()}>
+                        <Info $gray $wide>
+                          New Note
+                        </Info>
+                      </StyledButton>
+                      <StyledButton $wide onClick={() => handleAddVerseClick()}>
+                        <Info $gray $wide>
+                          {" "}
+                          New Verse
+                        </Info>
+                      </StyledButton>
+                    </AddMenu>
+                  )}
+                </ActionButtonsContainer>
               </CardContent>
-            </CardContainer>
-            {currentIndex !== cardsOfDeck.length - 1 ? (
-              <PrevAndNext transparent onClick={() => nextCard()}>
-                <IoIosArrowForward
-                  style={{ color: "#8B8C89", fontSize: "3vh" }}
-                />
-              </PrevAndNext>
+            </CardOfDeck>
+            {currentIndex < cardsOfDeck.length - 1 ? (
+              <StyledButton onClick={() => nextCard()}>
+                <Next />
+              </StyledButton>
             ) : (
-              <PrevAndNext></PrevAndNext>
+              <StyledButton></StyledButton>
             )}
           </DeckContent>
         )}

@@ -7,10 +7,8 @@ import { NewDeck } from "./newDeck";
 import { PreviewDeck } from "./previewDeck";
 import styled from "styled-components";
 import { SubTitle } from "./shared_styles/styled_text";
-import { StyledLink, StyledButton } from "./shared_styles/styled_buttons";
-import { MdDelete } from "react-icons/md";
-import { FiPlusCircle } from "react-icons/fi";
-import {Next, Prev,Plus,Remove} from "./shared_styles/styled_icons";
+import {  StyledButton } from "./shared_styles/styled_buttons";
+import {Plus,Remove} from "./shared_styles/styled_icons";
 // const FormContainer = styled.div`
 //   position: relative;
 //   width: 40vh;
@@ -68,46 +66,7 @@ const ListItemStyled = styled.div`
 
   //media-> mobile width:40%
 `;
-// const DeckPreviewContainer = styled.div`
-//   height: 30vh;
-//   width: 40vh;
-//   border-radius: 2vh;
-//   box-shadow: 2px 2px 7px #595959;
-//   position: relative;
-//   background-color: #fff;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   &:after {
-//     height: inherit;
-//     width: 100%;
-//     border-radius: 2vh;
-//     box-shadow: 2px 2px 7px #595959;
-//     position: absolute;
-//     left: -1vh;
-//     top: 1vh;
-//     z-index: -1;
-//     content: "";
-//     background-color: #fff;
-//   }
-//   &:before {
-//     height: inherit;
-//     width: 100%;
-//     border-radius: 2vh;
-//     box-shadow: 2px 2px 7px #595959;
-//     position: absolute;
-//     left: -2vh;
-//     top: 2vh;
-//     z-index: -2;
-//     content: "";
-//     background-color: #fff;
-//   }
-//   @media (max-width: 500px) {
-//     height: 40vh;
-//     width: 90%;
-//     margin: auto;
-//   }
-// `;
+
 const ActionButtonsSection = styled.div`
  justify-self: flex-end;
  align-self: flex-end;
@@ -167,11 +126,10 @@ export const DeckDashboard = () => {
           decks.map((element) => (
             <ListItemStyled key={element.id}>
               <PreviewDeck id={element.id}>
-                <SubTitle color>{element.name}</SubTitle>
+                <SubTitle $color>{element.name}</SubTitle>
                 <ActionButtonsSection>
                   <StyledButton  onClick={() => removeDeck(element)}>
-                    {/* <MdDelete style={{ color: "#33abb9", fontSize: "3vh" }} /> */}
-                       <Remove  color/>
+                       <Remove  $color/>
                   </StyledButton>
                 </ActionButtonsSection>
               </PreviewDeck>
@@ -188,7 +146,7 @@ export const DeckDashboard = () => {
               big
               onClick={() => dispatch(settingFormPurpose("New Deck"))}
             >
-                 <Plus big/>
+                 <Plus $big/>
               {/* <FiPlusCircle style={{ color: "#8B8C89", fontSize: "4vh" }} /> */}
             </StyledButton>
           )}

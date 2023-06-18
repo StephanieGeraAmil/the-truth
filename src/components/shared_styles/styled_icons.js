@@ -4,44 +4,48 @@ import styled, { css } from "styled-components";
 // import { MdDelete, MdOutlineDone } from "react-icons/md";
 // import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-
-import { ArrowForwardIos, ArrowBackIos, ArrowBack,Delete,AddCircleOutline,Add } from "@styled-icons/material";
-const bigSize='8vh';
-const mediumSize='5vh';
-const smallSize='5vh';
-const primaryColor= "#133F45";
-const white= "#FFF";
+import {
+  ArrowForwardIos,
+  ArrowBackIos,
+  ArrowBack,
+  Delete,
+  AddCircleOutline,
+  Add,
+Done
+} from "@styled-icons/material";
+const bigSize = "8vh";
+const mediumSize = "5vh";
+const smallSize = "5vh";
+const primaryColor = "#133F45";
+const white = "#FFF";
 const sharedStyle = css`
-   color:  ${(props) => (props.color ? primaryColor : white)};
-   size: ${smallSize};
-   padding:0;
-   margin:0;
-     ${(props) =>
-    props.big &&
+  color: ${(props) => (props.$color ? primaryColor : white)};
+  size: ${smallSize};
+  padding: 0;
+  margin: 0;
+  ${(props) =>
+    props.$big &&
     css`
- size: ${bigSize};
+      size: ${bigSize};
     `}
-      ${(props) =>
-    props.medium &&
+  ${(props) =>
+    props.$medium &&
     css`
-    size: ${mediumSize};
+      size: ${mediumSize};
     `}
-`
+`;
 export const Next = styled(ArrowForwardIos)`
-${sharedStyle}
-  
+  ${sharedStyle}
 `;
 export const Prev = styled(ArrowBackIos)`
-${sharedStyle}
-  
+  ${sharedStyle}
 `;
 export const Remove = styled(Delete)`
-${sharedStyle}
-  
+  ${sharedStyle}
 `;
 export const Plus = styled(AddCircleOutline)`
-${sharedStyle}
- 
+  ${sharedStyle}
 `;
-
-
+export const Save = styled(Done)`
+  ${sharedStyle}
+`;

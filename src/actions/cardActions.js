@@ -58,6 +58,7 @@ export const cleanCards = () => async (dispatch, getState) => {
 export const addResourceToCard =
   (Resource, Card_id) => async (dispatch, getState) => {
     try {
+
       // const { data } = await api.createCard(Card);
       setCards(
         cards.map((card) =>

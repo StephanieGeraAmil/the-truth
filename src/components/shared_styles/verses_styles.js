@@ -5,7 +5,7 @@ export const VerseContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 0;
+  margin: 0 auto;
 `;
 export const VerseScripture = styled.p`
   font-size: 2vh;
