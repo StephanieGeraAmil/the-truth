@@ -14,10 +14,9 @@ right:0;
 export const PreviewDeck = ({id, children}) => {
   return (
      <StyledDeckPreview>
-      <PreviewCard small />
-      <PreviewCard medium />
-      {id? <Link  to={`../decks/${id}`}><PreviewCard >{children} </PreviewCard></Link>:
-       <PreviewCard >{children} </PreviewCard>}
+      <PreviewCard $small />
+      <PreviewCard $medium />
+       <PreviewCard >{children} </PreviewCard>
  
     </StyledDeckPreview>
   );

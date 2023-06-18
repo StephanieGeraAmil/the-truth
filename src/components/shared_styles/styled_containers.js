@@ -30,7 +30,7 @@ export const ImgContainer = styled.div`
   }
 
   ${(props) =>
-    props.wide &&
+    props.$wide &&
     css`
       width: 50%;
         /* & > img {
@@ -39,7 +39,7 @@ export const ImgContainer = styled.div`
     `}
 
   ${(props) =>
-    props.floating &&
+    props.$floating &&
     css`
       & > img {
         animation: ${enterRight} 1.5s ease-in-out,
@@ -57,7 +57,7 @@ export const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   ${(props) =>
-    props.wide &&
+    props.$wide &&
     css`
       width: 30%;
     `}

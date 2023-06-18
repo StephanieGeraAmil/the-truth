@@ -7,7 +7,7 @@ import styled, { css } from "styled-components";
 import { FormTextArea } from "./shared_styles/styled_forms";
 import { StyledButton } from "./shared_styles/styled_buttons";
 
-import { MdDelete, MdOutlineDone } from "react-icons/md";
+
 import { PreviewDeck } from "./previewDeck";
 import { Remove, Save } from "./shared_styles/styled_icons";
 

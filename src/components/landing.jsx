@@ -71,26 +71,26 @@ export const Landing = () => {
   return (
     <StyledSection>
       {/* <LandingHero /> */}
-      <RowSection large>
+      <RowSection $large>
         <TextContainer>
           <Title>
             Focus on <span>the Truth</span> & be free
           </Title>
-          <Info wide>
+          <Info $wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
             are that your brain keeps going back to some thoughts that are
             harmful and untrue ,lets call them th lies we live by
           </Info>
         </TextContainer>
-        <ImgContainer wide floating>
+        <ImgContainer $wide $floating>
           <img src={Brain} alt="brain" />
         </ImgContainer>
       </RowSection>
       <RowSection>
-        <TextContainer wide>
-          <SubTitle>Detect the hurtful pathways your brain have</SubTitle>
-          <Info wide>
+        <TextContainer $wide>
+          <SubTitle >Detect the hurtful pathways your brain have</SubTitle>
+          <Info $wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>
@@ -133,7 +133,7 @@ export const Landing = () => {
         </ImgContainer>
         <TextContainer>
           <SubTitle>Search for the truth </SubTitle>
-          <Info wide>
+          <Info $wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>
@@ -141,9 +141,9 @@ export const Landing = () => {
         </TextContainer>
       </RowSection>
       <RowSection>
-        <TextContainer wide>
+        <TextContainer $wide>
           <SubTitle>Create decks that you can revisit</SubTitle>
-          <Info wide>
+          <Info $wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>

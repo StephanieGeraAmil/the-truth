@@ -148,13 +148,13 @@ export const Deck = () => {
     const card = { id: v4() };
     dispatch(createCard(card));
     dispatch(addCardOnDeck(id, card.id));
-      setCurrentIndex(cardsOfDeck.length );
-      console.log(currentIndex)
+    setCurrentIndex(cardsOfDeck.length);
   };
   const removeCard = () => {
-    if (currentIndex !== 0) setCurrentIndex(currentIndex - 1);
+if (currentIndex !== 0) setCurrentIndex(prevIndex=>prevIndex - 1);
     dispatch(deleteCard(cardsOfDeck[currentIndex].id));
     dispatch(deleteCardFromDeck(deck.id, cardsOfDeck[currentIndex].id));
+    handleClose();
   };
   const handleClose = () => {
     setTextAreaInput("");
@@ -162,28 +162,18 @@ export const Deck = () => {
     setFormShown(null);
   };
   const handleAddNoteClick = () => {
-        addCard();
+    addCard();
     setFormShown("Note");
     setDisplayMenu(false);
-
-    //     const card = { id: v4() };
-    // dispatch(createCard(card));
   };
   const handleAddVerseClick = () => {
-     addCard();
+    addCard();
     setFormShown("Verse");
     setDisplayMenu(false);
-       
-    //     const card = { id: v4() };
-    // dispatch(createCard(card));
   };
   const handleSaveNoteClick = () => {
     if (textAreaInput !== "") {
       const note = { content: textAreaInput, id: v4() };
-      // const card = { id: v4() };
-      // dispatch(createCard(card));
-      // dispatch(addCardOnDeck(id,  cardsOfDeck[currentIndex].id));
-      console.log(currentIndex)
       dispatch(addResourceToCard(note, cardsOfDeck[currentIndex].id));
       handleClose();
     }
@@ -192,9 +182,6 @@ export const Deck = () => {
   const handleSaveVerseClick = () => {
     if (textAreaInput !== "" && textInput !== "") {
       const verse = { scripture: textAreaInput, ref: textInput, id: v4() };
-      // const card = { id: v4() };
-      // dispatch(createCard(card));
-      // dispatch(addCardOnDeck(id,  cardsOfDeck[currentIndex].id));
       dispatch(addResourceToCard(verse, cardsOfDeck[currentIndex].id));
       handleClose();
     }
@@ -202,7 +189,6 @@ export const Deck = () => {
 
   useEffect(() => {
     setCardsOfDeck(cards.filter((c) => deck.cards.indexOf(c.id) > -1));
-    console.log(cardsOfDeck)
   }, [cards]);
 
   return (
@@ -218,12 +204,12 @@ export const Deck = () => {
             </StyledButton>
             {displayMenu && (
               <AddMenu>
-                <StyledButton wide onClick={() => handleAddNoteClick()}>
+                <StyledButton $wide onClick={() => handleAddNoteClick()}>
                   <Info $gray $wide>
                     New Note
                   </Info>
                 </StyledButton>
-                <StyledButton wide onClick={() => handleAddVerseClick()}>
+                <StyledButton $wide onClick={() => handleAddVerseClick()}>
                   <Info $gray $wide>
                     {" "}
                     New Verse

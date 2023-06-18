@@ -1,49 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDecksOfUser, deleteDeck } from "./../actions/deckActions.js";
+
+import { Link } from "react-router-dom";
+import {
+  createDeck,
+  getDecksOfUser,
+  deleteDeck,
+} from "./../actions/deckActions.js";
 import { getAllCardsOfUser } from "../actions/cardActions";
-import { settingFormPurpose } from "../actions/currentSelectionActions.js";
-import { NewDeck } from "./newDeck";
+
 import { PreviewDeck } from "./previewDeck";
 import styled from "styled-components";
 import { SubTitle } from "./shared_styles/styled_text";
-import {  StyledButton } from "./shared_styles/styled_buttons";
-import {Plus,Remove} from "./shared_styles/styled_icons";
-// const FormContainer = styled.div`
-//   position: relative;
-//   width: 40vh;
-//   height: 40vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: flex-start;
-// `;
-// const StyledSubTitle = styled(SubTitle)`
-//   font-size: 2rem;
-//   text-align: center;
-//   @media (max-width: 500px) {
-//     font-size: 2em;
-//   }
-//   @media (min-width: 1000px) {
-//     font-size: 2.5vw;
-//   }
-//   @media (min-width: 2000px) {
-//     font-size: 2vw;
-//   }
-// `;
+import { StyledButton } from "./shared_styles/styled_buttons";
+import { Plus, Remove, Save } from "./shared_styles/styled_icons";
+import { FormTextArea } from "./shared_styles/styled_forms";
 
 const DeckListContainer = styled.div`
-  /* padding: 10vh; */
-
   width: 98%;
   height: 90%;
-   margin-top: 10% auto;
-  /*overflow: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2%;
-  z-index: 0; */
-
-   overflow: auto;
+  margin-top: 10% auto;
+  overflow: auto;
   display: grid;
   grid-gap: 2%;
   grid-template-columns: repeat(auto-fill, minmax(60vh, 1fr));
@@ -56,9 +33,7 @@ const DeckListContainer = styled.div`
   } */
 `;
 const ListItemStyled = styled.div`
-  /* width: 70vh;
-  height: 50%; */
-   width: 100%;
+  width: 100%;
   height: 100%;
   position: relative;
   display: flex;
@@ -68,16 +43,14 @@ const ListItemStyled = styled.div`
 `;
 
 const ActionButtonsSection = styled.div`
- justify-self: flex-end;
- align-self: flex-end;
+  align-self: flex-end;
   width: 100%;
   height: 4vh;
-  overflow: auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
- 
-  gap: 40px;
+  gap: 2vh;
+  z-index: 5;
 `;
 
 const DeckDashboardContainer = styled.div`
@@ -94,9 +67,6 @@ const DeckDashboardContainer = styled.div`
     #15464c 70%,
     #33abb9 100%
   );
-
-   
-
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
@@ -104,12 +74,16 @@ export const DeckDashboard = () => {
   const decks = useSelector(deckSelector);
   const cardSelector = (state) => (state.cards ? state.cards : null);
   const cards = useSelector(cardSelector);
-  const currentFormSelected = (state) =>
-    state.selected.form ? state.selected.form : null;
-  const formSelected = useSelector(currentFormSelected);
 
-  const removeDeck = (deck) => {
-    dispatch(deleteDeck(deck.id));
+  const [displayNewDeckForm, setDisplayNewDeckForm] = useState(false);
+  const [deckName, setDeckName] = useState("");
+
+  // const removeDeck = (deck) => { dispatch(deleteDeck(deck.id));
+
+  // };
+  const handleClose = () => {
+    setDisplayNewDeckForm(false);
+    setDeckName("");
   };
   useEffect(() => {
     if (decks.length === 0) {
@@ -126,10 +100,14 @@ export const DeckDashboard = () => {
           decks.map((element) => (
             <ListItemStyled key={element.id}>
               <PreviewDeck id={element.id}>
+                <Link  to={`../decks/${element.id}`}>
                 <SubTitle $color>{element.name}</SubTitle>
+                </Link>
                 <ActionButtonsSection>
-                  <StyledButton  onClick={() => removeDeck(element)}>
-                       <Remove  $color/>
+                  <StyledButton
+                    onClick={() => dispatch(deleteDeck(element.id))}
+                  >
+                    <Remove $color />
                   </StyledButton>
                 </ActionButtonsSection>
               </PreviewDeck>
@@ -139,15 +117,33 @@ export const DeckDashboard = () => {
           <p>User without decks yet</p>
         )}
         <ListItemStyled>
-          {formSelected == "New Deck" ? (
-            <NewDeck />
+          {displayNewDeckForm ? (
+            <PreviewDeck>
+              <FormTextArea
+                subtitle
+                placeholder="Deck title"
+                onChange={(e) => setDeckName(e.target.value)}
+                value={deckName}
+              ></FormTextArea>
+              <ActionButtonsSection>
+                <StyledButton onClick={() => handleClose()}>
+                  <Remove $color />
+                </StyledButton>
+                <StyledButton
+                  onClick={() => {
+                    if (deckName !== "") {
+                      dispatch(createDeck(deckName));
+                      setDisplayNewDeckForm(false);
+                    }
+                  }}
+                >
+                  <Save $color />
+                </StyledButton>
+              </ActionButtonsSection>
+            </PreviewDeck>
           ) : (
-            <StyledButton
-              big
-              onClick={() => dispatch(settingFormPurpose("New Deck"))}
-            >
-                 <Plus $big/>
-              {/* <FiPlusCircle style={{ color: "#8B8C89", fontSize: "4vh" }} /> */}
+            <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
+              <Plus $big />
             </StyledButton>
           )}
         </ListItemStyled>
