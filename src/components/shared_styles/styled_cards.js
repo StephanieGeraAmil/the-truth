@@ -6,14 +6,11 @@ export const StyledCard = styled.div`
   background: #fff;
 `;
 export const CardOfDeck = styled.div`
-     height: 100%;
-      width: 30%;
-      min-width: 55vh;
-            max-width: 45vw;
-
-
-      position: relative;
-
+  height: 100%;
+  width: 30%;
+  min-width: 55vh;
+  max-width: 45vw;
+  position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -23,6 +20,7 @@ export const CardOfDeck = styled.div`
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
+  
  /* &:after {
      height: 80%;
      width: 80%;
@@ -73,10 +71,8 @@ export const CardOfDeck = styled.div`
 
 export const PreviewCard = styled.div`
   height: 80%;
- 
   width: 45%;
-max-width:35vw;
-
+  max-width:35vw;
   position: absolute;
   bottom: 10%;
   right: 10%;
@@ -89,6 +85,11 @@ max-width:35vw;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
+     @media (max-width: 550px) {
+        width: 70%;
+        max-width:70vw;
+        height: 70%;
+      }
   ${(props) =>
     props.$static &&
     css`
@@ -96,9 +97,7 @@ max-width:35vw;
       z-index: 1;
       height: 100%;
       width: 100%;
-        padding:8%;
-      /* height: 60%;
-      width: 30%; */
+      padding:8%;
     `}
   ${(props) =>
     props.$medium &&
@@ -110,6 +109,12 @@ max-width:35vw;
       height: 70%;
       width: 35%;
       max-width:25vw;
+        @media (max-width: 550px) {
+        width: 60%;
+        max-width:60vw;
+        height: 60%;
+        right: 25%;
+      }
     `}
   ${(props) =>
     props.$small &&
@@ -121,6 +126,12 @@ max-width:35vw;
       height: 60%;
       width: 30%;
       max-width:20vw;
+        @media (max-width: 550px) {
+        width: 50%;
+        max-width:50vw;
+        height: 50%;
+        right: 40%;
+      }
     `}
 `;
 

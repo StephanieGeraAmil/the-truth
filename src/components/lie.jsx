@@ -8,7 +8,7 @@ import {
 } from "../actions/currentSelectionActions";
 
 import styled from "styled-components";
-import { SearchButton } from "./shared_styles/styled_buttons";
+import { ColorAndTextButton } from "./shared_styles/styled_buttons";
 
 const LieContainer = styled.div`
   position: relative;
@@ -78,7 +78,7 @@ const LieSuggestions = styled.div`
     font-size: 1rem;
   }
 `;
-const Search = styled(SearchButton)`
+const Search = styled(ColorAndTextButton)`
   position: absolute;
   width: 6.5em;
   height: 3em;

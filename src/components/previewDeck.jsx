@@ -10,6 +10,7 @@ position:absolute;
 bottom:0;
 right:0;
 
+
 `;
 export const PreviewDeck = ({id, children}) => {
   return (

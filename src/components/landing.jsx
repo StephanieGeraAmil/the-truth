@@ -7,7 +7,7 @@ import { PreviewDeck } from "./previewDeck";
 import { Title, SubTitle, Info } from "./shared_styles/styled_text";
 import { TextContainer, ImgContainer } from "./shared_styles/styled_containers";
 
-import { StyledButton } from "./shared_styles/styled_buttons";
+import { ColorAndTextButton } from "./shared_styles/styled_buttons";
 import Brain from "../assets/brain-with-connecting-dots.webp";
 import Man from "../assets/thoughtful-man-with-hand-his-chin.webp";
 import Woman from "../assets/woman-searching-something-looking-through-magnifying-glass-white.webp";
@@ -15,24 +15,31 @@ import Woman from "../assets/woman-searching-something-looking-through-magnifyin
 
 const RowSection = styled.div`
   width: 100%;
-  height: 15%;
+  height: 30%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
   gap: 2%;
   position: relative;
+  /* margin-bottom:5%; */
   ${(props) =>
     props.$large &&
     css`
-      height: 40%;
+      margin-bottom:0;
+      height: 30%;
       min-height: 85vh;
       justify-content: flex-start;
+       @media (max-width: 550px) {
+        height: 15%;
+      }
       @media (min-aspect-ratio: 1/2) {
         height: 55%;
+        max-height: 120vh;
       }
     `}
   @media (max-width: 550px) {
+      height: 15%;
     margin-left: 0;
     flex-direction: column;
     justify-content: flex-start;
@@ -47,7 +54,7 @@ const StyledSection = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 5%;
+  gap: 4%;
   @media (max-width: 550px) {
     gap: 0;
   }
@@ -77,18 +84,17 @@ export const Landing = () => {
       </RowSection>
       <RowSection>
         <TextContainer $wide>
-          <SubTitle>Detect the hurtful pathways your brain have</SubTitle>
+          <SubTitle>Detect the hurtful pathways</SubTitle>
           <Info $wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>
         </TextContainer>
         <ImgContainer $closer>
-          <div
-            data-aos="fade-left"
+             <div className="elipse"
+                   data-aos="fade-left"
             data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-          ></div>
+            data-aos-easing="ease-in-out"></div>
           <img
             src={Man}
             className="focus"
@@ -100,12 +106,12 @@ export const Landing = () => {
         </ImgContainer>
       </RowSection>
       <RowSection>
-        <ImgContainer $last $closer>
-          <div
-            data-aos="fade-left"
+        <ImgContainer $middle $closer>
+   
+                <div className="elipse"
+                   data-aos="fade-right"
             data-aos-duration="1000"
-            data-aos-easing="ease-in-out"
-          ></div>
+            data-aos-easing="ease-in-out"></div>
           <img
             src={Woman}
             className="focus"
@@ -121,7 +127,7 @@ export const Landing = () => {
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>
-          <StyledButton>Search</StyledButton>
+          <ColorAndTextButton $wide $short $margin>Search</ColorAndTextButton>
         </TextContainer>
       </RowSection>
       <RowSection>
@@ -132,9 +138,13 @@ export const Landing = () => {
             experiences , the rewards and punishments we got over time. Chances
           </Info>
 
-          <StyledButton>Create Deck</StyledButton>
+          <ColorAndTextButton $wide $short $margin>Create Deck</ColorAndTextButton>
         </TextContainer>
-        <ImgContainer>
+        <ImgContainer $last>
+            <div className="elipse"
+                   data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"></div>
           <PreviewDeck
             data-aos="fade-left"
             data-aos-duration="1000"

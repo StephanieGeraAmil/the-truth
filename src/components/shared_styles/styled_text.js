@@ -34,7 +34,7 @@ export const SubTitle = styled.h3`
   margin-bottom: 0.5em;
   padding: 0;
   color: ${white};
-  height: 20vh;
+  /* height: 20vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;

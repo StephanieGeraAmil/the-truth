@@ -42,11 +42,11 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const SearchButton = styled.button`
+export const ColorAndTextButton = styled.button`
   width: 15%;
   min-width: 90px;
   height: 80%;
-  z-index: 2;
+  z-index: 3;
   border: 0;
   border-radius: 2vw;
   background-color: #33abb9;
@@ -61,9 +61,19 @@ export const SearchButton = styled.button`
       pointer-events: none;
     `}
   ${(props) =>
-    props.$transparent &&
+    props.$wide &&
     css`
-      background-color: transparent;
+      width: 40%;
+    `}
+    ${(props) =>
+    props.$margin &&
+    css`
+      margin-top: 0.8em;
+    `}
+      ${(props) =>
+    props.$short &&
+    css`
+       height: 2em;
     `}
 
   @media (max-width: 1800px)  and (min-height: 1000px) {
