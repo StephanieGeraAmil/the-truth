@@ -21,10 +21,11 @@ const NavContainer = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding: 1vh;
+  gap:2%;
+  padding: 1.5%;
   padding-right: 5%;
-  gap: 2vw;
 `;
+
 
 export const Nav = () => {
   const dispatch = useDispatch();

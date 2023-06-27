@@ -23,7 +23,7 @@ const store = createStore(
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
-      box-sizing: border-box;
+    box-sizing: border-box;
   }
   a {
     text-decoration: none;
@@ -31,14 +31,14 @@ const GlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
-    height: 100vh;
-    /* font-family: Montserrat, sans-serif; */
+    position: absolute;
+    height: 200vh;
+    width:100%;
     font-family: Inter, sans-serif;
     font-weight: 100;
     font-size:100%;
     margin: 0;
     background: #000;
-    /* background: #274C77; */
   }
   textarea:focus, input:focus{
     outline: none;

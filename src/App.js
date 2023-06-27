@@ -10,15 +10,8 @@ const StyledSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  @media (max-width: 650px) {
-    padding-top: 5%;
-    height: 210%;
-  }
-  @media (max-width: 550px) {
+    @media (max-width: 550px) {
     height: 290%;
-  }
-  @media (max-width: 1800px) and (min-height: 1000px) {
-    height: 100%;
   }
 `;
 
