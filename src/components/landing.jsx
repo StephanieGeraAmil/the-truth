@@ -12,39 +12,70 @@ import Brain from "../assets/brain-with-connecting-dots.webp";
 import Man from "../assets/thoughtful-man-with-hand-his-chin.webp";
 import Woman from "../assets/woman-searching-something-looking-through-magnifying-glass-white.webp";
 
-
 const RowSection = styled.div`
-  width: 100%;
-  height: 30%;
+  width: 50%;
+  height: 40%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-end;
   gap: 2%;
   position: relative;
-  /* margin-bottom:5%; */
   ${(props) =>
     props.$large &&
     css`
-      margin-bottom:0;
+      width: 100%;
+      margin-bottom: 0;
       height: 30%;
       min-height: 85vh;
       justify-content: flex-start;
-       @media (max-width: 550px) {
-        height: 15%;
+
+      @media (min-aspect-ratio: 1) {
+        height: 65%;
       }
-      @media (min-aspect-ratio: 1/2) {
-        height: 55%;
-        max-height: 120vh;
+
+      @media (min-aspect-ratio: 1.4) {
+        height: 80%;
       }
-    `}
+      @media (min-aspect-ratio: 1.8) {
+        height: 100%;
+      }
+
+      @media (max-width: 850px) {
+        height: 80%;
+      }
+
+      @media (max-width: 700px) {
+        height: 100%;
+      }
+  `}
+  @media (max-width: 1500px) {
+    width: 70%;
+
+    ${(props) =>
+      props.$large &&
+      css`
+        width: 100%;
+      `}
+  }
+  @media (max-width: 1300px) {
+    width: 80%;
+    ${(props) =>
+      props.$large &&
+      css`
+        width: 100%;
+      `}
+  }
   @media (max-width: 550px) {
-      height: 15%;
-    margin-left: 0;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 0;
+    gap:0%;
+        width: 95%;
+    height: 20%;
+      flex-direction: column;
+    ${(props) =>
+      props.$large &&
+      css`
+        width: 100%;
+      `}
   }
 `;
 const StyledSection = styled.div`
@@ -52,13 +83,14 @@ const StyledSection = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 4%;
   @media (max-width: 550px) {
-    gap: 0;
+    gap: 3%;
   }
 `;
+
 
 export const Landing = () => {
   useEffect(() => {
@@ -90,11 +122,13 @@ export const Landing = () => {
             experiences , the rewards and punishments we got over time. Chances
           </Info>
         </TextContainer>
-        <ImgContainer $closer>
-             <div className="elipse"
-                   data-aos="fade-left"
+        <ImgContainer $first >
+          <div
+            className="elipse"
+            data-aos="fade-left"
             data-aos-duration="1000"
-            data-aos-easing="ease-in-out"></div>
+            data-aos-easing="ease-in-out"
+          ></div>
           <img
             src={Man}
             className="focus"
@@ -106,12 +140,13 @@ export const Landing = () => {
         </ImgContainer>
       </RowSection>
       <RowSection>
-        <ImgContainer $middle $closer>
-   
-                <div className="elipse"
-                   data-aos="fade-right"
+        <ImgContainer $middle >
+          <div
+            className="elipse"
+            data-aos="fade-right"
             data-aos-duration="1000"
-            data-aos-easing="ease-in-out"></div>
+            data-aos-easing="ease-in-out"
+          ></div>
           <img
             src={Woman}
             className="focus"
@@ -121,13 +156,15 @@ export const Landing = () => {
             data-aos-easing="ease-in-out"
           />
         </ImgContainer>
-        <TextContainer>
+        <TextContainer $wide>
           <SubTitle>Search for the truth </SubTitle>
           <Info $wide>
             our brains automate behaivior based on what we learned from our past
             experiences , the rewards and punishments we got over time. Chances
           </Info>
-          <ColorAndTextButton $wide $short $margin>Search</ColorAndTextButton>
+          <ColorAndTextButton $wide $short $margin>
+            Search
+          </ColorAndTextButton>
         </TextContainer>
       </RowSection>
       <RowSection>
@@ -138,13 +175,17 @@ export const Landing = () => {
             experiences , the rewards and punishments we got over time. Chances
           </Info>
 
-          <ColorAndTextButton $wide $short $margin>Create Deck</ColorAndTextButton>
+          <ColorAndTextButton $wide $short $margin>
+            Create Deck
+          </ColorAndTextButton>
         </TextContainer>
-        <ImgContainer $last>
-            <div className="elipse"
-                   data-aos="fade-left"
+        <ImgContainer $last  >
+          <div
+            className="elipse"
+            data-aos="fade-left"
             data-aos-duration="1000"
-            data-aos-easing="ease-in-out"></div>
+            data-aos-easing="ease-in-out"
+          ></div>
           <PreviewDeck
             data-aos="fade-left"
             data-aos-duration="1000"

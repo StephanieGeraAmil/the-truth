@@ -7,44 +7,23 @@ export const StyledCard = styled.div`
 `;
 export const CardOfDeck = styled.div`
   height: 100%;
-  width: 30%;
-  min-width: 55vh;
-  max-width: 45vw;
+  aspect-ratio: 0.8;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
-  padding:5%;
+  padding: 5%;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
-  
- /* &:after {
-     height: 80%;
-     width: 80%;
-     border-radius: 20%;
-  box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
-     position: absolute;
-     right: 35%;
-     top:10%;
-     z-index: 0;
-     content: " ";
-     background-color: #fff;
-   }
-   &:before {
-     height: 80%;
-     width: 80%;
-     border-radius: 20%;
-  box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
-     position: absolute;
-     left: 35%;
-     top: 10%;
-     z-index: 0;
-     content: " ";
-     background-color: #fff;
-   } */
+
+  @media (max-width: 500px) {
+    aspect-ratio: auto;
+    width:80%;
+  }
+
   ${(props) =>
     props.$medium &&
     css`
@@ -54,7 +33,7 @@ export const CardOfDeck = styled.div`
       right: 30%;
       height: 70%;
       width: 35%;
-      max-width:25vw;
+      max-width: 25vw;
     `}
   ${(props) =>
     props.$small &&
@@ -65,39 +44,52 @@ export const CardOfDeck = styled.div`
       right: 45%;
       height: 60%;
       width: 30%;
-      max-width:20vw;
+      max-width: 20vw;
     `}
 `;
 
 export const PreviewCard = styled.div`
-  height: 80%;
-  width: 45%;
-  max-width:35vw;
+  width: 60%;
+  aspect-ratio: 0.8;
   position: absolute;
   bottom: 10%;
   right: 10%;
   z-index: 3;
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
-  padding:5%;
+  padding: 5%;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
-     @media (max-width: 550px) {
-        width: 70%;
-        max-width:70vw;
-        height: 70%;
-      }
+    @media (max-width:750px) {
+    width: 45%;
+    margin: 0 auto;
+  }
   ${(props) =>
     props.$static &&
     css`
       position: static;
       z-index: 1;
-      height: 100%;
-      width: 100%;
-      padding:8%;
+      height: 90%;
+      width: 80%;
+      padding: 8%;
+      min-width: 240px;
+      @media (min-width: 1750px) {
+        height: 100%;
+        width: 100%;
+      }
+  /* @media (max-width: 550px) {
+        width: 70%;
+        height: 100%;
+        margin: 0 auto;
+      } */
+      /* @media (max-width: 550px) {
+        width: 80vw;
+        height: 100%;
+        margin: 0 auto;
+      } */
     `}
   ${(props) =>
     props.$medium &&
@@ -106,14 +98,14 @@ export const PreviewCard = styled.div`
       z-index: 2;
       bottom: 15%;
       right: 30%;
-      height: 70%;
-      width: 35%;
-      max-width:25vw;
-        @media (max-width: 550px) {
-        width: 60%;
-        max-width:60vw;
-        height: 60%;
-        right: 25%;
+
+      width: 50%;
+      aspect-ratio: 0.8;
+
+    
+         @media (max-width: 750px) {
+        width: 40%;
+        right:20%;
       }
     `}
   ${(props) =>
@@ -122,16 +114,17 @@ export const PreviewCard = styled.div`
       position: absolute;
       z-index: 1;
       bottom: 20%;
-      right: 45%;
-      height: 60%;
-      width: 30%;
-      max-width:20vw;
-        @media (max-width: 550px) {
-        width: 50%;
-        max-width:50vw;
-        height: 50%;
-        right: 40%;
+      right: 50%;
+      width: 40%;
+      aspect-ratio: 0.8;
+  
+         @media (max-width: 750px) {
+        width: 35%;
+        right:30%;
+      }
+           @media (max-width: 750px) {
+        width: 35%;
+        right:30%;
       }
     `}
 `;
-

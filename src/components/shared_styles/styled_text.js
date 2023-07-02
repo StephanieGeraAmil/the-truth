@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 const bigSize = "8vh";
-const mediumSize = "5vh";
+const mediumSize = "4vh";
 const smallSize = "2vh";
 const thick = "900";
 const bold = "500";
@@ -21,11 +21,17 @@ export const Title = styled.h1`
 
   & > span {
     color: ${secondaryColor};
+      @media (max-width: 600px) {
+color: ${white};
+  }
   }
 
   @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 4rem;
   }
+   /* @media (max-width: 550px) {
+    font-size: 3rem;
+  } */
 `;
 export const SubTitle = styled.h3`
   font-size: ${mediumSize};
@@ -34,11 +40,11 @@ export const SubTitle = styled.h3`
   margin-bottom: 0.5em;
   padding: 0;
   color: ${white};
-  /* height: 20vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
   ${(props) =>
     props.$big &&
     css`

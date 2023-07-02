@@ -10,9 +10,6 @@ const StyledSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-    @media (max-width: 550px) {
-    height: 290%;
-  }
 `;
 
 function App() {

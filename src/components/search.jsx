@@ -18,15 +18,17 @@ import { BottomSection } from "./bottomSection.jsx";
 
 const SearchDiv = styled.div`
   width: 100%;
-  height:120%;
+  height:100%;
   display: flex;
   flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    padding-top:10%;
+    gap:5%;
   align-items: center;
   background-image: radial-gradient(circle farthest-corner at  100% 100%  ,#000 0%,#15464C 70%, #33ABB9 100% );
-  /* @media (max-width: 500px) {
-    height: 300vh;
-  } */
+  @media (max-width: 500px) {
+    padding-top:15%;
+  }
 `;
 export const Search = () => {
 

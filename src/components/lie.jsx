@@ -18,7 +18,6 @@ const LieContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   align-items: center;
   font-size: 0.8vw;
 /* 
@@ -32,10 +31,15 @@ const LieContainer = styled.div`
     font-size: 1rem;
     width: 100%;
   } */
+  @media (max-width: 550px) {
+    font-size: 1rem;
+    width: 90%;
+  } 
 `;
 
 const LieInput = styled.input`
-
+  position: absolute;
+  top: 0.5em;
   width: 100%;
   height: 1.2em;
   background-color: #fff;
@@ -44,15 +48,15 @@ const LieInput = styled.input`
   font-weight: 100;
   padding: 2em 1.5em;
   margin: 0;
-    border-radius:4vw;
+  border-radius:4vw;
   box-shadow: 5px 3px 10px #333;
   color: #8b8c89;
   z-index: 2;
-
   &:active,
   &:focus {
     z-index: 2;
   }
+ 
    @media (max-width: 1800px)  and (min-height: 1000px){
     font-size: 1rem;
   }
@@ -82,10 +86,12 @@ const Search = styled(ColorAndTextButton)`
   position: absolute;
   width: 6.5em;
   height: 3em;
-  top: 50%;
-  right: 0;
+    top: 1em;
+    right: 2%;
+  /* top: 50%; */
+  /* right: 0; */
   color: #fff;
-  transform: translateY(-50%) translateX(-5%);
+  /* transform: translateY(-50%) translateX(-5%); */
   z-index: 3;
     font-size: 2vh;
   @media (max-width: 700px) {

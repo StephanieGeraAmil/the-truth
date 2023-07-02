@@ -15,31 +15,21 @@ import { SubTitle } from "./shared_styles/styled_text";
 import { StyledButton } from "./shared_styles/styled_buttons";
 import { Plus, Remove, Save } from "./shared_styles/styled_icons";
 import { FormTextArea } from "./shared_styles/styled_forms";
-
-const DeckListContainer = styled.div`
-  width: 98%;
-  height: 90%;
-  margin-top: 10% auto;
-  overflow: auto;
-  display: grid;
-  grid-gap: 2%;
-  grid-template-columns: repeat(auto-fill, minmax(60vh, 1fr));
-  grid-auto-rows: 50vh;
-  /* @media (max-width: 500px) {
-    flex-direction: column;
-    height: 95%;
-    padding: 1vh;
-    gap: 10vw;
-  } */
-`;
-const ListItemStyled = styled.div`
+const StyledLink = styled(Link)`
   width: 100%;
+  overflow: auto;
+`;
+
+const ListItemStyled = styled.div`
   height: 100%;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
-
-  //media-> mobile width:40%
+  /* @media (max-width: 700px) {
+    min-width: 100vw;
+    width: 100vw;   
+  } */
 `;
 
 const ActionButtonsSection = styled.div`
@@ -56,17 +46,45 @@ const ActionButtonsSection = styled.div`
 const DeckDashboardContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  padding: 10% 5%;
+  overflow: auto;
+  display: grid;
+  grid-gap: 2%;
+  grid-template-columns: repeat(auto-fill, minmax(45vh, 1fr));
+  grid-auto-rows: 50vh;
   background-image: radial-gradient(
     circle farthest-corner at 0% 0%,
     #000 0%,
     #15464c 70%,
     #33abb9 100%
   );
+
+    @media (max-aspect-ratio: 1.2) {
+    grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
+    grid-gap: 0%;
+  }
+  @media (max-aspect-ratio: 0.78) {
+     /* grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr)); */
+    padding-top: 35%;
+      grid-gap: 5%;
+  }
+  /* @media (max-aspect-ratio: 0.5) {
+    grid-template-columns: repeat(auto-fill, minmax(25vh, 1fr)); 
+   grid-gap: 0%;
+  } */
+  
+  @media (max-width: 750px) {
+    padding-top: 25%;
+
+    grid-auto-rows: 30vh;
+    grid-gap: 5%;
+  }
+  @media (max-width: 550px) {
+    padding-top: 20%;
+    grid-auto-rows: 20vh;
+    grid-gap: 3%;
+  }
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
@@ -95,59 +113,57 @@ export const DeckDashboard = () => {
   }, []);
   return (
     <DeckDashboardContainer>
-      <DeckListContainer>
-        {decks.length > 0 ? (
-          decks.map((element) => (
-            <ListItemStyled key={element.id}>
-              <PreviewDeck id={element.id}>
-                <Link  to={`../decks/${element.id}`}>
+      {/* <DeckListContainer> */}
+      {decks.length > 0 ? (
+        decks.map((element) => (
+          <ListItemStyled key={element.id}>
+            <PreviewDeck id={element.id}>
+              <StyledLink to={`../decks/${element.id}`}>
                 <SubTitle $color>{element.name}</SubTitle>
-                </Link>
-                <ActionButtonsSection>
-                  <StyledButton
-                    onClick={() => dispatch(deleteDeck(element.id))}
-                  >
-                    <Remove $color />
-                  </StyledButton>
-                </ActionButtonsSection>
-              </PreviewDeck>
-            </ListItemStyled>
-          ))
-        ) : (
-          <p>User without decks yet</p>
-        )}
-        <ListItemStyled>
-          {displayNewDeckForm ? (
-            <PreviewDeck>
-              <FormTextArea
-                subtitle
-                placeholder="Deck title"
-                onChange={(e) => setDeckName(e.target.value)}
-                value={deckName}
-              ></FormTextArea>
+              </StyledLink>
               <ActionButtonsSection>
-                <StyledButton onClick={() => handleClose()}>
+                <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
                   <Remove $color />
-                </StyledButton>
-                <StyledButton
-                  onClick={() => {
-                    if (deckName !== "") {
-                      dispatch(createDeck(deckName));
-                      setDisplayNewDeckForm(false);
-                    }
-                  }}
-                >
-                  <Save $color />
                 </StyledButton>
               </ActionButtonsSection>
             </PreviewDeck>
-          ) : (
-            <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
-              <Plus $big />
-            </StyledButton>
-          )}
-        </ListItemStyled>
-      </DeckListContainer>
+          </ListItemStyled>
+        ))
+      ) : (
+        <p>User without decks yet</p>
+      )}
+      <ListItemStyled>
+        {displayNewDeckForm ? (
+          <PreviewDeck>
+            <FormTextArea
+              subtitle
+              placeholder="Deck title"
+              onChange={(e) => setDeckName(e.target.value)}
+              value={deckName}
+            ></FormTextArea>
+            <ActionButtonsSection>
+              <StyledButton onClick={() => handleClose()}>
+                <Remove $color />
+              </StyledButton>
+              <StyledButton
+                onClick={() => {
+                  if (deckName !== "") {
+                    dispatch(createDeck(deckName));
+                    setDisplayNewDeckForm(false);
+                  }
+                }}
+              >
+                <Save $color />
+              </StyledButton>
+            </ActionButtonsSection>
+          </PreviewDeck>
+        ) : (
+          <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
+            <Plus $big />
+          </StyledButton>
+        )}
+      </ListItemStyled>
+      {/* </DeckListContainer> */}
     </DeckDashboardContainer>
   );
 };

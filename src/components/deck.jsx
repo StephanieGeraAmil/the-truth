@@ -96,10 +96,16 @@ const DeckContent = styled.div`
   @media (max-width: 500px) {
     gap: 1vh;
   } */
+   @media (max-width: 550px) {
+    gap: 1vh;
+    height: 60%;
+  }
 `;
 const DeckContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  position: fixed;
+  overflow:hidden;
   padding: 0;
   display: flex;
   flex-direction: column;

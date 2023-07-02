@@ -37,6 +37,7 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   margin: 5px;
   z-index: 10;
+
   @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 1.5rem;
   }
