@@ -48,7 +48,7 @@ const RowSection = styled.div`
       @media (max-width: 700px) {
         height: 100%;
       }
-  `}
+    `}
   @media (max-width: 1500px) {
     width: 70%;
 
@@ -67,10 +67,10 @@ const RowSection = styled.div`
       `}
   }
   @media (max-width: 550px) {
-    gap:0%;
-        width: 95%;
+    gap: 0%;
+    width: 95%;
     height: 20%;
-      flex-direction: column;
+    flex-direction: column;
     ${(props) =>
       props.$large &&
       css`
@@ -91,7 +91,6 @@ const StyledSection = styled.div`
   }
 `;
 
-
 export const Landing = () => {
   useEffect(() => {
     AOS.init();
@@ -101,13 +100,24 @@ export const Landing = () => {
       <RowSection $large>
         <TextContainer $head>
           <Title>
-            Focus on <span>the Truth</span> & be free
+            Let God's <span>Truth</span> renew your mind & set you free
           </Title>
           <Info $wide>
-            our brains automate behaivior based on what we learned from our past
-            experiences , the rewards and punishments we got over time. Chances
-            are that your brain keeps going back to some thoughts that are
-            harmful and untrue ,lets call them th lies we live by
+            Based on Craig Groeschel "Winning the war in your mind" book, this
+            website is intended to help you break free from the mental prision
+            that is holding you back from experiencing God's Love, Peace and
+            Joy.{" "}
+          </Info>
+          <Info $wide>
+            {" "}
+            As Groeschel says "Our lives are always moving on the direction of
+            pur strongest thoughts" , we can't live a positive and healthy life
+            while having a negative and toxic mind.{" "}
+          </Info>
+
+          <Info $wide>
+            {" "}
+            The good news is that we can and should renew our minds (Romans 12)
           </Info>
         </TextContainer>
         <ImgContainer $floating>
@@ -116,13 +126,29 @@ export const Landing = () => {
       </RowSection>
       <RowSection>
         <TextContainer $wide>
-          <SubTitle>Detect the hurtful pathways</SubTitle>
+          <SubTitle>Identify what's holding you back</SubTitle>
           <Info $wide>
-            our brains automate behaivior based on what we learned from our past
-            experiences , the rewards and punishments we got over time. Chances
+            {" "}
+            When we experience hurt throughout our lives, we tend to develop
+            strongholds on our minds to keep us safe from reliving those painful
+            feelings.
+          </Info>
+          <Info $wide>
+            {" "}
+            While we believe those strongholds are keeping us safe they take
+            roots on our brain, the more we think a thought the easier it gets
+            to keep on thinking it, so we start to believe it as an absolute
+            truth, and let it control our lives. Those strongholds are distorted
+            interpretations of what is true, and they keep us away from God and
+            from the plan he has for us.
+          </Info>
+          <Info $wide>
+            {" "}
+            We can't defeat what we can't define, so the first step is to
+            identify our bigest stronghold.
           </Info>
         </TextContainer>
-        <ImgContainer $first >
+        <ImgContainer $first>
           <div
             className="elipse"
             data-aos="fade-left"
@@ -140,7 +166,7 @@ export const Landing = () => {
         </ImgContainer>
       </RowSection>
       <RowSection>
-        <ImgContainer $middle >
+        <ImgContainer $middle>
           <div
             className="elipse"
             data-aos="fade-right"
@@ -157,10 +183,19 @@ export const Landing = () => {
           />
         </ImgContainer>
         <TextContainer $wide>
-          <SubTitle>Search for the truth </SubTitle>
+          <SubTitle>Name the Truth</SubTitle>
           <Info $wide>
-            our brains automate behaivior based on what we learned from our past
-            experiences , the rewards and punishments we got over time. Chances
+            Each lie we believe has a truth that exposes it. That Truth is in
+            God's word.
+          </Info>
+          <Info $wide>
+            God's word is the weapon we have given to demolish all deceptions
+            from the enemy. Jesus is The Truth that will set us free.
+          </Info>
+          <Info $wide>
+            {" "}
+            To help you find the truth that demoilsh your stronghold you can use
+            our search feature.
           </Info>
           <ColorAndTextButton $wide $short $margin>
             Search
@@ -169,17 +204,29 @@ export const Landing = () => {
       </RowSection>
       <RowSection>
         <TextContainer $wide>
-          <SubTitle>Create decks that you can revisit</SubTitle>
+          <SubTitle>Say it until you think it</SubTitle>
           <Info $wide>
-            our brains automate behaivior based on what we learned from our past
-            experiences , the rewards and punishments we got over time. Chances
+            It's normal that at the begining the truth sounds more like a lie
+            than the actual lie,that's because you are used to believe it.
+          </Info>
+          <Info $wide>
+            {" "}
+            Your brain have formed a neuropathway ( a path of less resistance)
+            towards that distorted interpretation of reality.
+          </Info>
+          <Info $wide>
+            {" "}
+            You will need to read and repeat the truth to yourself once and
+            again until you are able to actualy believe it. On the Decks feature
+            you Create decks that you can revisit as much as you need during
+            that process.
           </Info>
 
           <ColorAndTextButton $wide $short $margin>
             Create Deck
           </ColorAndTextButton>
         </TextContainer>
-        <ImgContainer $last  >
+        <ImgContainer $last>
           <div
             className="elipse"
             data-aos="fade-left"
