@@ -45,7 +45,7 @@ const ActionButtonsSection = styled.div`
 
 const DeckDashboardContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   padding: 10% 5%;
   overflow: auto;
