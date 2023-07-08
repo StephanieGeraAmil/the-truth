@@ -9,7 +9,7 @@ const StyledDeckPreview = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
- @media (max-width: 550px) {
+ @media (max-width: 900px) {
      width: 80%;
        left: -10%;
 

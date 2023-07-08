@@ -39,6 +39,23 @@ const GlobalStyle = createGlobalStyle`
     font-size:100%;
     margin: 0;
     background: #000;
+          @media (min-aspect-ratio: 1.4) {
+    height:260vh;
+  }
+     @media (min-width: 1400px) {
+    height: 200vh;
+  }
+    @media (min-width: 1800px) {
+    height: 220vh;
+  }
+
+    @media (max-width: 900px) {
+    height: 280vh;
+  }
+   @media (max-width: 550px) {
+    height: 260vh;
+  }
+  
   }
   textarea:focus, input:focus{
     outline: none;

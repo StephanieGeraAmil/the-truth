@@ -13,69 +13,35 @@ import Man from "../assets/thoughtful-man-with-hand-his-chin.webp";
 import Woman from "../assets/woman-searching-something-looking-through-magnifying-glass-white.webp";
 
 const RowSection = styled.div`
-  width: 50%;
-  height: 40%;
+  width: ${(props) => (props.$large ? "100%" : "50%")};
+  height: ${(props) => (props.$large ? "100vh" : "40vh")};
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: ${(props) =>
+    props.$large ? "flex-start" : "space-between"};
+  align-items: ${(props) => (props.$last ? "flex-end" : "flex-start")};
   gap: 2%;
   position: relative;
-  ${(props) =>
-    props.$large &&
-    css`
-      width: 100%;
-      margin-bottom: 0;
-      height: 30%;
-      min-height: 85vh;
-      justify-content: flex-start;
-
-      @media (min-aspect-ratio: 1) {
-        height: 65%;
-      }
-
-      @media (min-aspect-ratio: 1.4) {
-        height: 80%;
-      }
-      @media (min-aspect-ratio: 1.8) {
-        height: 100%;
-      }
-
-      @media (max-width: 850px) {
-        height: 80%;
-      }
-
-      @media (max-width: 700px) {
-        height: 100%;
-      }
-    `}
-  @media (max-width: 1500px) {
-    width: 70%;
-
-    ${(props) =>
-      props.$large &&
-      css`
-        width: 100%;
-      `}
+  @media (min-aspect-ratio: 1.4) {
+    height: ${(props) => (props.$large ? "140vh" : "40vh")};
+  }
+  @media (max-width: 1800px) {
+    width: ${(props) => (props.$large ? "100%" : "70%")};
   }
   @media (max-width: 1300px) {
-    width: 80%;
-    ${(props) =>
-      props.$large &&
-      css`
-        width: 100%;
-      `}
+    width: ${(props) => (props.$large ? "100%" : "80%")};
+  }
+  @media (max-width: 900px) {
+    height: ${(props) => (props.$large ? "130vh" : "90vh")};
+    flex-direction: column;
+    justify-content: ${(props) => (props.$large ? "center" : "space-between")};
+    gap: 0%;
   }
   @media (max-width: 550px) {
-    gap: 0%;
-    width: 95%;
-    height: 20%;
-    flex-direction: column;
-    ${(props) =>
-      props.$large &&
-      css`
-        width: 100%;
-      `}
+    gap: 5%;
+    width: 100%;
+    align-items: flex-start;
+    height: ${(props) => (props.$large ? "100vh" : "80vh")};
   }
 `;
 const StyledSection = styled.div`
@@ -86,8 +52,11 @@ const StyledSection = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 4%;
+   @media (min-width: 1400px) {
+    gap: 0%;
+  }
   @media (max-width: 550px) {
-    gap: 3%;
+    gap: 0%;
   }
 `;
 
@@ -100,10 +69,10 @@ export const Landing = () => {
       <RowSection $large>
         <TextContainer $head>
           <Title>
-            Let God's <span>Truth</span> renew your mind & set you free
+            Let God's <span>Truth</span> set you free
           </Title>
           <Info $wide>
-            Based on Craig Groeschel "Winning the war in your mind" book, this
+            Based on Craig Groeschel book "Winning the war in your mind" , this
             website is intended to help you break free from the mental prision
             that is holding you back from experiencing God's Love, Peace and
             Joy.{" "}
@@ -183,7 +152,7 @@ export const Landing = () => {
           />
         </ImgContainer>
         <TextContainer $wide>
-          <SubTitle>Name the Truth</SubTitle>
+          <SubTitle>Find the Truth</SubTitle>
           <Info $wide>
             Each lie we believe has a truth that exposes it. That Truth is in
             God's word.
@@ -202,9 +171,11 @@ export const Landing = () => {
           </ColorAndTextButton>
         </TextContainer>
       </RowSection>
-      <RowSection>
+      <RowSection $last>
         <TextContainer $wide>
-          <SubTitle>Say it until you think it</SubTitle>
+          <SubTitle>
+            Repeat that truth to yourself until you believe it
+          </SubTitle>
           <Info $wide>
             It's normal that at the begining the truth sounds more like a lie
             than the actual lie,that's because you are used to believe it.

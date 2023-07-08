@@ -63,10 +63,18 @@ export const PreviewCard = styled.div`
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
-    @media (max-width:750px) {
-    width: 45%;
-    margin: 0 auto;
+    @media (max-width:900px) {
+    width: 50%;
+    /* margin: 0 auto; */
+      position: absolute;
+            right:0%;
+               bottom:5%;
   }
+          @media (max-width:550px) {
+
+               bottom:6%;
+  }
+
   ${(props) =>
     props.$static &&
     css`
@@ -76,7 +84,7 @@ export const PreviewCard = styled.div`
       width: 80%;
       padding: 8%;
       min-width: 240px;
-      @media (min-width: 1750px) {
+      @media (min-width: 1900px) {
         height: 100%;
         width: 100%;
       }
@@ -103,10 +111,15 @@ export const PreviewCard = styled.div`
       aspect-ratio: 0.8;
 
     
-         @media (max-width: 750px) {
+         @media (max-width: 900px) {
         width: 40%;
-        right:20%;
+        right:15%;
+           bottom:10%;
       }
+            @media (max-width:550px) {
+
+               bottom:9%;
+  }
     `}
   ${(props) =>
     props.$small &&
@@ -118,13 +131,15 @@ export const PreviewCard = styled.div`
       width: 40%;
       aspect-ratio: 0.8;
   
-         @media (max-width: 750px) {
-        width: 35%;
+   
+           @media (max-width: 900px) {
+        width: 30%;
         right:30%;
+          bottom:15%;
       }
-           @media (max-width: 750px) {
-        width: 35%;
-        right:30%;
-      }
+             @media (max-width:550px) {
+
+               bottom:11%;
+  }
     `}
 `;

@@ -21,7 +21,7 @@ export const Title = styled.h1`
 
   & > span {
     color: ${secondaryColor};
-      @media (max-width: 600px) {
+      @media (max-width: 900px) {
 color: ${white};
   }
   }
