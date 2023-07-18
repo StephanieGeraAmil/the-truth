@@ -26,10 +26,6 @@ const ListItemStyled = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  /* @media (max-width: 700px) {
-    min-width: 100vw;
-    width: 100vw;   
-  } */
 `;
 
 const ActionButtonsSection = styled.div`
@@ -46,7 +42,6 @@ const ActionButtonsSection = styled.div`
 const DeckDashboardContainer = styled.div`
   width: 100%;
   height: 100%;
-
   padding: 10% 5%;
   overflow: auto;
   display: grid;
@@ -60,24 +55,17 @@ const DeckDashboardContainer = styled.div`
     #33abb9 100%
   );
 
-    @media (max-aspect-ratio: 1.2) {
+  @media (max-aspect-ratio: 1.2) {
     grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
     grid-gap: 0%;
   }
   @media (max-aspect-ratio: 0.78) {
-     /* grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr)); */
     padding-top: 35%;
-   
-      grid-gap: 10%;
+    grid-gap: 10%;
   }
-  /* @media (max-aspect-ratio: 0.5) {
-    grid-template-columns: repeat(auto-fill, minmax(25vh, 1fr)); 
-   grid-gap: 0%;
-  } */
-  
+
   @media (max-width: 750px) {
     padding-top: 25%;
-
     grid-auto-rows: 30vh;
     grid-gap: 5%;
   }
@@ -86,21 +74,15 @@ const DeckDashboardContainer = styled.div`
     grid-auto-rows: 25vh;
     grid-gap: 5%;
   }
-      @media (max-aspect-ratio: 1.2) {
+  @media (max-aspect-ratio: 1.2) {
     grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
     grid-gap: 0%;
   }
   @media (max-aspect-ratio: 0.78) {
-     /* grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr)); */
     padding-top: 35%;
-       grid-auto-rows: 20vh;
-      grid-gap: 8%;
+    grid-auto-rows: 20vh;
+    grid-gap: 8%;
   }
-    /* @media (max-aspect-ratio: 0.5) {
-  
-   
-      grid-gap: 0%;
-  } */
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
@@ -112,14 +94,13 @@ export const DeckDashboard = () => {
   const [displayNewDeckForm, setDisplayNewDeckForm] = useState(false);
   const [deckName, setDeckName] = useState("");
 
-  // const removeDeck = (deck) => { dispatch(deleteDeck(deck.id));
-
-  // };
   const handleClose = () => {
     setDisplayNewDeckForm(false);
     setDeckName("");
   };
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (decks.length === 0) {
       dispatch(getDecksOfUser("notUserYet"));
     }
@@ -129,7 +110,6 @@ export const DeckDashboard = () => {
   }, []);
   return (
     <DeckDashboardContainer>
-      {/* <DeckListContainer> */}
       {decks.length > 0 ? (
         decks.map((element) => (
           <ListItemStyled key={element.id}>
@@ -179,7 +159,6 @@ export const DeckDashboard = () => {
           </StyledButton>
         )}
       </ListItemStyled>
-      {/* </DeckListContainer> */}
     </DeckDashboardContainer>
   );
 };
