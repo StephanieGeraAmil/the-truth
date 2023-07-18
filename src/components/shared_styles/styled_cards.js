@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { move } from "./styled_animations";
 export const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,6 +64,7 @@ export const PreviewCard = styled.div`
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
+    animation: ${move} 5s 0.8s ease-in-out infinite;
   @media (max-width: 900px) {
     width: 50%;
     right: 0%;
@@ -87,7 +89,6 @@ export const PreviewCard = styled.div`
         height: 100%;
         width: 100%;
       }
-
     `}
   ${(props) =>
     props.$medium &&
@@ -98,7 +99,7 @@ export const PreviewCard = styled.div`
       right: 30%;
       width: 50%;
       aspect-ratio: 0.8;
-
+      animation: ${move} 5s 0.5s ease-in-out infinite;
       @media (max-width: 900px) {
         width: 40%;
         right: 15%;
@@ -117,6 +118,7 @@ export const PreviewCard = styled.div`
       right: 50%;
       width: 40%;
       aspect-ratio: 0.8;
+        animation: ${move} 5s 0.3s ease-in-out infinite;
 
       @media (max-width: 900px) {
         width: 30%;

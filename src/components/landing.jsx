@@ -9,9 +9,6 @@ import { Title, SubTitle, Info } from "./shared_styles/styled_text";
 import { TextContainer, ImgContainer } from "./shared_styles/styled_containers";
 
 import { ColorAndTextButton } from "./shared_styles/styled_buttons";
-import Brain from "../assets/brain-with-connecting-dots.webp";
-import Man from "../assets/thoughtful-man-with-hand-his-chin.webp";
-import Woman from "../assets/woman-searching-something-looking-through-magnifying-glass-white.webp";
 
 const RowSection = styled.div`
   width: ${(props) => (props.$large ? "100%" : "50%")};
@@ -53,7 +50,7 @@ const StyledSection = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 4%;
-   @media (min-width: 1400px) {
+  @media (min-width: 1400px) {
     gap: 0%;
   }
   @media (max-width: 550px) {
@@ -92,7 +89,12 @@ export const Landing = () => {
           </Info>
         </TextContainer>
         <ImgContainer $floating>
-          <img src={Brain} alt="brain" />
+          <img
+            src="./brain-with-connecting-dots-500.webp"
+
+           srcSet="./brain-with-connecting-dots-500.webp, ./brain-with-connecting-dots-700.webp 700w, ../brain-with-connecting-dots-1500.webp 1500w"
+            alt="brain"
+          />
         </ImgContainer>
       </RowSection>
       <RowSection>
@@ -127,12 +129,13 @@ export const Landing = () => {
             data-aos-easing="ease-in-out"
           ></div>
           <img
-            src={Man}
+            src="./thoughtful-man-with-hand-his-chin-500.webp"
             className="focus"
             alt="man_thinking"
             data-aos="fade-left"
             data-aos-duration="1800"
             data-aos-easing="ease-in-out"
+            srcSet="./thoughtful-man-with-hand-his-chin-500.webp, ./thoughtful-man-with-hand-his-chin-700.webp 700w, ./thoughtful-man-with-hand-his-chin-1500.webp 1500w"
           />
         </ImgContainer>
       </RowSection>
@@ -145,12 +148,14 @@ export const Landing = () => {
             data-aos-easing="ease-in-out"
           ></div>
           <img
-            src={Woman}
+            src="./woman-searching-something-looking-through-magnifying-glass-white-500.webp"
             className="focus"
             alt="womman_searhing"
             data-aos="fade-right"
             data-aos-duration="1800"
             data-aos-easing="ease-in-out"
+            srcSet="./woman-searching-something-looking-through-magnifying-glass-white-500.webp, ./woman-searching-something-looking-through-magnifying-glass-white-700.webp 700w,./woman-searching-something-looking-through-magnifying-glass-white-1500.webp 1500w"
+       
           />
         </ImgContainer>
         <TextContainer $wide>
@@ -168,7 +173,12 @@ export const Landing = () => {
             To help you find the truth that demoilsh your stronghold you can use
             our search feature.
           </Info>
-          <ColorAndTextButton $wide $short $margin onClick={()=>navigate("/search")}>
+          <ColorAndTextButton
+            $wide
+            $short
+            $margin
+            onClick={() => navigate("/search")}
+          >
             Search
           </ColorAndTextButton>
         </TextContainer>
@@ -195,7 +205,12 @@ export const Landing = () => {
             that process.
           </Info>
 
-          <ColorAndTextButton $wide $short $margin onClick={()=>navigate("/decks")}>
+          <ColorAndTextButton
+            $wide
+            $short
+            $margin
+            onClick={() => navigate("/decks")}
+          >
             Create Deck
           </ColorAndTextButton>
         </TextContainer>
