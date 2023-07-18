@@ -14,28 +14,33 @@ import { StyledLink, StyledButton } from "./shared_styles/styled_buttons.js";
 import { TopSection } from "./topSection.jsx";
 import { BottomSection } from "./bottomSection.jsx";
 
-
-
 const SearchDiv = styled.div`
   width: 100%;
-  height:100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-    justify-content: flex-start;
-    padding-top:10%;
-    gap:5%;
+  justify-content: flex-start;
+  padding-top: 10%;
+  gap: 5%;
   align-items: center;
-  background-image: radial-gradient(circle farthest-corner at  100% 100%  ,#000 0%,#15464C 70%, #33ABB9 100% );
+  background-image: radial-gradient(
+    circle farthest-corner at 100% 100%,
+    #000 0%,
+    #15464c 70%,
+    #33abb9 100%
+  );
   @media (max-width: 500px) {
-    padding-top:15%;
+    padding-top: 15%;
+  }
+  @media (max-aspect-ratio: 0.78) {
+    gap: 0%;
   }
 `;
 export const Search = () => {
-
   return (
     <SearchDiv>
-           <Lie />
-   <Truth />
+      <Lie />
+      <Truth />
     </SearchDiv>
   );
 };

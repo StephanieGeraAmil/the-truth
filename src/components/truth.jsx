@@ -18,8 +18,7 @@ const TruthContainer = styled.div`
   overflow: auto;
   display: grid;
   grid-gap: 2%;
-  grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
-  /* grid-auto-rows:  minmax(30vh, 60vh) */
+  grid-template-columns: repeat(auto-fill, minmax(50vh, 1fr));
    grid-auto-rows:  50vh;
 `;
 

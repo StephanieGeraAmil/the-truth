@@ -21,7 +21,7 @@ export const CardOfDeck = styled.div`
 
   @media (max-width: 500px) {
     aspect-ratio: auto;
-    width:80%;
+    width: 80%;
   }
 
   ${(props) =>
@@ -63,41 +63,33 @@ export const PreviewCard = styled.div`
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
-    @media (max-width:900px) {
+  @media (max-width: 900px) {
     width: 50%;
-    /* margin: 0 auto; */
-      position: absolute;
-            right:0%;
-               bottom:5%;
+    /* position: absolute; */
+    right: 0%;
+    bottom: 5%;
   }
-          @media (max-width:550px) {
-
-               bottom:6%;
+  @media (max-width: 550px) {
+    bottom: 6%;
   }
 
   ${(props) =>
     props.$static &&
     css`
       position: static;
+
       z-index: 1;
       height: 90%;
       width: 80%;
+      margin: auto;
       padding: 8%;
       min-width: 240px;
+         max-width: 45vh;
       @media (min-width: 1900px) {
         height: 100%;
         width: 100%;
       }
-  /* @media (max-width: 550px) {
-        width: 70%;
-        height: 100%;
-        margin: 0 auto;
-      } */
-      /* @media (max-width: 550px) {
-        width: 80vw;
-        height: 100%;
-        margin: 0 auto;
-      } */
+
     `}
   ${(props) =>
     props.$medium &&
@@ -110,16 +102,14 @@ export const PreviewCard = styled.div`
       width: 50%;
       aspect-ratio: 0.8;
 
-    
-         @media (max-width: 900px) {
+      @media (max-width: 900px) {
         width: 40%;
-        right:15%;
-           bottom:10%;
+        right: 15%;
+        bottom: 10%;
       }
-            @media (max-width:550px) {
-
-               bottom:9%;
-  }
+      @media (max-width: 550px) {
+        bottom: 9%;
+      }
     `}
   ${(props) =>
     props.$small &&
@@ -130,16 +120,14 @@ export const PreviewCard = styled.div`
       right: 50%;
       width: 40%;
       aspect-ratio: 0.8;
-  
-   
-           @media (max-width: 900px) {
-        width: 30%;
-        right:30%;
-          bottom:15%;
-      }
-             @media (max-width:550px) {
 
-               bottom:11%;
-  }
+      @media (max-width: 900px) {
+        width: 30%;
+        right: 30%;
+        bottom: 15%;
+      }
+      @media (max-width: 550px) {
+        bottom: 11%;
+      }
     `}
 `;

@@ -45,7 +45,7 @@ const ActionButtonsSection = styled.div`
 
 const DeckDashboardContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   padding: 10% 5%;
   overflow: auto;
@@ -67,7 +67,8 @@ const DeckDashboardContainer = styled.div`
   @media (max-aspect-ratio: 0.78) {
      /* grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr)); */
     padding-top: 35%;
-      grid-gap: 5%;
+   
+      grid-gap: 10%;
   }
   /* @media (max-aspect-ratio: 0.5) {
     grid-template-columns: repeat(auto-fill, minmax(25vh, 1fr)); 
@@ -82,9 +83,24 @@ const DeckDashboardContainer = styled.div`
   }
   @media (max-width: 550px) {
     padding-top: 20%;
-    grid-auto-rows: 20vh;
-    grid-gap: 3%;
+    grid-auto-rows: 25vh;
+    grid-gap: 5%;
   }
+      @media (max-aspect-ratio: 1.2) {
+    grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
+    grid-gap: 0%;
+  }
+  @media (max-aspect-ratio: 0.78) {
+     /* grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr)); */
+    padding-top: 35%;
+       grid-auto-rows: 20vh;
+      grid-gap: 8%;
+  }
+    /* @media (max-aspect-ratio: 0.5) {
+  
+   
+      grid-gap: 0%;
+  } */
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
