@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 import styled, { css } from "styled-components";
 import { PreviewDeck } from "./previewDeck";
@@ -61,6 +62,7 @@ const StyledSection = styled.div`
 `;
 
 export const Landing = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     AOS.init();
   }, []);
@@ -166,7 +168,7 @@ export const Landing = () => {
             To help you find the truth that demoilsh your stronghold you can use
             our search feature.
           </Info>
-          <ColorAndTextButton $wide $short $margin>
+          <ColorAndTextButton $wide $short $margin onClick={()=>navigate("/search")}>
             Search
           </ColorAndTextButton>
         </TextContainer>
@@ -193,7 +195,7 @@ export const Landing = () => {
             that process.
           </Info>
 
-          <ColorAndTextButton $wide $short $margin>
+          <ColorAndTextButton $wide $short $margin onClick={()=>navigate("/decks")}>
             Create Deck
           </ColorAndTextButton>
         </TextContainer>

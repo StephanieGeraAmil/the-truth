@@ -34,12 +34,7 @@ export const ImgContainer = styled.div`
       & > img {
         height: 90%;
         aspect-ratio: 1.1;
-        /* min-width: 90vh;
-        min-height: 90vh;
-        max-height: 2800px;
-        max-width: 2800px; */
         position: absolute;
-  
         right: -5%;
         animation: ${enterRight} 1.5s ease-in-out,
           ${float} 6s ease-in-out infinite, ${move} 6s ease-in-out infinite;

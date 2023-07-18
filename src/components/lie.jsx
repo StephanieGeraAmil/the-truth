@@ -14,23 +14,11 @@ const LieContainer = styled.div`
   position: relative;
   height:8%;
   width: 60%;
-  /* margin:5% auto; */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 0.8vw;
-/* 
-  @media (max-width: 1500px) {
-    font-size: 1.2vw;
-  }
-  @media (max-width: 700px) {
-    font-size: 1.6vw;
-  }
-  @media (max-width: 500px) {
-    font-size: 1rem;
-    width: 100%;
-  } */
   @media (max-width: 550px) {
     font-size: 1rem;
     width: 90%;
@@ -86,21 +74,18 @@ const Search = styled(ColorAndTextButton)`
   position: absolute;
   width: 6.5em;
   height: 3em;
-    top: 1em;
-    right: 2%;
-  /* top: 50%; */
-  /* right: 0; */
+  top: 1em;
+  right: 2%;
   color: #fff;
-  /* transform: translateY(-50%) translateX(-5%); */
   z-index: 3;
-    font-size: 2vh;
+  font-size: 2vh;
   @media (max-width: 700px) {
     border-radius: 2.5vw;
   }
   @media (max-width: 500px) {
     border-radius: 3vw;
   }
-   @media (max-width: 1800px)  and (min-height: 1000px){
+  @media (max-width: 1800px)  and (min-height: 1000px){
     font-size: 1rem;
   }
 `;

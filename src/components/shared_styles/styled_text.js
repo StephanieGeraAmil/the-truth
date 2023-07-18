@@ -21,17 +21,13 @@ export const Title = styled.h1`
 
   & > span {
     color: ${secondaryColor};
-      @media (max-width: 900px) {
-color: ${white};
+    @media (max-width: 900px) {
+      color: ${white};
+    }
   }
-  }
-
   @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 4rem;
   }
-   /* @media (max-width: 550px) {
-    font-size: 3rem;
-  } */
 `;
 export const SubTitle = styled.h3`
   font-size: ${mediumSize};
@@ -44,7 +40,7 @@ export const SubTitle = styled.h3`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   ${(props) =>
     props.$big &&
     css`
@@ -72,23 +68,27 @@ export const Info = styled.p`
     css`
       color: ${black};
     `}
+
   ${(props) =>
     props.$right &&
     css`
       align-self: flex-end;
       margin: 0;
     `}
-     ${(props) =>
+
+  ${(props) =>
     props.$bold &&
     css`
       font-weight: ${bold};
     `}
-         ${(props) =>
+
+  ${(props) =>
     props.$wide &&
     css`
       width: 100%;
     `}
-    ${(props) =>
+
+  ${(props) =>
     props.$short &&
     css`
       width: 50%;

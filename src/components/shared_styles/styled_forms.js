@@ -44,6 +44,6 @@ export const FormTextArea = styled.textarea`
     css`
       font-size: 4.5vh;
       font-weight: 500;
-        height: 80%;
+      height: 80%;
     `}
 `;

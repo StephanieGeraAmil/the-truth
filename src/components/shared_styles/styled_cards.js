@@ -65,7 +65,6 @@ export const PreviewCard = styled.div`
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
   @media (max-width: 900px) {
     width: 50%;
-    /* position: absolute; */
     right: 0%;
     bottom: 5%;
   }
@@ -77,14 +76,13 @@ export const PreviewCard = styled.div`
     props.$static &&
     css`
       position: static;
-
       z-index: 1;
       height: 90%;
       width: 80%;
       margin: auto;
       padding: 8%;
       min-width: 240px;
-         max-width: 45vh;
+      max-width: 45vh;
       @media (min-width: 1900px) {
         height: 100%;
         width: 100%;
@@ -98,7 +96,6 @@ export const PreviewCard = styled.div`
       z-index: 2;
       bottom: 15%;
       right: 30%;
-
       width: 50%;
       aspect-ratio: 0.8;
 

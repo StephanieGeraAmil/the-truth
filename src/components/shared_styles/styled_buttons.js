@@ -21,12 +21,6 @@ export const StyledButton = styled.button`
   css`
     width: 6vh;
   `} 
-  /* @media (max-width: 500px) {
-    font-size: 0.8rem;
-  }
-  @media (min-width: 1200px) {
-    font-size: 2vh;
-  } */
 `;
 export const StyledLink = styled(Link)`
   border: 0;

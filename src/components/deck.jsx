@@ -71,14 +71,6 @@ const CardContent = styled.div`
   z-index: 1;
 `;
 
-//   @media (max-width: 500px) {
-//     width: 90%;
-//     height: 55vh;
-//   }
-//   @media (min-width: 700px) {
-//     width: 80vh;
-//   }
-// `;
 
 const DeckContent = styled.div`
   width: 100%;
@@ -88,14 +80,6 @@ const DeckContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5vh;
-  /* @media (min-width: 1800px) {
-    width: 80%;
-    margin: auto;
-    margin-bottom: 2vw;
-  }
-  @media (max-width: 500px) {
-    gap: 1vh;
-  } */
    @media (max-width: 550px) {
     gap: 1vh;
     height: 60%;
@@ -117,11 +101,6 @@ const DeckContainer = styled.div`
     #15464c 70%,
     #33abb9 100%
   );
-  /* 
-  @media (min-width: 1800px) {
-    width: 80%;
-    margin: auto;
-  } */
 `;
 
 export const Deck = () => {
