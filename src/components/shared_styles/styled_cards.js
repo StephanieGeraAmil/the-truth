@@ -60,7 +60,8 @@ export const PreviewCard = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 5%;
+  padding: 8%;
+  text-align:center;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
