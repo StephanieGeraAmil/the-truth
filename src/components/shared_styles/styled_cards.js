@@ -15,7 +15,7 @@ export const CardOfDeck = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 5%;
+  padding: 15%;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
@@ -60,9 +60,10 @@ export const PreviewCard = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 5%;
+  padding: 8%;
   background: #fff;
   border-radius: 20%;
+  text-align: center;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
     animation: ${move} 5s 0.8s ease-in-out infinite;
   @media (max-width: 900px) {

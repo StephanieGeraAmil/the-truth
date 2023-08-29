@@ -145,7 +145,7 @@ export const DeckDashboard = () => {
                 onClick={() => {
                   if (deckName !== "") {
                     dispatch(createDeck(deckName));
-                    setDisplayNewDeckForm(false);
+                    handleClose();
                   }
                 }}
               >
