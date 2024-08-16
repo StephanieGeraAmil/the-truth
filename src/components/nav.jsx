@@ -48,6 +48,7 @@ export const Nav = () => {
       <Login />
     ) : (
       <>
+      <label>{user.email}</label>
         {location.pathname !== '/decks' && (
           <StyledLink to="/decks">Decks</StyledLink>
         )}
