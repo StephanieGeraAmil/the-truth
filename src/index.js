@@ -16,6 +16,7 @@ import { Deck } from "./components/deck";
 
 import { createGlobalStyle } from "styled-components";
 
+
 const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk))
@@ -66,14 +67,19 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <Auth0Provider
+        {/* <Auth0Provider
           domain="dev-7pl37pty.us.auth0.com"
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
           redirectUri={process.env.REDIRECTION_URL || window.location.origin}
+        > */}
+        <Auth0Provider
+          domain= {process.env.REACT_APP_AUTH0_DOMAIN}
+          clientId= {process.env.REACT_APP_AUTH0_CLIENT_ID}
+          redirectUri= {`${window.location.origin}/decks`}
         >
-          <GlobalStyle/>
+          <GlobalStyle />
           <>
-            <Nav/>
+            <Nav />
             <Routes>
               <Route path="/" element={<App />} />
               <Route path="/search" element={<Search />} />

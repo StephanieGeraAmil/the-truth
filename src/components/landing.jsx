@@ -7,6 +7,7 @@ import styled, { css } from "styled-components";
 import { PreviewDeck } from "./previewDeck";
 import { Title, SubTitle, Info } from "./shared_styles/styled_text";
 import { TextContainer, ImgContainer } from "./shared_styles/styled_containers";
+import { LoginButton } from "./0auth/LoginButton";
 
 import { ColorAndTextButton } from "./shared_styles/styled_buttons";
 
@@ -173,14 +174,15 @@ export const Landing = () => {
             To help you find the truth that demoilsh your stronghold you can use
             our search feature.
           </Info>
-          <ColorAndTextButton
+          {/* <ColorAndTextButton
             $wide
             $short
             $margin
             onClick={() => navigate("/search")}
           >
             Search
-          </ColorAndTextButton>
+          </ColorAndTextButton> */}
+            <LoginButton text="Start now" />
         </TextContainer>
       </RowSection>
       <RowSection $last>
@@ -204,15 +206,15 @@ export const Landing = () => {
             you Create decks that you can revisit as much as you need during
             that process.
           </Info>
-
-          <ColorAndTextButton
+  <LoginButton text="Start now" />
+          {/* <ColorAndTextButton
             $wide
             $short
             $margin
             onClick={() => navigate("/decks")}
           >
             Create Deck
-          </ColorAndTextButton>
+          </ColorAndTextButton> */}
         </TextContainer>
         <ImgContainer $last>
           <div

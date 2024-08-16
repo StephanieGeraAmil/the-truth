@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 // import { getUserByEmail } from "./../actions/userActions.js";
 // import { Login } from "./login";
 // import { Logout } from "./logout";
 import styled from "styled-components";
 import { StyledLink } from "./shared_styles/styled_buttons";
+import { Login } from "./0auth/Login";
+import { Logout } from "./0auth/Logout";
 
 
 const NavContainer = styled.nav`
@@ -27,6 +29,7 @@ const NavContainer = styled.nav`
 
 
 export const Nav = () => {
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -54,6 +57,8 @@ export const Nav = () => {
       {location.pathname !== "/search" && (
         <StyledLink to="/search">Search</StyledLink>
       )}
+      {!isAuthenticated && <Login />}
+      {isAuthenticated && <Logout />}
     </NavContainer>
   );
 };
