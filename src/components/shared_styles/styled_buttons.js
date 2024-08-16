@@ -40,7 +40,7 @@ export const StyledLink = styled(Link)`
 export const ColorAndTextButton = styled.button`
   width: 15%;
   min-width: 90px;
-  height: 80%;
+line-height:1.8em;
   z-index: 3;
   border: 0;
   border-radius: 2vw;
@@ -48,7 +48,7 @@ export const ColorAndTextButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2vh;
+  font-size: 2vw;
   ${(props) =>
     props.$hidden &&
     css`
@@ -71,7 +71,7 @@ export const ColorAndTextButton = styled.button`
        height: 2em;
     `}
 
-  @media (max-width: 1800px)  and (min-height: 1000px) {
+  @media (max-width: 1800px)  {
     font-size: 1rem;
   }
 `;

@@ -44,21 +44,22 @@ export const Nav = () => {
 
   return (
     <NavContainer>
-      {location.pathname !== "/decks" && (
-        <StyledLink to="/decks">
-          Decks
-        </StyledLink>
-      )}
-      {location.pathname !== "/" && (
-        <StyledLink to="/">
-          Home
-        </StyledLink>
-      )}
-      {location.pathname !== "/search" && (
-        <StyledLink to="/search">Search</StyledLink>
-      )}
-      {!isAuthenticated && <Login />}
-      {isAuthenticated && <Logout />}
-    </NavContainer>
+    {!isAuthenticated ? (
+      <Login />
+    ) : (
+      <>
+        {location.pathname !== '/decks' && (
+          <StyledLink to="/decks">Decks</StyledLink>
+        )}
+        {location.pathname !== '/' && (
+          <StyledLink to="/">Home</StyledLink>
+        )}
+        {location.pathname !== '/search' && (
+          <StyledLink to="/search">Search</StyledLink>
+        )}
+        <Logout />
+      </>
+    )}
+  </NavContainer>
   );
 };
