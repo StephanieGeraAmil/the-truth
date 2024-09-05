@@ -7,7 +7,8 @@ import { ColorAndTextButton } from "../shared_styles/styled_buttons";
 export const Login = () => {
   const { loginWithRedirect } = useAuth0();
   return (
-<ColorAndTextButton
+    <ColorAndTextButton
+      $nav
       // <IconButton
       aria-label="login"
       onClick={(e) => {
@@ -16,7 +17,7 @@ export const Login = () => {
     >
       Login
       {/* <LoginOutlined /> */}
-    {/* </IconButton> */}
+      {/* </IconButton> */}
     </ColorAndTextButton>
   );
 };

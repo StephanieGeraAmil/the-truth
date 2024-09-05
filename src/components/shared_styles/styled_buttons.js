@@ -37,41 +37,48 @@ export const StyledLink = styled(Link)`
   }
 `;
 
+
+
+// borderRadius: {
+//   xs: "2vw",  
+//   sm: "5px",    
+//   md: "10px", 
+
+// },
+
 export const ColorAndTextButton = styled.button`
-  width: 15%;
-  min-width: 90px;
+  
+
 line-height:1.8em;
+padding:0.5em 1.5em;
+margin-top: 2em;
   z-index: 3;
   border: 0;
-  border-radius: 2vw;
+  border-radius: 0.3vw;
   background-color: #33abb9;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2vw;
+  font-size: 1.2vw;
   ${(props) =>
     props.$hidden &&
     css`
       opacity: 0;
       pointer-events: none;
     `}
-  ${(props) =>
-    props.$wide &&
-    css`
-      width: 40%;
-    `}
     ${(props) =>
-    props.$margin &&
-    css`
-      margin-top: 0.8em;
-    `}
-      ${(props) =>
-    props.$short &&
-    css`
-       height: 2em;
-    `}
+      props.$nav &&
+      css`
+       margin-top:0;
+       padding: 0.2em 2em;
+      `}
+   
 
-  @media (max-width: 1800px)  {
-    font-size: 1rem;
-  }
+    @media (min-width: 1200px)  {
+      font-size: 1.5w;
+    }
+    @media (max-width: 600px)  {
+      font-size: 15px;
+      border-radius: 8px;
+    }
 `;

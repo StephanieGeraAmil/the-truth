@@ -13,6 +13,7 @@ const StyledDeckPreview = styled.div`
     width: 80%;
     left: -10%;
   }
+
 `;
 export const PreviewDeck = React.memo(({ id, children }) => {
   return (

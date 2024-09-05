@@ -12,37 +12,103 @@ import { LoginButton } from "./0auth/LoginButton";
 import { ColorAndTextButton } from "./shared_styles/styled_buttons";
 
 const RowSection = styled.div`
-  width: ${(props) => (props.$large ? "100%" : "50%")};
-  height: ${(props) => (props.$large ? "100vh" : "40vh")};
+  width: 70%;
+  height:90vw;
+  min-height: 400px;
   display: flex;
   flex-direction: row;
-  justify-content: ${(props) =>
-    props.$large ? "flex-start" : "space-between"};
-  align-items: ${(props) => (props.$last ? "flex-end" : "flex-start")};
+  justify-content:space-between;
+  align-items: flex-start;
   gap: 2%;
   position: relative;
-  @media (min-aspect-ratio: 1.4) {
-    height: ${(props) => (props.$large ? "140vh" : "40vh")};
-  }
-  @media (max-width: 1800px) {
-    width: ${(props) => (props.$large ? "100%" : "70%")};
-  }
-  @media (max-width: 1300px) {
-    width: ${(props) => (props.$large ? "100%" : "80%")};
-  }
-  @media (max-width: 900px) {
-    height: ${(props) => (props.$large ? "130vh" : "90vh")};
-    flex-direction: column;
-    justify-content: ${(props) => (props.$large ? "center" : "space-between")};
-    gap: 0%;
-  }
+  margin-bottom:5vw;
+
+  ${(props) =>
+    props.$large &&
+    css`
+      height: 150vw;
+      min-height:700px;
+      justify-content: flex-start;
+      margin-bottom:0px;
+   `}
+  ${(props) =>
+    props.$wide &&
+    css`
+      width: 70%;
+      min-height: 200px;
+    `}
+  ${(props) =>
+    props.$extra_wide &&
+    css`
+      width: 100%;
+      min-height: 200px;
+    `}
+    ${(props) =>
+      props.$head &&
+      css`
+        width: 100%;
+        min-height: 700px;
+        height: 150vw;
+        justify-content: flex-start;
+        margin-bottom:0px;
+      `}
   @media (max-width: 550px) {
-    gap: 5%;
-    width: 100%;
-    align-items: flex-start;
-    height: ${(props) => (props.$large ? "100vh" : "80vh")};
-  }
+    
+     margin:0;
+  
+      width:95%;
+      min-height:700px;
+      flex-direction: column;
+      justify-content: ${(props) => (props.$large ? "center" : "space-between")};
+      gap: 0%;
+      ${(props) =>
+        props.$wide &&
+        css`
+          height: 150px;
+          min-height:150px;  `}
+          ${(props) =>
+            props.$head &&
+            css`
+           
+              justify-content: center;
+           
+            `}
+        
+    }
+
+
 `;
+
+
+
+// @media (max-width: 1800px) {
+//   width: ${(props) => (props.$large ? "100%" : "70%")};
+//   background-color:green;
+// }
+// @media (min-aspect-ratio: 1.4) {
+//   height: ${(props) => (props.$large ? "140vw" : "100vw")};
+//   background-color:yellow;
+// }
+// @media (max-width: 1300px) {
+//   width: ${(props) => (props.$large ? "100%" : "80%")};
+//   background-color:blue;
+// }
+// @media (max-width: 900px) {
+//   height: ${(props) => (props.$large ? "130vw" : "90vw")};
+//   background-color:orange;
+//   flex-direction: column;
+//   justify-content: ${(props) => (props.$large ? "center" : "space-between")};
+//   gap: 0%;
+// }
+// @media (max-width: 550px) {
+//   gap: 5%;
+//   width: 100%;
+//   align-items: flex-start;
+//   height: ${(props) => (props.$large ? "100vh" : "80vh")};
+// }
+
+
+
 const StyledSection = styled.div`
   width: 100%;
   height: 100%;
@@ -50,7 +116,7 @@ const StyledSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 4%;
+  gap: 4vw;
   @media (min-width: 1400px) {
     gap: 0%;
   }
@@ -66,61 +132,59 @@ export const Landing = () => {
   }, []);
   return (
     <StyledSection>
-      <RowSection $large>
+      <RowSection  $head>
         <TextContainer $head>
           <Title>
+            {/* Unlock Your Freedom with God's <span>Truth</span> */}
             Let God's <span>Truth</span> set you free
           </Title>
-          <Info $wide>
-            Based on Craig Groeschel book "Winning the war in your mind" , this
-            website is intended to help you break free from the mental prision
-            that is holding you back from experiencing God's Love, Peace and
-            Joy.{" "}
+          {/* <Info $wide>
+            Inspired by Craig Groeschel’s transformative book, Winning the War in Your Mind, this website is dedicated to helping you break free from the mental barriers that hold you back from experiencing God’s boundless Love, Peace, and Joy.
           </Info>
           <Info $wide>
-            {" "}
-            As Groeschel says "Our lives are always moving on the direction of
-            pur strongest thoughts" , we can't live a positive and healthy life
-            while having a negative and toxic mind.{" "}
+            As Groeschel insightfully notes, "Our lives are always moving in the direction of our strongest thoughts." You can’t live a positive, fulfilling life while harboring negative, toxic thoughts.
           </Info>
 
           <Info $wide>
             {" "}
-            The good news is that we can and should renew our minds (Romans 12)
+            The Good News: We have the power to renew our minds. (Romans 12:2)
+          </Info> */}
+        </TextContainer>
+
+      </RowSection>
+      <ImgContainer $floating>
+        <img
+          src="./brain-with-connecting-dots-500.webp"
+
+          srcSet="./brain-with-connecting-dots-500.webp, ./brain-with-connecting-dots-700.webp 700w, ../brain-with-connecting-dots-1500.webp 1500w"
+          alt="brain"
+        />
+      </ImgContainer>
+      <RowSection $wide>
+        <TextContainer $all>
+
+          <Info $wide $bold >
+            Inspired by Craig Groeschel’s transformative book, Winning the War in Your Mind, this website is dedicated to helping you break free from the mental barriers that hold you back from experiencing God’s boundless Love, Peace, and Joy.
+          </Info>
+          <Info $wide $bold >
+            As Groeschel insightfully notes, "Our lives are always moving in the direction of our strongest thoughts." You can’t live a positive, fulfilling life while harboring negative, toxic thoughts.
+          </Info>
+
+          <Info $wide $bold >
+            The Good News: We have the power to renew our minds. (Romans 12:2)
           </Info>
         </TextContainer>
-        <ImgContainer $floating>
-          <img
-            src="./brain-with-connecting-dots-500.webp"
-
-           srcSet="./brain-with-connecting-dots-500.webp, ./brain-with-connecting-dots-700.webp 700w, ../brain-with-connecting-dots-1500.webp 1500w"
-            alt="brain"
-          />
-        </ImgContainer>
       </RowSection>
-      <RowSection>
+      <RowSection >
         <TextContainer $wide>
-          <SubTitle>Identify what's holding you back</SubTitle>
+          <SubTitle>Identify What’s Holding You Back</SubTitle>
           <Info $wide>
-            {" "}
-            When we experience hurt throughout our lives, we tend to develop
-            strongholds on our minds to keep us safe from reliving those painful
-            feelings.
+            Life’s hurts often create mental strongholds that we think are protecting us, but they actually trap us in negative patterns. These strongholds distort our perceptions and prevent us from embracing God's plan for us.
           </Info>
           <Info $wide>
-            {" "}
-            While we believe those strongholds are keeping us safe they take
-            roots on our brain, the more we think a thought the easier it gets
-            to keep on thinking it, so we start to believe it as an absolute
-            truth, and let it control our lives. Those strongholds are distorted
-            interpretations of what is true, and they keep us away from God and
-            from the plan he has for us.
+            To overcome these barriers, we first need to identify our strongest strongholds. Understanding what’s holding you back is the first step towards freedom.
           </Info>
-          <Info $wide>
-            {" "}
-            We can't defeat what we can't define, so the first step is to
-            identify our bigest stronghold.
-          </Info>
+
         </TextContainer>
         <ImgContainer $first>
           <div
@@ -156,18 +220,16 @@ export const Landing = () => {
             data-aos-duration="1800"
             data-aos-easing="ease-in-out"
             srcSet="./woman-searching-something-looking-through-magnifying-glass-white-500.webp, ./woman-searching-something-looking-through-magnifying-glass-white-700.webp 700w,./woman-searching-something-looking-through-magnifying-glass-white-1500.webp 1500w"
-       
+
           />
         </ImgContainer>
         <TextContainer $wide>
-          <SubTitle>Find the Truth</SubTitle>
+          <SubTitle>Discover the Truth</SubTitle>
           <Info $wide>
-            Each lie we believe has a truth that exposes it. That Truth is in
-            God's word.
+            Every lie you believe has a corresponding truth in God’s Word. His Word is the ultimate weapon to dismantle every deception. Jesus is The Truth that sets us free.
           </Info>
           <Info $wide>
-            God's word is the weapon we have given to demolish all deceptions
-            from the enemy. Jesus is The Truth that will set us free.
+            Use our powerful search feature to find the truth that will dismantle your strongholds and set you on the path to liberation.
           </Info>
           <Info $wide>
             {" "}
@@ -182,31 +244,24 @@ export const Landing = () => {
           >
             Search
           </ColorAndTextButton> */}
-            <LoginButton text="Start now" />
+          <LoginButton text="Start now" />
         </TextContainer>
       </RowSection>
-      <RowSection $last>
+      <RowSection>
         <TextContainer $wide>
           <SubTitle>
-            Repeat that truth to yourself until you believe it
+            Embrace and Repeat the Truth
           </SubTitle>
           <Info $wide>
-            It's normal that at the begining the truth sounds more like a lie
-            than the actual lie,that's because you are used to believe it.
+            It’s natural for the truth to feel foreign at first, especially if you're accustomed to believing the lies. Your brain has formed a path of least resistance towards those distorted thoughts.
           </Info>
           <Info $wide>
-            {" "}
-            Your brain have formed a neuropathway ( a path of less resistance)
-            towards that distorted interpretation of reality.
+            Keep reading and repeating the truth until it becomes your reality. Our Decks feature allows you to create personalized decks that you can revisit anytime during this transformative process.
           </Info>
-          <Info $wide>
-            {" "}
-            You will need to read and repeat the truth to yourself once and
-            again until you are able to actualy believe it. On the Decks feature
-            you Create decks that you can revisit as much as you need during
-            that process.
-          </Info>
-  <LoginButton text="Start now" />
+
+
+
+          <LoginButton text="Start Now" />
           {/* <ColorAndTextButton
             $wide
             $short
@@ -229,6 +284,13 @@ export const Landing = () => {
             data-aos-easing="ease-in-out"
           />
         </ImgContainer>
+      </RowSection>
+      <RowSection $wide>
+        <TextContainer $all $last>
+          <Info $wide $bold>
+            Start Your Journey Today, Begin the path to a renewed mind and a life full of God's promises. Embrace the truth, break free from mental barriers, and experience the freedom God has in store for you.
+          </Info>
+        </TextContainer>
       </RowSection>
     </StyledSection>
   );

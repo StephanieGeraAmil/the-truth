@@ -2,7 +2,8 @@ import styled, { css } from "styled-components";
 import { float, move, enterRight, enterLeft } from "./styled_animations";
 
 export const ImgContainer = styled.div`
-  height: ${(props) => (props.$floating ? "100%" : "90%")};
+  width: ${(props) => (props.$floating ? "80%" : "40%")};
+  
   aspect-ratio: 1.1;
   right: 0%;
   top: 0%;
@@ -10,12 +11,7 @@ export const ImgContainer = styled.div`
   overflow: hidden;
   z-index: 0;
 
-  @media (max-width: 1500px) and(min-aspect-ratio:1.1) {
-    width: ${(props) => (props.$floating ? "100%" : "60%")};
-  }
-  @media (max-width: 1300px) and(min-aspect-ratio:1.1) {
-    min-width: 40vw;
-  }
+
 
   @media (max-width: 900px) {
     width: 100%;
@@ -28,6 +24,12 @@ export const ImgContainer = styled.div`
         order: 3;
       `}
   }
+
+
+
+ 
+
+ 
   ${(props) =>
     props.$floating &&
     css`
@@ -40,6 +42,7 @@ export const ImgContainer = styled.div`
           ${float} 6s ease-in-out infinite, ${move} 6s ease-in-out infinite;
         animation-delay: 0s, 0s, 1.5s;
         mix-blend-mode: lighten;
+     
       }
     `}
 
@@ -47,7 +50,7 @@ export const ImgContainer = styled.div`
     height: 85%;
     aspect-ratio: 1.1;
     position: absolute;
-    bottom: ${(props) => (props.$last ? "-10%" : "10%")};
+    bottom: ${(props) => (props.$last ? "2%" : "10%")};
     left: 10%;
     border-radius: 50%;
     filter: blur(11px);
@@ -133,7 +136,7 @@ export const ImgContainer = styled.div`
         `}
     }
     @media (max-width: 550px) {
-      height: 90%;
+      height: 90vw;
       ${(props) =>
         props.$first &&
         css`
@@ -146,42 +149,63 @@ export const ImgContainer = styled.div`
           left: auto;
           left: 20%;
         `}
+
     }
   }
 `;
+
+// @media (max-width: 1500px) and(min-aspect-ratio:1.1) {
+//   width: ${(props) => (props.$floating ? "100%" : "60%")};
+// }
+// @media (max-width: 1300px) and(min-aspect-ratio:1.1) {
+//   min-width: 40vw;
+// }
 export const TextContainer = styled.div`
-  width: 40%;
+  width:${(props) => (props.$all? "100%" : "40%")};
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:center;
   align-items: flex-start;
   z-index: 1;
 
   ${(props) =>
     props.$head &&
     css`
-      justify-content: center;
-      width: 60%;
+      justify-content: flex-end;
+      width: 100% !important;
       min-width: 220px;
-      max-width: 543px;
-      margin-left: 10%;
+      max-width: 1000px;
+      padding: 0 0 8% 15vw;
+      @media (max-width: 600px) {
+
+        height: 50%;
+        
+      }
     `}
   ${(props) =>
     props.$wide &&
     css`
       width: 50%;
     `}
-    @media (min-width: 1800px) {
-    max-width: 30vw;
-  }
  
-  @media (max-width: 900px) {
-    padding: 0;
-    height: 40%;
-    margin: 0;
-    margin-left: 10%;
-    width: 80%;
-    
-  }
+    @media (max-width: 600px) {
+
+      width:100%;
+      padding:10px;
+      
+    }
+  
 `;
+// @media (max-width: 900px) {
+//   padding: 0;
+//   height: 40%;
+//   margin: 0;
+//   margin-left: 10%;
+//   width: 80%;
+  
+// }
+
+// @media (min-width: 1800px) {
+//   max-width: 30vw;
+// }

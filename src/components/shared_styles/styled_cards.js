@@ -73,6 +73,8 @@ export const PreviewCard = styled.div`
   }
   @media (max-width: 550px) {
     bottom: 6%;
+    right:0;
+    width: 70%;
   }
 
   ${(props) =>
@@ -89,7 +91,9 @@ export const PreviewCard = styled.div`
       @media (min-width: 1900px) {
         height: 100%;
         width: 100%;
+
       }
+     
     `}
   ${(props) =>
     props.$medium &&
@@ -108,6 +112,7 @@ export const PreviewCard = styled.div`
       }
       @media (max-width: 550px) {
         bottom: 9%;
+        width: 60%;
       }
     `}
   ${(props) =>
@@ -128,6 +133,7 @@ export const PreviewCard = styled.div`
       }
       @media (max-width: 550px) {
         bottom: 11%;
+        width: 50%;
       }
     `}
 `;
