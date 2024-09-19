@@ -3,12 +3,26 @@ import axios from 'axios';
 const backend_url=process.env.REACT_APP_BACKEND_URL;
 
 const users_url= backend_url+"/users";
-export const fetchUserById=(user)=>axios.get(`${users_url}/${user.id}`);
-export const fetchUserByEmail=(user)=>axios.get(`${users_url}/${user.email}`);
+//export const fetchUserById=(user)=>axios.get(`${users_url}/${user.id}`);
+export const fetchUserByEmail=(user)=>axios.get(`${users_url}/${user.email}`); 
+// export const fetchUserByEmail = (user) => {
+//     return axios.get(`${users_url}/${user.email}`, {
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     })
+//     .then(response => {
+//       return response.data;
+//     })
+//     .catch(error => {
+//       console.error('Error fetching user:', error);
+//       throw error;
+//     });
+//   };
 
 
 export const createUser=(newUser)=> axios.post(users_url, newUser);
-export const updateUser=(updatedUser)=> axios.patch(`${users_url}/${updatedUser.id}`, updatedUser);
+//export const updateUser=(updatedUser)=> axios.patch(`${users_url}/${updatedUser.id}`, updatedUser);
 export const deleteUser=(deleteUserId)=> axios.delete(`${users_url}/${deleteUserId}`);
 
 const verses_url= backend_url+"/verses";
