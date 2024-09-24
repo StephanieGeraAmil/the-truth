@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getUserByEmail } from "./../actions/userActions.js";
+import {getDecksOfUser} from "./../actions/deckActions.js";
 // import { Login } from "./login";
 // import { Logout } from "./logout";
 import styled from "styled-components";
@@ -57,6 +58,7 @@ export const Nav = () => {
 
   useEffect(() => {
    if (user) dispatch(getUserByEmail(user));
+   if (user) dispatch(getDecksOfUser(user));
   // if (user) console.log(user.email);
   }, [isAuthenticated]);
 

@@ -101,12 +101,12 @@ export const DeckDashboard = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (decks.length === 0) {
-      dispatch(getDecksOfUser("notUserYet"));
-    }
-    if (cards.length === 0) {
-      dispatch(getAllCardsOfUser("notUserYet"));
-    }
+    // if (decks.length === 0) {
+    //   dispatch(getDecksOfUser("notUserYet"));
+    // }
+    // if (cards.length === 0) {
+    //   dispatch(getAllCardsOfUser("notUserYet"));
+    // }
   }, []);
   return (
     <DeckDashboardContainer>

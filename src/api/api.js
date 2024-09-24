@@ -23,7 +23,7 @@ export const fetchUserByEmail=(user)=>axios.get(`${users_url}/${user.email}`);
 
 export const createUser=(newUser)=> axios.post(users_url, newUser);
 //export const updateUser=(updatedUser)=> axios.patch(`${users_url}/${updatedUser.id}`, updatedUser);
-export const deleteUser=(deleteUserId)=> axios.delete(`${users_url}/${deleteUserId}`);
+// export const deleteUser=(deleteUserId)=> axios.delete(`${users_url}/${deleteUserId}`);
 
 const verses_url= backend_url+"/verses";
 // export const fetchVerses=()=>axios.get(verses_url);
@@ -45,7 +45,7 @@ export const deleteNote=(deleteNoteId)=> axios.delete(`${notes_url}/${deleteNote
 
 const decks_url= backend_url+"/decks";
 // export const fetchDecks=()=>axios.get(decks_url);
-
+export const fetchDecksByUserEmail=(user)=>axios.get(`${decks_url}/${user.email}`);
 export const createDeck=(newDeck)=> axios.post(decks_url, newDeck);
 export const updateDeck=(updatedDeck)=> axios.patch(`${decks_url}/${updatedDeck.id}`, updatedDeck);
 export const deleteDeck=(deleteDeckId)=> axios.delete(`${decks_url}/${deleteDeckId}`);
