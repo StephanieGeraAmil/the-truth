@@ -5,11 +5,11 @@ import { v4 } from "uuid";
 import {
   createCard,
   deleteCard,
-  addResourceToCard,
+  // addResourceToCard,
 } from "../actions/cardActions";
 
 import { StyledButton } from "./shared_styles/styled_buttons";
-import { addCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
+// import { addCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 
 import { CardOfDeck } from "./shared_styles/styled_cards";
 import styled, { css } from "styled-components";
@@ -109,6 +109,10 @@ export const Deck = () => {
   const decks = useSelector(deckSelector);
   const cardSelector = (state) => (state.cards ? state.cards : null);
   const cards = useSelector(cardSelector);
+  const noteSelector = (state) => (state.notes ? state.notes : null);
+  const notes = useSelector(noteSelector);
+  const verseSelector = (state) => (state.verses ? state.verses : null);
+  const verses = useSelector(verseSelector);
 
   const { id } = useParams();
   const deck = decks.find((element) => element.id == id);
@@ -131,14 +135,14 @@ export const Deck = () => {
   };
   const addCard = () => {
     const card = { id: v4() };
-    dispatch(createCard(card));
-    dispatch(addCardOnDeck(id, card.id));
+    // dispatch(createCard(card));
+    //  dispatch(addCardOnDeck(id, card.id));
     setCurrentIndex(cardsOfDeck.length);
   };
   const removeCard = () => {
-if (currentIndex !== 0) setCurrentIndex(prevIndex=>prevIndex - 1);
+    if (currentIndex !== 0) setCurrentIndex(prevIndex => prevIndex - 1);
     dispatch(deleteCard(cardsOfDeck[currentIndex].id));
-    dispatch(deleteCardFromDeck(deck.id, cardsOfDeck[currentIndex].id));
+    //dispatch(deleteCardFromDeck(deck.id, cardsOfDeck[currentIndex].id));
     handleClose();
   };
   const handleClose = () => {
@@ -159,7 +163,7 @@ if (currentIndex !== 0) setCurrentIndex(prevIndex=>prevIndex - 1);
   const handleSaveNoteClick = () => {
     if (textAreaInput !== "") {
       const note = { content: textAreaInput, id: v4() };
-      dispatch(addResourceToCard(note, cardsOfDeck[currentIndex].id));
+      // dispatch(addResourceToCard(note, cardsOfDeck[currentIndex].id));
       handleClose();
     }
   };
@@ -167,13 +171,14 @@ if (currentIndex !== 0) setCurrentIndex(prevIndex=>prevIndex - 1);
   const handleSaveVerseClick = () => {
     if (textAreaInput !== "" && textInput !== "") {
       const verse = { scripture: textAreaInput, ref: textInput, id: v4() };
-      dispatch(addResourceToCard(verse, cardsOfDeck[currentIndex].id));
+      //  dispatch(addResourceToCard(verse, cardsOfDeck[currentIndex].id));
       handleClose();
     }
   };
 
   useEffect(() => {
-    setCardsOfDeck(cards.filter((c) => deck.cards.indexOf(c.id) > -1));
+    // setCardsOfDeck(cards.filter((c) => deck.cards.indexOf(c.id) > -1));
+    setCardsOfDeck(cards.filter((c) => c.deckId == id));
   }, [cards]);
 
   return (
@@ -238,25 +243,29 @@ if (currentIndex !== 0) setCurrentIndex(prevIndex=>prevIndex - 1);
                     />
                   </StyledResource>
                 )}
-
+        
                 {!formShown &&
-                  cardsOfDeck[currentIndex] &&
-                  cardsOfDeck[currentIndex].resources.map((res) => (
-                    <StyledResource key={res.id}>
-                      {res.content ? (
+                  notes.filter((note) => note.cardId == cardsOfDeck[currentIndex].id).map((note) => (
+                    <StyledResource key={note.id}>
+                      <Info $gray $wide>
+                        {note.content}
+                      </Info>
+
+                    </StyledResource>
+                  ))}
+                {!formShown &&
+                  verses.filter((verse) => verse.cardId == cardsOfDeck[currentIndex].id).map((verse) => (
+                    <StyledResource key={verse.id}>
+
+                      <StyledResource>
                         <Info $gray $wide>
-                          {res.content}
+                          {verse.content}{" "}
                         </Info>
-                      ) : (
-                        <StyledResource>
-                          <Info $gray $wide>
-                            {res.scripture}{" "}
-                          </Info>
-                          <Info $gray $bold $wide>
-                            {res.ref}
-                          </Info>
-                        </StyledResource>
-                      )}
+                        <Info $gray $bold $wide>
+                          {verse.reference}
+                        </Info>
+                      </StyledResource>
+
                     </StyledResource>
                   ))}
 

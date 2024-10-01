@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllThoughts } from "./actions/thoughtActions";
+//import { getAllThoughts } from "./actions/thoughtActions";
 import styled from "styled-components";
 import { Landing } from "./components/landing";
 
@@ -15,8 +15,8 @@ const StyledSection = styled.div`
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("The backend is not yet deployed");
-    dispatch(getAllThoughts());
+  //  console.log("The backend is not yet deployed");
+   // dispatch(getAllThoughts());
   }, []);
   return (
     <StyledSection>

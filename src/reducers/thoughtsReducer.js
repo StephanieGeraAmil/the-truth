@@ -12,8 +12,8 @@ export default (thoughts = [], action) => {
     // case actions.DELETE_TAG:
     //   return tag.filter((tag) => tag._id !== action.payload);
 
-       case actions.GET_ALL_THOUGHTS:
-      return action.payload;
+      //  case actions.GET_ALL_THOUGHTS:
+      // return action.payload;
 
 
     default:

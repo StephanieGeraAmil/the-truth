@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVersesRelated } from "../actions/verseActions";
+// import { getVersesRelated } from "../actions/verseActions";
 import {
   thoughtSelected,
 } from "../actions/currentSelectionActions";
@@ -110,22 +110,22 @@ export const Lie = () => {
   const handleClickOnSuggestion = (suggestion) => {
     setDisplay(!display);
     setTextInput(suggestion);
-    dispatch(getVersesRelated(suggestion));
-    dispatch(thoughtSelected(suggestion));
+    // dispatch(getVersesRelated(suggestion));
+    // dispatch(thoughtSelected(suggestion));
   };
 
   const handleKeyPress = (e) => {
     setDisplay(true);
     if (e.key === "Enter") {
       setDisplay(!display);
-      dispatch(getVersesRelated(textInput));
-      dispatch(thoughtSelected(textInput));
+      // dispatch(getVersesRelated(textInput));
+      // dispatch(thoughtSelected(textInput));
     }
   };
   const handleSearch = () => {
     setDisplay(false);
-    dispatch(getVersesRelated(textInput));
-    dispatch(thoughtSelected(textInput));
+    // dispatch(getVersesRelated(textInput));
+    // dispatch(thoughtSelected(textInput));
   };
   const handleClickOutside = (event) => {
     const { current: wrap } = wrapperRef;
