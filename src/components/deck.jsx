@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import {
-  createCard,
+  addCard,
   deleteCard,
-  // addResourceToCard,
 } from "../actions/cardActions";
+import {addVerse} from "../actions/verseActions";
+import {addNote} from "../actions/noteActions";
 
 import { StyledButton } from "./shared_styles/styled_buttons";
 // import { addCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
@@ -133,9 +134,10 @@ export const Deck = () => {
     setFormShown(null);
     setCurrentIndex(currentIndex - 1);
   };
-  const addCard = () => {
-    const card = { id: v4() };
-    // dispatch(createCard(card));
+  const createCard = () => {
+    const card = { deckId: id, order: cardsOfDeck.length };
+    console.log(card);
+    dispatch(addCard(card));
     //  dispatch(addCardOnDeck(id, card.id));
     setCurrentIndex(cardsOfDeck.length);
   };
@@ -151,27 +153,27 @@ export const Deck = () => {
     setFormShown(null);
   };
   const handleAddNoteClick = () => {
-    addCard();
+    createCard();
     setFormShown("Note");
     setDisplayMenu(false);
   };
   const handleAddVerseClick = () => {
-    addCard();
+    createCard();
     setFormShown("Verse");
     setDisplayMenu(false);
   };
   const handleSaveNoteClick = () => {
     if (textAreaInput !== "") {
-      const note = { content: textAreaInput, id: v4() };
-      // dispatch(addResourceToCard(note, cardsOfDeck[currentIndex].id));
+      const note = { content: textAreaInput, cardId: cardsOfDeck[currentIndex].id };
+      dispatch(addNote(note));
       handleClose();
     }
   };
 
   const handleSaveVerseClick = () => {
     if (textAreaInput !== "" && textInput !== "") {
-      const verse = { scripture: textAreaInput, ref: textInput, id: v4() };
-      //  dispatch(addResourceToCard(verse, cardsOfDeck[currentIndex].id));
+      const verse = { content: textAreaInput, reference: textInput, cardId: cardsOfDeck[currentIndex].id };
+      dispatch(addVerse(verse));
       handleClose();
     }
   };
@@ -243,7 +245,7 @@ export const Deck = () => {
                     />
                   </StyledResource>
                 )}
-        
+
                 {!formShown &&
                   notes.filter((note) => note.cardId == cardsOfDeck[currentIndex].id).map((note) => (
                     <StyledResource key={note.id}>

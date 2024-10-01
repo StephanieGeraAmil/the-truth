@@ -45,16 +45,16 @@ import { v4 } from "uuid";
 // };
 export const createDeck = (deck) => async (dispatch, getState) => {
   //async(dispatch) comes from redux-thunk
-  // try {
-  //   const data = { name: deck, id: v4(), cards: [] };
+  try {
+    // const data = { name: deck, id: v4() };
 
-  //   setDecks([...decks, data]);
-  //   // const {data} =await api.createDeck(deck);
-  //   const action = { type: actions.CREATE_DECK, payload: data };
-  //   dispatch(action);
-  // } catch (error) {
-  //   console.log(error);
-  // }
+   //console.log(deck);
+    const {data} =await api.createDeck(deck);
+    const action = { type: actions.CREATE_DECK, payload: data };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const updateDeck = (updatedDeck) => async (dispatch) => {
   // try {
@@ -66,14 +66,13 @@ export const updateDeck = (updatedDeck) => async (dispatch) => {
   // }
 };
 export const deleteDeck = (deck_id) => async (dispatch) => {
-  // try {
-  //   // await api.deleteDeck(deck_id);
-  //   setDecks(decks.filter((deck) => deck.id !== deck_id));
-  //   const action = { type: actions.DELETE_DECK, payload: deck_id };
-  //   dispatch(action);
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+    await api.deleteDeck(deck_id);
+    const action = { type: actions.DELETE_DECK, payload: deck_id };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getDecksOfUser = (user) => async (dispatch, getState) => {

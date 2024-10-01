@@ -21,10 +21,8 @@ import * as api from "../api/api.js";
 
 
 export const addVerse = (verse) => async (dispatch, getState) => {
-  //async(dispatch) comes from redux-thunk
   try {
-    // const { data } = await api.createVerse(verse);
-    const data=null;
+    const { data } = await api.createVerse(verse);
     const action = { type: actions.ADD_VERSE, payload: data };
     dispatch(action);
   } catch (error) {

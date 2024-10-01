@@ -1,12 +1,8 @@
 import * as actions from "../actionTypes";
 import * as api from "../api/api.js";
-
-
 export const addNote = (note) => async (dispatch, getState) => {
-  //async(dispatch) comes from redux-thunk
   try {
-    // const { data } = await api.createNote(note);
-    const data=null;
+     const { data } = await api.createNote(note);
     const action = { type: actions.ADD_NOTE, payload: data };
     dispatch(action);
   } catch (error) {
@@ -16,7 +12,7 @@ export const addNote = (note) => async (dispatch, getState) => {
 export const deleteNote = (note_id) => async (dispatch) => {
   try {
     // await api.deleteNote(note_id);
-    const action = { type: actions.DELETE_NOTE, payload: Note_id };
+    const action = { type: actions.DELETE_NOTE, payload: note_id };
     dispatch(action);
   } catch (error) {
     console.log(error);

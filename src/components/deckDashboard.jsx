@@ -15,6 +15,7 @@ import { SubTitle } from "./shared_styles/styled_text";
 import { StyledButton } from "./shared_styles/styled_buttons";
 import { Plus, Remove, Save } from "./shared_styles/styled_icons";
 import { FormTextArea } from "./shared_styles/styled_forms";
+import { User } from "@auth0/auth0-react";
 const StyledLink = styled(Link)`
   width: 100%;
   overflow: auto;
@@ -88,8 +89,8 @@ export const DeckDashboard = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
-  const cardSelector = (state) => (state.cards ? state.cards : null);
-  const cards = useSelector(cardSelector);
+  const userSelector = (state) => (state.user ? state.user: null);
+  const user = useSelector(userSelector);
 
   const [displayNewDeckForm, setDisplayNewDeckForm] = useState(false);
   const [deckName, setDeckName] = useState("");
@@ -144,7 +145,7 @@ export const DeckDashboard = () => {
               <StyledButton
                 onClick={() => {
                   if (deckName !== "") {
-                    dispatch(createDeck(deckName));
+                    dispatch(createDeck({name:deckName, userId:user.id}));
                     handleClose();
                   }
                 }}

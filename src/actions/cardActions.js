@@ -6,8 +6,8 @@ import { v4 } from "uuid";
 export const addCard = (card) => async (dispatch, getState) => {
   //async(dispatch) comes from redux-thunk
   try {
-    // const { data } = await api.createCard(card);
-    const data=null;
+     const { data } = await api.createCard(card);
+    // const data=null;
     const action = { type: actions.ADD_CARD, payload: data };
     dispatch(action);
   } catch (error) {
@@ -16,7 +16,7 @@ export const addCard = (card) => async (dispatch, getState) => {
 };
 export const deleteCard = (card_id) => async (dispatch) => {
   try {
-    // await api.deleteCard(card_id);
+    await api.deleteCard(card_id);
     const action = { type: actions.DELETE_CARD, payload: card_id };
     dispatch(action);
   } catch (error) {
