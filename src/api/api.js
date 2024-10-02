@@ -47,7 +47,7 @@ const decks_url= backend_url+"/decks";
 // export const fetchDecks=()=>axios.get(decks_url);
 export const fetchDecksByUserEmail=(user)=>axios.get(`${decks_url}/${user.email}`);
 export const createDeck=(newDeck)=> axios.post(decks_url, newDeck);
-export const updateDeck=(updatedDeck)=> axios.patch(`${decks_url}/${updatedDeck.id}`, updatedDeck);
+export const updateDeck=(updatedDeckId, updatedDeck)=> axios.put(`${decks_url}/${updatedDeckId}`, updatedDeck);
 export const deleteDeck=(deleteDeckId)=> axios.delete(`${decks_url}/${deleteDeckId}`);
 
 const cards_url= backend_url+"/cards";

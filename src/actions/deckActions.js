@@ -57,13 +57,14 @@ export const createDeck = (deck) => async (dispatch, getState) => {
   }
 };
 export const updateDeck = (updatedDeck) => async (dispatch) => {
-  // try {
-  //   // await api.updateDeck(updatedDeck);
-  //   const action = { type: actions.UPDATE_DECK, payload: updatedDeck };
-  //   dispatch(action);
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+  
+   const {data}= await api.updateDeck(updatedDeck.id, updatedDeck);
+    const action = { type: actions.UPDATE_DECK, payload: data };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const deleteDeck = (deck_id) => async (dispatch) => {
   try {

@@ -6,7 +6,7 @@ export default (decks = [], action) => {
 
     case actions.UPDATE_DECK:
       return decks.map((deck) =>
-        deck._id === action.payload.id ? action.payload : deck
+        deck.id === action.payload.id ? action.payload : deck
       );
 
     case actions.DELETE_DECK:

@@ -16,6 +16,7 @@
 // export const UNSELECTED_THOUGHT ="selected/unselect_tgought";
 // export const SET_FORM_PURPOSE="selected/setting_form";
 // export const CLEAR_FORM_PURPOSE="selected/unseting_form";
+//export const UPDATE_CARD="card/update_card";
 
 
 
@@ -30,7 +31,6 @@ export const UPDATE_DECK="deck/update_deck";
 export const DELETE_DECK="deck/delete_deck";
 
 export const ADD_CARD="card/add_card";
-export const UPDATE_CARD="card/update_card";
 export const DELETE_CARD="card/delete_card";
 
 export const ADD_VERSE="verse/add_verse";

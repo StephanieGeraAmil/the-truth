@@ -4,6 +4,7 @@ import {
   ArrowForwardIos,
   ArrowBackIos,
   Delete,
+  Edit as EditIcon,
   AddCircleOutline,
   Done,
 } from "@styled-icons/material";
@@ -35,6 +36,9 @@ export const Prev = styled(ArrowBackIos)`
   ${sharedStyle}
 `;
 export const Remove = styled(Delete)`
+  ${sharedStyle}
+`;
+export const Edit = styled(EditIcon)`
   ${sharedStyle}
 `;
 export const Plus = styled(AddCircleOutline)`

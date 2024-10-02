@@ -23,17 +23,17 @@ export const deleteCard = (card_id) => async (dispatch) => {
     console.log(error);
   }
 };
-export const updateCard = (card) => async (dispatch) => {
-  try {
-     // const { data } await api.updateCard(card);
-    const data=null;
+// export const updateCard = (card) => async (dispatch) => {
+//   try {
+//      // const { data } await api.updateCard(card);
+//     const data=null;
 
-    const action = { type: actions.UPDATE_CARD, payload: data };
-    dispatch(action);
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     const action = { type: actions.UPDATE_CARD, payload: data };
+//     dispatch(action);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 // export const getAllCardsOfUser= (user) => async (dispatch, getState) => {
 //   try {
 //     const action = { type: actions.GET_CARDS_OF_USER, payload: cards };

@@ -5,15 +5,16 @@ import { Link } from "react-router-dom";
 import {
   createDeck,
   getDecksOfUser,
+  updateDeck,
   deleteDeck,
 } from "./../actions/deckActions.js";
-import { getAllCardsOfUser } from "../actions/cardActions";
+//import { getAllCardsOfUser } from "../actions/cardActions";
 
 import { PreviewDeck } from "./previewDeck";
 import styled from "styled-components";
 import { SubTitle } from "./shared_styles/styled_text";
 import { StyledButton } from "./shared_styles/styled_buttons";
-import { Plus, Remove, Save } from "./shared_styles/styled_icons";
+import { Plus, Remove, Edit, Save } from "./shared_styles/styled_icons";
 import { FormTextArea } from "./shared_styles/styled_forms";
 import { User } from "@auth0/auth0-react";
 const StyledLink = styled(Link)`
@@ -89,48 +90,40 @@ export const DeckDashboard = () => {
   const dispatch = useDispatch();
   const deckSelector = (state) => (state.decks ? state.decks : null);
   const decks = useSelector(deckSelector);
-  const userSelector = (state) => (state.user ? state.user: null);
+  const userSelector = (state) => (state.user ? state.user : null);
   const user = useSelector(userSelector);
 
   const [displayNewDeckForm, setDisplayNewDeckForm] = useState(false);
+  const [displayEditingDeckForm, setDisplayEditingDeckForm] = useState(null);
   const [deckName, setDeckName] = useState("");
 
   const handleClose = () => {
     setDisplayNewDeckForm(false);
+    setDisplayEditingDeckForm(null);
     setDeckName("");
+  };
+
+
+  const handleSaveDeck = () => {
+    if (displayEditingDeckForm) {
+     const updatedDeck={id: displayEditingDeckForm, name: deckName};
+      dispatch(updateDeck(updatedDeck));
+    } else {
+      dispatch(createDeck({ name: deckName,userId:user.id  }));
+    }
+    handleClose();
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // if (decks.length === 0) {
-    //   dispatch(getDecksOfUser("notUserYet"));
-    // }
-    // if (cards.length === 0) {
-    //   dispatch(getAllCardsOfUser("notUserYet"));
-    // }
+
   }, []);
   return (
     <DeckDashboardContainer>
       {decks.length > 0 ? (
         decks.map((element) => (
           <ListItemStyled key={element.id}>
-            <PreviewDeck id={element.id}>
-              <StyledLink to={`../decks/${element.id}`}>
-                <SubTitle $color>{element.name}</SubTitle>
-              </StyledLink>
-              <ActionButtonsSection>
-                <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
-                  <Remove $color />
-                </StyledButton>
-              </ActionButtonsSection>
-            </PreviewDeck>
-          </ListItemStyled>
-        ))
-      ) : (
-        <p>User without decks yet</p>
-      )}
-      <ListItemStyled>
-        {displayNewDeckForm ? (
+             {(displayEditingDeckForm==element.id) ? (
           <PreviewDeck>
             <FormTextArea
               subtitle
@@ -145,8 +138,53 @@ export const DeckDashboard = () => {
               <StyledButton
                 onClick={() => {
                   if (deckName !== "") {
-                    dispatch(createDeck({name:deckName, userId:user.id}));
-                    handleClose();
+                    handleSaveDeck();                   
+                  }
+                }}
+              >
+                <Save $color />
+              </StyledButton>
+            </ActionButtonsSection>
+          </PreviewDeck>
+        ) : (
+         
+       
+            <PreviewDeck id={element.id}>
+              <StyledLink to={`../decks/${element.id}`}>
+                <SubTitle $color>{element.name}</SubTitle>
+              </StyledLink>
+              <ActionButtonsSection>
+                <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
+                  <Remove $color />
+                </StyledButton>
+                <StyledButton onClick={() => setDisplayEditingDeckForm(element.id)}>
+                  <Edit $color />
+                </StyledButton>
+              </ActionButtonsSection>
+            </PreviewDeck>
+             )}
+          </ListItemStyled>
+        ))
+      ) : (
+        <p>User without decks yet</p>
+      )}
+      <ListItemStyled>
+        {(displayNewDeckForm) ? (
+          <PreviewDeck>
+            <FormTextArea
+              subtitle
+              placeholder="Deck title"
+              onChange={(e) => setDeckName(e.target.value)}
+              value={deckName}
+            ></FormTextArea>
+            <ActionButtonsSection>
+              <StyledButton onClick={() => handleClose()}>
+                <Remove $color />
+              </StyledButton>
+              <StyledButton
+                onClick={() => {
+                  if (deckName !== "") {
+                    handleSaveDeck();                   
                   }
                 }}
               >

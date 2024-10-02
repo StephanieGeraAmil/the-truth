@@ -4,10 +4,10 @@ export default (cards = [], action) => {
     case actions.ADD_CARD:
       return [...cards, action.payload];
 
-    case actions.UPDATE_CARD:
-      return cards.map((card) =>
-        card._id === action.payload.id ? action.payload : card
-      );
+    // case actions.UPDATE_CARD:
+    //   return cards.map((card) =>
+    //     card._id === action.payload.id ? action.payload : card
+    //   );
 
     case actions.DELETE_CARD:
       return cards.filter((card) => card.id !== action.payload);
