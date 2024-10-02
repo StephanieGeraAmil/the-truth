@@ -6,8 +6,8 @@ import {
   addCard,
   deleteCard,
 } from "../actions/cardActions";
-import {addVerse} from "../actions/verseActions";
-import {addNote} from "../actions/noteActions";
+import { addVerse, updateVerse } from "../actions/verseActions";
+import { addNote, updateNote } from "../actions/noteActions";
 
 import { StyledButton } from "./shared_styles/styled_buttons";
 // import { addCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
@@ -16,7 +16,7 @@ import { CardOfDeck } from "./shared_styles/styled_cards";
 import styled, { css } from "styled-components";
 import { SubTitle, Info } from "./shared_styles/styled_text";
 import { FormInput, FormTextArea } from "./shared_styles/styled_forms";
-import { Next, Prev, Plus, Remove, Save } from "./shared_styles/styled_icons";
+import { Next, Prev, Plus, Remove, Edit, Save } from "./shared_styles/styled_icons";
 
 const AddMenu = styled.div`
   height: 12vh;
@@ -123,6 +123,7 @@ export const Deck = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
   const [textAreaInput, setTextAreaInput] = useState("");
   const [textInput, setTextInput] = useState("");
+  const [displayEditingResourceForm, setDisplayEditingResourceForm] = useState(null);
 
   const nextCard = () => {
     setDisplayMenu(false);
@@ -151,6 +152,7 @@ export const Deck = () => {
     setTextAreaInput("");
     setTextInput("");
     setFormShown(null);
+    setDisplayEditingResourceForm(null);
   };
   const handleAddNoteClick = () => {
     createCard();
@@ -162,18 +164,27 @@ export const Deck = () => {
     setFormShown("Verse");
     setDisplayMenu(false);
   };
-  const handleSaveNoteClick = () => {
+  const handleSaveNoteClick = (id) => {
     if (textAreaInput !== "") {
       const note = { content: textAreaInput, cardId: cardsOfDeck[currentIndex].id };
-      dispatch(addNote(note));
+      if (id && displayEditingResourceForm == id) {
+        dispatch(updateNote(id, note));
+      } else {
+        console.log("is a creation");
+        dispatch(addNote(note));
+      }
       handleClose();
     }
   };
 
-  const handleSaveVerseClick = () => {
+  const handleSaveVerseClick = (id) => {
     if (textAreaInput !== "" && textInput !== "") {
       const verse = { content: textAreaInput, reference: textInput, cardId: cardsOfDeck[currentIndex].id };
-      dispatch(addVerse(verse));
+      if (id && displayEditingResourceForm == id) {
+        dispatch(updateVerse(id, verse));
+      } else {
+        dispatch(addVerse(verse));
+      }
       handleClose();
     }
   };
@@ -222,7 +233,7 @@ export const Deck = () => {
             )}
             <CardOfDeck>
               <CardContent>
-                {formShown && formShown === "Note" && (
+                {formShown && formShown === "Note" && (<>
                   <StyledResource>
                     <FormTextArea
                       placeholder="Note content"
@@ -230,8 +241,12 @@ export const Deck = () => {
                       onChange={(e) => setTextAreaInput(e.target.value)}
                     />
                   </StyledResource>
+                  <StyledButton onClick={() => { console.log(displayEditingResourceForm); handleSaveNoteClick(displayEditingResourceForm) }}>
+                    <Save $color />
+                  </StyledButton>
+                </>
                 )}
-                {formShown && formShown === "Verse" && (
+                {formShown && formShown === "Verse" && (<>
                   <StyledResource>
                     <FormTextArea
                       placeholder="Verse scripture"
@@ -244,14 +259,23 @@ export const Deck = () => {
                       onChange={(e) => setTextInput(e.target.value)}
                     />
                   </StyledResource>
+                  <StyledButton onClick={() => handleSaveVerseClick(displayEditingResourceForm)}>
+                    <Save $color />
+                  </StyledButton>
+                </>
+
                 )}
 
                 {!formShown &&
                   notes.filter((note) => note.cardId == cardsOfDeck[currentIndex].id).map((note) => (
+
                     <StyledResource key={note.id}>
                       <Info $gray $wide>
                         {note.content}
                       </Info>
+                      <StyledButton onClick={() => { setDisplayEditingResourceForm(note.id); setFormShown("Note") }}>
+                        <Edit $color />
+                      </StyledButton>
 
                     </StyledResource>
                   ))}
@@ -267,6 +291,9 @@ export const Deck = () => {
                           {verse.reference}
                         </Info>
                       </StyledResource>
+                      <StyledButton onClick={() => { setDisplayEditingResourceForm(verse.id); setFormShown("Verse") }}>
+                        <Edit $color />
+                      </StyledButton>
 
                     </StyledResource>
                   ))}
@@ -276,21 +303,13 @@ export const Deck = () => {
                     <Remove $color />
                   </StyledButton>
 
+
                   {!formShown && (
                     <StyledButton onClick={() => setDisplayMenu(true)}>
                       <Plus $color />
                     </StyledButton>
                   )}
-                  {formShown && formShown == "Verse" && (
-                    <StyledButton onClick={() => handleSaveVerseClick()}>
-                      <Save $color />
-                    </StyledButton>
-                  )}
-                  {formShown && formShown == "Note" && (
-                    <StyledButton onClick={() => handleSaveNoteClick()}>
-                      <Save $color />
-                    </StyledButton>
-                  )}
+
                   {displayMenu && (
                     <AddMenu>
                       <StyledButton $wide onClick={() => handleAddNoteClick()}>

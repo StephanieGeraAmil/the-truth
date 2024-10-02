@@ -106,10 +106,10 @@ export const DeckDashboard = () => {
 
   const handleSaveDeck = () => {
     if (displayEditingDeckForm) {
-     const updatedDeck={id: displayEditingDeckForm, name: deckName};
+      const updatedDeck = { id: displayEditingDeckForm, name: deckName };
       dispatch(updateDeck(updatedDeck));
     } else {
-      dispatch(createDeck({ name: deckName,userId:user.id  }));
+      dispatch(createDeck({ name: deckName, userId: user.id }));
     }
     handleClose();
   };
@@ -123,46 +123,46 @@ export const DeckDashboard = () => {
       {decks.length > 0 ? (
         decks.map((element) => (
           <ListItemStyled key={element.id}>
-             {(displayEditingDeckForm==element.id) ? (
-          <PreviewDeck>
-            <FormTextArea
-              subtitle
-              placeholder="Deck title"
-              onChange={(e) => setDeckName(e.target.value)}
-              value={deckName}
-            ></FormTextArea>
-            <ActionButtonsSection>
-              <StyledButton onClick={() => handleClose()}>
-                <Remove $color />
-              </StyledButton>
-              <StyledButton
-                onClick={() => {
-                  if (deckName !== "") {
-                    handleSaveDeck();                   
-                  }
-                }}
-              >
-                <Save $color />
-              </StyledButton>
-            </ActionButtonsSection>
-          </PreviewDeck>
-        ) : (
-         
-       
-            <PreviewDeck id={element.id}>
-              <StyledLink to={`../decks/${element.id}`}>
-                <SubTitle $color>{element.name}</SubTitle>
-              </StyledLink>
-              <ActionButtonsSection>
-                <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
-                  <Remove $color />
-                </StyledButton>
-                <StyledButton onClick={() => setDisplayEditingDeckForm(element.id)}>
-                  <Edit $color />
-                </StyledButton>
-              </ActionButtonsSection>
-            </PreviewDeck>
-             )}
+            {(displayEditingDeckForm == element.id) ? (
+              <PreviewDeck>
+                <FormTextArea
+                  subtitle
+                  placeholder="Deck title"
+                  onChange={(e) => setDeckName(e.target.value)}
+                  value={deckName}
+                ></FormTextArea>
+                <ActionButtonsSection>
+                  <StyledButton onClick={() => handleClose()}>
+                    <Remove $color />
+                  </StyledButton>
+                  <StyledButton
+                    onClick={() => {
+                      if (deckName !== "") {
+                        handleSaveDeck();
+                      }
+                    }}
+                  >
+                    <Save $color />
+                  </StyledButton>
+                </ActionButtonsSection>
+              </PreviewDeck>
+            ) : (
+
+
+              <PreviewDeck id={element.id}>
+                <StyledLink to={`../decks/${element.id}`}>
+                  <SubTitle $color>{element.name}</SubTitle>
+                </StyledLink>
+                <ActionButtonsSection>
+                  <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
+                    <Remove $color />
+                  </StyledButton>
+                  <StyledButton onClick={() => setDisplayEditingDeckForm(element.id)}>
+                    <Edit $color />
+                  </StyledButton>
+                </ActionButtonsSection>
+              </PreviewDeck>
+            )}
           </ListItemStyled>
         ))
       ) : (
@@ -184,7 +184,7 @@ export const DeckDashboard = () => {
               <StyledButton
                 onClick={() => {
                   if (deckName !== "") {
-                    handleSaveDeck();                   
+                    handleSaveDeck();
                   }
                 }}
               >

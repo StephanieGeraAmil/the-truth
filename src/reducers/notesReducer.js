@@ -6,7 +6,7 @@ export default (notes = [], action) => {
 
     case actions.UPDATE_NOTE:
       return notes.map((note) =>
-        note._id === action.payload.id ? action.payload : note
+        note.id === action.payload.id ? action.payload : note
       );
 
     case actions.DELETE_NOTE:

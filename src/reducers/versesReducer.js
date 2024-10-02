@@ -11,7 +11,7 @@ export default (verses = [], action) => {
 
     case actions.UPDATE_VERSE:
       return verses.map((verse) =>
-        verse._id === action.payload.id ? action.payload : verse
+        verse.id === action.payload.id ? action.payload : verse
       );
 
     case actions.DELETE_VERSE:
