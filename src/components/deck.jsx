@@ -137,15 +137,12 @@ export const Deck = () => {
   };
   const createCard = () => {
     const card = { deckId: id, order: cardsOfDeck.length };
-    console.log(card);
     dispatch(addCard(card));
-    //  dispatch(addCardOnDeck(id, card.id));
     setCurrentIndex(cardsOfDeck.length);
   };
   const removeCard = () => {
     if (currentIndex !== 0) setCurrentIndex(prevIndex => prevIndex - 1);
     dispatch(deleteCard(cardsOfDeck[currentIndex].id));
-    //dispatch(deleteCardFromDeck(deck.id, cardsOfDeck[currentIndex].id));
     handleClose();
   };
   const handleClose = () => {
@@ -170,7 +167,6 @@ export const Deck = () => {
       if (id && displayEditingResourceForm == id) {
         dispatch(updateNote(id, note));
       } else {
-        console.log("is a creation");
         dispatch(addNote(note));
       }
       handleClose();
@@ -190,7 +186,6 @@ export const Deck = () => {
   };
 
   useEffect(() => {
-    // setCardsOfDeck(cards.filter((c) => deck.cards.indexOf(c.id) > -1));
     setCardsOfDeck(cards.filter((c) => c.deckId == id));
   }, [cards]);
 
@@ -241,7 +236,7 @@ export const Deck = () => {
                       onChange={(e) => setTextAreaInput(e.target.value)}
                     />
                   </StyledResource>
-                  <StyledButton onClick={() => { console.log(displayEditingResourceForm); handleSaveNoteClick(displayEditingResourceForm) }}>
+                  <StyledButton onClick={() => handleSaveNoteClick(displayEditingResourceForm)}>
                     <Save $color />
                   </StyledButton>
                 </>
