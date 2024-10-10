@@ -22,13 +22,7 @@ const StyledLink = styled(Link)`
   overflow: auto;
 `;
 
-const ListItemStyled = styled.div`
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-`;
+
 
 const ActionButtonsSection = styled.div`
   align-self: flex-end;
@@ -41,50 +35,36 @@ const ActionButtonsSection = styled.div`
   z-index: 5;
 `;
 
+const ListItemStyled = styled.div`
+  background-color: #1e1e1e;
+  color:white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  margin: 20px;
+  width: 250px;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); 
+  }
+  @media (max-width: 600px) {
+    width: 80%;
+  }
+`;
+
 const DeckDashboardContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 10% 5%;
-  overflow: auto;
-  display: grid;
-  grid-gap: 2%;
-  grid-template-columns: repeat(auto-fill, minmax(45vh, 1fr));
-  grid-auto-rows: 50vh;
-  background-image: radial-gradient(
-    circle farthest-corner at 0% 0%,
-    #000 0%,
-    #15464c 70%,
-    #33abb9 100%
-  );
-
-  @media (max-aspect-ratio: 1.2) {
-    grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
-    grid-gap: 0%;
-  }
-  @media (max-aspect-ratio: 0.78) {
-    padding-top: 35%;
-    grid-gap: 10%;
+  display: flex;
+  width:100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 60px auto;
+  background-color: #121212; 
+  @media (max-width: 600px) {
+    justify-content: center;
   }
 
-  @media (max-width: 750px) {
-    padding-top: 25%;
-    grid-auto-rows: 30vh;
-    grid-gap: 5%;
-  }
-  @media (max-width: 550px) {
-    padding-top: 20%;
-    grid-auto-rows: 25vh;
-    grid-gap: 5%;
-  }
-  @media (max-aspect-ratio: 1.2) {
-    grid-template-columns: repeat(auto-fill, minmax(35vh, 1fr));
-    grid-gap: 0%;
-  }
-  @media (max-aspect-ratio: 0.78) {
-    padding-top: 35%;
-    grid-auto-rows: 20vh;
-    grid-gap: 8%;
-  }
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
@@ -124,7 +104,8 @@ export const DeckDashboard = () => {
         decks.map((element) => (
           <ListItemStyled key={element.id}>
             {(displayEditingDeckForm == element.id) ? (
-              <PreviewDeck>
+              // <PreviewDeck>
+              <>
                 <FormTextArea
                   subtitle
                   placeholder="Deck title"
@@ -145,13 +126,14 @@ export const DeckDashboard = () => {
                     <Save $color />
                   </StyledButton>
                 </ActionButtonsSection>
-              </PreviewDeck>
+              </>
+              // </PreviewDeck>
             ) : (
 
 
-              <PreviewDeck id={element.id}>
+              <div id={element.id}>
                 <StyledLink to={`../decks/${element.id}`}>
-                  <SubTitle $color>{element.name}</SubTitle>
+                  <SubTitle >{element.name}</SubTitle>
                 </StyledLink>
                 <ActionButtonsSection>
                   <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
@@ -161,7 +143,7 @@ export const DeckDashboard = () => {
                     <Edit $color />
                   </StyledButton>
                 </ActionButtonsSection>
-              </PreviewDeck>
+              </div>
             )}
           </ListItemStyled>
         ))
@@ -170,7 +152,7 @@ export const DeckDashboard = () => {
       )}
       <ListItemStyled>
         {(displayNewDeckForm) ? (
-          <PreviewDeck>
+          <div>
             <FormTextArea
               subtitle
               placeholder="Deck title"
@@ -191,7 +173,7 @@ export const DeckDashboard = () => {
                 <Save $color />
               </StyledButton>
             </ActionButtonsSection>
-          </PreviewDeck>
+          </div>
         ) : (
           <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
             <Plus $big />

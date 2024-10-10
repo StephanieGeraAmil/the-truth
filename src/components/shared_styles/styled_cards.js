@@ -24,7 +24,17 @@ export const CardOfDeck = styled.div`
     aspect-ratio: auto;
     width: 80%;
   }
-
+  ${(props) =>
+    props.$big &&
+    css`
+      position: absolute;
+      z-index: 3;
+      bottom: 0;
+      right: 0;
+      height: 75%;
+      width: 35%;
+      
+    `}
   ${(props) =>
     props.$medium &&
     css`
@@ -33,7 +43,7 @@ export const CardOfDeck = styled.div`
       bottom: 15%;
       right: 30%;
       height: 70%;
-      width: 35%;
+      width: 30%;
       max-width: 25vw;
     `}
   ${(props) =>
@@ -44,7 +54,7 @@ export const CardOfDeck = styled.div`
       bottom: 20%;
       right: 45%;
       height: 60%;
-      width: 30%;
+      width: 25%;
       max-width: 20vw;
     `}
 `;
@@ -66,12 +76,12 @@ export const PreviewCard = styled.div`
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
     animation: ${move} 5s 0.8s ease-in-out infinite;
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     width: 50%;
     right: 0%;
     bottom: 5%;
   }
-  @media (max-width: 550px) {
+  @media (max-width: 600px) {
     bottom: 6%;
     right:0;
     width: 70%;
@@ -95,24 +105,45 @@ export const PreviewCard = styled.div`
       }
      
     `}
-  ${(props) =>
+    ${(props) =>
+      props.$big &&
+      css`
+        position: absolute;
+        z-index: 3;
+        bottom: 10%;
+        right: 20%;
+        width: 55%;
+        aspect-ratio: 0.8;
+        animation: ${move} 5s 0.5s ease-in-out infinite;
+        @media (min-width: 1400px) {
+          width: 50%;
+          right: 0;
+          bottom: 5%;
+        }
+        @media (max-width: 600px) {
+          bottom: 0;
+          width: 60%;
+        }
+      `}
+    ${(props) =>
     props.$medium &&
     css`
       position: absolute;
       z-index: 2;
       bottom: 15%;
-      right: 30%;
-      width: 50%;
+      right: 35%;
+      width: 46%;
       aspect-ratio: 0.8;
       animation: ${move} 5s 0.5s ease-in-out infinite;
-      @media (max-width: 900px) {
+      @media (min-width: 1400px) {
         width: 40%;
         right: 15%;
         bottom: 10%;
       }
-      @media (max-width: 550px) {
-        bottom: 9%;
-        width: 60%;
+      @media (max-width: 600px) {
+        bottom: 5%;
+        width: 52%;
+        right:20%;
       }
     `}
   ${(props) =>
@@ -121,19 +152,20 @@ export const PreviewCard = styled.div`
       position: absolute;
       z-index: 1;
       bottom: 20%;
-      right: 50%;
+      right: 45%;
       width: 40%;
       aspect-ratio: 0.8;
         animation: ${move} 5s 0.3s ease-in-out infinite;
 
-      @media (max-width: 900px) {
+      @media (min-width: 1400px) {
         width: 30%;
         right: 30%;
         bottom: 15%;
       }
-      @media (max-width: 550px) {
-        bottom: 11%;
-        width: 50%;
+      @media (max-width: 600px) {
+        bottom: 8%;
+        width: 45%;
+        right:35%;
       }
     `}
 `;

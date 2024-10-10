@@ -1,23 +1,22 @@
+// 
+
 import styled, { css } from "styled-components";
 import { float, move, enterRight, enterLeft } from "./styled_animations";
 
+// Image container styling
 export const ImgContainer = styled.div`
   width: ${(props) => (props.$floating ? "80%" : "40%")};
-  
   aspect-ratio: 1.1;
-  right: 0%;
-  top: 0%;
+  right: 0;
+  top: 0;
   position: ${(props) => (props.$floating ? "absolute" : "relative")};
   overflow: hidden;
   z-index: 0;
-
-
 
   @media (max-width: 900px) {
     width: 100%;
     height: 100%;
     max-height: ${(props) => (props.$floating ? "100vh" : "70vh")};
-    margin: 0%;
     ${(props) =>
       props.$middle &&
       css`
@@ -25,11 +24,6 @@ export const ImgContainer = styled.div`
       `}
   }
 
-
-
- 
-
- 
   ${(props) =>
     props.$floating &&
     css`
@@ -38,11 +32,9 @@ export const ImgContainer = styled.div`
         aspect-ratio: 1.1;
         position: absolute;
         right: -5%;
-        animation: ${enterRight} 1.5s ease-in-out,
-          ${float} 6s ease-in-out infinite, ${move} 6s ease-in-out infinite;
+        animation: ${enterRight} 1.5s ease-in-out, ${float} 6s ease-in-out infinite, ${move} 6s ease-in-out infinite;
         animation-delay: 0s, 0s, 1.5s;
         mix-blend-mode: lighten;
-     
       }
     `}
 
@@ -54,35 +46,18 @@ export const ImgContainer = styled.div`
     left: 10%;
     border-radius: 50%;
     filter: blur(11px);
+    
     @media (max-width: 900px) {
       height: 55%;
-      right: auto;
-      ${(props) =>
-        props.$first &&
-        css`
-          left: 30%;
-        `}
-      ${(props) =>
-        props.$middle &&
-        css`
-          left: 30%;
-        `}
+      left: ${(props) => (props.$first || props.$middle ? "30%" : "auto")};
     }
+
     @media (max-width: 550px) {
       height: 75%;
-      ${(props) =>
-        props.$first &&
-        css`
-          left: auto;
-          right: 10%;
-        `}
-      ${(props) =>
-        props.$middle &&
-        css`
-          left: auto;
-          left: 10%;
-        `}
+      left: ${(props) => (props.$first ? "auto" : "10%")};
+      right: ${(props) => (props.$first ? "10%" : "auto")};
     }
+
     ${(props) =>
       props.$first &&
       css`
@@ -103,7 +78,7 @@ export const ImgContainer = styled.div`
           #33abb9 100%
         );
       `}
-      ${(props) =>
+    ${(props) =>
       props.$last &&
       css`
         background: radial-gradient(
@@ -124,88 +99,25 @@ export const ImgContainer = styled.div`
 
     @media (max-width: 900px) {
       height: 75%;
-      ${(props) =>
-        props.$first &&
-        css`
-          left: 40%;
-        `}
-      ${(props) =>
-        props.$middle &&
-        css`
-          left: 30%;
-        `}
+      left: ${(props) => (props.$first ? "40%" : "30%")};
     }
+
     @media (max-width: 550px) {
       height: 90vw;
-      ${(props) =>
-        props.$first &&
-        css`
-          left: auto;
-          right: 20%;
-        `}
-      ${(props) =>
-        props.$middle &&
-        css`
-          left: auto;
-          left: 20%;
-        `}
-
+      left: ${(props) => (props.$first ? "auto" : "20%")};
+      right: ${(props) => (props.$first ? "20%" : "auto")};
     }
   }
 `;
 
-// @media (max-width: 1500px) and(min-aspect-ratio:1.1) {
-//   width: ${(props) => (props.$floating ? "100%" : "60%")};
-// }
-// @media (max-width: 1300px) and(min-aspect-ratio:1.1) {
-//   min-width: 40vw;
-// }
+// Text Container Styling
 export const TextContainer = styled.div`
-  width:${(props) => (props.$all? "100%" : "40%")};
+  width: ${(props) => (props.$all ? "100%" : "40%")};
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: flex-start;
   z-index: 1;
 
-  ${(props) =>
-    props.$head &&
-    css`
-      justify-content: flex-end;
-      width: 100% !important;
-      min-width: 220px;
-      max-width: 1000px;
-      padding: 0 0 8% 15vw;
-      @media (max-width: 600px) {
-
-        height: 50%;
-        
-      }
-    `}
-  ${(props) =>
-    props.$wide &&
-    css`
-      width: 50%;
-    `}
- 
-    @media (max-width: 600px) {
-
-      width:100%;
-      padding:10px;
-      
-    }
-  
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 10px;
+  }
 `;
-// @media (max-width: 900px) {
-//   padding: 0;
-//   height: 40%;
-//   margin: 0;
-//   margin-left: 10%;
-//   width: 80%;
-  
-// }
-
-// @media (min-width: 1800px) {
-//   max-width: 30vw;
-// }

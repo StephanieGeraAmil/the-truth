@@ -14,7 +14,7 @@ import { ColorBackground } from "styled-icons/fluentui-system-filled";
 
 
 const NavContainer = styled.nav`
-  width: 100%;
+  width: 100vw;
   background: rgba(1, 1, 1, 0.09);
   backdrop-filter: blur(4.5px);
   color: #fff;
@@ -30,7 +30,7 @@ const NavContainer = styled.nav`
  
 `;
 const ActionContainer = styled.nav`
-  width: 100%;
+  width: 100vw;
   background: rgba(1, 1, 1, 0.09);
   backdrop-filter: blur(4.5px);
   color: #fff;
