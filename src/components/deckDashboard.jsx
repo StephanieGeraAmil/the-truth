@@ -12,17 +12,31 @@ import {
 
 import { PreviewDeck } from "./previewDeck";
 import styled from "styled-components";
-import { SubTitle } from "./shared_styles/styled_text";
+import { DeckTitle } from "./shared_styles/styled_text";
 import { StyledButton } from "./shared_styles/styled_buttons";
 import { Plus, Remove, Edit, Save } from "./shared_styles/styled_icons";
 import { FormTextArea } from "./shared_styles/styled_forms";
 import { User } from "@auth0/auth0-react";
+
+
+
+const PlusButton = styled.div`
+ width:20%;
+ height:160px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ @media (max-width: 600px) {
+  width: 100%;
+
+}
+ 
+`;
+
 const StyledLink = styled(Link)`
   width: 100%;
   overflow: auto;
 `;
-
-
 
 const ActionButtonsSection = styled.div`
   align-self: flex-end;
@@ -31,8 +45,18 @@ const ActionButtonsSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  gap: 2vh;
+  gap: 1vh;
   z-index: 5;
+
+`;
+
+const ItemContent = styled.div`
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
 `;
 
 const ListItemStyled = styled.div`
@@ -40,29 +64,52 @@ const ListItemStyled = styled.div`
   color:white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  margin: 20px;
+  margin: 0;
   width: 250px;
+  height:150px;
   padding: 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); 
   }
   @media (max-width: 600px) {
-    width: 80%;
+    width: 100%;
+    height:auto;
   }
 `;
-
+// display: flex;
+// width:100%;
+// min-height:100vh;
+// flex-wrap: wrap;
+// gap:5vw;
+// row-gap: 5vh;
+// justify-content: flex-start;
+// align-items: flex-start;
+// padding: 10vh 8vh;
+// background-color: #121212; 
+// @media (max-width: 600px) {
+//   justify-content: center;
+//   padding: 8vh 0;
+// }
 const DeckDashboardContainer = styled.div`
-  display: flex;
+
   width:100%;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 60px auto;
-  background-color: #121212; 
+  min-height:100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-auto-rows: 200px;
+  row-gap: 5vh;
+  padding: 10vh 8vw;
+  background-color: #121212;
+
   @media (max-width: 600px) {
-    justify-content: center;
+    grid-auto-rows: 160px;
+    margin:auto;
+    grid-template-columns: 1fr;
+    padding: 8vh auto;
   }
 
 `;
@@ -105,7 +152,7 @@ export const DeckDashboard = () => {
           <ListItemStyled key={element.id}>
             {(displayEditingDeckForm == element.id) ? (
               // <PreviewDeck>
-              <>
+              <ItemContent>
                 <FormTextArea
                   subtitle
                   placeholder="Deck title"
@@ -126,33 +173,35 @@ export const DeckDashboard = () => {
                     <Save $color />
                   </StyledButton>
                 </ActionButtonsSection>
-              </>
+              </ItemContent>
               // </PreviewDeck>
             ) : (
 
 
-              <div id={element.id}>
+              <ItemContent id={element.id}>
                 <StyledLink to={`../decks/${element.id}`}>
-                  <SubTitle >{element.name}</SubTitle>
+                  <DeckTitle >{element.name}</DeckTitle>
                 </StyledLink>
                 <ActionButtonsSection>
-                  <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
-                    <Remove $color />
-                  </StyledButton>
                   <StyledButton onClick={() => setDisplayEditingDeckForm(element.id)}>
                     <Edit $color />
                   </StyledButton>
+                  <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
+                    <Remove $color />
+                  </StyledButton>
+
                 </ActionButtonsSection>
-              </div>
+              </ItemContent>
             )}
           </ListItemStyled>
         ))
       ) : (
         <p>User without decks yet</p>
       )}
-      <ListItemStyled>
-        {(displayNewDeckForm) ? (
-          <div>
+
+      {(displayNewDeckForm) ? (
+        <ListItemStyled>
+          <ItemContent>
             <FormTextArea
               subtitle
               placeholder="Deck title"
@@ -173,13 +222,14 @@ export const DeckDashboard = () => {
                 <Save $color />
               </StyledButton>
             </ActionButtonsSection>
-          </div>
-        ) : (
-          <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
-            <Plus $big />
-          </StyledButton>
-        )}
-      </ListItemStyled>
+          </ItemContent>
+        </ListItemStyled>
+      ) : (
+        <PlusButton>       <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
+          <Plus $big />
+        </StyledButton>
+        </PlusButton>
+      )}
     </DeckDashboardContainer>
   );
 };

@@ -20,7 +20,7 @@ export const Form = styled.div`
 
 export const FormInput = styled.input`
   font-family: Montserrat, sans-serif;
-  font-size: 1.8vh;
+  font-size: 1.8em;
   color: #8b8c89;
   width: 90%;
   border: none;
@@ -31,7 +31,7 @@ export const FormInput = styled.input`
 `;
 export const FormTextArea = styled.textarea`
   font-family: Montserrat, sans-serif;
-  font-size: 1.8vh;
+  font-size: 1.8em;
   color: #8b8c89;
   width: 90%;
   height: 90%;
