@@ -67,7 +67,7 @@ const ListItemStyled = styled.div`
   margin: 0;
   width: 250px;
   height:150px;
-  padding: 15px;
+  padding: 25px 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   
@@ -95,7 +95,6 @@ const ListItemStyled = styled.div`
 //   padding: 8vh 0;
 // }
 const DeckDashboardContainer = styled.div`
-
   width:100%;
   min-height:100vh;
   display: grid;
@@ -161,7 +160,7 @@ export const DeckDashboard = () => {
                 ></FormTextArea>
                 <ActionButtonsSection>
                   <StyledButton onClick={() => handleClose()}>
-                    <Remove $color />
+                    <Remove />
                   </StyledButton>
                   <StyledButton
                     onClick={() => {
@@ -170,7 +169,7 @@ export const DeckDashboard = () => {
                       }
                     }}
                   >
-                    <Save $color />
+                    <Save />
                   </StyledButton>
                 </ActionButtonsSection>
               </ItemContent>
@@ -184,10 +183,10 @@ export const DeckDashboard = () => {
                 </StyledLink>
                 <ActionButtonsSection>
                   <StyledButton onClick={() => setDisplayEditingDeckForm(element.id)}>
-                    <Edit $color />
+                    <Edit />
                   </StyledButton>
                   <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
-                    <Remove $color />
+                    <Remove />
                   </StyledButton>
 
                 </ActionButtonsSection>
@@ -210,7 +209,7 @@ export const DeckDashboard = () => {
             ></FormTextArea>
             <ActionButtonsSection>
               <StyledButton onClick={() => handleClose()}>
-                <Remove $color />
+                <Remove  />
               </StyledButton>
               <StyledButton
                 onClick={() => {
@@ -219,15 +218,16 @@ export const DeckDashboard = () => {
                   }
                 }}
               >
-                <Save $color />
+                <Save  />
               </StyledButton>
             </ActionButtonsSection>
           </ItemContent>
         </ListItemStyled>
       ) : (
-        <PlusButton>       <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
-          <Plus $big />
-        </StyledButton>
+        <PlusButton>      
+          <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
+            <Plus $big />
+          </StyledButton>
         </PlusButton>
       )}
     </DeckDashboardContainer>

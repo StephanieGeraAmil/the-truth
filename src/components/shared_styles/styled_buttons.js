@@ -37,18 +37,7 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-
-
-// borderRadius: {
-//   xs: "2vw",  
-//   sm: "5px",    
-//   md: "10px", 
-
-// },
-
 export const ColorAndTextButton = styled.button`
-  
-
 line-height:1.8em;
 padding:0.5em 1.5em;
 margin-top: 2em;
