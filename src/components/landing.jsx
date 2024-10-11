@@ -421,7 +421,7 @@ export const Landing = () => {
           <Info >
             Every lie you believe has a corresponding truth in God’s Word. His Word is the ultimate weapon to dismantle every deception. Jesus is The Truth that sets us free.
           </Info>
-          <Info>
+          {/* <Info>
             Use our powerful search feature to find the truth that will dismantle your strongholds and set you on the path to liberation.
           </Info>
           <Info >
@@ -429,7 +429,7 @@ export const Landing = () => {
             To help you find the truth that demoilsh your stronghold you can use
             our search feature.
           </Info>
-          <LoginButton text="Start now" />
+          <LoginButton text="Start now" /> */}
         </Container>
       </RowSection>
       <RowSection>

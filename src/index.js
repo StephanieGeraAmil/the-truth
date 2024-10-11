@@ -71,7 +71,7 @@ ReactDOM.render(
             <Nav />
             <Routes>
               <Route path="/" element={<App />} />
-              <Route path="/search" element={<Search />} />
+              {/* <Route path="/search" element={<Search />} /> */}
               <Route path="/decks" element={<DeckDashboard />} />
               <Route path="/decks/:id" element={<Deck />} />
             </Routes>

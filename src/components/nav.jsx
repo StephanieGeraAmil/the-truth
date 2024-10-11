@@ -83,9 +83,9 @@ export const Nav = () => {
             {location.pathname !== '/' && (
               <StyledLink to="/">Home</StyledLink>
             )}
-            {location.pathname !== '/search' && (
+            {/* {location.pathname !== '/search' && (
               <StyledLink to="/search">Search</StyledLink>
-            )}
+            )} */}
             <Logout />
 
           </ActionContainer>
