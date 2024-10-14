@@ -14,7 +14,7 @@ export const StyledButton = styled.button`
   ${(props) =>
     props.$wide &&
     css`
-      width: 12vh;
+      width: 13vh;
     `}
   ${(props) =>
   props.$medium &&
@@ -26,15 +26,12 @@ export const StyledLink = styled(Link)`
   border: 0;
   display: flex;
   justify-content: center;
-  font-size: 1.2vw;
+
   color: #fff;
   text-decoration: none;
   margin: 5px;
   z-index: 10;
-
-  @media (max-width: 1800px) and (min-height: 1000px) {
-    font-size: 1.5rem;
-  }
+ 
 `;
 
 export const ColorAndTextButton = styled.button`
