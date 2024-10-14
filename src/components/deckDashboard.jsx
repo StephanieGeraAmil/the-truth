@@ -8,7 +8,6 @@ import {
   updateDeck,
   deleteDeck,
 } from "./../actions/deckActions.js";
-//import { getAllCardsOfUser } from "../actions/cardActions";
 
 import { PreviewDeck } from "./previewDeck";
 import styled from "styled-components";
@@ -80,20 +79,7 @@ const ListItemStyled = styled.div`
     height:auto;
   }
 `;
-// display: flex;
-// width:100%;
-// min-height:100vh;
-// flex-wrap: wrap;
-// gap:5vw;
-// row-gap: 5vh;
-// justify-content: flex-start;
-// align-items: flex-start;
-// padding: 10vh 8vh;
-// background-color: #121212; 
-// @media (max-width: 600px) {
-//   justify-content: center;
-//   padding: 8vh 0;
-// }
+
 const DeckDashboardContainer = styled.div`
   width:100%;
   min-height:100vh;
