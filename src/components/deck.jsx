@@ -16,7 +16,8 @@ import { CardOfDeck } from "./shared_styles/styled_cards";
 import styled, { css } from "styled-components";
 import { SubTitle, Info } from "./shared_styles/styled_text";
 import { FormInput, FormTextArea } from "./shared_styles/styled_forms";
-import { Next, Prev, Plus, Remove, Edit, Save } from "./shared_styles/styled_icons";
+import { Next, Prev, Plus, Remove, Edit, Save, Close } from "./shared_styles/styled_icons";
+import { E } from "styled-icons/fa-solid";
 
 const AddMenu = styled.div`
   height: 15vh;
@@ -182,6 +183,15 @@ export const Deck = () => {
     setFormShown("Verse");
     setDisplayMenu(false);
   };
+  const handleColseForm=()=>{
+    if(!displayEditingResourceForm){
+      prevCard();
+    }else{
+      setFormShown(null);
+      setDisplayEditingResourceForm(null);
+    }
+
+  }
   const handleSaveNoteClick = (id) => {
     if (textAreaInput !== "") {
       const note = { content: textAreaInput, cardId: cardsOfDeck[currentIndex].id };
@@ -272,6 +282,9 @@ export const Deck = () => {
                       onChange={(e) => setTextAreaInput(e.target.value)}
                     />
                   </StyledResource>
+                  <StyledButton onClick={() => handleColseForm()}>
+                    <Close $color />
+                  </StyledButton>
                   <StyledButton onClick={() => handleSaveNoteClick(displayEditingResourceForm)}>
                     <Save $color />
                   </StyledButton>
@@ -290,6 +303,9 @@ export const Deck = () => {
                       onChange={(e) => setTextInput(e.target.value)}
                     />
                   </StyledResource>
+                  <StyledButton onClick={() => handleColseForm()}>
+                    <Close $color />
+                  </StyledButton>
                   <StyledButton onClick={() => handleSaveVerseClick(displayEditingResourceForm)}>
                     <Save $color />
                   </StyledButton>

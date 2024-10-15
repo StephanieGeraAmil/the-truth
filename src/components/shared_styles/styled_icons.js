@@ -7,6 +7,7 @@ import {
   Edit as EditIcon,
   AddCircleOutline,
   Done,
+  Close as CloseIcon
 } from "@styled-icons/material";
 const bigSize = "8vh";
 const mediumSize = "5vh";
@@ -50,5 +51,8 @@ export const Plus = styled(AddCircleOutline)`
   ${sharedStyle}
 `;
 export const Save = styled(Done)`
+  ${sharedStyle}
+`;
+export const Close = styled(CloseIcon)`
   ${sharedStyle}
 `;

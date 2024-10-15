@@ -20,18 +20,24 @@ export const Form = styled.div`
 
 export const FormInput = styled.input`
   font-family: Montserrat, sans-serif;
-  font-size: 1.8em;
+  font-size: 1.6em;
   color: #8b8c89;
   width: 90%;
   border: none;
   background-color: transparent;
   resize: none;
   outline: none;
+  @media (min-width: 1400px) {
+    font-size: 1.5em;
+  }
+  @media (max-width: 600px) {
+    font-size: 1.4em;
+  }
   
 `;
 export const FormTextArea = styled.textarea`
   font-family: Montserrat, sans-serif;
-  font-size: 1.8em;
+  font-size: 1.6em;
   color: #8b8c89;
   width: 90%;
   height: 90%;
@@ -46,4 +52,10 @@ export const FormTextArea = styled.textarea`
       font-weight: 500;
       height: 80%;
     `}
+    @media (min-width: 1400px) {
+      font-size: 1.5em;
+    }
+    @media (max-width: 600px) {
+      font-size: 1.4em;
+    }
 `;
