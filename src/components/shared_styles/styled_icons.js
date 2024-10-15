@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import {
   ArrowForwardIos,
   ArrowBackIos,
+  KeyboardArrowUp,
   Delete,
   Edit as EditIcon,
   AddCircleOutline,
@@ -39,6 +40,9 @@ export const Next = styled(ArrowForwardIos)`
   ${sharedStyle}
 `;
 export const Prev = styled(ArrowBackIos)`
+  ${sharedStyle}
+`;
+export const Back = styled(KeyboardArrowUp)`
   ${sharedStyle}
 `;
 export const Remove = styled(Delete)`

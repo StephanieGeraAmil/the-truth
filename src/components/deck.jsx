@@ -17,7 +17,7 @@ import { CardOfDeck } from "./shared_styles/styled_cards";
 import styled, { css } from "styled-components";
 import { SubTitle, Info } from "./shared_styles/styled_text";
 import { FormInput, FormTextArea } from "./shared_styles/styled_forms";
-import { Next, Prev, Plus, Remove, Edit, Save, Close } from "./shared_styles/styled_icons";
+import { Next, Prev, Plus, Remove, Edit, Save, Close, Back } from "./shared_styles/styled_icons";
 import { E } from "styled-icons/fa-solid";
 
 const AddMenu = styled.div`
@@ -62,8 +62,8 @@ const ActionButtonsContainer = styled.div`
   height: 6vh;
 `;
 const StyledLink = styled(Link)`
-width:4vh;
-height:4vh;
+width:6vh;
+height:6vh;
 `;
 
 const StyledResource = styled.div`
@@ -255,7 +255,7 @@ export const Deck = () => {
         <DeckTitleContainer>
           <SubTitle >{deck.name}</SubTitle>
           <StyledLink to={`../decks/`}>
-            <Close $gray />
+            <Back $gray />
           </StyledLink>
         </DeckTitleContainer>}
       <>
