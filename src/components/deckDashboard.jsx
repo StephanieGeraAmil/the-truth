@@ -168,7 +168,7 @@ export const DeckDashboard = () => {
                   <DeckTitle >{element.name}</DeckTitle>
                 </StyledLink>
                 <ActionButtonsSection>
-                  <StyledButton onClick={() => setDisplayEditingDeckForm(element.id)}>
+                  <StyledButton onClick={() => {setDisplayEditingDeckForm(element.id);setDeckName(element.name);}}>
                     <Edit />
                   </StyledButton>
                   <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>

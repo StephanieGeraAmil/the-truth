@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
@@ -60,6 +61,10 @@ const ActionButtonsContainer = styled.div`
   width: 50%;
   height: 6vh;
 `;
+const StyledLink = styled(Link)`
+width:4vh;
+height:4vh;
+`;
 
 const StyledResource = styled.div`
   width: 100%;
@@ -107,6 +112,14 @@ const DeckContent = styled.div`
     height: 60%;
   }
 `;
+const DeckTitleContainer = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+`;
 const DeckContainer = styled.div`
   width: 100%;
   height: 100vh;
@@ -148,7 +161,7 @@ export const Deck = () => {
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
-    if(formShown && !displayEditingResourceForm ){   
+    if (formShown && !displayEditingResourceForm) {
       removeCard();
     }
     setDisplayMenu(false);
@@ -171,7 +184,7 @@ export const Deck = () => {
     setFormShown(null);
     setDisplayEditingResourceForm(null);
 
-    
+
   };
   const handleAddNoteClick = () => {
     createCard();
@@ -183,10 +196,10 @@ export const Deck = () => {
     setFormShown("Verse");
     setDisplayMenu(false);
   };
-  const handleColseForm=()=>{
-    if(!displayEditingResourceForm){
+  const handleColseForm = () => {
+    if (!displayEditingResourceForm) {
       prevCard();
-    }else{
+    } else {
       setFormShown(null);
       setDisplayEditingResourceForm(null);
     }
@@ -232,13 +245,19 @@ export const Deck = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside); // Cleanup event listener
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [displayMenu]);
 
   return (
     <DeckContainer>
-      {deck && <SubTitle >{deck.name}</SubTitle>}
+      {deck &&
+        <DeckTitleContainer>
+          <SubTitle >{deck.name}</SubTitle>
+          <StyledLink to={`../decks/`}>
+            <Close $gray />
+          </StyledLink>
+        </DeckTitleContainer>}
       <>
         {cardsOfDeck.length == 0 && (
           <NewCardBttonContainer>
@@ -281,15 +300,15 @@ export const Deck = () => {
                       value={textAreaInput}
                       onChange={(e) => setTextAreaInput(e.target.value)}
                     />
-                 
-                  <ActionButtonsContainer>
-                  <StyledButton onClick={() => handleColseForm()}>
-                    <Close $gray />
-                  </StyledButton>
-                  <StyledButton onClick={() => handleSaveNoteClick(displayEditingResourceForm)}>
-                    <Save $gray />
-                  </StyledButton>
-                  </ActionButtonsContainer>
+
+                    <ActionButtonsContainer>
+                      <StyledButton onClick={() => handleColseForm()}>
+                        <Close $gray />
+                      </StyledButton>
+                      <StyledButton onClick={() => handleSaveNoteClick(displayEditingResourceForm)}>
+                        <Save $gray />
+                      </StyledButton>
+                    </ActionButtonsContainer>
                   </StyledResource>
                 )}
                 {formShown && formShown === "Verse" && (
@@ -304,15 +323,15 @@ export const Deck = () => {
                       value={textInput}
                       onChange={(e) => setTextInput(e.target.value)}
                     />
-                
-                  <ActionButtonsContainer>
-                  <StyledButton onClick={() => handleColseForm()}>
-                    <Close $gray />
-                  </StyledButton>
-                  <StyledButton onClick={() => handleSaveVerseClick(displayEditingResourceForm)}>
-                    <Save $gray />
-                  </StyledButton>
-                  </ActionButtonsContainer>
+
+                    <ActionButtonsContainer>
+                      <StyledButton onClick={() => handleColseForm()}>
+                        <Close $gray />
+                      </StyledButton>
+                      <StyledButton onClick={() => handleSaveVerseClick(displayEditingResourceForm)}>
+                        <Save $gray />
+                      </StyledButton>
+                    </ActionButtonsContainer>
                   </StyledResource>
 
                 )}
@@ -321,7 +340,7 @@ export const Deck = () => {
                   notes.filter((note) => note.cardId == cardsOfDeck[currentIndex].id).map((note) => (
 
                     <StyledResource key={note.id}>
-                      <StyledButton onClick={() => { setDisplayEditingResourceForm(note.id); setFormShown("Note") }}>
+                      <StyledButton onClick={() => { setDisplayEditingResourceForm(note.id); setFormShown("Note"); setTextAreaInput(note.content); }}>
                         <Edit $gray />
                       </StyledButton>
                       <StyledResourceContent>
@@ -336,8 +355,8 @@ export const Deck = () => {
                 {!formShown &&
                   verses.filter((verse) => verse.cardId == cardsOfDeck[currentIndex].id).map((verse) => (
                     <StyledResource key={verse.id}>
-                      <StyledButton $right onClick={() => { setDisplayEditingResourceForm(verse.id); setFormShown("Verse") }}>
-                        <Edit $gray/>
+                      <StyledButton $right onClick={() => { setDisplayEditingResourceForm(verse.id); setFormShown("Verse"); setTextAreaInput(verse.content); setTextInput(verse.reference) }}>
+                        <Edit $gray />
                       </StyledButton>
                       <StyledResourceContent>
                         <Info $gray $wide>
