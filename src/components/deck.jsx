@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
@@ -19,9 +19,9 @@ import { FormInput, FormTextArea } from "./shared_styles/styled_forms";
 import { Next, Prev, Plus, Remove, Edit, Save } from "./shared_styles/styled_icons";
 
 const AddMenu = styled.div`
-  height: 12vh;
-  width: 15vh;
-  padding: 5%;
+  height: 15vh;
+  width: 10vw;
+  padding: 1vh 3vh;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
@@ -32,8 +32,16 @@ const AddMenu = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 2vh;
   z-index: 2;
+  @media (max-width: 600px) {
+    width: 30vw;
+    padding: 1vh 1vh;
+  }
+  @media (min-width: 1400px) {
+    height:17vh;
+  }
+
+
 `;
 const NewCardBttonContainer = styled.div`
   position: relative;
@@ -58,7 +66,16 @@ const StyledResource = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  gap: 2vh;
+`;
+const StyledResourceContent = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ 
   gap: 2vh;
 `;
 const CardContent = styled.div`
@@ -70,6 +87,9 @@ const CardContent = styled.div`
   align-items: flex-start;
   overflow: auto;
   z-index: 1;
+  @media (max-width: 600px) {
+   padding:2vh;
+  }
 `;
 
 
@@ -81,7 +101,7 @@ const DeckContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5vh;
-   @media (max-width: 550px) {
+  @media (max-width: 600px) {
     gap: 1vh;
     height: 60%;
   }
@@ -96,12 +116,7 @@ const DeckContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: radial-gradient(
-    circle farthest-corner at 0% 0%,
-    #000 0%,
-    #15464c 70%,
-    #33abb9 100%
-  );
+  
 `;
 
 export const Deck = () => {
@@ -124,6 +139,7 @@ export const Deck = () => {
   const [textAreaInput, setTextAreaInput] = useState("");
   const [textInput, setTextInput] = useState("");
   const [displayEditingResourceForm, setDisplayEditingResourceForm] = useState(null);
+  const addMenuRef = useRef(null);
 
   const nextCard = () => {
     setDisplayMenu(false);
@@ -131,6 +147,9 @@ export const Deck = () => {
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
+    if(formShown && !displayEditingResourceForm ){   
+      removeCard();
+    }
     setDisplayMenu(false);
     setFormShown(null);
     setCurrentIndex(currentIndex - 1);
@@ -150,6 +169,8 @@ export const Deck = () => {
     setTextInput("");
     setFormShown(null);
     setDisplayEditingResourceForm(null);
+
+    
   };
   const handleAddNoteClick = () => {
     createCard();
@@ -189,9 +210,25 @@ export const Deck = () => {
     setCardsOfDeck(cards.filter((c) => c.deckId == id));
   }, [cards]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (addMenuRef.current && !addMenuRef.current.contains(event.target)) {
+        setDisplayMenu(false); // Close the menu if the click is outside
+      }
+    };
+    if (displayMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); // Cleanup event listener
+    };
+  }, [displayMenu]);
+
   return (
     <DeckContainer>
-      {deck && <SubTitle $big>{deck.name}</SubTitle>}
+      {deck && <SubTitle >{deck.name}</SubTitle>}
       <>
         {cardsOfDeck.length == 0 && (
           <NewCardBttonContainer>
@@ -201,15 +238,14 @@ export const Deck = () => {
               <Info $wide>Add First Card</Info>
             </StyledButton>
             {displayMenu && (
-              <AddMenu>
+              <AddMenu ref={addMenuRef}>
                 <StyledButton $wide onClick={() => handleAddNoteClick()}>
-                  <Info $gray $wide>
+                  <Info $gray  >
                     New Note
                   </Info>
-                </StyledButton>
+                </StyledButton >
                 <StyledButton $wide onClick={() => handleAddVerseClick()}>
-                  <Info $gray $wide>
-                    {" "}
+                  <Info $gray  >
                     New Verse
                   </Info>
                 </StyledButton>
@@ -265,62 +301,65 @@ export const Deck = () => {
                   notes.filter((note) => note.cardId == cardsOfDeck[currentIndex].id).map((note) => (
 
                     <StyledResource key={note.id}>
-                      <Info $gray $wide>
-                        {note.content}
-                      </Info>
                       <StyledButton onClick={() => { setDisplayEditingResourceForm(note.id); setFormShown("Note") }}>
-                        <Edit $color />
+                        <Edit $gray />
                       </StyledButton>
+                      <StyledResourceContent>
+                        <Info $gray >
+                          {note.content}
+                        </Info>
+                      </StyledResourceContent>
+
 
                     </StyledResource>
                   ))}
                 {!formShown &&
                   verses.filter((verse) => verse.cardId == cardsOfDeck[currentIndex].id).map((verse) => (
                     <StyledResource key={verse.id}>
-
-                      <StyledResource>
+                      <StyledButton $right onClick={() => { setDisplayEditingResourceForm(verse.id); setFormShown("Verse") }}>
+                        <Edit $gray/>
+                      </StyledButton>
+                      <StyledResourceContent>
                         <Info $gray $wide>
                           {verse.content}{" "}
                         </Info>
                         <Info $gray $bold $wide>
                           {verse.reference}
                         </Info>
-                      </StyledResource>
-                      <StyledButton onClick={() => { setDisplayEditingResourceForm(verse.id); setFormShown("Verse") }}>
-                        <Edit $color />
-                      </StyledButton>
+                      </StyledResourceContent>
+
 
                     </StyledResource>
                   ))}
+                {!formShown && (
+                  <ActionButtonsContainer>
+                    <StyledButton onClick={() => removeCard()}>
+                      <Remove $color />
+                    </StyledButton>
 
-                <ActionButtonsContainer>
-                  <StyledButton onClick={() => removeCard()}>
-                    <Remove $color />
-                  </StyledButton>
 
 
-                  {!formShown && (
                     <StyledButton onClick={() => setDisplayMenu(true)}>
                       <Plus $color />
                     </StyledButton>
-                  )}
 
-                  {displayMenu && (
-                    <AddMenu>
-                      <StyledButton $wide onClick={() => handleAddNoteClick()}>
-                        <Info $gray $wide>
-                          New Note
-                        </Info>
-                      </StyledButton>
-                      <StyledButton $wide onClick={() => handleAddVerseClick()}>
-                        <Info $gray $wide>
-                          {" "}
-                          New Verse
-                        </Info>
-                      </StyledButton>
-                    </AddMenu>
-                  )}
-                </ActionButtonsContainer>
+
+                    {displayMenu && (
+                      <AddMenu ref={addMenuRef}>
+                        <StyledButton $wide onClick={() => handleAddNoteClick()}>
+                          <Info $gray $wide  >
+                            New Note
+                          </Info>
+                        </StyledButton>
+                        <StyledButton $wide onClick={() => handleAddVerseClick()}>
+                          <Info $gray $wide >
+                            New Verse
+                          </Info>
+                        </StyledButton>
+                      </AddMenu>
+                    )}
+                  </ActionButtonsContainer>
+                )}
               </CardContent>
             </CardOfDeck>
             {currentIndex < cardsOfDeck.length - 1 ? (

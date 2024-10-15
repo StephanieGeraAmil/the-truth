@@ -11,6 +11,7 @@ import { StyledLink } from "./shared_styles/styled_buttons";
 import { Login } from "./0auth/Login";
 import { Logout } from "./0auth/Logout";
 import { ColorBackground } from "styled-icons/fluentui-system-filled";
+import { SubTitle, Info } from "./shared_styles/styled_text";
 
 
 const NavContainer = styled.nav`
@@ -71,7 +72,7 @@ export const Nav = () => {
         <>
           <div >
 
-            <label>{user.email}</label>
+            <Info $xs>{user.email}</Info>
 
           </div>
 

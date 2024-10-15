@@ -28,6 +28,11 @@ const sharedStyle = css`
     css`
       size: ${mediumSize};
     `}
+    ${(props) =>
+      props.$gray &&
+      css`
+        color: gray;
+      `}
 `;
 export const Next = styled(ArrowForwardIos)`
   ${sharedStyle}

@@ -11,16 +11,29 @@ export const StyledButton = styled.button`
     css`
       width: 8vh;
     `}
+   
   ${(props) =>
     props.$wide &&
     css`
-      width: 13vh;
+      width: 7.5vw;
     `}
+  
   ${(props) =>
   props.$medium &&
   css`
     width: 6vh;
   `} 
+
+  @media (min-width: 1200px)  {
+    font-size: 1.5w;
+  }
+  @media (max-width: 600px)  {
+    ${(props) =>
+      props.$wide &&
+      css`
+        width: 24vw;
+      `}
+  }
 `;
 export const StyledLink = styled(Link)`
   border: 0;

@@ -59,9 +59,11 @@ export const Info = styled.p`
   font-weight: ${parameters.THIN_FONT_WEIGHT};
   
   margin: 0.5em 0;
-  text-align:center;    
+  text-align:start;    
   padding: 0;
   color: ${parameters.WHITE};
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   ${(props) =>
     props.$gray &&
@@ -89,6 +91,14 @@ export const Info = styled.p`
       width: 100%;
     `}
 
+  
+    ${(props) =>
+      props.$large &&
+      css`
+        height: 90%;
+      `}
+ 
+
   ${(props) =>
     props.$short &&
     css`
@@ -97,6 +107,11 @@ export const Info = styled.p`
 
   @media (max-width: 600px) {
     font-size: 15px;
+    ${(props) =>
+      props.$xs &&
+      css`
+      font-size: 11px;
+      `}
   }
 `;
 ////DECKS///
