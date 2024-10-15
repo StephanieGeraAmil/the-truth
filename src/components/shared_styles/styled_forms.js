@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import * as parameters from "./styling_parameters";
 export const Form = styled.div`
   margin-top: auto;
   height: 30vh;
@@ -22,11 +23,18 @@ export const FormInput = styled.input`
   font-family: Montserrat, sans-serif;
   font-size: 1.6em;
   color: #8b8c89;
-  width: 90%;
+  width: 100%;
   border: none;
   background-color: transparent;
   resize: none;
   outline: none;
+
+  ${(props) =>
+    props.$bold &&
+    css`
+      font-weight: ${parameters.EXTRABOLD_FONT_WEIGHT};
+      font-size: ${parameters.SMALL_FONT_SIZE};
+    `}
   @media (min-width: 1400px) {
     font-size: 1.5em;
   }
@@ -39,7 +47,7 @@ export const FormTextArea = styled.textarea`
   font-family: Montserrat, sans-serif;
   font-size: 1.6em;
   color: #8b8c89;
-  width: 90%;
+  width: 100%;
   height: 90%;
   border: none;
   background-color: transparent;

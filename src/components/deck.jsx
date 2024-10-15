@@ -274,42 +274,46 @@ export const Deck = () => {
             )}
             <CardOfDeck>
               <CardContent>
-                {formShown && formShown === "Note" && (<>
+                {formShown && formShown === "Note" && (
                   <StyledResource>
                     <FormTextArea
                       placeholder="Note content"
                       value={textAreaInput}
                       onChange={(e) => setTextAreaInput(e.target.value)}
                     />
-                  </StyledResource>
+                 
+                  <ActionButtonsContainer>
                   <StyledButton onClick={() => handleColseForm()}>
-                    <Close $color />
+                    <Close $gray />
                   </StyledButton>
                   <StyledButton onClick={() => handleSaveNoteClick(displayEditingResourceForm)}>
-                    <Save $color />
+                    <Save $gray />
                   </StyledButton>
-                </>
+                  </ActionButtonsContainer>
+                  </StyledResource>
                 )}
-                {formShown && formShown === "Verse" && (<>
+                {formShown && formShown === "Verse" && (
                   <StyledResource>
                     <FormTextArea
                       placeholder="Verse scripture"
                       value={textAreaInput}
                       onChange={(e) => setTextAreaInput(e.target.value)}
                     />
-                    <FormInput
+                    <FormInput $bold
                       placeholder="Verse reference"
                       value={textInput}
                       onChange={(e) => setTextInput(e.target.value)}
                     />
-                  </StyledResource>
+                
+                  <ActionButtonsContainer>
                   <StyledButton onClick={() => handleColseForm()}>
-                    <Close $color />
+                    <Close $gray />
                   </StyledButton>
                   <StyledButton onClick={() => handleSaveVerseClick(displayEditingResourceForm)}>
-                    <Save $color />
+                    <Save $gray />
                   </StyledButton>
-                </>
+                  </ActionButtonsContainer>
+                  </StyledResource>
 
                 )}
 
