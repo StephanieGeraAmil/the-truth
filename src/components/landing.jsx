@@ -44,7 +44,7 @@ export const RowSection = styled.div`
   ${(props) =>
     props.$head &&
     css`
-      height: 100vh; 
+      height: 96vh; 
       justify-content: flex-start;
       align-items:center;
       margin-bottom:100px;  
@@ -67,15 +67,15 @@ export const RowSection = styled.div`
     css`
           margin-top:5vh;
           margin-bottom:0;
-          height: 80vh; 
-          min-height:1000px;
+          height: 76vh; 
+          min-height:960px;
           width:90%;
           overflow: hidden; 
     `}
     ${(props) =>
       props.$wide &&
       css` 
-          height: 30vh; 
+          height: 40vh; 
           margin-top:0;  
     `}    
     }
@@ -88,7 +88,7 @@ export const RowSection = styled.div`
     height: 140%; 
     flex-direction: column;
     justify-content: "space-between";
-    gap: 5vh;
+    gap: 6.5vh;
 
     ${(props) =>
     props.$head &&
@@ -98,12 +98,19 @@ export const RowSection = styled.div`
         margin-bottom: 0;
         height: 100vh; 
         overflow: hidden; 
+        gap: 5vh;
       `}
       ${(props) =>
         props.$wide &&
         css` 
-            margin-bottom:5vh;  
+            margin-bottom:5vh; 
+            gap: 5vh; 
       `}
+      ${(props) =>
+        props.$girl &&
+        css`
+          flex-direction:column-reverse 
+        `}
   }
 
 `;
@@ -398,7 +405,7 @@ export const Landing = () => {
           />
         </Container>
       </RowSection>
-      <RowSection>
+      <RowSection $girl>
         <Container $half >
           <Elipse $second
             data-aos="fade-right"
