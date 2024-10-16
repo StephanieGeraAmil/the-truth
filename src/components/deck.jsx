@@ -28,16 +28,29 @@ const AddMenu = styled.div`
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
   position: absolute;
-  bottom: -5vh;
-  right: -5vh;
+  bottom: 18vh;
+  right: -15vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   z-index: 2;
+
+  ${(props) =>
+    props.$bottom &&
+    css`
+    bottom: -5vh;
+    right: -5vh;   
+    `}
   @media (max-width: 600px) {
     width: 30vw;
     padding: 1vh 1vh;
+    ${(props) =>
+      props.$bottom &&
+      css`
+      bottom: -8vh;
+     
+      `}
   }
   @media (min-width: 1400px) {
     height:17vh;
@@ -47,8 +60,11 @@ const AddMenu = styled.div`
 `;
 const NewCardBttonContainer = styled.div`
   position: relative;
-  height: 12vh;
-  width: 15vh;
+  height: 60%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
 `;
 const ActionButtonsContainer = styled.div`
   display: flex;
@@ -261,10 +277,10 @@ export const Deck = () => {
       <>
         {cardsOfDeck.length == 0 && (
           <NewCardBttonContainer>
-            <StyledButton $wide onClick={() => setDisplayMenu(true)}>
+            <StyledButton $big onClick={() => setDisplayMenu(true)}>
               <Plus />
 
-              <Info $wide>Add First Card</Info>
+              <Info $centered>Add Card</Info>
             </StyledButton>
             {displayMenu && (
               <AddMenu ref={addMenuRef}>
@@ -384,7 +400,7 @@ export const Deck = () => {
 
 
                     {displayMenu && (
-                      <AddMenu ref={addMenuRef}>
+                      <AddMenu $bottom ref={addMenuRef}>
                         <StyledButton $wide onClick={() => handleAddNoteClick()}>
                           <Info $gray $wide  >
                             New Note

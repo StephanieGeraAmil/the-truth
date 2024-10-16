@@ -58,11 +58,15 @@ export const Nav = () => {
   // const userLogged = useSelector(userLoggedSelector);
 
   useEffect(() => {
-   if (user) dispatch(getUserByEmail(user));
-   if (user) dispatch(getDecksOfUser(user));
+    console.log("change in is Authenticated");
+    console.log("user",user);
+   if (user) {dispatch(getUserByEmail(user))};
+   if (user) {dispatch(getDecksOfUser(user))};
   // if (user) console.log(user.email);
   }, [isAuthenticated]);
-
+  useEffect(() => {
+   console.log(location.pathname);
+   });
   return (
     <NavContainer>
 

@@ -66,6 +66,12 @@ export const Info = styled.p`
   overflow-wrap: break-word;
 
   ${(props) =>
+    props.$centered &&
+    css`
+    text-align:center;    
+    `}
+
+  ${(props) =>
     props.$gray &&
     css`
       color: ${parameters.BLACK};
