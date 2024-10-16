@@ -11,7 +11,7 @@ import {
 
 import { PreviewDeck } from "./previewDeck";
 import styled from "styled-components";
-import { DeckTitle } from "./shared_styles/styled_text";
+import { DeckTitle, SubTitle } from "./shared_styles/styled_text";
 import { StyledButton } from "./shared_styles/styled_buttons";
 import { Plus, Remove, Edit, Save } from "./shared_styles/styled_icons";
 import { FormTextArea } from "./shared_styles/styled_forms";
@@ -79,6 +79,17 @@ const ListItemStyled = styled.div`
     height:auto;
   }
 `;
+const TitleContainer = styled.div`
+  width: 100%;
+  height 22vh;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: #121212;
+  
+`;
 
 const DeckDashboardContainer = styled.div`
   width:100%;
@@ -87,7 +98,7 @@ const DeckDashboardContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr; 
   grid-auto-rows: 200px;
   row-gap: 5vh;
-  padding: 10vh 8vw;
+  padding: 5vh 8vw;
   background-color: #121212;
 
   @media (max-width: 600px) {
@@ -130,8 +141,11 @@ export const DeckDashboard = () => {
     window.scrollTo(0, 0);
 
   }, []);
-  return (
+  return (<>  <TitleContainer>
+    <SubTitle >Decks</SubTitle>
+  </TitleContainer>
     <DeckDashboardContainer>
+
       {decks.length > 0 ? (
         decks.map((element) => (
           <ListItemStyled key={element.id}>
@@ -168,7 +182,7 @@ export const DeckDashboard = () => {
                   <DeckTitle >{element.name}</DeckTitle>
                 </StyledLink>
                 <ActionButtonsSection>
-                  <StyledButton onClick={() => {setDisplayEditingDeckForm(element.id);setDeckName(element.name);}}>
+                  <StyledButton onClick={() => { setDisplayEditingDeckForm(element.id); setDeckName(element.name); }}>
                     <Edit />
                   </StyledButton>
                   <StyledButton onClick={() => dispatch(deleteDeck(element.id))}>
@@ -195,7 +209,7 @@ export const DeckDashboard = () => {
             ></FormTextArea>
             <ActionButtonsSection>
               <StyledButton onClick={() => handleClose()}>
-                <Remove  />
+                <Remove />
               </StyledButton>
               <StyledButton
                 onClick={() => {
@@ -204,18 +218,19 @@ export const DeckDashboard = () => {
                   }
                 }}
               >
-                <Save  />
+                <Save />
               </StyledButton>
             </ActionButtonsSection>
           </ItemContent>
         </ListItemStyled>
       ) : (
-        <PlusButton>      
+        <PlusButton>
           <StyledButton $big onClick={() => setDisplayNewDeckForm(true)}>
             <Plus $big />
           </StyledButton>
         </PlusButton>
       )}
     </DeckDashboardContainer>
+  </>
   );
 };
