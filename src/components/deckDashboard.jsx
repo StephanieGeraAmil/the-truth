@@ -197,7 +197,7 @@ export const DeckDashboard = () => {
           </ListItemStyled>
         ))
       ) : (
-        <p>User without decks yet</p>
+       <></>
       )}
 
       {(displayNewDeckForm) ? (
