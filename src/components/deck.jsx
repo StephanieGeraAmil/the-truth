@@ -266,12 +266,15 @@ export const Deck = () => {
 
   return (
     <DeckContainer>
+        <StyledLink to={`../decks/`}>
+            <Back $gray />
+          </StyledLink>
       {deck &&
         <DeckTitleContainer>
           <SubTitle>{deck.name}</SubTitle>
-          <StyledLink to={`../decks/`}>
+          {/* <StyledLink to={`../decks/`}>
             <Back $gray />
-          </StyledLink>
+          </StyledLink> */}
         </DeckTitleContainer>}
       <>
         {cardsOfDeck.length == 0 && (
@@ -279,7 +282,7 @@ export const Deck = () => {
             <StyledButton $big onClick={() => setDisplayMenu(true)}>
               <Plus />
 
-              <Info $centered>Add Card</Info>
+              {/* <Info $centered>Add Card</Info> */}
             </StyledButton>
             {displayMenu && (
               <AddMenu ref={addMenuRef}>

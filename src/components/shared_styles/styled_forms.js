@@ -29,19 +29,16 @@ export const FormInput = styled.input`
   background-color: transparent;
   resize: none;
   outline: none;
+  @media (min-width: 1800px) {
+    font-size: 1.8em;
+  }
 
   ${(props) =>
     props.$bold &&
     css`
       font-weight: ${parameters.EXTRABOLD_FONT_WEIGHT};
-      font-size: ${parameters.SMALL_FONT_SIZE};
     `}
-  @media (min-width: 1400px) {
-    font-size: 1.5em;
-  }
-  @media (max-width: 600px) {
-    font-size: 1.4em;
-  }
+ 
   
 `;
 export const FormTextArea = styled.textarea`
@@ -55,6 +52,9 @@ export const FormTextArea = styled.textarea`
   background-color: transparent;
   resize: none;
   outline: none;
+  @media (min-width: 1800px) {
+    font-size: 1.8em;
+  }
   ${(props) =>
     props.subtitle &&
     css`
