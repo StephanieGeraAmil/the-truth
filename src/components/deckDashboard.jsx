@@ -20,17 +20,14 @@ import { User } from "@auth0/auth0-react";
 
 
 const PlusButton = styled.div`
- width:20%;
- height:160px;
- display:flex;
- justify-content:center;
- align-items:center;
- @media (max-width: 600px) {
-  width: 100%;
-
-}
- 
-`;
+  width:20%;
+  height:160px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  @media (max-width: 600px) {
+    width: 100%;
+  }`;
 
 const StyledLink = styled(Link)`
   width: 100%;
@@ -46,7 +43,6 @@ const ActionButtonsSection = styled.div`
   justify-content: flex-end;
   gap: 1vh;
   z-index: 5;
-
 `;
 
 const ItemContent = styled.div`
@@ -55,7 +51,6 @@ const ItemContent = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-
 `;
 
 const ListItemStyled = styled.div`
@@ -64,8 +59,8 @@ const ListItemStyled = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   margin: 0;
-  width: 250px;
-  height:150px;
+  width: 20vw;
+  height:20vh;
   padding: 25px 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
@@ -82,13 +77,13 @@ const ListItemStyled = styled.div`
 const TitleContainer = styled.div`
   width: 100%;
   height 22vh;
-
+  margin-top:8vh;
+  padding-left:8vw;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  justify-content: center;
-  background-color: #121212;
-  
+  justify-content: flex-start;
+  background-color: #121212; 
 `;
 
 const DeckDashboardContainer = styled.div`
@@ -98,9 +93,10 @@ const DeckDashboardContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr; 
   grid-auto-rows: 200px;
   row-gap: 5vh;
+  column-gap: 2vw;
   padding: 5vh 8vw;
   background-color: #121212;
-
+ 
   @media (max-width: 600px) {
     grid-auto-rows: 160px;
     margin:auto;
@@ -108,6 +104,10 @@ const DeckDashboardContainer = styled.div`
     padding: 8vh auto;
   }
 
+`;
+const DeckDashboardPage = styled.div`
+  margin-top:-10vh;
+  padding-top:10vh;
 `;
 export const DeckDashboard = () => {
   const dispatch = useDispatch();
@@ -141,9 +141,11 @@ export const DeckDashboard = () => {
     window.scrollTo(0, 0);
 
   }, []);
-  return (<>  <TitleContainer>
-    <SubTitle >Decks</SubTitle>
-  </TitleContainer>
+  return (
+  <DeckDashboardPage>
+    <TitleContainer>
+      <SubTitle $big>Decks</SubTitle>
+    </TitleContainer>
     <DeckDashboardContainer>
 
       {decks.length > 0 ? (
@@ -231,6 +233,6 @@ export const DeckDashboard = () => {
         </PlusButton>
       )}
     </DeckDashboardContainer>
-  </>
+  </DeckDashboardPage>
   );
 };

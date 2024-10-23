@@ -34,13 +34,15 @@ export const SubTitle = styled.h3`
   justify-content: center;
   align-items: center;
 
+
   ${(props) =>
     props.$big &&
     css`
-      font-size: ${parameters.BIG_FONT_SIZE};
-      height: 10vh;
-    `}
+    margin:0;
+    font-size: ${parameters.BIG_FONT_SIZE};
 
+    `}
+ 
   ${(props) =>
     props.$color &&
     css`
@@ -49,6 +51,12 @@ export const SubTitle = styled.h3`
 
   @media (max-width: 600px) {
     font-size: 25px;
+    ${(props) =>
+      props.$big &&
+      css`
+        font-size: 50px;
+      `}
+  
   }
 `;
 

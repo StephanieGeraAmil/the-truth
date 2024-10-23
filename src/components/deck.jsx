@@ -18,7 +18,6 @@ import styled, { css } from "styled-components";
 import { SubTitle, Info } from "./shared_styles/styled_text";
 import { FormInput, FormTextArea } from "./shared_styles/styled_forms";
 import { Next, Prev, Plus, Remove, Edit, Save, Close, Back } from "./shared_styles/styled_icons";
-import { E } from "styled-icons/fa-solid";
 
 const AddMenu = styled.div`
   height: 15vh;
@@ -269,7 +268,7 @@ export const Deck = () => {
     <DeckContainer>
       {deck &&
         <DeckTitleContainer>
-          <SubTitle >{deck.name}</SubTitle>
+          <SubTitle>{deck.name}</SubTitle>
           <StyledLink to={`../decks/`}>
             <Back $gray />
           </StyledLink>

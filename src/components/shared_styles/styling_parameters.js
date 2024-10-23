@@ -1,4 +1,5 @@
 // Font size constants
+export const XL_FONT_SIZE = "7vw";
 export const BIG_FONT_SIZE = "5vw";
 export const MEDIUM_FONT_SIZE = "3.5vw";
 export const XS_FONT_SIZE = "1.1vw";

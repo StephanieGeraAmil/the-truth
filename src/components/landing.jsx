@@ -324,6 +324,11 @@ const StyledImage = styled.img`
             left: 0;
             right:auto;
      `}
+     ${(props) =>
+      props.$boy &&
+      css`
+          width: 80%;
+        `}
     }
 `;
 const DeckPreview = styled.div`
@@ -333,6 +338,7 @@ const DeckPreview = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {}
 `;
 
 
@@ -395,7 +401,7 @@ export const Landing = () => {
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
           ></Elipse>
-          <StyledImage
+          <StyledImage $boy
             src="./man-thinking.webp"
             className="focus"
             alt="man_thinking"

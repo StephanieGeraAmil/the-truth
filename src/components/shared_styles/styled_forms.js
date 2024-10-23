@@ -21,7 +21,8 @@ export const Form = styled.div`
 
 export const FormInput = styled.input`
   font-family: Montserrat, sans-serif;
-  font-size: 1.6em;
+  font-size: 1em;
+  background-color:red;
   color: #8b8c89;
   width: 100%;
   border: none;
@@ -45,7 +46,8 @@ export const FormInput = styled.input`
 `;
 export const FormTextArea = styled.textarea`
   font-family: Montserrat, sans-serif;
-  font-size: 1.6em;
+  font-size: 1em;
+  background-color:red;
   color: #8b8c89;
   width: 100%;
   height: 90%;
@@ -56,14 +58,13 @@ export const FormTextArea = styled.textarea`
   ${(props) =>
     props.subtitle &&
     css`
-      font-size: 4.5vh;
+      font-size: 1.4em;
       font-weight: 500;
       height: 80%;
+      @media (min-width: 1800px) {
+        font-size: 2.5em;
+      }
     `}
-    @media (min-width: 1400px) {
-      font-size: 1.5em;
-    }
-    @media (max-width: 600px) {
-      font-size: 1.4em;
-    }
+   
+   
 `;
