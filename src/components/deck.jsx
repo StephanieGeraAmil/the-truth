@@ -127,10 +127,14 @@ const DeckContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5vh;
+  @media (max-aspect-ratio: 10/9) {
+    gap:2vw; 
+  }
   @media (max-width: 600px) {
     gap: 1vh;
     height: 60%;
   }
+ 
 `;
 const DeckTitleContainer = styled.div`
   width: 80%;
@@ -139,6 +143,10 @@ const DeckTitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   position:relative;
+   @media (max-aspect-ratio: 10/9) {
+    heigth:10% !important;
+  }
+ 
 
 `;
 const BackNav = styled.div`
@@ -147,6 +155,10 @@ top:1vh;
 left:0 ;
 height:2.6vw;
 width:2.6vw;
+@media (max-aspect-ratio: 10/9) {
+  height:6vw;
+  width:6vw;
+}
 @media (max-width: 600px) {
   height:7vw;
 width:7vw;
@@ -155,6 +167,8 @@ width:7vw;
   height:1.6vw;
 width:1.6vw;
 }
+
+
 `;
 const DeckContainer = styled.div`
   width: 100%;

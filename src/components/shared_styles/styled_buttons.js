@@ -32,7 +32,24 @@ export const StyledButton = styled.button`
   @media (min-width: 1200px)  {
     font-size: 1.5w;
   }
+  @media (max-aspect-ratio: 14/9) {
+    width:4vw;
+    ${(props) =>
+      props.$wide &&
+      css`
+        width: 20vw;
+      `}
+  }
+  @media (max-aspect-ratio: 9/9) {
+    width:5vw;
+    ${(props) =>
+      props.$wide &&
+      css`
+        width: 20vw;
+      `}
+  }
   @media (max-width: 600px)  {
+    width: 5vh;
     ${(props) =>
       props.$wide &&
       css`
@@ -44,6 +61,7 @@ export const StyledButton = styled.button`
           width: auto;
         `}
   }
+ 
 `;
 export const StyledLink = styled(Link)`
   border: 0;

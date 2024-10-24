@@ -48,16 +48,19 @@ export const SubTitle = styled.h3`
     css`
       color: ${parameters.PRIMARY_COLOR};
     `}
-
+  @media (max-aspect-ratio: 10/9) {
+    font-size:8vw;
+  }
   @media (max-width: 600px) {
     font-size: 25px;
     ${(props) =>
-      props.$big &&
-      css`
+    props.$big &&
+    css`
         font-size: 50px;
       `}
   
   }
+ 
 `;
 
 
@@ -105,15 +108,15 @@ export const Info = styled.p`
       width: 100%;
     `}
     ${(props) =>
-      props.$addmenu &&
-      css`
+    props.$addmenu &&
+    css`
         width: 6vw;
       `}
 
   
     ${(props) =>
-      props.$large &&
-      css`
+    props.$large &&
+    css`
         height: 90%;
       `}
  
@@ -127,15 +130,18 @@ export const Info = styled.p`
   @media (max-width: 600px) {
     font-size: 15px;
     ${(props) =>
-      props.$xs &&
-      css`
+    props.$xs &&
+    css`
       font-size: 11px;
       `}
       ${(props) =>
-        props.$addmenu &&
-        css`
+    props.$addmenu &&
+    css`
           width: 20vw;
         `}
+  }
+  @media (max-aspect-ratio: 10/9) {
+    font-size:3vw;
   }
 `;
 ////DECKS///

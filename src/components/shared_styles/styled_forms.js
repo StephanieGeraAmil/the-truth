@@ -38,6 +38,9 @@ export const FormInput = styled.input`
     css`
       font-weight: ${parameters.EXTRABOLD_FONT_WEIGHT};
     `}
+    @media (max-aspect-ratio: 10/9) {
+      font-size:3vw;
+    }
  
   
 `;
@@ -65,6 +68,9 @@ export const FormTextArea = styled.textarea`
         font-size: 2.5em;
       }
     `}
+    @media (max-aspect-ratio: 10/9) {
+      font-size:3vw;
+    }
    
    
 `;

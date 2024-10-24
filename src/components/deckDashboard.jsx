@@ -84,6 +84,9 @@ const TitleContainer = styled.div`
   align-items: flex-end;
   justify-content: flex-start;
   background-color: #121212; 
+  @media (max-aspect-ratio: 10/9) {
+    height 10vh;
+  }
 `;
 
 const DeckDashboardContainer = styled.div`

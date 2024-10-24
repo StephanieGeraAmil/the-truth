@@ -19,6 +19,24 @@ export const CardOfDeck = styled.div`
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
+  @media (max-aspect-ratio: 14/9) {
+    width:40%;
+    heigth:auto;
+   
+    padding:8vw; 
+  }
+  @media (max-aspect-ratio: 11/9) {
+    width:55%;
+    heigth:auto;
+   
+    padding:8vw; 
+  }
+  @media (max-aspect-ratio: 9/9) {
+    width:70%;
+    heigth:auto;
+  
+    padding:8vw; 
+  }
 
   @media (max-width: 600px) {
     height: 80%;
@@ -57,6 +75,8 @@ export const CardOfDeck = styled.div`
       width: 25%;
       max-width: 20vw;
     `}
+
+    
 `;
 
 export const PreviewCard = styled.div`
