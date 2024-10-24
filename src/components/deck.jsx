@@ -329,7 +329,7 @@ export const Deck = () => {
           <DeckContent>
             {currentIndex > 0 ? (
               <StyledButton onClick={() => prevCard()}>
-                <Prev />
+                <Prev $gray />
               </StyledButton>
             ) : (
               <StyledButton></StyledButton>
@@ -469,7 +469,7 @@ export const Deck = () => {
             </CardOfDeck>
             {currentIndex < cardsOfDeck.length - 1 ? (
               <StyledButton onClick={() => nextCard()}>
-                <Next />
+                <Next $gray />
               </StyledButton>
             ) : (
               <StyledButton></StyledButton>
