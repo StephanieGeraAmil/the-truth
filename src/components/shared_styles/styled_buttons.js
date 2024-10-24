@@ -17,6 +17,11 @@ export const StyledButton = styled.button`
     css`
       width: 7.5vw;
     `}
+    ${(props) =>
+      props.$addmenu &&
+      css`
+        width: auto;
+      `}
   
   ${(props) =>
   props.$medium &&
@@ -33,6 +38,11 @@ export const StyledButton = styled.button`
       css`
         width: 24vw;
       `}
+      ${(props) =>
+        props.$addmenu &&
+        css`
+          width: auto;
+        `}
   }
 `;
 export const StyledLink = styled(Link)`

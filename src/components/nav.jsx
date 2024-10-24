@@ -52,21 +52,11 @@ export const Nav = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
-  //   useAuth0();
-  // const userLoggedSelector = (state) => (state.user ? state.user : null);
-  // const userLogged = useSelector(userLoggedSelector);
-
   useEffect(() => {
-    console.log("change in is Authenticated");
-    console.log("user", user);
     if (user) { dispatch(getUserByEmail(user)) };
     if (user) { dispatch(getDecksOfUser(user)) };
-    // if (user) console.log(user.email);
   }, [isAuthenticated]);
-  useEffect(() => {
-    console.log(location.pathname);
-  });
+ 
   return (
     <NavContainer>
 
@@ -85,7 +75,7 @@ export const Nav = () => {
 
           <ActionContainer>
 
-            {location.pathname !== '/decks' && (
+            {location.pathname == '/' && (
               <StyledLink to="/decks">Decks</StyledLink>
             )}
             {location.pathname !== '/' && (

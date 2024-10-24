@@ -104,6 +104,11 @@ export const Info = styled.p`
     css`
       width: 100%;
     `}
+    ${(props) =>
+      props.$addmenu &&
+      css`
+        width: 6vw;
+      `}
 
   
     ${(props) =>
@@ -126,6 +131,11 @@ export const Info = styled.p`
       css`
       font-size: 11px;
       `}
+      ${(props) =>
+        props.$addmenu &&
+        css`
+          width: 20vw;
+        `}
   }
 `;
 ////DECKS///

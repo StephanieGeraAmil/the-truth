@@ -21,9 +21,8 @@ export const CardOfDeck = styled.div`
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
 
   @media (max-width: 600px) {
-    aspect-ratio: auto;
-    width: 80%;
-    border-radius: 16%;
+    height: 80%;
+    min-height: 350px;
   }
   ${(props) =>
     props.$big &&

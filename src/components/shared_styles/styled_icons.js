@@ -3,12 +3,13 @@ import styled, { css } from "styled-components";
 import {
   ArrowForwardIos,
   ArrowBackIos,
-  KeyboardArrowUp,
+  KeyboardDoubleArrowUp,
   Delete,
   Edit as EditIcon,
   AddCircleOutline,
   Done,
-  Close as CloseIcon
+  Close as CloseIcon,
+  SubdirectoryArrowLeft
 } from "@styled-icons/material";
 const bigSize = "8vh";
 const mediumSize = "5vh";
@@ -42,7 +43,7 @@ export const Next = styled(ArrowForwardIos)`
 export const Prev = styled(ArrowBackIos)`
   ${sharedStyle}
 `;
-export const Back = styled(KeyboardArrowUp)`
+export const Back = styled(KeyboardDoubleArrowUp)`
   ${sharedStyle}
 `;
 export const Remove = styled(Delete)`

@@ -19,10 +19,15 @@ import { SubTitle, Info } from "./shared_styles/styled_text";
 import { FormInput, FormTextArea } from "./shared_styles/styled_forms";
 import { Next, Prev, Plus, Remove, Edit, Save, Close, Back } from "./shared_styles/styled_icons";
 
+const ShowOnClick= styled.div`
+
+
+`;
 const AddMenu = styled.div`
-  height: 15vh;
-  width: 10vw;
-  padding: 1vh 3vh;
+  height: 14vh;
+  width: auto;
+  max-width:18vh;
+  padding: 1vh 1vh;
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
@@ -39,20 +44,21 @@ const AddMenu = styled.div`
     props.$bottom &&
     css`
     bottom: -5vh;
-    right: -5vh;   
+    right: -5vh;
     `}
   @media (max-width: 600px) {
-    width: 30vw;
+    height: 15vh;
+    width: auto;
     padding: 1vh 1vh;
     ${(props) =>
-      props.$bottom &&
-      css`
+    props.$bottom &&
+    css`
       bottom: -8vh;
-     
+
       `}
   }
   @media (min-width: 1400px) {
-    height:17vh;
+
   }
 
 
@@ -96,7 +102,7 @@ const StyledResourceContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
- 
+
   gap: 2vh;
 `;
 const CardContent = styled.div`
@@ -133,7 +139,23 @@ const DeckTitleContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  
+  position:relative;
+
+`;
+const BackNav = styled.div`
+position:absolute;
+top:1vh;
+left:0 ;
+height:2.6vw;
+width:2.6vw;
+@media (max-width: 600px) {
+  height:7vw;
+width:7vw;
+}
+@media (min-width: 2000px) {
+  height:1.6vw;
+width:1.6vw;
+}
 `;
 const DeckContainer = styled.div`
   width: 100%;
@@ -145,7 +167,7 @@ const DeckContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
 `;
 
 export const Deck = () => {
@@ -168,6 +190,7 @@ export const Deck = () => {
   const [textAreaInput, setTextAreaInput] = useState("");
   const [textInput, setTextInput] = useState("");
   const [displayEditingResourceForm, setDisplayEditingResourceForm] = useState(null);
+  const [clickedCard, setClickedCard] = useState(null); 
   const addMenuRef = useRef(null);
 
   const nextCard = () => {
@@ -176,12 +199,13 @@ export const Deck = () => {
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
-    if (formShown && !displayEditingResourceForm) {
-      removeCard();
-    }
+    // if (formShown && !displayEditingResourceForm) {
+    //   removeCard();
+    // }
     setDisplayMenu(false);
     setFormShown(null);
-    setCurrentIndex(currentIndex - 1);
+    //setCurrentIndex(currentIndex=>currentIndex - 1);
+   if (currentIndex !== 0) {setCurrentIndex(prevIndex => prevIndex - 1)};
   };
   const createCard = () => {
     const card = { deckId: id, order: cardsOfDeck.length };
@@ -189,17 +213,22 @@ export const Deck = () => {
     setCurrentIndex(cardsOfDeck.length);
   };
   const removeCard = () => {
-    if (currentIndex !== 0) setCurrentIndex(prevIndex => prevIndex - 1);
+    // console.log("removeCard");
+    // console.log(displayEditingResourceForm);
+    // console.log(formShown);  
+    
+    // console.log(cardsOfDeck);
+    // if (currentIndex !== 0) {setCurrentIndex(prevIndex => prevIndex - 1)};
+    // console.log(currentIndex);
     dispatch(deleteCard(cardsOfDeck[currentIndex].id));
-    handleClose();
+    prevCard();
+   
   };
   const handleClose = () => {
     setTextAreaInput("");
     setTextInput("");
     setFormShown(null);
     setDisplayEditingResourceForm(null);
-
-
   };
   const handleAddNoteClick = () => {
     createCard();
@@ -211,9 +240,12 @@ export const Deck = () => {
     setFormShown("Verse");
     setDisplayMenu(false);
   };
-  const handleColseForm = () => {
+  const handleCloseFormWithPrev = () => {
+    setTextAreaInput("");
+    setTextInput("");
     if (!displayEditingResourceForm) {
-      prevCard();
+      // prevCard();
+      removeCard(); 
     } else {
       setFormShown(null);
       setDisplayEditingResourceForm(null);
@@ -243,6 +275,9 @@ export const Deck = () => {
       handleClose();
     }
   };
+  const handleCardClick = (cardId) => {
+    setClickedCard(clickedCard === cardId ? null : cardId); 
+  };
 
   useEffect(() => {
     setCardsOfDeck(cards.filter((c) => c.deckId == id));
@@ -266,11 +301,14 @@ export const Deck = () => {
 
   return (
     <DeckContainer>
-        <StyledLink to={`../decks/`}>
-            <Back $gray />
-          </StyledLink>
+
       {deck &&
         <DeckTitleContainer>
+          <BackNav>
+            <StyledLink to={`../decks/`}>
+              <Back $gray />
+            </StyledLink>
+          </BackNav>
           <SubTitle>{deck.name}</SubTitle>
           {/* <StyledLink to={`../decks/`}>
             <Back $gray />
@@ -286,13 +324,13 @@ export const Deck = () => {
             </StyledButton>
             {displayMenu && (
               <AddMenu ref={addMenuRef}>
-                <StyledButton $wide onClick={() => handleAddNoteClick()}>
-                  <Info $gray  >
+                <StyledButton $addmenu onClick={() => handleAddNoteClick()}>
+                  <Info $gray $addmenu  >
                     New Note
                   </Info>
                 </StyledButton >
-                <StyledButton $wide onClick={() => handleAddVerseClick()}>
-                  <Info $gray  >
+                <StyledButton $addmenu onClick={() => handleAddVerseClick()}>
+                  <Info $gray $addmenu  >
                     New Verse
                   </Info>
                 </StyledButton>
@@ -309,7 +347,7 @@ export const Deck = () => {
             ) : (
               <StyledButton></StyledButton>
             )}
-            <CardOfDeck>
+            <CardOfDeck key={currentIndex} onClick={() => handleCardClick(currentIndex)}>
               <CardContent>
                 {formShown && formShown === "Note" && (
                   <StyledResource>
@@ -320,7 +358,7 @@ export const Deck = () => {
                     />
 
                     <ActionButtonsContainer>
-                      <StyledButton onClick={() => handleColseForm()}>
+                      <StyledButton onClick={() => handleCloseFormWithPrev()}>
                         <Close $gray />
                       </StyledButton>
                       <StyledButton onClick={() => handleSaveNoteClick(displayEditingResourceForm)}>
@@ -343,7 +381,7 @@ export const Deck = () => {
                     />
 
                     <ActionButtonsContainer>
-                      <StyledButton onClick={() => handleColseForm()}>
+                      <StyledButton onClick={() => handleCloseFormWithPrev()}>
                         <Close $gray />
                       </StyledButton>
                       <StyledButton onClick={() => handleSaveVerseClick(displayEditingResourceForm)}>
@@ -354,13 +392,19 @@ export const Deck = () => {
 
                 )}
 
-                {!formShown &&
+                {!formShown && cardsOfDeck[currentIndex]!=null && notes &&
                   notes.filter((note) => note.cardId == cardsOfDeck[currentIndex].id).map((note) => (
 
                     <StyledResource key={note.id}>
+                      {clickedCard!=null  && (
+                      <ShowOnClick>
                       <StyledButton onClick={() => { setDisplayEditingResourceForm(note.id); setFormShown("Note"); setTextAreaInput(note.content); }}>
                         <Edit $gray />
                       </StyledButton>
+                      <StyledButton onClick={() => removeCard()}>
+                      <Remove $gray />
+                    </StyledButton>
+                      </ShowOnClick>)}
                       <StyledResourceContent>
                         <Info $gray >
                           {note.content}
@@ -370,12 +414,18 @@ export const Deck = () => {
 
                     </StyledResource>
                   ))}
-                {!formShown &&
+                {!formShown && cardsOfDeck[currentIndex]!=null && verses &&
                   verses.filter((verse) => verse.cardId == cardsOfDeck[currentIndex].id).map((verse) => (
                     <StyledResource key={verse.id}>
+                      {clickedCard!=null && (
+                     <ShowOnClick>
                       <StyledButton $right onClick={() => { setDisplayEditingResourceForm(verse.id); setFormShown("Verse"); setTextAreaInput(verse.content); setTextInput(verse.reference) }}>
                         <Edit $gray />
                       </StyledButton>
+                      <StyledButton onClick={() => removeCard()}>
+                      <Remove $gray />
+                    </StyledButton>
+                      </ShowOnClick>)}
                       <StyledResourceContent>
                         <Info $gray $wide>
                           {verse.content}{" "}
@@ -390,9 +440,10 @@ export const Deck = () => {
                   ))}
                 {!formShown && (
                   <ActionButtonsContainer>
-                    <StyledButton onClick={() => removeCard()}>
-                      <Remove $color />
-                    </StyledButton>
+                  
+                 
+                  
+                    
 
 
 
@@ -403,13 +454,13 @@ export const Deck = () => {
 
                     {displayMenu && (
                       <AddMenu $bottom ref={addMenuRef}>
-                        <StyledButton $wide onClick={() => handleAddNoteClick()}>
-                          <Info $gray $wide  >
+                        <StyledButton $addmenu onClick={() => handleAddNoteClick()}>
+                          <Info $gray $addmenu >
                             New Note
                           </Info>
                         </StyledButton>
-                        <StyledButton $wide onClick={() => handleAddVerseClick()}>
-                          <Info $gray $wide >
+                        <StyledButton $addmenu onClick={() => handleAddVerseClick()}>
+                          <Info $gray $addmenu >
                             New Verse
                           </Info>
                         </StyledButton>
