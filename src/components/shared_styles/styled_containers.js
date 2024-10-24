@@ -113,6 +113,10 @@ export const TextContainer = styled.div`
   width: ${(props) => (props.$all ? "100%" : "40%")};
   height: 100%;
   z-index: 1;
+  @media (max-aspect-ratio: 14/9) {
+    background-color:purple; 
+ 
+  }
 
   @media (max-width: 600px) {
     width: 100%;

@@ -72,6 +72,10 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   margin: 5px;
   z-index: 10;
+  @media (max-aspect-ratio: 14/9) {
+    font-size: 2.6vw!important;
+   
+  }
  
 `;
 
@@ -105,6 +109,10 @@ margin-top: 2em;
 
     @media (min-width: 1200px)  {
       font-size: 1.5w;
+    }
+    @media (max-aspect-ratio: 14/9) {
+      font-size: 2.6vw!important;
+     
     }
     @media (max-width: 600px)  {
       font-size: 15px;

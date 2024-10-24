@@ -26,6 +26,14 @@ export const StyledSection = styled.div`
   @media (min-width: 1400px) {
     gap: 5vh;
   }
+  @media (max-aspect-ratio: 14/9) {
+    
+    width:100%;
+ 
+  } 
+  @media (max-width: 600px) {
+    width:100%;
+  }
 `;
 
 export const RowSection = styled.div`
@@ -78,6 +86,28 @@ export const RowSection = styled.div`
     `}    
     }
   } 
+  @media (max-aspect-ratio: 14/9) {
+   
+    flex-direction:column;
+    height:100vh;
+    width:100%;
+    padding:0 5%;
+    gap:2vh;
+    ${(props) =>
+      props.$head &&
+      css`
+        margin-top:5%;
+        height:80vh;
+          
+      `}
+    ${(props) =>
+      props.$girl &&
+      css`
+      height:90vh;
+        flex-direction:column-reverse 
+      `}
+  }
+
 
   @media (max-width: 600px) {
     margin: 0;
@@ -91,24 +121,25 @@ export const RowSection = styled.div`
     ${(props) =>
     props.$head &&
     css`
-        justify-content: center;
-        align-items:center;
-        margin-bottom: 0;
-        height: 100vh; 
-        overflow: hidden; 
-        gap: 5vh;
+    flex-direction:column;
+    height:100vh;
+    width:100vw;
+    padding:0 5%;
+    gap:2vh;
+    margin-top:5%;
+    height:80vh;
+    `}
+    ${(props) =>
+      props.$wide &&
+      css` 
+        margin-bottom:5vh; 
+        gap: 5vh; 
+    `}
+    ${(props) =>
+      props.$girl &&
+      css`
+        flex-direction:column-reverse 
       `}
-      ${(props) =>
-        props.$wide &&
-        css` 
-            margin-bottom:5vh; 
-            gap: 5vh; 
-      `}
-      ${(props) =>
-        props.$girl &&
-        css`
-          flex-direction:column-reverse 
-        `}
   }
 
 `;
@@ -156,7 +187,22 @@ export const Container = styled.div`
 
   @media (min-width: 1400px) { 
     height: 100%; 
-   
+  }
+  @media (max-aspect-ratio: 14/9) { 
+    width:100%;
+    ${(props) =>
+      props.$floating &&
+      css`
+        width:0 !important; 
+        height:100vh; 
+        overflow:hidden;
+    `}
+    ${(props) =>
+      props.$headTitle &&
+      css`  
+        height: 100vh;
+        width:90%;
+    `}
   } 
 
   @media (max-width: 600px) {
@@ -165,8 +211,9 @@ export const Container = styled.div`
     ${(props) =>
     props.$floating &&
     css`
-      height:10px;
-      overflow: hidden !important;
+    width:0 !important; 
+    height:100vh; 
+    overflow:hidden;
      
     `}
     ${(props) =>
@@ -235,8 +282,30 @@ export const Elipse = styled.div`
   @media (min-width: 1000px) {
     left: 10%;
   }
+  @media (max-aspect-ratio: 14/9) {
+    height: 70%;
+    aspect-ratio: 1.1;
+    ${(props) =>
+      props.$first &&
+      css`
+        bottom:4%;
+        left: 10%;
+    `}
+    ${(props) =>
+      props.$second &&
+      css`
+        bottom:4%;
+        left: 10%;
+    `}
+    ${(props) =>
+      props.$third &&
+      css`
+      bottom: 2%; 
+      left: auto;      
+    `}
+  } 
   @media (max-width: 600px) {
-    height:${(props) => (props.$third ? "80%" : "55%")};
+    height:${(props) => (props.$third ? "80%" : "65%")};
     bottom: 10px;
     left: ${(props) => (props.$first ? "auto" : "5%")};
     right:auto; 
@@ -253,6 +322,10 @@ export const Title = styled.h1`
   margin: 0;
   padding: 0;
   color: #f0f0f0;
+  @media (max-aspect-ratio: 14/9) {
+    font-size: 15vw;
+    margin-top:40vh;
+  }
   @media (max-width: 600px) {
     font-size: 15vw;
   }
@@ -288,46 +361,67 @@ const StyledImage = styled.img`
         aspect-ratio: 0.8;
       `}
 
-    @media (min-width: 1400px) {
-      height: 55vh; 
-      width:auto;
+  @media (min-width: 1400px) {
+    height: 55vh; 
+    width:auto;
 
-      ${(props) =>
-        props.$floating &&
-        css`
-            height: 90vh; 
-            min-height:900px;
-            aspect-ratio: 1.1;
-            width:auto;    
-            top: -5%;
-            bottom:auto;
-            left: 30%;
-            right:auto;
-            object-fit: cover;
-      `}
-    } 
-
-    @media (max-width: 600px) {
-      width: 100%;
-      height: auto; 
-      ${(props) =>
-        props.$floating &&
-        css`
-            height: 100vh; 
-            aspect-ratio: 1.1;
-            width:auto;
-            overflow:hidden !important;
-            top: -5%;
-            bottom:auto;
-            left: 0;
-            right:auto;
-     `}
-     ${(props) =>
-      props.$boy &&
+    ${(props) =>
+      props.$floating &&
       css`
+          height: 90vh; 
+          min-height:900px;
+          aspect-ratio: 1.1;
+          width:auto;    
+          top: -5%;
+          bottom:auto;
+          left: 30%;
+          right:auto;
+          object-fit: cover;
+    `}
+  } 
+  @media (max-aspect-ratio: 14/9) {
+    
+    width:100%;
+    ${(props) =>
+      props.$floating &&
+      css`
+        height:100%;
+        left:-10%;
+        width:110%;
+        overflow:hidden;
+      
+    `}
+    ${(props) =>
+      props.$girl &&
+      css`
+          aspect-ratio: 0.8;
           width: 80%;
         `}
+    ${(props) =>
+      props.$boy &&
+      css`
+          width: 60%;
+        `}
     }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    height: auto; 
+    ${(props) =>
+      props.$floating &&
+      css`
+      height:130%;
+      left:-10%;
+      top:-10%;
+      width:110%;
+      overflow:hidden;
+    `}
+    ${(props) =>
+    props.$boy &&
+    css`
+        width: 80%;
+      `}
+  }
 `;
 const DeckPreview = styled.div`
   height: 100%;
@@ -336,6 +430,7 @@ const DeckPreview = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+ 
   @media (max-width: 600px) {}
 `;
 

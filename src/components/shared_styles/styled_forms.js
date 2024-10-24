@@ -47,7 +47,7 @@ export const FormInput = styled.input`
 export const FormTextArea = styled.textarea`
   font-family: Montserrat, sans-serif;
   font-size: 1em;
-  background-color:red;
+
   color: #8b8c89;
   width: 100%;
   height: 90%;

@@ -27,6 +27,7 @@ const NavContainer = styled.nav`
   padding: 1.5%;
   padding-right: 5%;
  
+ 
 `;
 const ActionContainer = styled.nav`
   width: 100vw;

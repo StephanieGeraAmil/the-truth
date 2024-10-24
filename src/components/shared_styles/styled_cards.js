@@ -101,6 +101,7 @@ export const PreviewCard = styled.div`
     right: 0%;
     bottom: 5%;
   }
+  
   @media (max-width: 600px) {
     bottom: 6%;
     right:0;
@@ -140,6 +141,12 @@ export const PreviewCard = styled.div`
           right: 0;
           bottom: 5%;
         }
+        @media (max-aspect-ratio: 14/9) {
+          bottom: 0;
+          width: 60%;
+          right:10%;
+    
+        }
         @media (max-width: 600px) {
           bottom: 0;
           width: 60%;
@@ -160,10 +167,16 @@ export const PreviewCard = styled.div`
         right: 15%;
         bottom: 10%;
       }
+      @media (max-aspect-ratio: 14/9) {
+        bottom: 5%;
+        width: 52%;
+        right:30%;
+  
+      }
       @media (max-width: 600px) {
         bottom: 5%;
         width: 52%;
-        right:20%;
+        right:23%;
       }
     `}
   ${(props) =>
@@ -181,6 +194,12 @@ export const PreviewCard = styled.div`
         width: 30%;
         right: 30%;
         bottom: 15%;
+      }
+      @media (max-aspect-ratio: 14/9) {
+        bottom: 8%;
+        width: 45%;
+        right:45%;
+  
       }
       @media (max-width: 600px) {
         bottom: 8%;
