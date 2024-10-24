@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getUserByEmail } from "./../actions/userActions.js";
 import { getDecksOfUser } from "./../actions/deckActions.js";
-// import { Login } from "./login";
-// import { Logout } from "./logout";
 import styled from "styled-components";
 import { StyledLink } from "./shared_styles/styled_buttons";
 import { Login } from "./0auth/Login";

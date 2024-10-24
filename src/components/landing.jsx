@@ -4,10 +4,8 @@ import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom";
 
 import styled, { css } from "styled-components";
-//import { PreviewDeck } from "./previewDeck";
 import { SubTitle, Info } from "./shared_styles/styled_text";
 import { float, move, enterRight, enterLeft } from "./shared_styles/styled_animations";
-//import { Container, Container } from "./shared_styles/styled_containers";
 import { LoginButton } from "./0auth/LoginButton";
 import { PreviewCard } from "./shared_styles/styled_cards";
 
