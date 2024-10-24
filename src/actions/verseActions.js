@@ -10,15 +10,7 @@ export const addVerse = (verse) => async (dispatch, getState) => {
     console.log(error);
   }
 };
-// export const deleteVerse = (verse_id) => async (dispatch) => {
-//   try {
-//     // await api.deleteVerse(verse_id);
-//     const action = { type: actions.DELETE_VERSE, payload: verse_id };
-//     dispatch(action);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+
 export const updateVerse = (id, verse) => async (dispatch) => {
   try {
     const { data } = await api.updateVerse(id, verse);

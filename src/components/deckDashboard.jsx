@@ -152,7 +152,6 @@ export const DeckDashboard = () => {
         decks.map((element) => (
           <ListItemStyled key={element.id}>
             {(displayEditingDeckForm == element.id) ? (
-              // <PreviewDeck>
               <ItemContent>
                 <FormTextArea
                   subtitle
@@ -175,7 +174,6 @@ export const DeckDashboard = () => {
                   </StyledButton>
                 </ActionButtonsSection>
               </ItemContent>
-              // </PreviewDeck>
             ) : (
 
 

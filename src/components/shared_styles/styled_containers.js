@@ -1,5 +1,3 @@
-// 
-
 import styled, { css } from "styled-components";
 import { float, move, enterRight, enterLeft } from "./styled_animations";
 

@@ -11,7 +11,6 @@ import { addVerse, updateVerse } from "../actions/verseActions";
 import { addNote, updateNote } from "../actions/noteActions";
 
 import { StyledButton } from "./shared_styles/styled_buttons";
-// import { addCardOnDeck, deleteCardFromDeck } from "../actions/deckActions";
 
 import { CardOfDeck } from "./shared_styles/styled_cards";
 import styled, { css } from "styled-components";
@@ -199,12 +198,8 @@ export const Deck = () => {
     setCurrentIndex(currentIndex + 1);
   };
   const prevCard = () => {
-    // if (formShown && !displayEditingResourceForm) {
-    //   removeCard();
-    // }
     setDisplayMenu(false);
     setFormShown(null);
-    //setCurrentIndex(currentIndex=>currentIndex - 1);
    if (currentIndex !== 0) {setCurrentIndex(prevIndex => prevIndex - 1)};
   };
   const createCard = () => {
@@ -213,13 +208,6 @@ export const Deck = () => {
     setCurrentIndex(cardsOfDeck.length);
   };
   const removeCard = () => {
-    // console.log("removeCard");
-    // console.log(displayEditingResourceForm);
-    // console.log(formShown);  
-    
-    // console.log(cardsOfDeck);
-    // if (currentIndex !== 0) {setCurrentIndex(prevIndex => prevIndex - 1)};
-    // console.log(currentIndex);
     dispatch(deleteCard(cardsOfDeck[currentIndex].id));
     prevCard();
    
@@ -244,7 +232,6 @@ export const Deck = () => {
     setTextAreaInput("");
     setTextInput("");
     if (!displayEditingResourceForm) {
-      // prevCard();
       removeCard(); 
     } else {
       setFormShown(null);

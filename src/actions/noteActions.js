@@ -9,15 +9,6 @@ export const addNote = (note) => async (dispatch, getState) => {
     console.log(error);
   }
 };
-// export const deleteNote = (note_id) => async (dispatch) => {
-//   try {
-//     // await api.deleteNote(note_id);
-//     const action = { type: actions.DELETE_NOTE, payload: note_id };
-//     dispatch(action);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 export const updateNote = (id, note) => async (dispatch) => {
   try {
     const { data } = await api.updateNote(id, note);
