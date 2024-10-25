@@ -34,7 +34,8 @@ export const StyledSection = styled.div`
     gap: 5vh;
   }
   @media (max-width: 600px) {
-    width:100%;
+    width:100vw;
+    overflow:hidden;
   }
 `;
 
@@ -174,6 +175,7 @@ export const RowSection = styled.div`
     flex-direction:column;
     height:100vh;
     width:100vw;
+    overflow:hidden;
     padding:0 5%;
     gap:2vh;
     margin-top:5%;
@@ -289,7 +291,8 @@ export const Container = styled.div`
     ${(props) =>
     props.$floating &&
     css`
-    width:0 !important; 
+    width:100vw !important; 
+  
     height:100vh; 
     overflow:hidden;
      
@@ -328,7 +331,7 @@ export const Elipse = styled.div`
             #33abb9 100%
           );
           bottom:10%;
-          left: 30%;
+          left: 10%;
          
   `}
   ${(props) =>
@@ -341,7 +344,7 @@ export const Elipse = styled.div`
             #33abb9 100%
           );
           bottom:10%;
-          left: 30%;
+          left: 20%;
 
   `}
   ${(props) =>
@@ -395,7 +398,7 @@ export const Elipse = styled.div`
   }
   @media (min-width: 1400px) {
     height:60%;
-
+  
     ${(props) =>
       props.$third &&
       css`
@@ -565,9 +568,9 @@ const StyledImage = styled.img`
       props.$floating &&
       css`
       height:130%;
-      left:-10%;
+      left:0%;
       top:-10%;
-      width:110%;
+      width:130%;
       overflow:hidden;
     `}
     ${(props) =>
