@@ -300,7 +300,10 @@ export const Container = styled.div`
     ${(props) =>
       props.$headTitle &&
       css`  
-      justify-content:flex-end;  
+      widthL100vw;
+      margin:0;
+      
+      justify-content:center;  
     `}
     ${(props) =>
       props.$deck &&
@@ -466,6 +469,7 @@ export const Title = styled.h1`
   }
   @media (max-width: 600px) {
     font-size: 15vw;
+    margin-top:35vh;
     & > span {
       color: ${parameters.PRIMARY_COLOR}!important;
       opacity:1!important;
