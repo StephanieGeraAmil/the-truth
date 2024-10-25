@@ -19,7 +19,7 @@ export const CardOfDeck = styled.div`
   background: #fff;
   border-radius: 20%;
   box-shadow: 0px 4px 9px 6px rgba(0, 0, 0, 0.25);
-  @media (max-aspect-ratio: 14/9) {
+  @media (max-aspect-ratio: 11/9) {
     width:40%;
     heigth:auto;
    
@@ -136,19 +136,25 @@ export const PreviewCard = styled.div`
         width: 55%;
         aspect-ratio: 0.8;
         animation: ${move} 5s 0.5s ease-in-out infinite;
-        @media (min-width: 1400px) {
-          width: 50%;
-          right: 0;
-          bottom: 5%;
-        }
-        @media (max-aspect-ratio: 14/9) {
+       
+        @media (max-aspect-ratio: 11/9) {
           bottom: 0;
           width: 60%;
           right:10%;
     
         }
+        @media (min-width: 1400px) {
+          width: 50%;
+          right: 0;
+          bottom: 35%;
+        }
+        @media (min-width: 1900px) {
+          width: 40%;
+          right: 0;
+          bottom: 35%;
+        }
         @media (max-width: 600px) {
-          bottom: 0;
+          bottom: -30%;
           width: 60%;
         }
       `}
@@ -162,19 +168,25 @@ export const PreviewCard = styled.div`
       width: 46%;
       aspect-ratio: 0.8;
       animation: ${move} 5s 0.5s ease-in-out infinite;
-      @media (min-width: 1400px) {
-        width: 40%;
-        right: 15%;
-        bottom: 10%;
-      }
-      @media (max-aspect-ratio: 14/9) {
+     
+      @media (max-aspect-ratio: 11/9) {
         bottom: 5%;
         width: 52%;
         right:30%;
   
       }
+      @media (min-width: 1400px) {
+        width: 40%;
+        right: 15%;
+        bottom: 40%;
+      }
+      @media (min-width: 1900px) {
+        width: 30%;
+        right: 15%;
+        bottom: 40%;
+      }
       @media (max-width: 600px) {
-        bottom: 5%;
+        bottom:-30%;
         width: 52%;
         right:23%;
       }
@@ -190,19 +202,25 @@ export const PreviewCard = styled.div`
       aspect-ratio: 0.8;
         animation: ${move} 5s 0.3s ease-in-out infinite;
 
-      @media (min-width: 1400px) {
-        width: 30%;
-        right: 30%;
-        bottom: 15%;
-      }
-      @media (max-aspect-ratio: 14/9) {
+   
+      @media (max-aspect-ratio: 11/9) {
         bottom: 8%;
         width: 45%;
         right:45%;
   
       }
+      @media (min-width: 1400px) {
+        width: 30%;
+        right: 30%;
+        bottom: 45%;
+      }
+      @media (min-width: 1400px) {
+        width: 20%;
+        right: 30%;
+        bottom: 45%;
+      }
       @media (max-width: 600px) {
-        bottom: 8%;
+        bottom: -30%;
         width: 45%;
         right:35%;
       }

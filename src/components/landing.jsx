@@ -8,6 +8,7 @@ import { SubTitle, Info } from "./shared_styles/styled_text";
 import { float, move, enterRight, enterLeft } from "./shared_styles/styled_animations";
 import { LoginButton } from "./0auth/LoginButton";
 import { PreviewCard } from "./shared_styles/styled_cards";
+import * as parameters from "./shared_styles/styling_parameters";
 
 import { ColorAndTextButton } from "./shared_styles/styled_buttons";
 
@@ -23,23 +24,24 @@ export const StyledSection = styled.div`
   align-items: center;
   gap: 10vh;
   overflow-x: hidden; 
-  @media (min-width: 1400px) {
-    gap: 5vh;
-  }
-  @media (max-aspect-ratio: 14/9) {
+  
+  @media (max-aspect-ratio: 11/9) {
     
     width:100%;
  
   } 
+  @media (min-width: 1400px) {
+    gap: 5vh;
+  }
   @media (max-width: 600px) {
     width:100%;
   }
 `;
 
 export const RowSection = styled.div`
-  width: 80%;
+  width: 90%;
   margin:0 auto;
-  height: 55vh; 
+  height: 70vh; 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -62,31 +64,14 @@ export const RowSection = styled.div`
         align-items:flex-start;
         height: 30vh; 
         max-height:400px;
-        margin:0;  
+        margin:0; 
+        width:80%; 
     `}
   
+  
+ 
 
-  @media (min-width: 1400px) {
-    height: 60vh; 
-    ${(props) =>
-    props.$head &&
-    css`
-          margin-top:5vh;
-          margin-bottom:0;
-          height: 76vh; 
-          min-height:960px;
-          width:90%;
-          overflow: hidden; 
-    `}
-    ${(props) =>
-      props.$wide &&
-      css` 
-          height: 40vh; 
-          margin-top:0;  
-    `}    
-    }
-  } 
-  @media (max-aspect-ratio: 14/9) {
+  @media (max-aspect-ratio: 11/9) {
    
     flex-direction:column;
     height:100vh;
@@ -97,21 +82,86 @@ export const RowSection = styled.div`
       props.$head &&
       css`
         margin-top:5%;
-        height:80vh;
+        height:100vh;
+        justify-content:flex-end;
           
       `}
     ${(props) =>
       props.$girl &&
       css`
-      height:90vh;
-        flex-direction:column-reverse 
+        height:90vh;
+        flex-direction:column-reverse ;
       `}
   }
+  @media (max-aspect-ratio: 9/9) { 
+    width:100%;
+    height: 130vh; 
+    ${(props) =>
+      props.$head &&
+      css`
+        height:100vh;
+      `}
+    ${(props) =>
+      props.$girl &&
+      css`
+        height:90vh;
+        flex-direction:column-reverse ;
+      `}
+    
+  }
+  @media (min-width: 1400px) {
+    height: 60vh; 
+    width:70%;
+    ${(props) =>
+    props.$head &&
+    css`
+          margin-top:5vh;
+          margin-bottom:0;
+          height: 90vh; 
+          width:90%;
+          overflow: hidden; 
+    `}
+    ${(props) =>
+      props.$wide &&
+      css` 
+          height: 40vh; 
+          margin-top:0;  
+    `}  
+    ${(props) =>
+      props.$last &&
+      css`
+      height:60vh;
+           
+      `}  
+    }
+  } 
+  @media (min-width: 1900px) {
+    height: 70vh; 
+    ${(props) =>
+    props.$head &&
+    css`
+    height:90vh;
+          width:70%; 
+    `}
+    ${(props) =>
+      props.$last &&
+      css`
+      height:70vh;
+           
+      `}
+      ${(props) =>
+        props.$wide &&
+        css` 
+            width:70%;
+      `}   
+    }
+  } 
+ 
 
 
   @media (max-width: 600px) {
     margin: 0;
-    width: 80%;
+    width: 90%;
     margin:auto;
     height: 140%; 
     flex-direction: column;
@@ -127,7 +177,7 @@ export const RowSection = styled.div`
     padding:0 5%;
     gap:2vh;
     margin-top:5%;
-    height:80vh;
+    
     `}
     ${(props) =>
       props.$wide &&
@@ -159,7 +209,7 @@ export const Container = styled.div`
   ${(props) =>
     props.$wide &&
     css`
-        width:60%;     
+      width:60%;     
   `}Ï
 
   ${(props) =>
@@ -172,7 +222,7 @@ export const Container = styled.div`
   ${(props) =>
     props.$deck &&
     css`
-    height:30vh;  
+    height:80vh;  
   `}
   ${(props) =>
     props.$headTitle &&
@@ -180,15 +230,14 @@ export const Container = styled.div`
     height: auto; 
     display:flex;
     flex-direction:column;
-    justify-content:center;  
+    justify-content:flex-end;   
   `}
+
  
   
 
-  @media (min-width: 1400px) { 
-    height: 100%; 
-  }
-  @media (max-aspect-ratio: 14/9) { 
+ 
+  @media (max-aspect-ratio: 11/9) { 
     width:100%;
     ${(props) =>
       props.$floating &&
@@ -203,7 +252,36 @@ export const Container = styled.div`
         height: 100vh;
         width:90%;
     `}
+    ${(props) =>
+      props.$deck &&
+      css`
+      height:80vh;  
+    `}
   } 
+  @media (max-aspect-ratio: 9/9) { 
+    width:100%;
+    height:65%;
+    ${(props) =>
+      props.$deck &&
+      css`
+      height:80vh;  
+    `}
+    ${(props) =>
+      props.$headTitle &&
+      css`  
+        height: 100vh;
+        width:85%;
+    `}
+  }
+  @media (min-width: 1400px) { 
+    height: 100%; 
+    width: 100%;
+    ${(props) =>
+      props.$deck &&
+      css`
+      height:80vh;  
+    `}
+  }
 
   @media (max-width: 600px) {
     width: 90%;
@@ -224,7 +302,7 @@ export const Container = styled.div`
     ${(props) =>
       props.$deck &&
       css`
-      height:28vh;  
+      height:40vh;  
     `}
   
   }
@@ -279,16 +357,19 @@ export const Elipse = styled.div`
         left: auto;  
        
   `}
-  @media (min-width: 1000px) {
-    left: 10%;
-  }
+  
   @media (max-aspect-ratio: 14/9) {
+    height: 50%;
+    aspect-ratio: 1.1;
+   
+  } 
+  @media (max-aspect-ratio: 11/9) {
     height: 70%;
     aspect-ratio: 1.1;
     ${(props) =>
       props.$first &&
       css`
-        bottom:4%;
+        bottom:14%;
         left: 10%;
     `}
     ${(props) =>
@@ -304,6 +385,48 @@ export const Elipse = styled.div`
       left: auto;      
     `}
   } 
+  @media (max-aspect-ratio: 9/9) { 
+    ${(props) =>
+      props.$third &&
+      css`
+      bottom: 30%; 
+      left: auto;      
+    `}
+  }
+  @media (min-width: 1400px) {
+    height:60%;
+
+    ${(props) =>
+      props.$third &&
+      css`
+      bottom: 20%; 
+      left: 20%;   
+      height:40%;   
+    `}
+  }
+  @media (min-width: 1900px) {
+    height:60%;
+    ${(props) =>
+      props.$first &&
+      css`
+        bottom:30%;
+        left: 10%;
+    `}
+    ${(props) =>
+      props.$second &&
+      css`
+        bottom:30%;
+        left: 10%;
+    `}
+    ${(props) =>
+      props.$third &&
+      css`
+      bottom: 20%; 
+      left: 35%;   
+      height:40%;   
+    `}
+  }
+
   @media (max-width: 600px) {
     height:${(props) => (props.$third ? "80%" : "65%")};
     bottom: 10px;
@@ -322,12 +445,29 @@ export const Title = styled.h1`
   margin: 0;
   padding: 0;
   color: #f0f0f0;
-  @media (max-aspect-ratio: 14/9) {
+  z-index:6;
+  & > span {
+    color: ${parameters.PRIMARY_COLOR}!important;
+    opacity:1!important;
+    
+  }
+  @media (max-aspect-ratio: 11/9) {
     font-size: 15vw;
-    margin-top:40vh;
+    margin-top:50vh;
+    margin-bottom:0;
+    & > span {
+      color: ${parameters.PRIMARY_COLOR}!important;
+      opacity:1!important;
+      
+    }
   }
   @media (max-width: 600px) {
     font-size: 15vw;
+    & > span {
+      color: ${parameters.PRIMARY_COLOR}!important;
+      opacity:1!important;
+      
+    }
   }
 `;
 const StyledImage = styled.img`
@@ -361,32 +501,19 @@ const StyledImage = styled.img`
         aspect-ratio: 0.8;
       `}
 
-  @media (min-width: 1400px) {
-    height: 55vh; 
-    width:auto;
+  
+ 
+  
 
-    ${(props) =>
-      props.$floating &&
-      css`
-          height: 90vh; 
-          min-height:900px;
-          aspect-ratio: 1.1;
-          width:auto;    
-          top: -5%;
-          bottom:auto;
-          left: 30%;
-          right:auto;
-          object-fit: cover;
-    `}
-  } 
-  @media (max-aspect-ratio: 14/9) {
+  @media (max-aspect-ratio: 11/9) {
     
     width:100%;
     ${(props) =>
       props.$floating &&
       css`
         height:100%;
-        left:-10%;
+        top:-12%;
+        left:-4%;
         width:110%;
         overflow:hidden;
       
@@ -400,9 +527,36 @@ const StyledImage = styled.img`
     ${(props) =>
       props.$boy &&
       css`
-          width: 60%;
+          width: 75%;
         `}
     }
+  
+      @media (min-width: 1400px) {
+        height: 55vh; 
+        width:auto;
+    
+        ${(props) =>
+          props.$floating &&
+          css`
+              height: 90vh; 
+              min-height:900px;
+              aspect-ratio: 1.1;
+              width:auto;    
+              top: -5%;
+              bottom:auto;
+              left: 30%;
+              right:auto;
+              object-fit: cover;
+        `}
+      } 
+      @media (min-width: 1900px) {
+        ${(props) =>
+        props.$floating &&
+        css`
+        left: 35%;
+          
+        `}
+        }
 
   @media (max-width: 600px) {
     width: 100%;
@@ -431,7 +585,12 @@ const DeckPreview = styled.div`
   justify-content: center;
   align-items: center;
  
-  @media (max-width: 600px) {}
+  @media (max-aspect-ratio: 11/9) {
+    height:50%;
+  }
+  @media (max-width: 600) {
+    height:100%;
+  }
 `;
 
 
@@ -538,7 +697,7 @@ export const Landing = () => {
           <LoginButton text="Start now" /> */}
         </Container>
       </RowSection>
-      <RowSection>
+      <RowSection $last>
         <Container  >
           <SubTitle>
             Embrace and Repeat the Truth
@@ -572,7 +731,7 @@ export const Landing = () => {
 
         </Container>
       </RowSection>
-      <RowSection $wide $last>
+      <RowSection $wide >
         <Container $wide >
           <Info >
             Start Your Journey Today, Begin the path to a renewed mind and a life full of God's promises. Embrace the truth, break free from mental barriers, and experience the freedom God has in store for you.

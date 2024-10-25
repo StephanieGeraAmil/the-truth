@@ -4,14 +4,12 @@ import * as parameters from "./styling_parameters";
 export const Title = styled.h1`
   font-size: ${parameters.BIG_FONT_SIZE};
   font-weight: ${parameters.THICK_FONT_WEIGHT};
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  
   margin: 0 0 0.2em 0;
   padding: 0;
   color: ${parameters.WHITE};
 
-  & > span {
-    color: ${parameters.SECONDARY_COLOR};
-  }
+  
 
   @media (max-width: 1800px) and (min-height: 1000px) {
     font-size: 4rem;
@@ -126,6 +124,9 @@ export const Info = styled.p`
     css`
       width: 50%;
     `}
+    @media (max-aspect-ratio: 10/9) {
+      font-size:3vw;
+    }
 
   @media (max-width: 600px) {
     font-size: 15px;
@@ -140,9 +141,7 @@ export const Info = styled.p`
           width: 20vw;
         `}
   }
-  @media (max-aspect-ratio: 10/9) {
-    font-size:3vw;
-  }
+ 
 `;
 ////DECKS///
 export const DeckTitle = styled.h3`
