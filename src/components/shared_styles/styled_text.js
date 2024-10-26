@@ -124,10 +124,22 @@ export const Info = styled.p`
     css`
       width: 50%;
     `}
+    @media (max-aspect-ratio: 11/9) {
+      font-size:2.1vw;
+      ${(props) =>
+        props.$xs &&
+        css`
+        font-size:2.3vw;
+          `}
+    }
     @media (max-aspect-ratio: 10/9) {
       font-size:3vw;
+      ${(props) =>
+        props.$xs &&
+        css`
+        font-size:2.5vw;
+          `}
     }
-
   @media (max-width: 600px) {
     font-size: 15px;
     ${(props) =>

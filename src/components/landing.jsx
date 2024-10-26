@@ -78,7 +78,7 @@ export const RowSection = styled.div`
     height:100vh;
     width:100%;
     padding:0 5%;
-    gap:2vh;
+    gap:1vh;
     ${(props) =>
       props.$head &&
       css`
@@ -93,10 +93,40 @@ export const RowSection = styled.div`
         height:90vh;
         flex-direction:column-reverse ;
       `}
+      ${(props) =>
+        props.$wide &&
+        css`
+            width:100vh; 
+            height:auto;
+        `}
+  }
+  @media (max-aspect-ratio: 10/9) { 
+    width:100%;
+    height: auto; 
+   
+    ${(props) =>
+      props.$head &&
+      css`
+        height:100vh;
+      `}
+    ${(props) =>
+      props.$girl &&
+      css`
+       
+        flex-direction:column-reverse ;
+      `}
+      ${(props) =>
+        props.$wide &&
+        css`
+           
+            width:100%; 
+        `}
+    
   }
   @media (max-aspect-ratio: 9/9) { 
     width:100%;
-    height: 130vh; 
+    height: auto; 
+   
     ${(props) =>
       props.$head &&
       css`
@@ -108,6 +138,12 @@ export const RowSection = styled.div`
         height:90vh;
         flex-direction:column-reverse ;
       `}
+      ${(props) =>
+        props.$wide &&
+        css`
+           
+            width:100%; 
+        `}
     
   }
   @media (min-width: 1400px) {
@@ -199,8 +235,10 @@ export const RowSection = styled.div`
 
 export const Container = styled.div`
   width: 50%;
+  margin:auto;
   padding:0;
   height: 100%; 
+
  
 
  ${(props) =>
@@ -211,7 +249,7 @@ export const Container = styled.div`
   ${(props) =>
     props.$wide &&
     css`
-      width:60%;     
+      width:90%;  
   `}Ï
 
   ${(props) =>
@@ -241,6 +279,7 @@ export const Container = styled.div`
  
   @media (max-aspect-ratio: 11/9) { 
     width:100%;
+   
     ${(props) =>
       props.$floating &&
       css`
@@ -259,14 +298,49 @@ export const Container = styled.div`
       css`
       height:80vh;  
     `}
+    ${(props) =>
+      props.$wide &&
+      css`
+        width:90%%;     
+    `}Ï
   } 
+  @media (max-aspect-ratio: 10/9) { 
+    width:100%;
+    
+    ${(props) =>
+      props.$floating &&
+      css`
+        width:0 !important; 
+        height:100vh; 
+        overflow:hidden;
+    `}
+    ${(props) =>
+      props.$headTitle &&
+      css`  
+        height: 100vh;
+        width:90%;
+    `}
+    ${(props) =>
+      props.$deck &&
+      css`
+      height:100vh; 
+      min-height:500px; 
+    `}
+    ${(props) =>
+      props.$wide &&
+      css`
+        width:90%%;     
+    `}Ï
+  } 
+ 
   @media (max-aspect-ratio: 9/9) { 
+   
     width:100%;
     height:65%;
     ${(props) =>
       props.$deck &&
       css`
-      height:80vh;  
+      height:60vh;  
     `}
     ${(props) =>
       props.$headTitle &&
@@ -274,6 +348,11 @@ export const Container = styled.div`
         height: 100vh;
         width:85%;
     `}
+    ${(props) =>
+      props.$wide &&
+      css`
+      height:auto;
+    `}Ï
   }
   @media (min-width: 1400px) { 
     height: 100%; 
@@ -346,7 +425,7 @@ export const Elipse = styled.div`
             #15464c 76.56%,
             #33abb9 100%
           );
-          bottom:10%;
+          bottom:20%;
           left: 20%;
 
   `}
@@ -359,16 +438,24 @@ export const Elipse = styled.div`
           #15464c 81.45%,
           #33abb9 100%
         );
-        bottom: 2%; 
+        bottom: 5%; 
         left: auto;  
        
   `}
   
+
   @media (max-aspect-ratio: 14/9) {
     height: 50%;
     aspect-ratio: 1.1;
+    ${(props) =>
+      props.$third &&
+      css`
+      bottom: 40%; 
+     
+    `}
    
   } 
+
   @media (max-aspect-ratio: 11/9) {
     height: 70%;
     aspect-ratio: 1.1;
@@ -387,16 +474,25 @@ export const Elipse = styled.div`
     ${(props) =>
       props.$third &&
       css`
-      bottom: 2%; 
-      left: auto;      
+      height: 60%;
+      bottom: 25%; 
+      left: 30%;      
     `}
   } 
   @media (max-aspect-ratio: 9/9) { 
+    height: 60%;
+    ${(props) =>
+      props.$second &&
+      css`
+      height: 80%;
+        
+    `}
     ${(props) =>
       props.$third &&
       css`
-      bottom: 30%; 
-      left: auto;      
+      height: 50%;
+      bottom: 25%; 
+      left: 30%;      
     `}
   }
   @media (min-width: 1400px) {
@@ -405,7 +501,7 @@ export const Elipse = styled.div`
     ${(props) =>
       props.$third &&
       css`
-      bottom: 20%; 
+      bottom: 30%; 
       left: 20%;   
       height:40%;   
     `}
@@ -427,17 +523,20 @@ export const Elipse = styled.div`
     ${(props) =>
       props.$third &&
       css`
-      bottom: 20%; 
-      left: 35%;   
-      height:40%;   
+      bottom: 40%; 
+      left: 25%;   
+      height:50%;   
     `}
   }
 
+
+
   @media (max-width: 600px) {
-    height:${(props) => (props.$third ? "80%" : "65%")};
+    height:${(props) => (props.$third ? "60%" : "65%")};
     bottom: 10px;
     left: ${(props) => (props.$first ? "auto" : "5%")};
     right:auto; 
+    
   }
  
 
@@ -458,7 +557,7 @@ export const Title = styled.h1`
     
   }
   @media (max-aspect-ratio: 11/9) {
-    font-size: 15vw;
+    font-size: 13vw;
     margin-top:50vh;
     margin-bottom:0;
     & > span {
@@ -592,8 +691,8 @@ const DeckPreview = styled.div`
   justify-content: center;
   align-items: center;
  
-  @media (max-aspect-ratio: 11/9) {
-    height:50%;
+  @media (max-aspect-ratio: 10/9) {
+    height:70%;
   }
   @media (max-width: 600) {
     height:100%;
@@ -631,14 +730,14 @@ export const Landing = () => {
       <RowSection $wide >
         <Container $wide >
 
-          <Info >
+          <Info $wide >
             Inspired by Craig Groeschel’s transformative book, Winning the War in Your Mind, this website is dedicated to helping you break free from the mental barriers that hold you back from experiencing God’s boundless Love, Peace, and Joy.
           </Info>
-          <Info  >
+          <Info $wide  >
             As Groeschel insightfully notes, "Our lives are always moving in the direction of our strongest thoughts." You can’t live a positive, fulfilling life while harboring negative, toxic thoughts.
           </Info>
 
-          <Info >
+          <Info $wide >
             The Good News: We have the power to renew our minds. (Romans 12:2)
           </Info>
         </Container>
@@ -649,7 +748,7 @@ export const Landing = () => {
           <Info>
             Life’s hurts often create mental strongholds that we think are protecting us, but they actually trap us in negative patterns. These strongholds distort our perceptions and prevent us from embracing God's plan for us.
           </Info>
-          <Info $wid>
+          <Info >
             To overcome these barriers, we first need to identify our strongest strongholds. Understanding what’s holding you back is the first step towards freedom.
           </Info>
 

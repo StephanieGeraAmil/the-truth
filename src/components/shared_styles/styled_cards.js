@@ -139,9 +139,8 @@ export const PreviewCard = styled.div`
        
         @media (max-aspect-ratio: 11/9) {
           bottom: 0;
-          width: 60%;
-          right:10%;
-    
+          width: 35%;
+          right:15%;
         }
         @media (min-width: 1400px) {
           width: 50%;
@@ -156,6 +155,7 @@ export const PreviewCard = styled.div`
         @media (max-width: 600px) {
           bottom: -30%;
           width: 60%;
+          right:10%;
         }
       `}
     ${(props) =>
@@ -170,9 +170,9 @@ export const PreviewCard = styled.div`
       animation: ${move} 5s 0.5s ease-in-out infinite;
      
       @media (max-aspect-ratio: 11/9) {
-        bottom: 5%;
-        width: 52%;
-        right:30%;
+        bottom: 2%;
+        width: 30%;
+        right:25%;
   
       }
       @media (min-width: 1400px) {
@@ -204,9 +204,9 @@ export const PreviewCard = styled.div`
 
    
       @media (max-aspect-ratio: 11/9) {
-        bottom: 8%;
-        width: 45%;
-        right:45%;
+        bottom: 4%;
+        width: 25%;
+        right:35%;
   
       }
       @media (min-width: 1400px) {
@@ -214,7 +214,7 @@ export const PreviewCard = styled.div`
         right: 30%;
         bottom: 45%;
       }
-      @media (min-width: 1400px) {
+      @media (min-width: 1900px) {
         width: 20%;
         right: 30%;
         bottom: 45%;
